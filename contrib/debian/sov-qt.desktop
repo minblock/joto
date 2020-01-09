@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=JOTO
+Comment=JOTO P2P Cryptocurrency
+Comment[fr]=JOTO, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=JOTO, eşten eşe kriptografik sanal para birimi
+Exec=joto-qt %u
+Terminal=false
+Type=Application
+Icon=joto128
+MimeType=x-scheme-handler/joto;
+Categories=Office;Finance;

@@ -1,0 +1,33 @@
+# /etc/conf.d/jotod: config file for /etc/init.d/jotod
+
+# Config file location
+#JOTOD_CONFIGFILE="/etc/jotocore/joto.conf"
+
+# What directory to write pidfile to?  (created and owned by $JOTOD_USER)
+#JOTOD_PIDDIR="/var/run/jotod"
+
+# What filename to give the pidfile
+#JOTOD_PIDFILE="${JOTOD_PIDDIR}/jotod.pid"
+
+# Where to write jotod data (be mindful that the blockchain is large)
+#JOTOD_DATADIR="/var/lib/jotod"
+
+# User and group to own jotod process
+#JOTOD_USER="jotocore"
+#JOTOD_GROUP="jotocore"
+
+# Path to jotod executable
+#JOTOD_BIN="/usr/bin/jotod"
+
+# Nice value to run jotod under
+#JOTOD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+JOTOD_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for jotod to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+JOTOD_SIGTERM_TIMEOUT=60
