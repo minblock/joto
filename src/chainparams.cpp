@@ -196,8 +196,8 @@ public:
                 }
                 std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
      */
-        assert(consensus.hashGenesisBlock == uint256S("0000042b167ea67fb4b0953b6aa510589b2e2ebc6363ee0aeb47a4c35af9078b"));
-        assert(genesis.hashMerkleRoot == uint256S("98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
+        assert(consensus.hashGenesisBlock == uint256S("0000011083ab7639f117733edb4b2eedf15b0cdc670ea82ce522d2af8bb9da95"));
+        assert(genesis.hashMerkleRoot == uint256S("1b8f87fe20ec85e5ee8bab64d1c20667b018e854368dede229212175c85d6a04"));
 
         vSeeds.push_back(CDNSSeedData("192.3.3.30", "192.3.3.30"));
         // vFixedSeeds.clear();
