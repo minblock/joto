@@ -317,11 +317,11 @@ public:
 
         genesis = CreateGenesisBlock(1525413615UL, 1507179UL, 0x1e0ffff0, 1, 150000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000083e1f4099f7130875aeccf9eb77f48db127db614ecd54da5e0df1f8def3"));
-        assert(genesis.hashMerkleRoot == uint256S("0x98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
+        //assert(consensus.hashGenesisBlock == uint256S("0x0000083e1f4099f7130875aeccf9eb77f48db127db614ecd54da5e0df1f8def3"));
+        //assert(genesis.hashMerkleRoot == uint256S("0x98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
 
-        vSeeds.push_back(CDNSSeedData("testnet.jotoproject.org", "testnet.seed.jotoproject.org"));
-        vSeeds.push_back(CDNSSeedData("fixed-seeds.jotoproject.org", "testnet.fixed-seeds.jotoproject.org"));
+        vSeeds.push_back(CDNSSeedData("testnet-joto.pgn.one", "testnet.seed-joto.pgn.one"));
+        vSeeds.push_back(CDNSSeedData("fixed-seeds-joto.pgn.one", "testnet.fixed-seeds-joto.pgn.one"));
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
@@ -430,8 +430,8 @@ public:
 
         genesis = CreateGenesisBlock(1522201627, 1282268, 0x1e0ffff0, 1, 150000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000005a463172093e57a1126c2f7639295de93b6bfcaa3db8e4599be7c8190f"));
-        assert(genesis.hashMerkleRoot == uint256S("0x98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
+        //assert(consensus.hashGenesisBlock == uint256S("0x0000005a463172093e57a1126c2f7639295de93b6bfcaa3db8e4599be7c8190f"));
+        //assert(genesis.hashMerkleRoot == uint256S("0x98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
