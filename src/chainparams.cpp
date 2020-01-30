@@ -204,7 +204,7 @@ public:
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
-        // JOTO addresses start with 'J'
+        // JOTO addresses start with '7 or 8'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,17);
         // JOTO script addresses start with '8'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,18);
