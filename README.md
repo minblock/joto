@@ -1,8 +1,8 @@
 JOTO Core 2.0.1
 ===============================
 
-Website: https://www.jotocore.org
-Explorer: http://explorer.jotocore.org/
+Website: https://joto.pgn.one
+Explorer: http://jotosplorer.pgn.one/
 Exchange: https://crex24.com/exchange/JOTO-BTC
 
 What is JOTO?
