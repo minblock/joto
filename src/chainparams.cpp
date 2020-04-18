@@ -115,12 +115,12 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1486252800; // Feb 5th, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1587356420; // Feb 5th, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 9999999ULL; // Feb 5th, 2018
 
         // Deployment of DIP0001
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1508025600; // Oct 15th, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1587356420; // Oct 15th, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 9999999ULL; // Oct 15th, 2018
 
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
