@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Provigen Networks is accepting Bitcoin in Canada 1/8/2020";
+    const char* pszTimestamp = "Provigen Networks is accepting Reversaronies";
     const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -115,13 +115,13 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1587249759; // April 18th 2020
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 9999999ULL; // Feb 5th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 9999999ULL; //  May 5th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 9999999ULL; // May 5th, 2021
 
         // Deployment of DIP0001
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1587249759; // April 18th 2020
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 9999999ULL; // Oct 15th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 9999999ULL; //  May 5th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 9999999ULL; //  May 5th, 2021
 
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
@@ -153,9 +153,9 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1580327605, 1848074, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
+        genesis = CreateGenesisBlock(1580127605, 1948074, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
         consensus.hashGenesisBlock = genesis.GetHash();
-   /*
+   
 	 //////////////
         //////////////
                 // calculate Genesis Block
@@ -195,9 +195,9 @@ public:
                     // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
                 }
                 std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
-     */
-        assert(consensus.hashGenesisBlock == uint256S("00000df709a61f6329dd472da754eb634ee197e42cc48f3e42dfe7a65af5fe1a"));
-        assert(genesis.hashMerkleRoot == uint256S("1b8f87fe20ec85e5ee8bab64d1c20667b018e854368dede229212175c85d6a04"));
+     
+        assert(consensus.hashGenesisBlock == uint256S("00000df709a61a6329dd472da754eb634ee197e42cc48f3e42dfe7a65af5fe1a"));
+        assert(genesis.hashMerkleRoot == uint256S("1b8f87fe20ec85e5de8bab64d1c20667b018e854368dede229212175c85d6a04"));
 
 
         vSeeds.push_back(CDNSSeedData("192.3.3.30", "192.3.3.30"));
