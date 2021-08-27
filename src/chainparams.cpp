@@ -96,7 +96,7 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 1;
-        consensus.BIP34Hash = uint256S("0x000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343");
+        consensus.BIP34Hash = uint256S("0x000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b");
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
         consensus.nZawyLwmaAveragingWindow = 65;
@@ -153,10 +153,10 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1630029680, 1948074, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
+        genesis = CreateGenesisBlock(1630033370, 424019, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
         consensus.hashGenesisBlock = genesis.GetHash();
    
-	 //////////////
+/*	 //////////////
         //////////////
                 // calculate Genesis Block
                 // Reset genesis
@@ -194,10 +194,10 @@ public:
                     std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
                     // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
                 }
-                std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
+                std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");*/
      
-        assert(consensus.hashGenesisBlock == uint256S("00000df709a61a6329dd472da754eb634ee197e424444f3e42dfe7a65af5fe1a"));
-        assert(genesis.hashMerkleRoot == uint256S("1b8f87fe20ec85e5de8bab64d1c20667b018e854368dede229212175c85d6a04"));
+        assert(consensus.hashGenesisBlock == uint256S("000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b"));
+        assert(genesis.hashMerkleRoot == uint256S("fbf51cd28a5652a878b37acefe27284df53b6ec56d330c76747da85fc92e3039"));
 
 
         vSeeds.push_back(CDNSSeedData("192.3.3.28", "192.3.3.28"));
@@ -232,7 +232,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0000093e6f9d658353d8def21d98a5a5126a388a7c5987bce7cac4ccf5299dd0")),
+            (  0, uint256S("000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b")),
             1530264182, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
