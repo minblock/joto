@@ -155,47 +155,6 @@ public:
 
         genesis = CreateGenesisBlock(1630033370, 424019, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
         consensus.hashGenesisBlock = genesis.GetHash();
-   
-/*	 //////////////
-        //////////////
-                // calculate Genesis Block
-                // Reset genesis
-                consensus.hashGenesisBlock = uint256S("0x");
-                std::cout << std::string("Begin calculating Mainnet Genesis Block:\n");
-                if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
-                    LogPrintf("Calculating Mainnet Genesis Block:\n");
-                    arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
-                    uint256 hash;
-                    genesis.nNonce = 0;
-                    // This will figure out a valid hash and Nonce if you're
-                    // creating a different genesis block:
-                    // uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
-                    // hashTarget.SetCompact(genesis.nBits, &fNegative, &fOverflow).getuint256();
-                    // while (genesis.GetHash() > hashTarget)
-                    while (UintToArith256(genesis.GetHash()) > hashTarget)
-                    {
-                        ++genesis.nNonce;
-                        if (genesis.nNonce == 0)
-                        {
-                            LogPrintf("NONCE WRAPPED, incrementing time");
-                            std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
-                            ++genesis.nTime;
-                        }
-                        if (genesis.nNonce % 10000 == 0)
-                        {
-                            LogPrintf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
-                            // std::cout << strNetworkID << " nonce: " << genesis.nNonce << " time: " << genesis.nTime << " hash: " << genesis.GetHash().ToString().c_str() << "\n";
-                        }
-                    }
-                    std::cout << "Mainnet ---\n";
-                    std::cout << "  nonce: " << genesis.nNonce <<  "\n";
-                    std::cout << "   time: " << genesis.nTime << "\n";
-                    std::cout << "   hash: " << genesis.GetHash().ToString().c_str() << "\n";
-                    std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
-                    // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
-                }
-                std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");*/
-     
         assert(consensus.hashGenesisBlock == uint256S("000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b"));
         assert(genesis.hashMerkleRoot == uint256S("fbf51cd28a5652a878b37acefe27284df53b6ec56d330c76747da85fc92e3039"));
 
@@ -232,11 +191,11 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b")),
-            1530264182, // * UNIX timestamp of last checkpoint block
-            0,    // * total number of transactions between genesis and last checkpoint
+            (  138, uint256S("00000000830135e52c80a24a28158a7def0bec6552fbf5600a58e71688bd4b24")),
+            1630048754,, // * UNIX timestamp of last checkpoint block
+            139,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            500        // * estimated number of transactions per day after checkpoint
+            1000        // * estimated number of transactions per day after checkpoint
         };
     }
 };
