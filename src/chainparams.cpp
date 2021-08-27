@@ -153,7 +153,7 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1580127605, 1948074, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
+        genesis = CreateGenesisBlock(1630029680, 1948074, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
         consensus.hashGenesisBlock = genesis.GetHash();
    
 	 //////////////
@@ -196,11 +196,11 @@ public:
                 }
                 std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
      
-        assert(consensus.hashGenesisBlock == uint256S("00000df709a61a6329dd472da754eb634ee197e42cc48f3e42dfe7a65af5fe1a"));
+        assert(consensus.hashGenesisBlock == uint256S("00000df709a61a6329dd472da754eb634ee197e424444f3e42dfe7a65af5fe1a"));
         assert(genesis.hashMerkleRoot == uint256S("1b8f87fe20ec85e5de8bab64d1c20667b018e854368dede229212175c85d6a04"));
 
 
-        vSeeds.push_back(CDNSSeedData("192.3.3.30", "192.3.3.30"));
+        vSeeds.push_back(CDNSSeedData("192.3.3.28", "192.3.3.28"));
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
