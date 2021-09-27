@@ -152,7 +152,7 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1632770780,  , 0x1e0ffff0, 1, 50 * COIN); //chainstart 2021-09-27 3:25PM EST
+        genesis = CreateGenesisBlock(1632770780, 106583, 0x1e0ffff0, 1, 50 * COIN); //chainstart 2021-09-27 3:25PM EST
         consensus.hashGenesisBlock = genesis.GetHash();
 	 //////////////
         //////////////
