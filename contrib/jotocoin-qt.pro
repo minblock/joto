@@ -20,4 +20,4 @@ FORMS += \
     ../src/qt/forms/transactiondescdialog.ui
 
 RESOURCES += \
-    ../src/qt/sov.qrc
+    ../src/qt/jotocoin.qrc

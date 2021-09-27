@@ -62,12 +62,12 @@
         <translation>Adresa prijatia</translation>
     </message>
     <message>
-        <source>These are your SOV addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Toto sú Vaše SOV adresy pre posielanie platieb. Pred poslaním mincí vždy overte sumu a doručovaciu adresu.</translation>
+        <source>These are your JOTOCOIN addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Toto sú Vaše JOTOCOIN adresy pre posielanie platieb. Pred poslaním mincí vždy overte sumu a doručovaciu adresu.</translation>
     </message>
     <message>
-        <source>These are your SOV addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Toto sú Vaše SOV adresy pre posielanie platieb. Pre každú transakciu sa doporučuje použiť novú doručovaciu adresu.</translation>
+        <source>These are your JOTOCOIN addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Toto sú Vaše JOTOCOIN adresy pre posielanie platieb. Pre každú transakciu sa doporučuje použiť novú doručovaciu adresu.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -176,8 +176,8 @@
         <translation>Potvrďte šifrovanie peňaženky</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR SOV&lt;/b&gt;!</source>
-        <translation>Upozornenie: Ak zašifrujete vašu peňaženku a stratíte prístupové heslo, potom &lt;b&gt;prídete o všetky svoje SOV-y&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR JOTOCOIN&lt;/b&gt;!</source>
+        <translation>Upozornenie: Ak zašifrujete vašu peňaženku a stratíte prístupové heslo, potom &lt;b&gt;prídete o všetky svoje JOTOCOIN-y&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -236,10 +236,10 @@
     </message>
 </context>
 <context>
-    <name>SOVGUI</name>
+    <name>JOTOCOINGUI</name>
     <message>
-        <source>SOV Core</source>
-        <translation>SOV Core</translation>
+        <source>JOTOCOIN Core</source>
+        <translation>JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -262,16 +262,16 @@
         <translation>&amp;Odoslať</translation>
     </message>
     <message>
-        <source>Send coins to a SOV address</source>
-        <translation>Poslať mince na SOV adresu</translation>
+        <source>Send coins to a JOTOCOIN address</source>
+        <translation>Poslať mince na JOTOCOIN adresu</translation>
     </message>
     <message>
         <source>&amp;Receive</source>
         <translation>&amp;Prijať</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and sov: URIs)</source>
-        <translation>Vyžiadať platby (vygeneruje QR kódy a SOV: URI)</translation>
+        <source>Request payments (generates QR codes and jotocoin: URIs)</source>
+        <translation>Vyžiadať platby (vygeneruje QR kódy a JOTOCOIN: URI)</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -298,12 +298,12 @@
         <translation>Ukončiť program</translation>
     </message>
     <message>
-        <source>&amp;About SOV Core</source>
-        <translation>&amp;O SOV Core</translation>
+        <source>&amp;About JOTOCOIN Core</source>
+        <translation>&amp;O JOTOCOIN Core</translation>
     </message>
     <message>
-        <source>Show information about SOV Core</source>
-        <translation>Zobraziť informácie o SOV Core</translation>
+        <source>Show information about JOTOCOIN Core</source>
+        <translation>Zobraziť informácie o JOTOCOIN Core</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -318,8 +318,8 @@
         <translation>&amp;Možnosti...</translation>
     </message>
     <message>
-        <source>Modify configuration options for SOV Core</source>
-        <translation>Upraviť možnosti konfigurácie SOV Core</translation>
+        <source>Modify configuration options for JOTOCOIN Core</source>
+        <translation>Upraviť možnosti konfigurácie JOTOCOIN Core</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -370,16 +370,16 @@
         <translation>Podpísať &amp;správu...</translation>
     </message>
     <message>
-        <source>Sign messages with your SOV addresses to prove you own them</source>
-        <translation>Podpísať správy s Vašimi SOV adresami ako dôkaz že ich vlastníte</translation>
+        <source>Sign messages with your JOTOCOIN addresses to prove you own them</source>
+        <translation>Podpísať správy s Vašimi JOTOCOIN adresami ako dôkaz že ich vlastníte</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>Overiť správu</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified SOV addresses</source>
-        <translation>Overiť správy pre uistenie, že boli podpísané zadanými SOV adresami</translation>
+        <source>Verify messages to ensure they were signed with specified JOTOCOIN addresses</source>
+        <translation>Overiť správy pre uistenie, že boli podpísané zadanými JOTOCOIN adresami</translation>
     </message>
     <message>
         <source>&amp;Information</source>
@@ -459,15 +459,15 @@
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>Zobraziť zoznam použitých prijímacích adries a ich popisov</translation>
+        <translation>Zobraziť zoznam použitých prijímacích adries a ich popijotocoin</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
         <translation>Otvoriť &amp;URI...</translation>
     </message>
     <message>
-        <source>Open a sov: URI or payment request</source>
-        <translation>Otvoriť sov: URI alebo žiadosť o platbu </translation>
+        <source>Open a jotocoin: URI or payment request</source>
+        <translation>Otvoriť jotocoin: URI alebo žiadosť o platbu </translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -502,12 +502,12 @@
         <translation>Lišta záložiek</translation>
     </message>
     <message>
-        <source>SOV Core client</source>
-        <translation>SOV Core klient</translation>
+        <source>JOTOCOIN Core client</source>
+        <translation>JOTOCOIN Core klient</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to SOV network</source>
-        <translation><numerusform>%n aktívne spojenie so sieťou SOV</numerusform><numerusform>%n aktívne spojenia so sieťou SOV</numerusform><numerusform>%n aktívnych spojení so sieťou SOV</numerusform></translation>
+        <source>%n active connection(s) to JOTOCOIN network</source>
+        <translation><numerusform>%n aktívne spojenie so sieťou JOTOCOIN</numerusform><numerusform>%n aktívne spojenia so sieťou JOTOCOIN</numerusform><numerusform>%n aktívnych spojení so sieťou JOTOCOIN</numerusform></translation>
     </message>
     <message>
         <source>Network activity disabled</source>
@@ -841,28 +841,28 @@
         <translation>Prosím vyberte úroveň súkromia.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 1000 SOV</source>
-        <translation>Použiť 2 rozdielne masternode pre fixovanie prostriedkov až do 1000 SOV</translation>
+        <source>Use 2 separate masternodes to mix funds up to 1000 JOTOCOIN</source>
+        <translation>Použiť 2 rozdielne masternode pre fixovanie prostriedkov až do 1000 JOTOCOIN</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 1000 SOV</source>
-        <translation>Použiť 8 rozdielnych masternode pre fixovanie prostriedkov až do 1000 SOV</translation>
+        <source>Use 8 separate masternodes to mix funds up to 1000 JOTOCOIN</source>
+        <translation>Použiť 8 rozdielnych masternode pre fixovanie prostriedkov až do 1000 JOTOCOIN</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Použiť 16 rozdielnych masternode</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 SOV to anonymize 1000 SOV</source>
-        <translation>Táto možnosť je najrýchlejšia a bude stáť približne 0.025 SOV pre anonimizáciu 1000 SOV</translation>
+        <source>This option is the quickest and will cost about ~0.025 JOTOCOIN to anonymize 1000 JOTOCOIN</source>
+        <translation>Táto možnosť je najrýchlejšia a bude stáť približne 0.025 JOTOCOIN pre anonimizáciu 1000 JOTOCOIN</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 SOV to anonymize 1000 SOV</source>
-        <translation>Táto možnosť je stredne rýchla bude stáť približne 0.05 SOV pre anonimizáciu 1000 SOV</translation>
+        <source>This option is moderately fast and will cost about 0.05 JOTOCOIN to anonymize 1000 JOTOCOIN</source>
+        <translation>Táto možnosť je stredne rýchla bude stáť približne 0.05 JOTOCOIN pre anonimizáciu 1000 JOTOCOIN</translation>
     </message>
     <message>
-        <source>0.1 SOV per 1000 SOV you anonymize.</source>
-        <translation>0.1 SOV za 1000 SOV ktoré spravíte anonymnými.</translation>
+        <source>0.1 JOTOCOIN per 1000 JOTOCOIN you anonymize.</source>
+        <translation>0.1 JOTOCOIN za 1000 JOTOCOIN ktoré spravíte anonymnými.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -873,16 +873,16 @@
         <translation>Nastavenie PrivateSend</translation>
     </message>
     <message>
-        <source>PrivateSend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening SOV's configuration screen.</source>
-        <translation>Darksend bol úspešne nastavený na základnú hodnotu (%1 a 2 kolá). Toto nastavenie môžete kedykoľvek zmeniť otvorením konfiguračnej obrazovky SOV.</translation>
+        <source>PrivateSend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening JOTOCOIN's configuration screen.</source>
+        <translation>Darksend bol úspešne nastavený na základnú hodnotu (%1 a 2 kolá). Toto nastavenie môžete kedykoľvek zmeniť otvorením konfiguračnej obrazovky JOTOCOIN.</translation>
     </message>
     <message>
-        <source>PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening SOV's configuration screen.</source>
-        <translation>PrivateSend bol úspešne nastavený na základnú hodnotu (%1 a 8 kôl). Toto nastavenie môžete kedykoľvek zmeniť otvorením konfiguračnej obrazovky SOV.</translation>
+        <source>PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening JOTOCOIN's configuration screen.</source>
+        <translation>PrivateSend bol úspešne nastavený na základnú hodnotu (%1 a 8 kôl). Toto nastavenie môžete kedykoľvek zmeniť otvorením konfiguračnej obrazovky JOTOCOIN.</translation>
     </message>
     <message>
-        <source>PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening SOV's configuration screen.</source>
-        <translation>PrivateSend bol úspešne nastavený na maximálnu hodnotu (%1 a 16 kôl). Toto nastavenie môžete kedykoľvek zmeniť otvorením konfiguračnej obrazovky SOV.</translation>
+        <source>PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening JOTOCOIN's configuration screen.</source>
+        <translation>PrivateSend bol úspešne nastavený na maximálnu hodnotu (%1 a 16 kôl). Toto nastavenie môžete kedykoľvek zmeniť otvorením konfiguračnej obrazovky JOTOCOIN.</translation>
     </message>
 </context>
 <context>
@@ -924,8 +924,8 @@
         <translation>Upraviť odosielaciu adresu</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid SOV address.</source>
-        <translation>Zadaná adresa "%1" nie je platná SOV adresa.</translation>
+        <source>The entered address "%1" is not a valid JOTOCOIN address.</source>
+        <translation>Zadaná adresa "%1" nie je platná JOTOCOIN adresa.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -966,8 +966,8 @@
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>SOV Core</source>
-        <translation>SOV Core</translation>
+        <source>JOTOCOIN Core</source>
+        <translation>JOTOCOIN Core</translation>
     </message>
     <message>
         <source>version</source>
@@ -978,8 +978,8 @@
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About SOV Core</source>
-        <translation>O SOV Core</translation>
+        <source>About JOTOCOIN Core</source>
+        <translation>O JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1033,16 +1033,16 @@
         <translation>Vitajte</translation>
     </message>
     <message>
-        <source>Welcome to SOV Core.</source>
-        <translation>Vitajte v SOV Core.</translation>
+        <source>Welcome to JOTOCOIN Core.</source>
+        <translation>Vitajte v JOTOCOIN Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where SOV Core will store its data.</source>
-        <translation>Keďže toto je prvý krát čo spúšťate tento program, môžete vybrať kam bude SOV Core ukladať svoje dáta.</translation>
+        <source>As this is the first time the program is launched, you can choose where JOTOCOIN Core will store its data.</source>
+        <translation>Keďže toto je prvý krát čo spúšťate tento program, môžete vybrať kam bude JOTOCOIN Core ukladať svoje dáta.</translation>
     </message>
     <message>
-        <source>SOV Core will download and store a copy of the SOV block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>SOV Core stiahne a uloží kópiu reťazca blokov SOV. Pri najmenej %1GB dát bude uložených v tejto zložke and bude ďalej rásť. Peňaženka bude tiež uložená v tejto zložke.</translation>
+        <source>JOTOCOIN Core will download and store a copy of the JOTOCOIN block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>JOTOCOIN Core stiahne a uloží kópiu reťazca blokov JOTOCOIN. Pri najmenej %1GB dát bude uložených v tejto zložke and bude ďalej rásť. Peňaženka bude tiež uložená v tejto zložke.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1053,8 +1053,8 @@
         <translation>Použiť vlastný dátový adresár:</translation>
     </message>
     <message>
-        <source>SOV Core</source>
-        <translation>SOV Core</translation>
+        <source>JOTOCOIN Core</source>
+        <translation>JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -1225,20 +1225,20 @@
         <translation>(0 = auto, &lt;0 = nechať toľko jadier voľných)</translation>
     </message>
     <message>
-        <source>Amount of SOV to keep anonymized</source>
-        <translation>Suma SOV ktorú držať anonymne </translation>
+        <source>Amount of JOTOCOIN to keep anonymized</source>
+        <translation>Suma JOTOCOIN ktorú držať anonymne </translation>
     </message>
     <message>
         <source>W&amp;allet</source>
         <translation>Peňaženka</translation>
     </message>
     <message>
-        <source>Automatically start SOV Core after logging in to the system.</source>
-        <translation>Automaticky spustiť SOV Core po prihlásení do systému.</translation>
+        <source>Automatically start JOTOCOIN Core after logging in to the system.</source>
+        <translation>Automaticky spustiť JOTOCOIN Core po prihlásení do systému.</translation>
     </message>
     <message>
-        <source>&amp;Start SOV Core on system login</source>
-        <translation>&amp;Spusť SOV po prihlásení do systému</translation>
+        <source>&amp;Start JOTOCOIN Core on system login</source>
+        <translation>&amp;Spusť JOTOCOIN po prihlásení do systému</translation>
     </message>
     <message>
         <source>Show Masternodes Tab</source>
@@ -1265,8 +1265,8 @@
         <translation>Povoliť prichádzajúce spojenia</translation>
     </message>
     <message>
-        <source>Connect to the SOV network through a SOCKS5 proxy.</source>
-        <translation>Pripojiť sa do siete SOV cez proxy SOCKS5.</translation>
+        <source>Connect to the JOTOCOIN network through a SOCKS5 proxy.</source>
+        <translation>Pripojiť sa do siete JOTOCOIN cez proxy SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1378,9 +1378,9 @@
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/sov/</source>
+https://www.transifex.com/projects/p/jotocoin/</source>
         <translation>Chýbajúci alebo nekompletný preklad? Pomôžte nám tu:
-https://www.transifex.com/projects/p/sov/</translation>
+https://www.transifex.com/projects/p/jotocoin/</translation>
     </message>
     <message>
         <source>User Interface Theme:</source>
@@ -1458,8 +1458,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Forma</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the SOV network after a connection is established, but this process has not completed yet.</source>
-        <translation>Zobrazené informácie môžu byť zastaralé. Vaša peňaženka sa automaticky zosynchronizuje so sieťou SOV akonáhle nadviaže spojenie, avšak tento proces ešte nebol dokončený.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the JOTOCOIN network after a connection is established, but this process has not completed yet.</source>
+        <translation>Zobrazené informácie môžu byť zastaralé. Vaša peňaženka sa automaticky zosynchronizuje so sieťou JOTOCOIN akonáhle nadviaže spojenie, avšak tento proces ešte nebol dokončený.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1558,8 +1558,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Čiastka a kolá:</translation>
     </message>
     <message>
-        <source>0 SOV / 0 Rounds</source>
-        <translation>0 SOV / 0 Kôl</translation>
+        <source>0 JOTOCOIN / 0 Rounds</source>
+        <translation>0 JOTOCOIN / 0 Kôl</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -1696,8 +1696,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Chyba pri vyžiadaní platby</translation>
     </message>
     <message>
-        <source>Cannot start sov: click-to-pay handler</source>
-        <translation>SOV sa nedá spustiť: click-to-pay handler</translation>
+        <source>Cannot start jotocoin: click-to-pay handler</source>
+        <translation>JOTOCOIN sa nedá spustiť: click-to-pay handler</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1712,8 +1712,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Neplatná adresa platby %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid SOV address or malformed URI parameters.</source>
-        <translation>URI sa nedá analyzovať! Toto môže byť spôsobené neplatnou SOV adresou, alebo nesprávnym tvarom URI parametrov.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid JOTOCOIN address or malformed URI parameters.</source>
+        <translation>URI sa nedá analyzovať! Toto môže byť spôsobené neplatnou JOTOCOIN adresou, alebo nesprávnym tvarom URI parametrov.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1802,8 +1802,8 @@ https://www.transifex.com/projects/p/sov/</translation>
 <context>
     <name>QObject</name>
     <message>
-        <source>SOV Core</source>
-        <translation>SOV Core</translation>
+        <source>JOTOCOIN Core</source>
+        <translation>JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -1814,8 +1814,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Suma</translation>
     </message>
     <message>
-        <source>Enter a SOV address (e.g. %1)</source>
-        <translation>Zadajte SOV adresu (e.g. %1)</translation>
+        <source>Enter a JOTOCOIN address (e.g. %1)</source>
+        <translation>Zadajte JOTOCOIN adresu (e.g. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2077,7 +2077,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>Time Offset</source>
-        <translation>Časový posun</translation>
+        <translation>Čajotocoiný posun</translation>
     </message>
     <message>
         <source>&amp;Wallet Repair</source>
@@ -2247,8 +2247,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Znovu použiť jestvujúcu prijímaciu adresu (neodporúča sa)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the SOV network.</source>
-        <translation>Pripojiť ku vyžiadanej platbe voliteľnú správu, ktorá sa zobrazí, keď bude žiadosť otvorená. Poznámka: Správa nebude poslaná spolu s platbou cez sieť SOV.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the JOTOCOIN network.</source>
+        <translation>Pripojiť ku vyžiadanej platbe voliteľnú správu, ktorá sa zobrazí, keď bude žiadosť otvorená. Poznámka: Správa nebude poslaná spolu s platbou cez sieť JOTOCOIN.</translation>
     </message>
     <message>
         <source>&amp;Message:</source>
@@ -2259,8 +2259,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Voliteľný popis ktorý sa pridá k tejto novej prijímajúcej adrese.</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the SOV network.</source>
-        <translation>Pripojiť ku vyžiadanej platbe voliteľnú správu, ktorá sa zobrazí, keď bude žiadosť otvorená. &lt;br&gt;Poznámka: Správa nebude poslaná spolu s platbou cez sieť SOV.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the JOTOCOIN network.</source>
+        <translation>Pripojiť ku vyžiadanej platbe voliteľnú správu, ktorá sa zobrazí, keď bude žiadosť otvorená. &lt;br&gt;Poznámka: Správa nebude poslaná spolu s platbou cez sieť JOTOCOIN.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -2516,8 +2516,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Ak je vlastný poplatok nastavený na 1000 duffov a transakcia je len 250 bytov, v tom prípade "za kilobajt" zaplatí iba 250 duffov na poplatkoch, &lt;br /&gt;zatiaľ čo "celkovo pri najmenšom" zaplatí 1000 duffov. Pre transakcie väčšie ako jeden kilobajt, obe zaplatia rovnako za kilobajt. </translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for sov transactions than the network can process.</source>
-        <translation>Platenie minimálneho poplatku je v poriadku pokiaľ je objem transakcií menší ako je miesto v bloku. &lt;br /&gt;Buďte opatrný pretože to môže skončiť s nikdy nepotvrdenými transakciami, akonáhle je dopyt po SOV transakciách väčší ako dokáže sieť SOV spracovať.</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for jotocoin transactions than the network can process.</source>
+        <translation>Platenie minimálneho poplatku je v poriadku pokiaľ je objem transakcií menší ako je miesto v bloku. &lt;br /&gt;Buďte opatrný pretože to môže skončiť s nikdy nepotvrdenými transakciami, akonáhle je dopyt po JOTOCOIN transakciách väčší ako dokáže sieť JOTOCOIN spracovať.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2708,8 +2708,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation><numerusform>Odhad pre začiatok potvrdzovania je %n blok.</numerusform><numerusform>Odhad pre začiatok potvrdzovania sú %n bloky.</numerusform><numerusform>Odhad pre začiatok potvrdzovania je %n blokov.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid SOV address</source>
-        <translation>Upozornenie: Neplatná SOV adresa</translation>
+        <source>Warning: Invalid JOTOCOIN address</source>
+        <translation>Upozornenie: Neplatná JOTOCOIN adresa</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2731,8 +2731,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Zapla&amp;tiť:</translation>
     </message>
     <message>
-        <source>The SOV address to send the payment to</source>
-        <translation>SOV adresa pre poslanie platby</translation>
+        <source>The JOTOCOIN address to send the payment to</source>
+        <translation>JOTOCOIN adresa pre poslanie platby</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2775,8 +2775,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Správa:</translation>
     </message>
     <message>
-        <source>A message that was attached to the sov: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the SOV network.</source>
-        <translation>Správa ktorá bola pripojená ku sov: URI ktorá sa uchová spolu s transakciou pre Vašu referenciu. Poznámka: Táto správa nebude poslaná cez sieť SOV.</translation>
+        <source>A message that was attached to the jotocoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the JOTOCOIN network.</source>
+        <translation>Správa ktorá bola pripojená ku jotocoin: URI ktorá sa uchová spolu s transakciou pre Vašu referenciu. Poznámka: Táto správa nebude poslaná cez sieť JOTOCOIN.</translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
@@ -2802,8 +2802,8 @@ https://www.transifex.com/projects/p/sov/</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>SOV Core is shutting down...</source>
-        <translation>SOV core sa vypína...</translation>
+        <source>JOTOCOIN Core is shutting down...</source>
+        <translation>JOTOCOIN core sa vypína...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2821,8 +2821,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>&amp;Podpísať Správu</translation>
     </message>
     <message>
-        <source>The SOV address to sign the message with</source>
-        <translation>SOV adresa na podpísanie správy</translation>
+        <source>The JOTOCOIN address to sign the message with</source>
+        <translation>JOTOCOIN adresa na podpísanie správy</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2853,8 +2853,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Kopírovať práve zvolenú adresu do systémového klipbordu</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this SOV address</source>
-        <translation>Podpísať spravu aby ste dokázali, že vlastníte túto SOV adresu</translation>
+        <source>Sign the message to prove you own this JOTOCOIN address</source>
+        <translation>Podpísať spravu aby ste dokázali, že vlastníte túto JOTOCOIN adresu</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2877,12 +2877,12 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Vložte adresu príjemcu, správu (uistite sa, že presne kopírujete ukončenia riadkov, medzery, odrážky, atď.) a podpis pre potvrdenie správy. Buďte opatrní a nedomýšľajte si viac než je uvedené v samotnej podpísanej správe a môžete sa tak vyhnúť podvodu MITM útokom. Toto len potvrdzuje, že podpisujúca strana môže prijímať na tejto adrese, nepotvrdzuje to vlastníctvo žiadnej transakcie!</translation>
     </message>
     <message>
-        <source>The SOV address the message was signed with</source>
-        <translation>Adresa SOV s ktorou bola podpísaná správa</translation>
+        <source>The JOTOCOIN address the message was signed with</source>
+        <translation>Adresa JOTOCOIN s ktorou bola podpísaná správa</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified SOV address</source>
-        <translation>Overiť správu pre uistenie, že bola podpísaná zadanou SOV adresou</translation>
+        <source>Verify the message to ensure it was signed with the specified JOTOCOIN address</source>
+        <translation>Overiť správu pre uistenie, že bola podpísaná zadanou JOTOCOIN adresou</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2952,20 +2952,20 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>[testovacia sieť]</translation>
     </message>
     <message>
-        <source>SOV Core</source>
-        <translation>SOV Core</translation>
+        <source>JOTOCOIN Core</source>
+        <translation>JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Version %1</source>
         <translation>Verzia %1</translation>
     </message>
     <message>
-        <source>The SOV Core developers</source>
-        <translation>Vývojári SOV Core</translation>
+        <source>The JOTOCOIN Core developers</source>
+        <translation>Vývojári JOTOCOIN Core</translation>
     </message>
     <message>
-        <source>The SOV Core developers</source>
-        <translation>Vývojári SOV Core</translation>
+        <source>The JOTOCOIN Core developers</source>
+        <translation>Vývojári JOTOCOIN Core</translation>
     </message>
 </context>
 <context>
@@ -3011,7 +3011,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>InstantSend verification in progress - %1 of %2 signatures</source>
-        <translation>Prebieha overovanie InstantSend - %1 z %2 podpisov</translation>
+        <translation>Prebieha overovanie InstantSend - %1 z %2 podpijotocoin</translation>
     </message>
     <message>
         <source>InstantSend verification failed</source>
@@ -3484,8 +3484,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Poslať Mince</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 SOV.</source>
-        <translation>InstantSend zatiaľ nepodporuje posielanie takto vysokých čiastok. Transakcie sú limitované na %1 SOV.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 JOTOCOIN.</source>
+        <translation>InstantSend zatiaľ nepodporuje posielanie takto vysokých čiastok. Transakcie sú limitované na %1 JOTOCOIN.</translation>
     </message>
     </context>
 <context>
@@ -3528,14 +3528,14 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
 </context>
 <context>
-    <name>sov-core</name>
+    <name>jotocoin-core</name>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>Spojiť s danou adresou a vždy na nej počúvať. Použite zápis [host]:port pre IPv6</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. SOV Core is probably already running.</source>
-        <translation>Nedá sa zamknúť dátový adresár %s. SOV Core už pravdepodobne beží.</translation>
+        <source>Cannot obtain a lock on data directory %s. JOTOCOIN Core is probably already running.</source>
+        <translation>Nedá sa zamknúť dátový adresár %s. JOTOCOIN Core už pravdepodobne beží.</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
@@ -3574,8 +3574,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Toto je predbežná testovacia zostava - používate na vlastné riziko - nepoužívajte na ťaženie alebo obchodné aplikácie</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. SOV Core is probably already running.</source>
-        <translation>Nedá sa viazať ku %s na tomto počítači. SOV Core už pravdepodobne beží.</translation>
+        <source>Unable to bind to %s on this computer. JOTOCOIN Core is probably already running.</source>
+        <translation>Nedá sa viazať ku %s na tomto počítači. JOTOCOIN Core už pravdepodobne beží.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3759,7 +3759,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Neplatná suma pre -maxtxfee=&lt;amount&gt;: '%s' (aby sa transakcia nezasekla, minimálny prenosový poplatok musí byť aspoň %s)</translation>
+        <translation>Neplatná suma pre -maxtxfee=&lt;amount&gt;: '%s' (aby sa transakcia nezasekla, minimálny prenojotocoiný poplatok musí byť aspoň %s)</translation>
     </message>
     <message>
         <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
@@ -3790,8 +3790,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Tento produkt obsahuje softvér vyvinutý projektom OpenSSL pre použitie sady nástrojov OpenSSL &lt;https://www.openssl.org/&gt; a kryptografického softvéru napísaného Eric Young a UPnP softvér napísaný Thomas Bernard.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 SOV.</source>
-        <translation>Nenašiel sa dostatok prostriedkov pre túto transakciu, ktorú nie sú rovné 1000 SOV.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 1000 JOTOCOIN.</source>
+        <translation>Nenašiel sa dostatok prostriedkov pre túto transakciu, ktorú nie sú rovné 1000 JOTOCOIN.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -3838,8 +3838,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Autorské práva (C) 2014-%i Vývojári jadra Dash</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The SOV Core Developers</source>
-        <translation>Autorské práva (C) 2017-%i Vývojári jadra SOV</translation>
+        <source>Copyright (C) 2017-%i The JOTOCOIN Core Developers</source>
+        <translation>Autorské práva (C) 2017-%i Vývojári jadra JOTOCOIN</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>
@@ -3850,8 +3850,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Chyba pripojenia k Masternode.</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of SOV Core</source>
-        <translation>Chyba pri načítaní wallet.dat: Peňaženka vyžaduje novšiu verziu SOV Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of JOTOCOIN Core</source>
+        <translation>Chyba pri načítaní wallet.dat: Peňaženka vyžaduje novšiu verziu JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Found enough users, signing ( waiting %s )</source>
@@ -3894,8 +3894,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Informácie</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. SOV Core is shutting down.</source>
-        <translation>Inicializácia kontroly zdravia zlyhala. SOV Core sa vypína.</translation>
+        <source>Initialization sanity check failed. JOTOCOIN Core is shutting down.</source>
+        <translation>Inicializácia kontroly zdravia zlyhala. JOTOCOIN Core sa vypína.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
@@ -3999,7 +3999,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>Prepend debug output with timestamp (default: %u)</source>
-        <translation>Na začiatok pripojiť časovú známku k ladiacemu výstupu (predvolené: %u)</translation>
+        <translation>Na začiatok pripojiť čajotocoinú známku k ladiacemu výstupu (predvolené: %u)</translation>
     </message>
     <message>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
@@ -4035,7 +4035,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
-        <translation>Zadajte časový limit pripojenia v milisekundách (minimum: 1, predvolené: %d)</translation>
+        <translation>Zadajte čajotocoiný limit pripojenia v milisekundách (minimum: 1, predvolené: %d)</translation>
     </message>
     <message>
         <source>Specify masternode configuration file (default: %s)</source>
@@ -4122,8 +4122,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Použiť testovaciu sieť</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart SOV Core to complete</source>
-        <translation>Bolo potrebné prepísať peňaženku: k dokončeniu reštartujte SOV Core</translation>
+        <source>Wallet needed to be rewritten: restart JOTOCOIN Core to complete</source>
+        <translation>Bolo potrebné prepísať peňaženku: k dokončeniu reštartujte JOTOCOIN Core</translation>
     </message>
     <message>
         <source>Will retry...</source>
@@ -4166,16 +4166,16 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Kľúč KeePassHttp pre šifrovanú AES komunikáciu s KeePass</translation>
     </message>
     <message>
-        <source>Keep N SOV anonymized (default: %u)</source>
-        <translation>Udržiavať N SOV anonymizovaných (predvolené: %u)</translation>
+        <source>Keep N JOTOCOIN anonymized (default: %u)</source>
+        <translation>Udržiavať N JOTOCOIN anonymizovaných (predvolené: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
         <translation>V pamäti udržiavať najviac &lt;n&gt; nepotvrdených transakcií (predvolené: %u)</translation>
     </message>
     <message>
-        <source>Disable all SOV specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>Vypnúť všetky funkcie špecifické pre SOV (Masternodes, PrivateSend, InstantSend, Vláda) (0-1, predvolené: %u)</translation>
+        <source>Disable all JOTOCOIN specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Vypnúť všetky funkcie špecifické pre JOTOCOIN (Masternodes, PrivateSend, InstantSend, Vláda) (0-1, predvolené: %u)</translation>
     </message>
     <message>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
@@ -4206,8 +4206,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Pokiaľ &lt;category&gt; nie je nastavená, alebo &lt;category&gt; = 1, vypíš všetky informácie pre ladenie.</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 SOV.</source>
-        <translation>InstantSend zatiaľ nepodporuje posielanie takto vysokých čiastok. Transakcie sú limitované na %1 SOV.</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 JOTOCOIN.</source>
+        <translation>InstantSend zatiaľ nepodporuje posielanie takto vysokých čiastok. Transakcie sú limitované na %1 JOTOCOIN.</translation>
     </message>
     <message>
         <source>InstantSend requires inputs with at least %d confirmations, you might need to wait a few minutes and try again.</source>
@@ -4218,8 +4218,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Celkové maximum poplatkov (v %s) pre použitie jednej transakcie peňaženky. Príliš malá hodnota môže prerušiť veľké transakcie (predvolené: %s)</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong SOV Core will not work properly.</source>
-        <translation>Skontrolujte si prosím či máte správny čas a dátum na Vašom počítači. Ak je Vaše nastavenie zlé, SOV Core nebude pracovať správne.</translation>
+        <source>Please check that your computer's date and time are correct! If your clock is wrong JOTOCOIN Core will not work properly.</source>
+        <translation>Skontrolujte si prosím či máte správny čas a dátum na Vašom počítači. Ak je Vaše nastavenie zlé, JOTOCOIN Core nebude pracovať správne.</translation>
     </message>
     <message>
         <source>PrivateSend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
@@ -4254,8 +4254,8 @@ https://www.transifex.com/projects/p/sov/</translation>
         <translation>Nedá sa nájsť dostatok denominácií PrivateSend pre túto transakciu. </translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 SOV.</source>
-        <translation>Nedá sa nájsť dostatok ne-denominovaných PrivateSend zdrojov pre túto transakciu, ktoré nie sú rovné 1000 SOV.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 JOTOCOIN.</source>
+        <translation>Nedá sa nájsť dostatok ne-denominovaných PrivateSend zdrojov pre túto transakciu, ktoré nie sú rovné 1000 JOTOCOIN.</translation>
     </message>
     <message>
         <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
@@ -4415,7 +4415,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>Node relay options:</source>
-        <translation>Prenosové možnosti uzla:</translation>
+        <translation>Prenojotocoiné možnosti uzla:</translation>
     </message>
     <message>
         <source>Non-standard public key detected.</source>
@@ -4551,7 +4551,7 @@ https://www.transifex.com/projects/p/sov/</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
-        <translation>Podpisovanie transakcie zlyhalo</translation>
+        <translation>Podpijotocoinanie transakcie zlyhalo</translation>
     </message>
     <message>
         <source>Specify data directory</source>

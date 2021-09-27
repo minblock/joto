@@ -2,34 +2,34 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SOVADDRESSVALIDATOR_H
-#define SOV_QT_SOVADDRESSVALIDATOR_H
+#ifndef JOTOCOIN_QT_JOTOCOINADDRESSVALIDATOR_H
+#define JOTOCOIN_QT_JOTOCOINADDRESSVALIDATOR_H
 
 #include <QValidator>
 
 /** Base58 entry widget validator, checks for valid characters and
  * removes some whitespace.
  */
-class SOVAddressEntryValidator : public QValidator
+class JOTOCOINAddressEntryValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit SOVAddressEntryValidator(QObject *parent);
+    explicit JOTOCOINAddressEntryValidator(QObject *parent);
 
     State validate(QString &input, int &pos) const;
 };
 
-/** SOV address widget validator, checks for a valid sov address.
+/** JOTOCOIN address widget validator, checks for a valid jotocoin address.
  */
-class SOVAddressCheckValidator : public QValidator
+class JOTOCOINAddressCheckValidator : public QValidator
 {
     Q_OBJECT
 
 public:
-    explicit SOVAddressCheckValidator(QObject *parent);
+    explicit JOTOCOINAddressCheckValidator(QObject *parent);
 
     State validate(QString &input, int &pos) const;
 };
 
-#endif // SOV_QT_SOVADDRESSVALIDATOR_H
+#endif // JOTOCOIN_QT_JOTOCOINADDRESSVALIDATOR_H

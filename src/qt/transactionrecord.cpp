@@ -63,9 +63,9 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address))
                 {
-                    // Received by SOV Address
+                    // Received by JOTOCOIN Address
                     sub.type = TransactionRecord::RecvWithAddress;
-                    sub.address = CSOVAddress(address).ToString();
+                    sub.address = CJOTOCOINAddress(address).ToString();
                 }
                 else
                 {
@@ -134,8 +134,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 CTxDestination address;
                 if (ExtractDestination(wtx.vout[0].scriptPubKey, address))
                 {
-                    // Sent to SOV Address
-                    sub.address = CSOVAddress(address).ToString();
+                    // Sent to JOTOCOIN Address
+                    sub.address = CJOTOCOINAddress(address).ToString();
                 }
                 else
                 {
@@ -187,9 +187,9 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 CTxDestination address;
                 if (ExtractDestination(txout.scriptPubKey, address))
                 {
-                    // Sent to SOV Address
+                    // Sent to JOTOCOIN Address
                     sub.type = TransactionRecord::SendToAddress;
-                    sub.address = CSOVAddress(address).ToString();
+                    sub.address = CJOTOCOINAddress(address).ToString();
                 }
                 else
                 {

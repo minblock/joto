@@ -7,11 +7,11 @@
 # Exercise API with -disablewallet.
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
 
-class DisableWalletTest (SOVTestFramework):
+class DisableWalletTest (JOTOCOINTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)
@@ -23,7 +23,7 @@ class DisableWalletTest (SOVTestFramework):
         self.sync_all()
 
     def run_test (self):
-        # Check regression: https://github.com/sov/sov/issues/6963#issuecomment-154548880
+        # Check regression: https://github.com/jotocoin/jotocoin/issues/6963#issuecomment-154548880
         x = self.nodes[0].validateaddress('7TSBtVu959hGEGPKyHjJz9k55RpWrPffXz')
         assert(x['isvalid'] == False)
         x = self.nodes[0].validateaddress('ycwedq2f3sz2Yf9JqZsBCQPxp18WU3Hp4J')

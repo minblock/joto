@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SOVAMOUNTFIELD_H
-#define SOV_QT_SOVAMOUNTFIELD_H
+#ifndef JOTOCOIN_QT_JOTOCOINAMOUNTFIELD_H
+#define JOTOCOIN_QT_JOTOCOINAMOUNTFIELD_H
 
 #include "amount.h"
 
@@ -15,18 +15,18 @@ QT_BEGIN_NAMESPACE
 class QValueComboBox;
 QT_END_NAMESPACE
 
-/** Widget for entering sov amounts.
+/** Widget for entering jotocoin amounts.
   */
-class SOVAmountField: public QWidget
+class JOTOCOINAmountField: public QWidget
 {
     Q_OBJECT
 
     // ugly hack: for some unknown reason CAmount (instead of qint64) does not work here as expected
-    // discussion: https://github.com/sov/sov/pull/5117
+    // discussion: https://github.com/jotocoin/jotocoin/pull/5117
     Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY valueChanged USER true)
 
 public:
-    explicit SOVAmountField(QWidget *parent = 0);
+    explicit JOTOCOINAmountField(QWidget *parent = 0);
 
     CAmount value(bool *value=0) const;
     void setValue(const CAmount& value);
@@ -72,4 +72,4 @@ private Q_SLOTS:
 
 };
 
-#endif // SOV_QT_SOVAMOUNTFIELD_H
+#endif // JOTOCOIN_QT_JOTOCOINAMOUNTFIELD_H

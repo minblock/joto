@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_OVERVIEWPAGE_H
-#define SOV_QT_OVERVIEWPAGE_H
+#ifndef JOTOCOIN_QT_OVERVIEWPAGE_H
+#define JOTOCOIN_QT_OVERVIEWPAGE_H
 
 #include "amount.h"
 
@@ -89,4 +89,4 @@ private Q_SLOTS:
     void handleOutOfSyncWarningClicks();
 };
 
-#endif // SOV_QT_OVERVIEWPAGE_H
+#endif // JOTOCOIN_QT_OVERVIEWPAGE_H

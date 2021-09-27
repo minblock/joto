@@ -6,11 +6,11 @@
 #
 # Test -reindex and -reindex-chainstate with CheckBlockIndex
 #
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 import time
 
-class ReindexTest(SOVTestFramework):
+class ReindexTest(JOTOCOINTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)
@@ -25,7 +25,7 @@ class ReindexTest(SOVTestFramework):
         self.nodes[0].generate(3)
         blockcount = self.nodes[0].getblockcount()
         stop_node(self.nodes[0], 0)
-        wait_sovds()
+        wait_jotocoinds()
         self.nodes[0]=start_node(0, self.options.tmpdir, ["-debug", "-reindex-chainstate" if justchainstate else "-reindex", "-checkblockindex=1"])
         while self.nodes[0].getblockcount() < blockcount:
             time.sleep(0.1)

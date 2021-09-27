@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_WALLETVIEW_H
-#define SOV_QT_WALLETVIEW_H
+#ifndef JOTOCOIN_QT_WALLETVIEW_H
+#define JOTOCOIN_QT_WALLETVIEW_H
 
 #include "amount.h"
 #include "toolspage.h"
@@ -11,7 +11,7 @@
 
 #include <QStackedWidget>
 
-class SOVGUI;
+class JOTOCOINGUI;
 class ClientModel;
 class OverviewPage;
 class PlatformStyle;
@@ -44,13 +44,13 @@ public:
     explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);
     ~WalletView();
 
-    void setSOVGUI(SOVGUI *gui);
+    void setJOTOCOINGUI(JOTOCOINGUI *gui);
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a sov wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a jotocoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
@@ -147,4 +147,4 @@ Q_SIGNALS:
     void outOfSyncWarningClicked();
 };
 
-#endif // SOV_QT_WALLETVIEW_H
+#endif // JOTOCOIN_QT_WALLETVIEW_H

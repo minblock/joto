@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_ZMQ_ZMQPUBLISHNOTIFIER_H
-#define SOV_ZMQ_ZMQPUBLISHNOTIFIER_H
+#ifndef JOTOCOIN_ZMQ_ZMQPUBLISHNOTIFIER_H
+#define JOTOCOIN_ZMQ_ZMQPUBLISHNOTIFIER_H
 
 #include "zmqabstractnotifier.h"
 
@@ -64,4 +64,4 @@ public:
     bool NotifyTransactionLock(const CTransaction &transaction);
 };
 
-#endif // SOV_ZMQ_ZMQPUBLISHNOTIFIER_H
+#endif // JOTOCOIN_ZMQ_ZMQPUBLISHNOTIFIER_H

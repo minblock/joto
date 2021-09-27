@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_MODALOVERLAY_H
-#define SOV_QT_MODALOVERLAY_H
+#ifndef JOTOCOIN_QT_MODALOVERLAY_H
+#define JOTOCOIN_QT_MODALOVERLAY_H
 
 #include <QDateTime>
 #include <QWidget>
@@ -49,4 +49,4 @@ private:
     bool foreverHidden;
 };
 
-#endif // SOV_QT_MODALOVERLAY_H
+#endif // JOTOCOIN_QT_MODALOVERLAY_H

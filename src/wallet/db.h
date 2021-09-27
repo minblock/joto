@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_WALLET_DB_H
-#define SOV_WALLET_DB_H
+#ifndef JOTOCOIN_WALLET_DB_H
+#define JOTOCOIN_WALLET_DB_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -309,4 +309,4 @@ public:
     bool static Rewrite(const std::string& strFile, const char* pszSkip = NULL);
 };
 
-#endif // SOV_WALLET_DB_H
+#endif // JOTOCOIN_WALLET_DB_H

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_PRIMITIVES_TRANSACTION_H
-#define SOV_PRIMITIVES_TRANSACTION_H
+#ifndef JOTOCOIN_PRIMITIVES_TRANSACTION_H
+#define JOTOCOIN_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -340,7 +340,7 @@ struct CMutableTransaction
 };
 
 /** Implementation of BIP69
- * https://github.com/sov/bips/blob/master/bip-0069.mediawiki
+ * https://github.com/jotocoin/bips/blob/master/bip-0069.mediawiki
  */
 struct CompareInputBIP69
 {
@@ -367,4 +367,4 @@ struct CompareOutputBIP69
     }
 };
 
-#endif // SOV_PRIMITIVES_TRANSACTION_H
+#endif // JOTOCOIN_PRIMITIVES_TRANSACTION_H

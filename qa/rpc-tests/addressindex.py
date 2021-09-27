@@ -8,13 +8,13 @@
 #
 
 import time
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 from test_framework.script import *
 from test_framework.mininode import *
 import binascii
 
-class AddressIndexTest(SOVTestFramework):
+class AddressIndexTest(JOTOCOINTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)

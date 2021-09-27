@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_WALLET_CRYPTER_H
-#define SOV_WALLET_CRYPTER_H
+#ifndef JOTOCOIN_WALLET_CRYPTER_H
+#define JOTOCOIN_WALLET_CRYPTER_H
 
 #include "keystore.h"
 #include "serialize.h"
@@ -225,4 +225,4 @@ public:
     boost::signals2::signal<void (CCryptoKeyStore* wallet)> NotifyStatusChanged;
 };
 
-#endif // SOV_WALLET_CRYPTER_H
+#endif // JOTOCOIN_WALLET_CRYPTER_H

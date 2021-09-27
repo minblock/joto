@@ -3,13 +3,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "sovunits.h"
+#include "jotocoinunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -92,11 +92,11 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     }
     
     /* Theme selector */
-    ui->theme->addItem(QString("SOV-light"), QVariant("light"));
-    ui->theme->addItem(QString("SOV-light-hires"), QVariant("light-hires"));
-    ui->theme->addItem(QString("SOV-blue"), QVariant("drkblue"));
-    ui->theme->addItem(QString("SOV-Crownium"), QVariant("crownium"));
-    ui->theme->addItem(QString("SOV-traditional"), QVariant("trad"));
+    ui->theme->addItem(QString("JOTOCOIN-light"), QVariant("light"));
+    ui->theme->addItem(QString("JOTOCOIN-light-hires"), QVariant("light-hires"));
+    ui->theme->addItem(QString("JOTOCOIN-blue"), QVariant("drkblue"));
+    ui->theme->addItem(QString("JOTOCOIN-Crownium"), QVariant("crownium"));
+    ui->theme->addItem(QString("JOTOCOIN-traditional"), QVariant("trad"));
     
     /* Language selector */
     QDir translations(":translations");
@@ -131,7 +131,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->thirdPartyTxUrls->setPlaceholderText("https://example.com/tx/%s");
 #endif
 
-    ui->unit->setModel(new SOVUnits(this));
+    ui->unit->setModel(new JOTOCOINUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -196,7 +196,7 @@ void OptionsDialog::setModel(OptionsModel *model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->sovAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->jotocoinAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 

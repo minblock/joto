@@ -1,6 +1,6 @@
 [Protocol]
-exec=sov-qt '%u'
-protocol=sov
+exec=jotocoin-qt '%u'
+protocol=jotocoin
 input=none
 output=none
 helper=true

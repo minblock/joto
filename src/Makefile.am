@@ -14,19 +14,19 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-SOV_CONFIG_INCLUDES=-I$(builddir)/config
-SOV_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+JOTOCOIN_CONFIG_INCLUDES=-I$(builddir)/config
+JOTOCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-SOV_INCLUDES += -I$(srcdir)/secp256k1/include
-SOV_INCLUDES += $(UNIVALUE_CFLAGS)
+JOTOCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
+JOTOCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBSOV_SERVER=libsov_server.a
-LIBSOV_WALLET=libsov_wallet.a
-LIBSOV_COMMON=libsov_common.a
-LIBSOV_CLI=libsov_cli.a
-LIBSOV_UTIL=libsov_util.a
-LIBSOV_CRYPTO=crypto/libsov_crypto.a
-LIBSOVQT=qt/libsovqt.a
+LIBJOTOCOIN_SERVER=libjotocoin_server.a
+LIBJOTOCOIN_WALLET=libjotocoin_wallet.a
+LIBJOTOCOIN_COMMON=libjotocoin_common.a
+LIBJOTOCOIN_CLI=libjotocoin_cli.a
+LIBJOTOCOIN_UTIL=libjotocoin_util.a
+LIBJOTOCOIN_CRYPTO=crypto/libjotocoin_crypto.a
+LIBJOTOCOINQT=qt/libjotocoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -35,41 +35,41 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  crypto/libsov_crypto.a \
-  libsov_util.a \
-  libsov_common.a \
-  libsov_server.a \
-  libsov_cli.a
+  crypto/libjotocoin_crypto.a \
+  libjotocoin_util.a \
+  libjotocoin_common.a \
+  libjotocoin_server.a \
+  libjotocoin_cli.a
 if ENABLE_WALLET
-SOV_INCLUDES += $(BDB_CPPFLAGS)
-EXTRA_LIBRARIES += libsov_wallet.a
+JOTOCOIN_INCLUDES += $(BDB_CPPFLAGS)
+EXTRA_LIBRARIES += libjotocoin_wallet.a
 endif
 if ENABLE_ZMQ
-EXTRA_LIBRARIES += libsov_zmq.a
+EXTRA_LIBRARIES += libjotocoin_zmq.a
 endif
 
-if BUILD_SOV_LIBS
-lib_LTLIBRARIES = libsovconsensus.la
-LIBSOV_CONSENSUS=libsovconsensus.la
+if BUILD_JOTOCOIN_LIBS
+lib_LTLIBRARIES = libjotocoinconsensus.la
+LIBJOTOCOIN_CONSENSUS=libjotocoinconsensus.la
 else
-LIBSOV_CONSENSUS=
+LIBJOTOCOIN_CONSENSUS=
 endif
 
 bin_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_SOVD
-  bin_PROGRAMS += sovd
+if BUILD_JOTOCOIND
+  bin_PROGRAMS += jotocoind
 endif
 
-if BUILD_SOV_UTILS
-  bin_PROGRAMS += sov-cli sov-tx
+if BUILD_JOTOCOIN_UTILS
+  bin_PROGRAMS += jotocoin-cli jotocoin-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# sov core #
-SOV_CORE_H = \
+# jotocoin core #
+JOTOCOIN_CORE_H = \
   addrdb.h \
   activemasternode.h \
   addressindex.h \
@@ -205,12 +205,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-libsov_util_a-clientversion.$(OBJEXT): obj/build.h
+libjotocoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between sovd and sov-qt
-libsov_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libsov_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libsov_server_a_SOURCES = \
+# server: shared between jotocoind and jotocoin-qt
+libjotocoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libjotocoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoin_server_a_SOURCES = \
   activemasternode.cpp \
   addrman.cpp \
   addrdb.cpp \
@@ -266,25 +266,25 @@ libsov_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(SOV_CORE_H)
+  $(JOTOCOIN_CORE_H)
 
 if ENABLE_ZMQ
-LIBSOV_ZMQ=libsov_zmq.a
+LIBJOTOCOIN_ZMQ=libjotocoin_zmq.a
 
-libsov_zmq_a_CPPFLAGS = $(SOV_INCLUDES) $(ZMQ_CFLAGS)
-libsov_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libsov_zmq_a_SOURCES = \
+libjotocoin_zmq_a_CPPFLAGS = $(JOTOCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libjotocoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoin_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between sovd and sov-qt, but only linked
+# wallet: shared between jotocoind and jotocoin-qt, but only linked
 # when wallet enabled
-libsov_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES)
-libsov_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libsov_wallet_a_SOURCES = \
+libjotocoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES)
+libjotocoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoin_wallet_a_SOURCES = \
   keepass.cpp \
   privatesend-client.cpp \
   privatesend-util.cpp \
@@ -296,12 +296,12 @@ libsov_wallet_a_SOURCES = \
   wallet/wallet_ismine.cpp \
   wallet/walletdb.cpp \
   policy/rbf.cpp \
-  $(SOV_CORE_H)
+  $(JOTOCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libsov_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_CONFIG_INCLUDES) $(PIC_FLAGS)
-crypto_libsov_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
-crypto_libsov_crypto_a_SOURCES = \
+crypto_libjotocoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
+crypto_libjotocoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(PIC_FLAGS)
+crypto_libjotocoin_crypto_a_SOURCES = \
   crypto/common.h \
   crypto/hmac_sha256.cpp \
   crypto/hmac_sha256.h \
@@ -318,7 +318,7 @@ crypto_libsov_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # x16r
-crypto_libsov_crypto_a_SOURCES += \
+crypto_libjotocoin_crypto_a_SOURCES += \
   crypto/blake.c \
   crypto/bmw.c \
   crypto/cubehash.c \
@@ -355,10 +355,10 @@ crypto_libsov_crypto_a_SOURCES += \
   crypto/sph_sha2.h \
   crypto/sph_types.h
 
-# common: shared between sovd, and sov-qt and non-server tools
-libsov_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES)
-libsov_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libsov_common_a_SOURCES = \
+# common: shared between jotocoind, and jotocoin-qt and non-server tools
+libjotocoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES)
+libjotocoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoin_common_a_SOURCES = \
   amount.cpp \
   arith_uint256.cpp \
   base58.cpp \
@@ -385,14 +385,14 @@ libsov_common_a_SOURCES = \
   script/script_error.cpp \
   script/sign.cpp \
   script/standard.cpp \
-  $(SOV_CORE_H)
+  $(JOTOCOIN_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libsov_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES)
-libsov_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libsov_util_a_SOURCES = \
+libjotocoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES)
+libjotocoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoin_util_a_SOURCES = \
   support/pagelocker.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -409,93 +409,93 @@ libsov_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(SOV_CORE_H)
+  $(JOTOCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libsov_util_a_SOURCES += compat/glibc_compat.cpp
+libjotocoin_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between sov-cli and sov-qt
-libsov_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES)
-libsov_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libsov_cli_a_SOURCES = \
+# cli: shared between jotocoin-cli and jotocoin-qt
+libjotocoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES)
+libjotocoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoin_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(SOV_CORE_H)
+  $(JOTOCOIN_CORE_H)
 
-nodist_libsov_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libjotocoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# sovd binary #
-sovd_SOURCES = sovd.cpp
-sovd_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES)
-sovd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-sovd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# jotocoind binary #
+jotocoind_SOURCES = jotocoind.cpp
+jotocoind_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES)
+jotocoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+jotocoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-sovd_SOURCES += sovd-res.rc
+jotocoind_SOURCES += jotocoind-res.rc
 endif
 
-sovd_LDADD = \
-  $(LIBSOV_SERVER) \
-  $(LIBSOV_COMMON) \
+jotocoind_LDADD = \
+  $(LIBJOTOCOIN_SERVER) \
+  $(LIBJOTOCOIN_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBSOV_UTIL) \
-  $(LIBSOV_CRYPTO) \
+  $(LIBJOTOCOIN_UTIL) \
+  $(LIBJOTOCOIN_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
 if ENABLE_ZMQ
-sovd_LDADD += $(LIBSOV_ZMQ) $(ZMQ_LIBS)
+jotocoind_LDADD += $(LIBJOTOCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-sovd_LDADD += libsov_wallet.a
+jotocoind_LDADD += libjotocoin_wallet.a
 endif
 
-sovd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+jotocoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 
-# sov-cli binary #
-sov_cli_SOURCES = sov-cli.cpp
-sov_cli_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES) $(EVENT_CFLAGS)
-sov_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-sov_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# jotocoin-cli binary #
+jotocoin_cli_SOURCES = jotocoin-cli.cpp
+jotocoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES) $(EVENT_CFLAGS)
+jotocoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+jotocoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-sov_cli_SOURCES += sov-cli-res.rc
+jotocoin_cli_SOURCES += jotocoin-cli-res.rc
 endif
 
-sov_cli_LDADD = \
-  $(LIBSOV_CLI) \
+jotocoin_cli_LDADD = \
+  $(LIBJOTOCOIN_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBSOV_UTIL)
-sov_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+  $(LIBJOTOCOIN_UTIL)
+jotocoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# sov-tx binary #
-sov_tx_SOURCES = sov-tx.cpp
-sov_tx_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES)
-sov_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-sov_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# jotocoin-tx binary #
+jotocoin_tx_SOURCES = jotocoin-tx.cpp
+jotocoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES)
+jotocoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+jotocoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-sov_tx_SOURCES += sov-tx-res.rc
+jotocoin_tx_SOURCES += jotocoin-tx-res.rc
 endif
 
-sov_tx_LDADD = \
+jotocoin_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBSOV_COMMON) \
-  $(LIBSOV_UTIL) \
-  $(LIBSOV_CRYPTO) \
+  $(LIBJOTOCOIN_COMMON) \
+  $(LIBJOTOCOIN_UTIL) \
+  $(LIBJOTOCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-sov_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+jotocoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# sovconsensus library #
-if BUILD_SOV_LIBS
-include_HEADERS = script/sovconsensus.h
-libsovconsensus_la_SOURCES = \
+# jotocoinconsensus library #
+if BUILD_JOTOCOIN_LIBS
+include_HEADERS = script/jotocoinconsensus.h
+libjotocoinconsensus_la_SOURCES = \
   crypto/hmac_sha512.cpp \
   crypto/ripemd160.cpp \
   crypto/sha1.cpp \
@@ -504,20 +504,20 @@ libsovconsensus_la_SOURCES = \
   hash.cpp \
   primitives/transaction.cpp \
   pubkey.cpp \
-  script/sovconsensus.cpp \
+  script/jotocoinconsensus.cpp \
   script/interpreter.cpp \
   script/script.cpp \
   uint256.cpp \
   utilstrencodings.cpp
 
 if GLIBC_BACK_COMPAT
-  libsovconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libjotocoinconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libsovconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libsovconsensus_la_LIBADD = $(LIBSECP256K1)
-libsovconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_SOV_INTERNAL
-libsovconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libjotocoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libjotocoinconsensus_la_LIBADD = $(LIBSECP256K1)
+libjotocoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_JOTOCOIN_INTERNAL
+libjotocoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #

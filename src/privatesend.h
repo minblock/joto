@@ -325,7 +325,7 @@ public:
     static std::vector<CAmount> GetStandardDenominations() { return vecStandardDenominations; }
     static CAmount GetSmallestDenomination() { return vecStandardDenominations.back(); }
 
-    /// Get the denominations for a specific amount of sov.
+    /// Get the denominations for a specific amount of jotocoin.
     static int GetDenominationsByAmounts(const std::vector<CAmount>& vecAmount);
 
     static bool IsDenominatedAmount(CAmount nInputAmount);

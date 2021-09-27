@@ -6,7 +6,7 @@
 
 #include "addressbookpage.h"
 #include "askpassphrasedialog.h"
-#include "sovgui.h"
+#include "jotocoingui.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "masternodeconfig.h"
@@ -121,7 +121,7 @@ WalletView::~WalletView()
 {
 }
 
-void WalletView::setSOVGUI(SOVGUI *gui)
+void WalletView::setJOTOCOINGUI(JOTOCOINGUI *gui)
 {
     if (gui)
     {

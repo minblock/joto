@@ -7,11 +7,11 @@
 # Test PrioritiseTransaction code
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 from test_framework.mininode import COIN, MAX_BLOCK_SIZE
 
-class PrioritiseTransactionTest(SOVTestFramework):
+class PrioritiseTransactionTest(JOTOCOINTestFramework):
 
     def __init__(self):
         self.txouts = gen_return_txouts()

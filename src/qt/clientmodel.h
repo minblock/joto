@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_CLIENTMODEL_H
-#define SOV_QT_CLIENTMODEL_H
+#ifndef JOTOCOIN_QT_CLIENTMODEL_H
+#define JOTOCOIN_QT_CLIENTMODEL_H
 
 #include <QObject>
 #include <QDateTime>
@@ -38,7 +38,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for SOV network client. */
+/** Model for JOTOCOIN network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -127,4 +127,4 @@ public Q_SLOTS:
     void updateBanlist();
 };
 
-#endif // SOV_QT_CLIENTMODEL_H
+#endif // JOTOCOIN_QT_CLIENTMODEL_H

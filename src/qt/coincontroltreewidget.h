@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_COINCONTROLTREEWIDGET_H
-#define SOV_QT_COINCONTROLTREEWIDGET_H
+#ifndef JOTOCOIN_QT_COINCONTROLTREEWIDGET_H
+#define JOTOCOIN_QT_COINCONTROLTREEWIDGET_H
 
 #include <QKeyEvent>
 #include <QTreeWidget>
@@ -19,4 +19,4 @@ protected:
     virtual void keyPressEvent(QKeyEvent *event);
 };
 
-#endif // SOV_QT_COINCONTROLTREEWIDGET_H
+#endif // JOTOCOIN_QT_COINCONTROLTREEWIDGET_H

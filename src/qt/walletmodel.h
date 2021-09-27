@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_WALLETMODEL_H
-#define SOV_QT_WALLETMODEL_H
+#ifndef JOTOCOIN_QT_WALLETMODEL_H
+#define JOTOCOIN_QT_WALLETMODEL_H
 
 #include "paymentrequestplus.h"
 #include "walletmodeltransaction.h"
@@ -98,7 +98,7 @@ public:
     }
 };
 
-/** Interface to SOV wallet from Qt view code. */
+/** Interface to JOTOCOIN wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT
@@ -282,4 +282,4 @@ public Q_SLOTS:
     void pollBalanceChanged();
 };
 
-#endif // SOV_QT_WALLETMODEL_H
+#endif // JOTOCOIN_QT_WALLETMODEL_H

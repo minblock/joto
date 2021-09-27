@@ -3,9 +3,9 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-Name: SOV Core consensus library
-Description: Library for the SOV consensus protocol.
+Name: JOTOCOIN Core consensus library
+Description: Library for the JOTOCOIN consensus protocol.
 Version: @PACKAGE_VERSION@
-Libs: -L${libdir} -lsovconsensus
+Libs: -L${libdir} -ljotocoinconsensus
 Cflags: -I${includedir}
 Requires.private: libcrypto

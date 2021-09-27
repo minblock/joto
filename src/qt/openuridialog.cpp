@@ -17,7 +17,7 @@ OpenURIDialog::OpenURIDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 #if QT_VERSION >= 0x040700
-    ui->uriEdit->setPlaceholderText("sov:");
+    ui->uriEdit->setPlaceholderText("jotocoin:");
 #endif
 }
 
@@ -34,7 +34,7 @@ QString OpenURIDialog::getURI()
 void OpenURIDialog::accept()
 {
     SendCoinsRecipient rcp;
-    if(GUIUtil::parseSOVURI(getURI(), &rcp))
+    if(GUIUtil::parseJOTOCOINURI(getURI(), &rcp))
     {
         /* Only accept value URIs */
         QDialog::accept();
@@ -49,5 +49,5 @@ void OpenURIDialog::on_selectFileButton_clicked()
     if(filename.isEmpty())
         return;
     QUrl fileUri = QUrl::fromLocalFile(filename);
-    ui->uriEdit->setText("sov:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
+    ui->uriEdit->setText("jotocoin:?r=" + QUrl::toPercentEncoding(fileUri.toString()));
 }

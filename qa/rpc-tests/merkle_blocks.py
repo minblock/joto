@@ -7,10 +7,10 @@
 # Test merkleblock fetch/validation
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
-class MerkleBlockTest(SOVTestFramework):
+class MerkleBlockTest(JOTOCOINTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)
@@ -71,7 +71,7 @@ class MerkleBlockTest(SOVTestFramework):
         txid_unspent = txid1 if txin_spent["txid"] != txid1 else txid2
 
         # We can't find the block from a fully-spent tx
-        # Doesn't apply to SOV Core - we have txindex always on
+        # Doesn't apply to JOTOCOIN Core - we have txindex always on
         # assert_raises(JSONRPCException, self.nodes[2].gettxoutproof, [txid_spent])
         # ...but we can if we specify the block
         assert_equal(self.nodes[2].verifytxoutproof(self.nodes[2].gettxoutproof([txid_spent], blockhash)), [txid_spent])

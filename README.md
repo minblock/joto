@@ -1,35 +1,35 @@
-SOV Core 2.0.1
+JOTOCOIN Core 2.0.1
 ===============================
 
-Website: https://www.sovcore.org
-Explorer: http://explorer.sovcore.org/
-Exchange: https://crex24.com/exchange/SOV-BTC
+Website: https://www.joto.provigen.net
+Explorer: https://jotoplorer.provigen.net/
+Exchange: https://crex24.com/exchange/JOTOCOIN-BTC
 
-What is SOV?
+What is JOTOCOIN?
 ----------------
 
-SOV is an experimental new digital currency that enables anonymous, instant
-payments to anyone, anywhere in the world. SOV uses peer-to-peer technology
+JOTOCOIN is an experimental new digital currency that enables anonymous, instant
+payments to anyone, anywhere in the world. JOTOCOIN uses peer-to-peer technology
 to operate with no central authority: managing transactions and issuing money
-are carried out collectively by the network. SOV Core is the name of the open
+are carried out collectively by the network. JOTOCOIN Core is the name of the open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the SOV Core software, see https://www.sovcore.org/.
+the JOTOCOIN Core software, see https://www.joto.provigen.net/.
 
 
 License
 -------
 
-SOV Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+JOTOCOIN Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is normally done in separate branches.
-[Tags](https://github.com/SovCoinX/SovCoin/tags) are created to indicate new official,
-stable release versions of SOV Core.
+[Tags](https://github.com/JotocoinCoinX/JotocoinCoin/tags) are created to indicate new official,
+stable release versions of JOTOCOIN Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_TEST_PAYMENTSERVERTESTS_H
-#define SOV_QT_TEST_PAYMENTSERVERTESTS_H
+#ifndef JOTOCOIN_QT_TEST_PAYMENTSERVERTESTS_H
+#define JOTOCOIN_QT_TEST_PAYMENTSERVERTESTS_H
 
 #include "../paymentserver.h"
 
@@ -32,4 +32,4 @@ public:
     SendCoinsRecipient recipient;
 };
 
-#endif // SOV_QT_TEST_PAYMENTSERVERTESTS_H
+#endif // JOTOCOIN_QT_TEST_PAYMENTSERVERTESTS_H

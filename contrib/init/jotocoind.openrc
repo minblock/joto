@@ -2,41 +2,41 @@
 
 # backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/sovcore/.sovcore" ]; then
-	SOVD_DEFAULT_DATADIR="/var/lib/sovcore/.sovcore"
+if [ -d "/var/lib/jotocoincore/.jotocoincore" ]; then
+	JOTOCOIND_DEFAULT_DATADIR="/var/lib/jotocoincore/.jotocoincore"
 else
-	SOVD_DEFAULT_DATADIR="/var/lib/sovd"
+	JOTOCOIND_DEFAULT_DATADIR="/var/lib/jotocoind"
 fi
 
-SOVD_CONFIGFILE=${SOVD_CONFIGFILE:-/etc/sovcore/sov.conf}
-SOVD_PIDDIR=${SOVD_PIDDIR:-/var/run/sovd}
-SOVD_PIDFILE=${SOVD_PIDFILE:-${SOVD_PIDDIR}/sovd.pid}
-SOVD_DATADIR=${SOVD_DATADIR:-${SOVD_DEFAULT_DATADIR}}
-SOVD_USER=${SOVD_USER:-${SOV_USER:-sovcore}}
-SOVD_GROUP=${SOVD_GROUP:-sovcore}
-SOVD_BIN=${SOVD_BIN:-/usr/bin/sovd}
-SOVD_NICE=${SOVD_NICE:-${NICELEVEL:-0}}
-SOVD_OPTS="${SOVD_OPTS:-${SOV_OPTS}}"
+JOTOCOIND_CONFIGFILE=${JOTOCOIND_CONFIGFILE:-/etc/jotocoincore/jotocoin.conf}
+JOTOCOIND_PIDDIR=${JOTOCOIND_PIDDIR:-/var/run/jotocoind}
+JOTOCOIND_PIDFILE=${JOTOCOIND_PIDFILE:-${JOTOCOIND_PIDDIR}/jotocoind.pid}
+JOTOCOIND_DATADIR=${JOTOCOIND_DATADIR:-${JOTOCOIND_DEFAULT_DATADIR}}
+JOTOCOIND_USER=${JOTOCOIND_USER:-${JOTOCOIN_USER:-jotocoincore}}
+JOTOCOIND_GROUP=${JOTOCOIND_GROUP:-jotocoincore}
+JOTOCOIND_BIN=${JOTOCOIND_BIN:-/usr/bin/jotocoind}
+JOTOCOIND_NICE=${JOTOCOIND_NICE:-${NICELEVEL:-0}}
+JOTOCOIND_OPTS="${JOTOCOIND_OPTS:-${JOTOCOIN_OPTS}}"
 
-name="SOV Core Daemon"
-description="SOV cryptocurrency P2P network daemon"
+name="JOTOCOIN Core Daemon"
+description="JOTOCOIN cryptocurrency P2P network daemon"
 
-command="/usr/bin/sovd"
-command_args="-pid=\"${SOVD_PIDFILE}\" \
-		-conf=\"${SOVD_CONFIGFILE}\" \
-		-datadir=\"${SOVD_DATADIR}\" \
+command="/usr/bin/jotocoind"
+command_args="-pid=\"${JOTOCOIND_PIDFILE}\" \
+		-conf=\"${JOTOCOIND_CONFIGFILE}\" \
+		-datadir=\"${JOTOCOIND_DATADIR}\" \
 		-daemon \
-		${SOVD_OPTS}"
+		${JOTOCOIND_OPTS}"
 
-required_files="${SOVD_CONFIGFILE}"
-start_stop_daemon_args="-u ${SOVD_USER} \
-			-N ${SOVD_NICE} -w 2000"
-pidfile="${SOVD_PIDFILE}"
+required_files="${JOTOCOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${JOTOCOIND_USER} \
+			-N ${JOTOCOIND_NICE} -w 2000"
+pidfile="${JOTOCOIND_PIDFILE}"
 
 # The retry schedule to use when stopping the daemon. Could be either
 # a timeout in seconds or multiple signal/timeout pairs (like
 # "SIGKILL/180 SIGTERM/300")
-retry="${SOVD_SIGTERM_TIMEOUT}"
+retry="${JOTOCOIND_SIGTERM_TIMEOUT}"
 
 depend() {
 	need localmount net
@@ -50,29 +50,29 @@ start_pre() {
 	checkpath \
 	-d \
 	--mode 0750 \
-	--owner "${SOVD_USER}:${SOVD_GROUP}" \
-	"${SOVD_DATADIR}"
+	--owner "${JOTOCOIND_USER}:${JOTOCOIND_GROUP}" \
+	"${JOTOCOIND_DATADIR}"
 
 	checkpath \
 	-d \
 	--mode 0755 \
-	--owner "${SOVD_USER}:${SOVD_GROUP}" \
-	"${SOVD_PIDDIR}"
+	--owner "${JOTOCOIND_USER}:${JOTOCOIND_GROUP}" \
+	"${JOTOCOIND_PIDDIR}"
 
 	checkpath -f \
-	-o ${SOVD_USER}:${SOVD_GROUP} \
+	-o ${JOTOCOIND_USER}:${JOTOCOIND_GROUP} \
 	-m 0660 \
-	${SOVD_CONFIGFILE}
+	${JOTOCOIND_CONFIGFILE}
 
 	checkconfig || return 1
 }
 
 checkconfig()
 {
-	if ! grep -qs '^rpcpassword=' "${SOVD_CONFIGFILE}" ; then
+	if ! grep -qs '^rpcpassword=' "${JOTOCOIND_CONFIGFILE}" ; then
 		eerror ""
-		eerror "ERROR: You must set a secure rpcpassword to run sovd."
-		eerror "The setting must appear in ${SOVD_CONFIGFILE}"
+		eerror "ERROR: You must set a secure rpcpassword to run jotocoind."
+		eerror "The setting must appear in ${JOTOCOIND_CONFIGFILE}"
 		eerror ""
 		eerror "This password is security critical to securing wallets "
 		eerror "and must not be the same as the rpcuser setting."
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is also recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"SOV Core Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"JOTOCOIN Core Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

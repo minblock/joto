@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_CHAIN_H
-#define SOV_CHAIN_H
+#ifndef JOTOCOIN_CHAIN_H
+#define JOTOCOIN_CHAIN_H
 
 #include "arith_uint256.h"
 #include "primitives/block.h"
@@ -462,4 +462,4 @@ public:
     const CBlockIndex *FindFork(const CBlockIndex *pindex) const;
 };
 
-#endif // SOV_CHAIN_H
+#endif // JOTOCOIN_CHAIN_H

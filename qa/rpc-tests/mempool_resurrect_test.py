@@ -8,11 +8,11 @@
 # the blockchain is re-organized.
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
 # Create one-input, one-output, no-fee transaction:
-class MempoolCoinbaseTest(SOVTestFramework):
+class MempoolCoinbaseTest(JOTOCOINTestFramework):
 
     def setup_network(self):
         # Just need one node for this test

@@ -1,5 +1,5 @@
-#ifndef SOV_QT_TOOLSPAGE_H
-#define SOV_QT_TOOLSPAGE_H
+#ifndef JOTOCOIN_QT_TOOLSPAGE_H
+#define JOTOCOIN_QT_TOOLSPAGE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"

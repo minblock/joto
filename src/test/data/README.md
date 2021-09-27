@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of SOV.
+This directory contains data-driven tests for various aspects of JOTOCOIN.
 
 License
 --------

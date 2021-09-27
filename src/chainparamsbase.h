@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_CHAINPARAMSBASE_H
-#define SOV_CHAINPARAMSBASE_H
+#ifndef JOTOCOIN_CHAINPARAMSBASE_H
+#define JOTOCOIN_CHAINPARAMSBASE_H
 
 #include <string>
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between sov-cli and sovd)
- * of a given instance of the SOV system.
+ * CBaseChainParams defines the base parameters (shared between jotocoin-cli and jotocoind)
+ * of a given instance of the JOTOCOIN system.
  */
 class CBaseChainParams
 {
@@ -59,4 +59,4 @@ std::string ChainNameFromCommandLine();
  */
 bool AreBaseParamsConfigured();
 
-#endif // SOV_CHAINPARAMSBASE_H
+#endif // JOTOCOIN_CHAINPARAMSBASE_H

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_COMPRESSOR_H
-#define SOV_COMPRESSOR_H
+#ifndef JOTOCOIN_COMPRESSOR_H
+#define JOTOCOIN_COMPRESSOR_H
 
 #include "primitives/transaction.h"
 #include "script/script.h"
@@ -126,4 +126,4 @@ public:
     }
 };
 
-#endif // SOV_COMPRESSOR_H
+#endif // JOTOCOIN_COMPRESSOR_H

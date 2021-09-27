@@ -4,7 +4,7 @@
 
 #include "data/tx_invalid.json.h"
 #include "data/tx_valid.json.h"
-#include "test/test_sov.h"
+#include "test/test_jotocoin.h"
 
 #include "clientversion.h"
 #include "consensus/validation.h"

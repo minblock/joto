@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_TRANSACTIONFILTERPROXY_H
-#define SOV_QT_TRANSACTIONFILTERPROXY_H
+#ifndef JOTOCOIN_QT_TRANSACTIONFILTERPROXY_H
+#define JOTOCOIN_QT_TRANSACTIONFILTERPROXY_H
 
 #include "amount.h"
 
@@ -67,4 +67,4 @@ private:
     bool showInactive;
 };
 
-#endif // SOV_QT_TRANSACTIONFILTERPROXY_H
+#endif // JOTOCOIN_QT_TRANSACTIONFILTERPROXY_H

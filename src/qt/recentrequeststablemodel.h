@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_RECENTREQUESTSTABLEMODEL_H
-#define SOV_QT_RECENTREQUESTSTABLEMODEL_H
+#ifndef JOTOCOIN_QT_RECENTREQUESTSTABLEMODEL_H
+#define JOTOCOIN_QT_RECENTREQUESTSTABLEMODEL_H
 
 #include "walletmodel.h"
 
@@ -111,4 +111,4 @@ private:
     void emitCountChanged();
 };
 
-#endif // SOV_QT_RECENTREQUESTSTABLEMODEL_H
+#endif // JOTOCOIN_QT_RECENTREQUESTSTABLEMODEL_H

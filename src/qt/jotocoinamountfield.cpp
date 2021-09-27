@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "sovamountfield.h"
+#include "jotocoinamountfield.h"
 
-#include "sovunits.h"
+#include "jotocoinunits.h"
 #include "guiconstants.h"
 #include "qvaluecombobox.h"
 
@@ -24,7 +24,7 @@ class AmountSpinBox: public QAbstractSpinBox
 public:
     explicit AmountSpinBox(QWidget *parent):
         QAbstractSpinBox(parent),
-        currentUnit(SOVUnits::SOV),
+        currentUnit(JOTOCOINUnits::JOTOCOIN),
         singleStep(100000) // satoshis
     {
         setAlignment(Qt::AlignRight);
@@ -48,7 +48,7 @@ public:
         CAmount val = parse(input, &valid);
         if(valid)
         {
-            input = SOVUnits::format(currentUnit, val, false, SOVUnits::separatorAlways);
+            input = JOTOCOINUnits::format(currentUnit, val, false, JOTOCOINUnits::separatorAlways);
             lineEdit()->setText(input);
         }
     }
@@ -60,7 +60,7 @@ public:
 
     void setValue(const CAmount& value)
     {
-        lineEdit()->setText(SOVUnits::format(currentUnit, value, false, SOVUnits::separatorAlways));
+        lineEdit()->setText(JOTOCOINUnits::format(currentUnit, value, false, JOTOCOINUnits::separatorAlways));
         Q_EMIT valueChanged();
     }
 
@@ -69,7 +69,7 @@ public:
         bool valid = false;
         CAmount val = value(&valid);
         val = val + steps * singleStep;
-        val = qMin(qMax(val, CAmount(0)), SOVUnits::maxMoney());
+        val = qMin(qMax(val, CAmount(0)), JOTOCOINUnits::maxMoney());
         setValue(val);
     }
 
@@ -99,7 +99,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(SOVUnits::format(SOVUnits::SOV, SOVUnits::maxMoney(), false, SOVUnits::separatorAlways));
+            int w = fm.width(JOTOCOINUnits::format(JOTOCOINUnits::JOTOCOIN, JOTOCOINUnits::maxMoney(), false, JOTOCOINUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -137,10 +137,10 @@ private:
     CAmount parse(const QString &text, bool *valid_out=0) const
     {
         CAmount val = 0;
-        bool valid = SOVUnits::parse(currentUnit, text, &val);
+        bool valid = JOTOCOINUnits::parse(currentUnit, text, &val);
         if(valid)
         {
-            if(val < 0 || val > SOVUnits::maxMoney())
+            if(val < 0 || val > JOTOCOINUnits::maxMoney())
                 valid = false;
         }
         if(valid_out)
@@ -178,7 +178,7 @@ protected:
         {
             if(val > 0)
                 rv |= StepDownEnabled;
-            if(val < SOVUnits::maxMoney())
+            if(val < JOTOCOINUnits::maxMoney())
                 rv |= StepUpEnabled;
         }
         return rv;
@@ -188,9 +188,9 @@ Q_SIGNALS:
     void valueChanged();
 };
 
-#include "sovamountfield.moc"
+#include "jotocoinamountfield.moc"
 
-SOVAmountField::SOVAmountField(QWidget *parent) :
+JOTOCOINAmountField::JOTOCOINAmountField(QWidget *parent) :
     QWidget(parent),
     amount(0)
 {
@@ -202,7 +202,7 @@ SOVAmountField::SOVAmountField(QWidget *parent) :
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
     unit = new QValueComboBox(this);
-    unit->setModel(new SOVUnits(this));
+    unit->setModel(new JOTOCOINUnits(this));
     layout->addWidget(unit);
     layout->addStretch(1);
     layout->setContentsMargins(0,0,0,0);
@@ -220,19 +220,19 @@ SOVAmountField::SOVAmountField(QWidget *parent) :
     unitChanged(unit->currentIndex());
 }
 
-void SOVAmountField::clear()
+void JOTOCOINAmountField::clear()
 {
     amount->clear();
     unit->setCurrentIndex(0);
 }
 
-void SOVAmountField::setEnabled(bool fEnabled)
+void JOTOCOINAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
     unit->setEnabled(fEnabled);
 }
 
-bool SOVAmountField::validate()
+bool JOTOCOINAmountField::validate()
 {
     bool valid = false;
     value(&valid);
@@ -240,7 +240,7 @@ bool SOVAmountField::validate()
     return valid;
 }
 
-void SOVAmountField::setValid(bool valid)
+void JOTOCOINAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet("");
@@ -248,7 +248,7 @@ void SOVAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-bool SOVAmountField::eventFilter(QObject *object, QEvent *event)
+bool JOTOCOINAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -258,45 +258,45 @@ bool SOVAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *SOVAmountField::setupTabChain(QWidget *prev)
+QWidget *JOTOCOINAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     QWidget::setTabOrder(amount, unit);
     return unit;
 }
 
-CAmount SOVAmountField::value(bool *valid_out) const
+CAmount JOTOCOINAmountField::value(bool *valid_out) const
 {
     return amount->value(valid_out);
 }
 
-void SOVAmountField::setValue(const CAmount& value)
+void JOTOCOINAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
 }
 
-void SOVAmountField::setReadOnly(bool fReadOnly)
+void JOTOCOINAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
 }
 
-void SOVAmountField::unitChanged(int idx)
+void JOTOCOINAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
     unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, SOVUnits::UnitRole).toInt();
+    int newUnit = unit->itemData(idx, JOTOCOINUnits::UnitRole).toInt();
 
     amount->setDisplayUnit(newUnit);
 }
 
-void SOVAmountField::setDisplayUnit(int newUnit)
+void JOTOCOINAmountField::setDisplayUnit(int newUnit)
 {
     unit->setValue(newUnit);
 }
 
-void SOVAmountField::setSingleStep(const CAmount& step)
+void JOTOCOINAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }

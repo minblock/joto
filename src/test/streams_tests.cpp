@@ -4,7 +4,7 @@
 
 #include "streams.h"
 #include "support/allocators/zeroafterfree.h"
-#include "test/test_sov.h"
+#include "test/test_jotocoin.h"
 
 #include <boost/assign/std/vector.hpp> // for 'operator+=()'
 #include <boost/assert.hpp>

@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The SOV Core developers
+// Copyright (c) 2017-2018 The JOTOCOIN Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "SOV Coin";
+    const char* pszTimestamp = "JOTOCOIN Coin";
     const CScript genesisOutputScript = CScript() << ParseHex("04174c0933f7ed53fc996de0c252cd6bbf9e9b8161dcda7615c2503dbd5d48f02bdb72bd216af26b6815e0b2f50381100916a7eb7b1a88aeb8debb0803250d8401") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -102,8 +102,8 @@ public:
         consensus.nZawyLwmaAveragingWindow = 65;
         consensus.nZawyLwmaAjustedWeight = 3927;
 
-        consensus.nPowTargetTimespan = 1 * 60; // SOV: 1 hour
-        consensus.nPowTargetSpacing = 1 * 60; // SOV: 1 minutes
+        consensus.nPowTargetTimespan = 1 * 60; // JOTOCOIN: 1 hour
+        consensus.nPowTargetSpacing = 1 * 60; // JOTOCOIN: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.useDarkGravityWave = false;
@@ -148,7 +148,7 @@ public:
         pchMessageStart[3] = 0x74;
         vAlertPubKey = ParseHex("048c4ef0c2c635687f6077a742be01a05748370a24a6d5209283d727e7825bf5b259256169f638e7f845c923abe6f3b3f64177f8dd354c447fbe2ad933f457febe");
         nDefaultPort = 7777;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in sov
+        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in jotocoin
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
@@ -207,18 +207,18 @@ public:
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
-        // SOV addresses start with 'S'
+        // JOTOCOIN addresses start with 'S'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,17);
-        // SOV script addresses start with '8'
+        // JOTOCOIN script addresses start with '8'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,18);
-        // SOV private keys start with 't'
+        // JOTOCOIN private keys start with 't'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128+63);
-        // SOV BIP32 pubkeys start with 'xpub' (SOV defaults)
+        // JOTOCOIN BIP32 pubkeys start with 'xpub' (JOTOCOIN defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        // SOV BIP32 prvkeys start with 'xprv' (SOV defaults)
+        // JOTOCOIN BIP32 prvkeys start with 'xprv' (JOTOCOIN defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        // SOV BIP44 coin type is '243'
+        // JOTOCOIN BIP44 coin type is '243'
         nExtCoinType = 243;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -279,8 +279,8 @@ public:
         consensus.nZawyLwmaAveragingWindow = 65;
         consensus.nZawyLwmaAjustedWeight = 3927;
 
-        consensus.nPowTargetTimespan = 30 * 60 * 2; // SOV: 1 hour
-        consensus.nPowTargetSpacing = 2 * 60; // SOV: 2 minutes
+        consensus.nPowTargetTimespan = 30 * 60 * 2; // JOTOCOIN: 1 hour
+        consensus.nPowTargetSpacing = 2 * 60; // JOTOCOIN: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.useDarkGravityWave = false;
@@ -323,23 +323,23 @@ public:
        // assert(consensus.hashGenesisBlock == uint256S("0x"));
         //assert(genesis.hashMerkleRoot == uint256S("0xd5dec0980d7b84cc1c048eb8706afe68bbbdb07fdefab76de8d176dfcb858ae8"));
 
-        //vSeeds.push_back(CDNSSeedData("testnet.sovproject.org", "testnet.seed.sovproject.org"));
-        //vSeeds.push_back(CDNSSeedData("fixed-seeds.sovproject.org", "testnet.fixed-seeds.sovproject.org"));
+        //vSeeds.push_back(CDNSSeedData("testnet.jotocoinproject.org", "testnet.seed.jotocoinproject.org"));
+        //vSeeds.push_back(CDNSSeedData("fixed-seeds.jotocoinproject.org", "testnet.fixed-seeds.jotocoinproject.org"));
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
-        // Testnet SOV addresses start with 'm'
+        // Testnet JOTOCOIN addresses start with 'm'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,110);
-        // Testnet SOV script addresses start with '9'
+        // Testnet JOTOCOIN script addresses start with '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,21);
-        // Testnet private keys start with '9' or 'c' (SOV defaults)
+        // Testnet private keys start with '9' or 'c' (JOTOCOIN defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet SOV BIP32 pubkeys start with 'tpub' (SOV defaults)
+        // Testnet JOTOCOIN BIP32 pubkeys start with 'tpub' (JOTOCOIN defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet SOV BIP32 prvkeys start with 'tprv' (SOV defaults)
+        // Testnet JOTOCOIN BIP32 prvkeys start with 'tprv' (JOTOCOIN defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Testnet SOV BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet JOTOCOIN BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -399,8 +399,8 @@ public:
         consensus.nZawyLwmaAveragingWindow = 65;
         consensus.nZawyLwmaAjustedWeight = 3927;
 
-        consensus.nPowTargetTimespan = 30 * 60 * 2; // SOV: 1 hour
-        consensus.nPowTargetSpacing = 2 * 60; // SOV: 2 minutes
+        consensus.nPowTargetTimespan = 30 * 60 * 2; // JOTOCOIN: 1 hour
+        consensus.nPowTargetSpacing = 2 * 60; // JOTOCOIN: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.useDarkGravityWave = false;
@@ -426,7 +426,7 @@ public:
         pchMessageStart[1] = 0xaf;
         pchMessageStart[2] = 0xbf;
         pchMessageStart[3] = 0xf5;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in sov
+        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in jotocoin
         nDelayGetHeadersTime = 0; // never delay GETHEADERS in regtests
         nDefaultPort = 17978;
         nPruneAfterHeight = 1000;
@@ -454,18 +454,18 @@ public:
             0,
             0
         };
-        // Regtest SOV addresses start with 'o'
+        // Regtest JOTOCOIN addresses start with 'o'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,115);
-        // Regtest SOV script addresses start with 'a'
+        // Regtest JOTOCOIN script addresses start with 'a'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,83);
-        // Regtest private keys start with '9' or 'c' (SOV defaults)
+        // Regtest private keys start with '9' or 'c' (JOTOCOIN defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest SOV BIP32 pubkeys start with 'tpub' (SOV defaults)
+        // Regtest JOTOCOIN BIP32 pubkeys start with 'tpub' (JOTOCOIN defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest SOV BIP32 prvkeys start with 'tprv' (SOV defaults)
+        // Regtest JOTOCOIN BIP32 prvkeys start with 'tprv' (JOTOCOIN defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Regtest SOV BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest JOTOCOIN BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
    }
 };

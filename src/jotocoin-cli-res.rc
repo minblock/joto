@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "SOV"
-            VALUE "FileDescription",    "sov-cli (JSON-RPC client for SOV Core)"
+            VALUE "CompanyName",        "JOTOCOIN"
+            VALUE "FileDescription",    "jotocoin-cli (JSON-RPC client for JOTOCOIN Core)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "sov-cli"
+            VALUE "InternalName",       "jotocoin-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "sov-cli.exe"
-            VALUE "ProductName",        "sov-cli"
+            VALUE "OriginalFilename",   "jotocoin-cli.exe"
+            VALUE "ProductName",        "jotocoin-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

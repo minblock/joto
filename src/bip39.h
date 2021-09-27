@@ -21,8 +21,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef SOV_BIP39_H
-#define SOV_BIP39_H
+#ifndef JOTOCOIN_BIP39_H
+#define JOTOCOIN_BIP39_H
 
 #include "support/allocators/secure.h"
 

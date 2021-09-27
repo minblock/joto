@@ -4,11 +4,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_VALIDATION_H
-#define SOV_VALIDATION_H
+#ifndef JOTOCOIN_VALIDATION_H
+#define JOTOCOIN_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include "amount.h"
@@ -503,4 +503,4 @@ static const unsigned int REJECT_ALREADY_KNOWN = 0x101;
 /** Transaction conflicts with a transaction already known */
 static const unsigned int REJECT_CONFLICT = 0x102;
 
-#endif // SOV_VALIDATION_H
+#endif // JOTOCOIN_VALIDATION_H

@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.sov.SOV-Qt";
+        return @"org.jotocoin.JOTOCOIN-Qt";
     } else {
         return [self __bundleIdentifier];
     }

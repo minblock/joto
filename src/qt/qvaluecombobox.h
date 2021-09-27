@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_QVALUECOMBOBOX_H
-#define SOV_QT_QVALUECOMBOBOX_H
+#ifndef JOTOCOIN_QT_QVALUECOMBOBOX_H
+#define JOTOCOIN_QT_QVALUECOMBOBOX_H
 
 #include <QComboBox>
 #include <QVariant>
@@ -34,4 +34,4 @@ private Q_SLOTS:
     void handleSelectionChanged(int idx);
 };
 
-#endif // SOV_QT_QVALUECOMBOBOX_H
+#endif // JOTOCOIN_QT_QVALUECOMBOBOX_H

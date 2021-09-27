@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_PAYMENTREQUESTPLUS_H
-#define SOV_QT_PAYMENTREQUESTPLUS_H
+#ifndef JOTOCOIN_QT_PAYMENTREQUESTPLUS_H
+#define JOTOCOIN_QT_PAYMENTREQUESTPLUS_H
 
 #include "paymentrequest.pb.h"
 
@@ -45,4 +45,4 @@ private:
     payments::PaymentDetails details;
 };
 
-#endif // SOV_QT_PAYMENTREQUESTPLUS_H
+#endif // JOTOCOIN_QT_PAYMENTREQUESTPLUS_H

@@ -7,10 +7,10 @@
 # Test InvalidateBlock code
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
-class InvalidateTest(SOVTestFramework):
+class InvalidateTest(JOTOCOINTestFramework):
     
         
     def setup_chain(self):

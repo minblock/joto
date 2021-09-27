@@ -5,8 +5,8 @@
 
 #include "guiutil.h"
 
-#include "sovaddressvalidator.h"
-#include "sovunits.h"
+#include "jotocoinaddressvalidator.h"
+#include "jotocoinunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 
@@ -117,10 +117,10 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a SOV address (e.g. %1)").arg("MbWMQqUNEosjjEb9WAGuJ5KGN9h4WL5bqf"));
+    widget->setPlaceholderText(QObject::tr("Enter a JOTOCOIN address (e.g. %1)").arg("MbWMQqUNEosjjEb9WAGuJ5KGN9h4WL5bqf"));
 #endif
-    widget->setValidator(new SOVAddressEntryValidator(parent));
-    widget->setCheckValidator(new SOVAddressCheckValidator(parent));
+    widget->setValidator(new JOTOCOINAddressEntryValidator(parent));
+    widget->setCheckValidator(new JOTOCOINAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
@@ -132,10 +132,10 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
 }
 
-bool parseSOVURI(const QUrl &uri, SendCoinsRecipient *out)
+bool parseJOTOCOINURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no sov: URI
-    if(!uri.isValid() || uri.scheme() != QString("sov"))
+    // return if URI is not valid or is no jotocoin: URI
+    if(!uri.isValid() || uri.scheme() != QString("jotocoin"))
         return false;
 
     SendCoinsRecipient rv;
@@ -184,7 +184,7 @@ bool parseSOVURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!SOVUnits::parse(SOVUnits::SOV, i->second, &rv.amount))
+                if(!JOTOCOINUnits::parse(JOTOCOINUnits::JOTOCOIN, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -202,28 +202,28 @@ bool parseSOVURI(const QUrl &uri, SendCoinsRecipient *out)
     return true;
 }
 
-bool parseSOVURI(QString uri, SendCoinsRecipient *out)
+bool parseJOTOCOINURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert sov:// to sov:
+    // Convert jotocoin:// to jotocoin:
     //
-    //    Cannot handle this later, because sov:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because jotocoin:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("sov://", Qt::CaseInsensitive))
+    if(uri.startsWith("jotocoin://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 7, "sov:");
+        uri.replace(0, 7, "jotocoin:");
     }
     QUrl uriInstance(uri);
-    return parseSOVURI(uriInstance, out);
+    return parseJOTOCOINURI(uriInstance, out);
 }
 
-QString formatSOVURI(const SendCoinsRecipient &info)
+QString formatJOTOCOINURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("sov:%1").arg(info.address);
+    QString ret = QString("jotocoin:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(SOVUnits::format(SOVUnits::SOV, info.amount, false, SOVUnits::separatorNever));
+        ret += QString("?amount=%1").arg(JOTOCOINUnits::format(JOTOCOINUnits::JOTOCOIN, info.amount, false, JOTOCOINUnits::separatorNever));
         paramCount++;
     }
 
@@ -252,7 +252,7 @@ QString formatSOVURI(const SendCoinsRecipient &info)
 
 bool isDust(const QString& address, const CAmount& amount)
 {
-    CTxDestination dest = CSOVAddress(address.toStdString()).Get();
+    CTxDestination dest = CJOTOCOINAddress(address.toStdString()).Get();
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
     return txOut.IsDust(::minRelayTxFee);
@@ -424,7 +424,7 @@ void openConfigfile()
 {
     boost::filesystem::path pathConfig = GetConfigFile();
 
-    /* Open sov.conf with the associated application */
+    /* Open jotocoin.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -634,15 +634,15 @@ boost::filesystem::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "SOV Core.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "JOTOCOIN Core.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "SOV Core (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("SOV Core (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "JOTOCOIN Core (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("JOTOCOIN Core (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for "SOV Core*.lnk"
+    // check for "JOTOCOIN Core*.lnk"
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -734,8 +734,8 @@ boost::filesystem::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "sovcore.desktop";
-    return GetAutostartDir() / strprintf("sovcore-%s.lnk", chain);
+        return GetAutostartDir() / "jotocoincore.desktop";
+    return GetAutostartDir() / strprintf("jotocoincore-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -774,13 +774,13 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a sovcore.desktop file to the autostart directory:
+        // Write a jotocoincore.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=SOV Core\n";
+            optionFile << "Name=JOTOCOIN Core\n";
         else
-            optionFile << strprintf("Name=SOV Core (%s)\n", chain);
+            optionFile << strprintf("Name=JOTOCOIN Core (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false));
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -799,7 +799,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the SOV Core app
+    // loop through the list of startup items and try to find the JOTOCOIN Core app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -831,21 +831,21 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 
 bool GetStartOnSystemStartup()
 {
-    CFURLRef sovAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef jotocoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, sovAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, jotocoinAppUrl);
     return !!foundItem; // return boolified object
 }
 
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
-    CFURLRef sovAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
+    CFURLRef jotocoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, sovAppUrl);
+    LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, jotocoinAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add SOV Core app to startup item list
-        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, sovAppUrl, NULL, NULL);
+        // add JOTOCOIN Core app to startup item list
+        LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, jotocoinAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {
         // remove item

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_TEST_COMPATTESTS_H
-#define SOV_QT_TEST_COMPATTESTS_H
+#ifndef JOTOCOIN_QT_TEST_COMPATTESTS_H
+#define JOTOCOIN_QT_TEST_COMPATTESTS_H
 
 #include <QObject>
 #include <QTest>
@@ -16,4 +16,4 @@ private Q_SLOTS:
     void bswapTests();
 };
 
-#endif // SOV_QT_TEST_COMPATTESTS_H
+#endif // JOTOCOIN_QT_TEST_COMPATTESTS_H

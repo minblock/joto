@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_COMPAT_SANITY_H
-#define SOV_COMPAT_SANITY_H
+#ifndef JOTOCOIN_COMPAT_SANITY_H
+#define JOTOCOIN_COMPAT_SANITY_H
 
 bool glibc_sanity_test();
 bool glibcxx_sanity_test();
 
-#endif // SOV_COMPAT_SANITY_H
+#endif // JOTOCOIN_COMPAT_SANITY_H

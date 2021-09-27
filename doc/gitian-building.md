@@ -1,9 +1,9 @@
 Gitian building
 ================
 
-*Setup instructions for a Gitian build of SOV Core using a Debian VM or physical system.*
+*Setup instructions for a Gitian build of JOTOCOIN Core using a Debian VM or physical system.*
 
-Gitian is the deterministic build process that is used to build the SOV
+Gitian is the deterministic build process that is used to build the JOTOCOIN
 Core executables. It provides a way to be reasonably sure that the
 executables are really built from the source on GitHub. It also makes sure that
 the same, tested dependencies are used and statically built into the executable.
@@ -11,7 +11,7 @@ the same, tested dependencies are used and statically built into the executable.
 Multiple developers build the source code by following a specific descriptor
 ("recipe"), cryptographically sign the result, and upload the resulting signature.
 These results are compared and only if they match, the build is accepted and uploaded
-to sov.org.
+to jotocoin.org.
 
 More independent Gitian builders are needed, which is why this guide exists.
 It is preferred you follow these steps yourself instead of using someone else's
@@ -26,7 +26,7 @@ Table of Contents
 - [Installing Gitian](#installing-gitian)
 - [Setting up the Gitian image](#setting-up-the-gitian-image)
 - [Getting and building the inputs](#getting-and-building-the-inputs)
-- [Building SOV Core](#building-sov-core)
+- [Building JOTOCOIN Core](#building-jotocoin-core)
 - [Building an alternative repository](#building-an-alternative-repository)
 - [Signing externally](#signing-externally)
 - [Uploading signatures](#uploading-signatures)
@@ -41,7 +41,7 @@ Debian Linux was chosen as the host distribution because it has a lightweight in
 Any kind of virtualization can be used, for example:
 - [VirtualBox](https://www.virtualbox.org/) (covered by this guide)
 - [KVM](http://www.linux-kvm.org/page/Main_Page)
-- [LXC](https://linuxcontainers.org/), see also [Gitian host docker container](https://github.com/gdm85/tenku/tree/master/docker/gitian-sov-host/README.md).
+- [LXC](https://linuxcontainers.org/), see also [Gitian host docker container](https://github.com/gdm85/tenku/tree/master/docker/gitian-jotocoin-host/README.md).
 
 You can also install Gitian on actual hardware instead of using virtualization.
 
@@ -300,11 +300,11 @@ cd ..
 
 **Note**: When sudo asks for a password, enter the password for the user *debian* not for *root*.
 
-Clone the git repositories for SOV Core and Gitian.
+Clone the git repositories for JOTOCOIN Core and Gitian.
 
 ```bash
 git clone https://github.com/devrandom/gitian-builder.git
-git clone https://github.com/sovcrypto/sov
+git clone https://github.com/jotocoincrypto/jotocoin
 ```
 
 Setting up the Gitian image
@@ -339,16 +339,16 @@ Getting and building the inputs
 --------------------------------
 
 Follow the instructions in [doc/release-process.md](release-process.md#fetch-and-build-inputs-first-time-or-when-dependency-versions-change)
-in the SOV Core repository under 'Fetch and build inputs' to install sources which require
+in the JOTOCOIN Core repository under 'Fetch and build inputs' to install sources which require
 manual intervention. Also optionally follow the next step: 'Seed the Gitian sources cache
 and offline git repositories' which will fetch the remaining files required for building
 offline.
 
-Building SOV Core
+Building JOTOCOIN Core
 ----------------
 
-To build SOV Core (for Linux, OS X and Windows) just follow the steps under 'perform
-Gitian builds' in [doc/release-process.md](release-process.md#perform-gitian-builds) in the SOV Core repository.
+To build JOTOCOIN Core (for Linux, OS X and Windows) just follow the steps under 'perform
+Gitian builds' in [doc/release-process.md](release-process.md#perform-gitian-builds) in the JOTOCOIN Core repository.
 
 This may take some time as it will build all the dependencies needed for each descriptor.
 These dependencies will be cached after a successful build to avoid rebuilding them when possible.
@@ -363,12 +363,12 @@ tail -f var/build.log
 Output from `gbuild` will look something like
 
 ```bash
-    Initialized empty Git repository in /home/debian/gitian-builder/inputs/sov/.git/
+    Initialized empty Git repository in /home/debian/gitian-builder/inputs/jotocoin/.git/
     remote: Counting objects: 57959, done.
     remote: Total 57959 (delta 0), reused 0 (delta 0), pack-reused 57958
     Receiving objects: 100% (57959/57959), 53.76 MiB | 484.00 KiB/s, done.
     Resolving deltas: 100% (41590/41590), done.
-    From https://github.com/sovcrypto/sov
+    From https://github.com/jotocoincrypto/jotocoin
     ... (new tags, new branch etc)
     --- Building for precise amd64 ---
     Stopping target if it is up
@@ -394,18 +394,18 @@ and inputs.
 
 For example:
 ```bash
-URL=https://github.com/crowning-/sov.git
+URL=https://github.com/crowning-/jotocoin.git
 COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
-./bin/gbuild --commit sov=${COMMIT} --url sov=${URL} ../sov/contrib/gitian-descriptors/gitian-linux.yml
-./bin/gbuild --commit sov=${COMMIT} --url sov=${URL} ../sov/contrib/gitian-descriptors/gitian-win.yml
-./bin/gbuild --commit sov=${COMMIT} --url sov=${URL} ../sov/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gbuild --commit jotocoin=${COMMIT} --url jotocoin=${URL} ../jotocoin/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --commit jotocoin=${COMMIT} --url jotocoin=${URL} ../jotocoin/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --commit jotocoin=${COMMIT} --url jotocoin=${URL} ../jotocoin/contrib/gitian-descriptors/gitian-osx.yml
 ```
 
 Building fully offline
 -----------------------
 
 For building fully offline including attaching signatures to unsigned builds, the detached-sigs repository
-and the sov git repository with the desired tag must both be available locally, and then gbuild must be
+and the jotocoin git repository with the desired tag must both be available locally, and then gbuild must be
 told where to find them. It also requires an apt-cacher-ng which is fully-populated but set to offline mode, or
 manually disabling gitian-builder's use of apt-get to update the VM build environment.
 
@@ -424,7 +424,7 @@ cd /path/to/gitian-builder
 LXC_ARCH=amd64 LXC_SUITE=precise on-target -u root apt-get update
 LXC_ARCH=amd64 LXC_SUITE=precise on-target -u root \
   -e DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends -y install \
-  $( sed -ne '/^packages:/,/[^-] .*/ {/^- .*/{s/"//g;s/- //;p}}' ../sov/contrib/gitian-descriptors/*|sort|uniq )
+  $( sed -ne '/^packages:/,/[^-] .*/ {/^- .*/{s/"//g;s/- //;p}}' ../jotocoin/contrib/gitian-descriptors/*|sort|uniq )
 LXC_ARCH=amd64 LXC_SUITE=precise on-target -u root apt-get -q -y purge grub
 LXC_ARCH=amd64 LXC_SUITE=precise on-target -u root -e DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
 ```
@@ -444,12 +444,12 @@ Then when building, override the remote URLs that gbuild would otherwise pull fr
 ```bash
 
 cd /some/root/path/
-git clone https://github.com/sovcrypto/sov-detached-sigs.git
+git clone https://github.com/jotocoincrypto/jotocoin-detached-sigs.git
 
-SOVPATH=/some/root/path/sov.git
-SIGPATH=/some/root/path/sov-detached-sigs.git
+JOTOCOINPATH=/some/root/path/jotocoin.git
+SIGPATH=/some/root/path/jotocoin-detached-sigs.git
 
-./bin/gbuild --url sov=${SOVPATH},signature=${SIGPATH} ../sov/contrib/gitian-descriptors/gitian-win-signer.yml
+./bin/gbuild --url jotocoin=${JOTOCOINPATH},signature=${SIGPATH} ../jotocoin/contrib/gitian-descriptors/gitian-win-signer.yml
 ```
 
 Signing externally
@@ -464,9 +464,9 @@ When you execute `gsign` you will get an error from GPG, which can be ignored. C
 in `gitian.sigs` to your signing machine and do
 
 ```bash
-    gpg --detach-sign ${VERSION}-linux/${SIGNER}/sov-linux-build.assert
-    gpg --detach-sign ${VERSION}-win/${SIGNER}/sov-win-build.assert
-    gpg --detach-sign ${VERSION}-osx-unsigned/${SIGNER}/sov-osx-build.assert
+    gpg --detach-sign ${VERSION}-linux/${SIGNER}/jotocoin-linux-build.assert
+    gpg --detach-sign ${VERSION}-win/${SIGNER}/jotocoin-win-build.assert
+    gpg --detach-sign ${VERSION}-osx-unsigned/${SIGNER}/jotocoin-osx-build.assert
 ```
 
 This will create the `.sig` files that can be committed together with the `.assert` files to assert your
@@ -476,6 +476,6 @@ Uploading signatures (not yet implemented)
 ---------------------
 
 In the future it will be possible to push your signatures (both the `.assert` and `.assert.sig` files) to the
-[sov/gitian.sigs](https://github.com/sovcrypto/gitian.sigs/) repository, or if that's not possible to create a pull
+[jotocoin/gitian.sigs](https://github.com/jotocoincrypto/gitian.sigs/) repository, or if that's not possible to create a pull
 request.
 There will be an official announcement when this repository is online.

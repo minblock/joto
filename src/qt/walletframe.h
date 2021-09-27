@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_WALLETFRAME_H
-#define SOV_QT_WALLETFRAME_H
+#ifndef JOTOCOIN_QT_WALLETFRAME_H
+#define JOTOCOIN_QT_WALLETFRAME_H
 
 #include "toolspage.h"
 #include <QFrame>
 #include <QMap>
 
-class SOVGUI;
+class JOTOCOINGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -25,7 +25,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle *platformStyle, SOVGUI *_gui = 0);
+    explicit WalletFrame(const PlatformStyle *platformStyle, JOTOCOINGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
@@ -47,7 +47,7 @@ Q_SIGNALS:
 
 private:
     QStackedWidget *walletStack;
-    SOVGUI *gui;
+    JOTOCOINGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 
@@ -95,4 +95,4 @@ public Q_SLOTS:
     void outOfSyncWarningClicked();
 };
 
-#endif // SOV_QT_WALLETFRAME_H
+#endif // JOTOCOIN_QT_WALLETFRAME_H

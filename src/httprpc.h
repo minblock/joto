@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_HTTPRPC_H
-#define SOV_HTTPRPC_H
+#ifndef JOTOCOIN_HTTPRPC_H
+#define JOTOCOIN_HTTPRPC_H
 
 #include <string>
 #include <map>

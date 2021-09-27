@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_TIMEDATA_H
-#define SOV_TIMEDATA_H
+#ifndef JOTOCOIN_TIMEDATA_H
+#define JOTOCOIN_TIMEDATA_H
 
 #include <algorithm>
 #include <assert.h>
@@ -73,4 +73,4 @@ int64_t GetTimeOffset();
 int64_t GetAdjustedTime();
 void AddTimeData(const CNetAddr& ip, int64_t nTime);
 
-#endif // SOV_TIMEDATA_H
+#endif // JOTOCOIN_TIMEDATA_H

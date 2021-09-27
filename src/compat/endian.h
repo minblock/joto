@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_COMPAT_ENDIAN_H
-#define SOV_COMPAT_ENDIAN_H
+#ifndef JOTOCOIN_COMPAT_ENDIAN_H
+#define JOTOCOIN_COMPAT_ENDIAN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include <stdint.h>
@@ -193,4 +193,4 @@ inline uint64_t le64toh(uint64_t little_endian_64bits)
 
 #endif // WORDS_BIGENDIAN
 
-#endif // SOV_COMPAT_ENDIAN_H
+#endif // JOTOCOIN_COMPAT_ENDIAN_H

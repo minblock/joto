@@ -1,5 +1,5 @@
-#ifndef _SOV_PREVECTOR_H_
-#define _SOV_PREVECTOR_H_
+#ifndef _JOTOCOIN_PREVECTOR_H_
+#define _JOTOCOIN_PREVECTOR_H_
 
 #include <stdlib.h>
 #include <stdint.h>

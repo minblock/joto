@@ -4,7 +4,7 @@
 
 #include "recentrequeststablemodel.h"
 
-#include "sovunits.h"
+#include "jotocoinunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -85,9 +85,9 @@ QVariant RecentRequestsTableModel::data(const QModelIndex &index, int role) cons
             if (rec->recipient.amount == 0 && role == Qt::DisplayRole)
                 return tr("(no amount)");
             else if (role == Qt::EditRole)
-                return SOVUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, SOVUnits::separatorNever);
+                return JOTOCOINUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, JOTOCOINUnits::separatorNever);
             else
-                return SOVUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
+                return JOTOCOINUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
         }
     }
     else if (role == Qt::TextAlignmentRole)
@@ -128,7 +128,7 @@ QString RecentRequestsTableModel::getAmountTitle()
     QString amountTitle = tr("Amount");
     if (this->walletModel->getOptionsModel() != NULL)
     {
-        amountTitle += " ("+SOVUnits::name(this->walletModel->getOptionsModel()->getDisplayUnit()) + ")";
+        amountTitle += " ("+JOTOCOINUnits::name(this->walletModel->getOptionsModel()->getDisplayUnit()) + ")";
     }
     return amountTitle;
 }

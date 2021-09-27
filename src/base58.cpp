@@ -212,13 +212,13 @@ int CBase58Data::CompareTo(const CBase58Data& b58) const
 
 namespace
 {
-class CSOVAddressVisitor : public boost::static_visitor<bool>
+class CJOTOCOINAddressVisitor : public boost::static_visitor<bool>
 {
 private:
-    CSOVAddress* addr;
+    CJOTOCOINAddress* addr;
 
 public:
-    CSOVAddressVisitor(CSOVAddress* addrIn) : addr(addrIn) {}
+    CJOTOCOINAddressVisitor(CJOTOCOINAddress* addrIn) : addr(addrIn) {}
 
     bool operator()(const CKeyID& id) const { return addr->Set(id); }
     bool operator()(const CScriptID& id) const { return addr->Set(id); }
@@ -227,29 +227,29 @@ public:
 
 } // anon namespace
 
-bool CSOVAddress::Set(const CKeyID& id)
+bool CJOTOCOINAddress::Set(const CKeyID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
     return true;
 }
 
-bool CSOVAddress::Set(const CScriptID& id)
+bool CJOTOCOINAddress::Set(const CScriptID& id)
 {
     SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
     return true;
 }
 
-bool CSOVAddress::Set(const CTxDestination& dest)
+bool CJOTOCOINAddress::Set(const CTxDestination& dest)
 {
-    return boost::apply_visitor(CSOVAddressVisitor(this), dest);
+    return boost::apply_visitor(CJOTOCOINAddressVisitor(this), dest);
 }
 
-bool CSOVAddress::IsValid() const
+bool CJOTOCOINAddress::IsValid() const
 {
     return IsValid(Params());
 }
 
-bool CSOVAddress::IsValid(const CChainParams& params) const
+bool CJOTOCOINAddress::IsValid(const CChainParams& params) const
 {
     bool fCorrectSize = vchData.size() == 20;
     bool fKnownVersion = vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -257,7 +257,7 @@ bool CSOVAddress::IsValid(const CChainParams& params) const
     return fCorrectSize && fKnownVersion;
 }
 
-CTxDestination CSOVAddress::Get() const
+CTxDestination CJOTOCOINAddress::Get() const
 {
     if (!IsValid())
         return CNoDestination();
@@ -271,7 +271,7 @@ CTxDestination CSOVAddress::Get() const
         return CNoDestination();
 }
 
-bool CSOVAddress::GetIndexKey(uint160& hashBytes, int& type) const
+bool CJOTOCOINAddress::GetIndexKey(uint160& hashBytes, int& type) const
 {
     if (!IsValid()) {
         return false;
@@ -288,7 +288,7 @@ bool CSOVAddress::GetIndexKey(uint160& hashBytes, int& type) const
     return false;
 }
 
-bool CSOVAddress::GetKeyID(CKeyID& keyID) const
+bool CJOTOCOINAddress::GetKeyID(CKeyID& keyID) const
 {
     if (!IsValid() || vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
         return false;
@@ -298,12 +298,12 @@ bool CSOVAddress::GetKeyID(CKeyID& keyID) const
     return true;
 }
 
-bool CSOVAddress::IsScript() const
+bool CJOTOCOINAddress::IsScript() const
 {
     return IsValid() && vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS);
 }
 
-void CSOVSecret::SetKey(const CKey& vchSecret)
+void CJOTOCOINSecret::SetKey(const CKey& vchSecret)
 {
     assert(vchSecret.IsValid());
     SetData(Params().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(), vchSecret.size());
@@ -311,7 +311,7 @@ void CSOVSecret::SetKey(const CKey& vchSecret)
         vchData.push_back(1);
 }
 
-CKey CSOVSecret::GetKey()
+CKey CJOTOCOINSecret::GetKey()
 {
     CKey ret;
     assert(vchData.size() >= 32);
@@ -319,19 +319,19 @@ CKey CSOVSecret::GetKey()
     return ret;
 }
 
-bool CSOVSecret::IsValid() const
+bool CJOTOCOINSecret::IsValid() const
 {
     bool fExpectedFormat = vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
     bool fCorrectVersion = vchVersion == Params().Base58Prefix(CChainParams::SECRET_KEY);
     return fExpectedFormat && fCorrectVersion;
 }
 
-bool CSOVSecret::SetString(const char* pszSecret)
+bool CJOTOCOINSecret::SetString(const char* pszSecret)
 {
     return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool CSOVSecret::SetString(const std::string& strSecret)
+bool CJOTOCOINSecret::SetString(const std::string& strSecret)
 {
     return SetString(strSecret.c_str());
 }

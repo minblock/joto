@@ -9,5 +9,5 @@ import buildenv
 
 if __name__ == '__main__':
 	bctest.bctester(os.environ["srcdir"] + "/test/data",
-			"sov-util-test.json",buildenv)
+			"jotocoin-util-test.json",buildenv)
 

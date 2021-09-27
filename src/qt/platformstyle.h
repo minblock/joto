@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_PLATFORMSTYLE_H
-#define SOV_QT_PLATFORMSTYLE_H
+#ifndef JOTOCOIN_QT_PLATFORMSTYLE_H
+#define JOTOCOIN_QT_PLATFORMSTYLE_H
 
 #include <QIcon>
 #include <QPixmap>
@@ -51,5 +51,5 @@ private:
     /* ... more to come later */
 };
 
-#endif // SOV_QT_PLATFORMSTYLE_H
+#endif // JOTOCOIN_QT_PLATFORMSTYLE_H
 

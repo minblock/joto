@@ -1,7 +1,7 @@
 Protocol Documentation - 0.12.1
 =====================================
 
-This document describes the protocol extensions for all additional functionality build into the SOV protocol. This doesn't include any of the SOV protocol, which has been left intact in the SOV project. For more information about the core protocol, please see https://en.sov.it/w/index.php?title#Protocol_documentation&action#edit
+This document describes the protocol extensions for all additional functionality build into the JOTOCOIN protocol. This doesn't include any of the JOTOCOIN protocol, which has been left intact in the JOTOCOIN project. For more information about the core protocol, please see https://en.jotocoin.it/w/index.php?title#Protocol_documentation&action#edit
 
 ## Common Structures
 
@@ -13,7 +13,7 @@ CScript => uchar[]
 
 ### COutPoint
 
-SOV Outpoint https://sov.org/en/glossary/outpoint
+JOTOCOIN Outpoint https://jotocoin.org/en/glossary/outpoint
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
@@ -23,7 +23,7 @@ SOV Outpoint https://sov.org/en/glossary/outpoint
 
 ### CTxIn
 
-SOV Input https://sov.org/en/glossary/input
+JOTOCOIN Input https://jotocoin.org/en/glossary/input
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
@@ -34,7 +34,7 @@ SOV Input https://sov.org/en/glossary/input
 
 ### CTxOut
 
-SOV Output https://sov.org/en/glossary/output
+JOTOCOIN Output https://jotocoin.org/en/glossary/output
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
@@ -54,7 +54,7 @@ SOV Output https://sov.org/en/glossary/output
 
 ### CPubKey
 
-SOV Public Key https://sov.org/en/glossary/public-key
+JOTOCOIN Public Key https://jotocoin.org/en/glossary/public-key
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
@@ -77,9 +77,9 @@ Whenever a masternode comes online or a client is syncing, they will send this m
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41 | vin | [CTxIn](#ctxin) | The unspent output which is holding 1000 SOV
+| 41 | vin | [CTxIn](#ctxin) | The unspent output which is holding 1000 JOTOCOIN
 | # | addr | [CService](#cservice) | IPv4 address of the masternode
-| 33-65 | pubKeyCollateralAddress | [CPubKey](#cpubkey) | CPubKey of the main 1000 SOV unspent output
+| 33-65 | pubKeyCollateralAddress | [CPubKey](#cpubkey) | CPubKey of the main 1000 JOTOCOIN unspent output
 | 33-65 | pubKeyMasternode | [CPubKey](#cpubkey) | CPubKey of the secondary signing key (For all other messaging other than announce message)
 | 71-73 | sig | char[] | Signature of this message (verifiable via pubKeyCollateralAddress)
 | 8 | sigTime | int64_t | Time which the signature was created
@@ -253,9 +253,9 @@ Spork
 | ---------- | ---------- | ----------- | ----------- |
 | 10001 | 2 | INSTANTSEND_ENABLED | Turns on and off InstantSend network wide
 | 10002 | 3 | INSTANTSEND_BLOCK_FILTERING | Turns on and off InstantSend block filtering
-| 10004 | 5 | INSTANTSEND_MAX_VALUE | Controls the max value for an InstantSend transaction (currently 2000 sov)
+| 10004 | 5 | INSTANTSEND_MAX_VALUE | Controls the max value for an InstantSend transaction (currently 2000 jotocoin)
 | 10007 | 8 | MASTERNODE_PAYMENT_ENFORCEMENT | Requires masternodes to be paid by miners when blocks are processed
-| 10008 | 9 | SUPERBLOCKS_ENABLED | Superblocks are enabled (the 10% comes to fund the sov treasury)
+| 10008 | 9 | SUPERBLOCKS_ENABLED | Superblocks are enabled (the 10% comes to fund the jotocoin treasury)
 | 10009 | 10 | MASTERNODE_PAY_UPDATED_NODES | Only current protocol version masternode's will be paid (not older nodes)
 | 10011 | 12 | RECONSIDER_BLOCKS |
 | 10012 | 13 | OLD_SUPERBLOCK_FLAG |
@@ -275,8 +275,8 @@ Masternode Verify
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41 | vin1 | [CTxIn](#ctxin) | The unspent output which is holding 1000 SOV for masternode 1
-| 41 | vin2 | [CTxIn](#ctxin) | The unspent output which is holding 1000 SOV for masternode 2
+| 41 | vin1 | [CTxIn](#ctxin) | The unspent output which is holding 1000 JOTOCOIN for masternode 1
+| 41 | vin2 | [CTxIn](#ctxin) | The unspent output which is holding 1000 JOTOCOIN for masternode 2
 | # | addr | [CService](#cservice) | IPv4 address / port of the masternode
 | 4 | nonce | int | Nonce
 | 4 | nBlockHeight | int | The blockheight
@@ -318,7 +318,7 @@ Get Masternode list or specific entry
 
 | Field Size | Field Name | Data type | Description |
 | ---------- | ----------- | --------- | -------- |
-| 41 | vin | [CTxIn](#ctxin) | The unspent output which is holding 1000 SOV
+| 41 | vin | [CTxIn](#ctxin) | The unspent output which is holding 1000 JOTOCOIN
 
 ### SYNCSTATUSCOUNT - "ssc"
 

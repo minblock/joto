@@ -52,10 +52,10 @@ static int AppInitRawTx(int argc, char* argv[])
     if (argc<2 || mapArgs.count("-?") || mapArgs.count("-h") || mapArgs.count("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = _("SOV Core sov-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("JOTOCOIN Core jotocoin-tx utility version") + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  sov-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded sov transaction") + "\n" +
-              "  sov-tx [options] -create [commands]   " + _("Create hex-encoded sov transaction") + "\n" +
+              "  jotocoin-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded jotocoin transaction") + "\n" +
+              "  jotocoin-tx [options] -create [commands]   " + _("Create hex-encoded jotocoin transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -230,7 +230,7 @@ static void MutateTxAddOutAddr(CMutableTransaction& tx, const string& strInput)
 
     // extract and validate ADDRESS
     string strAddr = strInput.substr(pos + 1, string::npos);
-    CSOVAddress addr(strAddr);
+    CJOTOCOINAddress addr(strAddr);
     if (!addr.IsValid())
         throw runtime_error("invalid TX output address");
 
@@ -391,7 +391,7 @@ static void MutateTxSign(CMutableTransaction& tx, const string& flagStr)
     for (unsigned int kidx = 0; kidx < keysObj.size(); kidx++) {
         if (!keysObj[kidx].isStr())
             throw runtime_error("privatekey not a string");
-        CSOVSecret vchSecret;
+        CJOTOCOINSecret vchSecret;
         bool fGood = vchSecret.SetString(keysObj[kidx].getValStr());
         if (!fGood)
             throw runtime_error("privatekey not valid");
@@ -611,7 +611,7 @@ static int CommandLineRawTx(int argc, char* argv[])
             if (argc < 2)
                 throw runtime_error("too few parameters");
 
-            // param: hex-encoded sov transaction
+            // param: hex-encoded jotocoin transaction
             string strHexTx(argv[1]);
             if (strHexTx == "-")                 // "-" implies standard input
                 strHexTx = readStdin();

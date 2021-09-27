@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_GUICONSTANTS_H
-#define SOV_QT_GUICONSTANTS_H
+#ifndef JOTOCOIN_QT_GUICONSTANTS_H
+#define JOTOCOIN_QT_GUICONSTANTS_H
 
 /* Milliseconds between model updates */
 static const int MODEL_UPDATE_DELAY = 250;
@@ -12,7 +12,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* SOVGUI -- Size of icons in status bar */
+/* JOTOCOINGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -49,9 +49,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "SOV"
-#define QAPP_ORG_DOMAIN "sov.org"
-#define QAPP_APP_NAME_DEFAULT "SOV-Qt"
-#define QAPP_APP_NAME_TESTNET "SOV-Qt-testnet"
+#define QAPP_ORG_NAME "JOTOCOIN"
+#define QAPP_ORG_DOMAIN "jotocoin.org"
+#define QAPP_APP_NAME_DEFAULT "JOTOCOIN-Qt"
+#define QAPP_APP_NAME_TESTNET "JOTOCOIN-Qt-testnet"
 
-#endif // SOV_QT_GUICONSTANTS_H
+#endif // JOTOCOIN_QT_GUICONSTANTS_H

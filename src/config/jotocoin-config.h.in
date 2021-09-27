@@ -1,8 +1,8 @@
-/* src/config/sov-config.h.in.  Generated from configure.ac by autoheader.  */
+/* src/config/jotocoin-config.h.in.  Generated from configure.ac by autoheader.  */
 
-#ifndef SOV_CONFIG_H
+#ifndef JOTOCOIN_CONFIG_H
 
-#define SOV_CONFIG_H
+#define JOTOCOIN_CONFIG_H
 
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
@@ -373,4 +373,4 @@
 /* Define for large files, on AIX-style hosts. */
 #undef _LARGE_FILES
 
-#endif //SOV_CONFIG_H
+#endif //JOTOCOIN_CONFIG_H

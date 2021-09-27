@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SPLASHSCREEN_H
-#define SOV_QT_SPLASHSCREEN_H
+#ifndef JOTOCOIN_QT_SPLASHSCREEN_H
+#define JOTOCOIN_QT_SPLASHSCREEN_H
 
 #include <QSplashScreen>
 
@@ -46,4 +46,4 @@ private:
     int curAlignment;
 };
 
-#endif // SOV_QT_SPLASHSCREEN_H
+#endif // JOTOCOIN_QT_SPLASHSCREEN_H

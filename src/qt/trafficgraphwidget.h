@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_TRAFFICGRAPHWIDGET_H
-#define SOV_QT_TRAFFICGRAPHWIDGET_H
+#ifndef JOTOCOIN_QT_TRAFFICGRAPHWIDGET_H
+#define JOTOCOIN_QT_TRAFFICGRAPHWIDGET_H
 
 #include "trafficgraphdata.h"
 
@@ -47,4 +47,4 @@ private:
     TrafficGraphData trafficGraphData;
 };
 
-#endif // SOV_QT_TRAFFICGRAPHWIDGET_H
+#endif // JOTOCOIN_QT_TRAFFICGRAPHWIDGET_H

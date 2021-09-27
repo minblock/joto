@@ -11,8 +11,8 @@
  * - E-mail usually won't line-break if there's no punctuation to break at.
  * - Double-clicking selects the whole string as one word if it's all alphanumeric.
  */
-#ifndef SOV_BASE58_H
-#define SOV_BASE58_H
+#ifndef JOTOCOIN_BASE58_H
+#define JOTOCOIN_BASE58_H
 
 #include "chainparams.h"
 #include "key.h"
@@ -95,13 +95,13 @@ public:
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
 
-/** base58-encoded SOV addresses.
+/** base58-encoded JOTOCOIN addresses.
  * Public-key-hash-addresses have version 76 (or 140 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 16 (or 19 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
-class CSOVAddress : public CBase58Data {
+class CJOTOCOINAddress : public CBase58Data {
 public:
     bool Set(const CKeyID &id);
     bool Set(const CScriptID &id);
@@ -109,10 +109,10 @@ public:
     bool IsValid() const;
     bool IsValid(const CChainParams &params) const;
 
-    CSOVAddress() {}
-    CSOVAddress(const CTxDestination &dest) { Set(dest); }
-    CSOVAddress(const std::string& strAddress) { SetString(strAddress); }
-    CSOVAddress(const char* pszAddress) { SetString(pszAddress); }
+    CJOTOCOINAddress() {}
+    CJOTOCOINAddress(const CTxDestination &dest) { Set(dest); }
+    CJOTOCOINAddress(const std::string& strAddress) { SetString(strAddress); }
+    CJOTOCOINAddress(const char* pszAddress) { SetString(pszAddress); }
 
     CTxDestination Get() const;
     bool GetKeyID(CKeyID &keyID) const;
@@ -123,7 +123,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class CSOVSecret : public CBase58Data
+class CJOTOCOINSecret : public CBase58Data
 {
 public:
     void SetKey(const CKey& vchSecret);
@@ -132,11 +132,11 @@ public:
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
-    CSOVSecret(const CKey& vchSecret) { SetKey(vchSecret); }
-    CSOVSecret() {}
+    CJOTOCOINSecret(const CKey& vchSecret) { SetKey(vchSecret); }
+    CJOTOCOINSecret() {}
 };
 
-template<typename K, int Size, CChainParams::Base58Type Type> class CSOVExtKeyBase : public CBase58Data
+template<typename K, int Size, CChainParams::Base58Type Type> class CJOTOCOINExtKeyBase : public CBase58Data
 {
 public:
     void SetKey(const K &key) {
@@ -154,18 +154,18 @@ public:
         return ret;
     }
 
-    CSOVExtKeyBase(const K &key) {
+    CJOTOCOINExtKeyBase(const K &key) {
         SetKey(key);
     }
 
-    CSOVExtKeyBase(const std::string& strBase58c) {
+    CJOTOCOINExtKeyBase(const std::string& strBase58c) {
         SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
     }
 
-    CSOVExtKeyBase() {}
+    CJOTOCOINExtKeyBase() {}
 };
 
-typedef CSOVExtKeyBase<CExtKey, 74, CChainParams::EXT_SECRET_KEY> CSOVExtKey;
-typedef CSOVExtKeyBase<CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY> CSOVExtPubKey;
+typedef CJOTOCOINExtKeyBase<CExtKey, 74, CChainParams::EXT_SECRET_KEY> CJOTOCOINExtKey;
+typedef CJOTOCOINExtKeyBase<CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY> CJOTOCOINExtPubKey;
 
-#endif // SOV_BASE58_H
+#endif // JOTOCOIN_BASE58_H

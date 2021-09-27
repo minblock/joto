@@ -1,6 +1,6 @@
 // Automatically generated file. Do not modify.
-#ifndef SOV_UNIVALUE_UNIVALUE_ESCAPES_H
-#define SOV_UNIVALUE_UNIVALUE_ESCAPES_H
+#ifndef JOTOCOIN_UNIVALUE_UNIVALUE_ESCAPES_H
+#define JOTOCOIN_UNIVALUE_UNIVALUE_ESCAPES_H
 static const char *escapes[256] = {
 	"\\u0000",
 	"\\u0001",
@@ -259,4 +259,4 @@ static const char *escapes[256] = {
 	NULL,
 	NULL,
 };
-#endif // SOV_UNIVALUE_UNIVALUE_ESCAPES_H
+#endif // JOTOCOIN_UNIVALUE_UNIVALUE_ESCAPES_H

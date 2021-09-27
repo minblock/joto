@@ -16,9 +16,9 @@ enum GovernanceObjectType {
     ValueOverride = 1, 
 
     // -------------------------------
-    // SOVNetwork - is the root node
-    SOVNetwork = 1000,
-    SOVNetworkVariable = 1001,
+    // JOTOCOINNetwork - is the root node
+    JOTOCOINNetwork = 1000,
+    JOTOCOINNetworkVariable = 1001,
     Category = 1002,
 
     // Actors

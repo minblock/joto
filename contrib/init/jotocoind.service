@@ -1,15 +1,15 @@
 [Unit]
-Description=SOV's distributed currency daemon
+Description=JOTOCOIN's distributed currency daemon
 After=network.target
 
 [Service]
-User=sovcore
-Group=sovcore
+User=jotocoincore
+Group=jotocoincore
 
 Type=forking
-PIDFile=/var/lib/sovd/sovd.pid
-ExecStart=/usr/bin/sovd -daemon -pid=/var/lib/sovd/sovd.pid \
--conf=/etc/sovcore/sov.conf -datadir=/var/lib/sovd -disablewallet
+PIDFile=/var/lib/jotocoind/jotocoind.pid
+ExecStart=/usr/bin/jotocoind -daemon -pid=/var/lib/jotocoind/jotocoind.pid \
+-conf=/etc/jotocoincore/jotocoin.conf -datadir=/var/lib/jotocoind -disablewallet
 
 Restart=always
 PrivateTmp=true

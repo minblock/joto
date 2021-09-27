@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. sov_test
+	$(MAKE) -C .. jotocoin_test
 clean:
-	$(MAKE) -C .. sov_test_clean
+	$(MAKE) -C .. jotocoin_test_clean
 check:
-	$(MAKE) -C .. sov_test_check
+	$(MAKE) -C .. jotocoin_test_check

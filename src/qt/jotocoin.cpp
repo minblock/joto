@@ -5,10 +5,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
-#include "sovgui.h"
+#include "jotocoingui.h"
 
 #include "chainparams.h"
 #include "clientmodel.h"
@@ -96,7 +96,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("sov-core", psz).toStdString();
+    return QCoreApplication::translate("jotocoin-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -143,11 +143,11 @@ static void initTranslations(QTranslator &qtTranslatorBase, QTranslator &qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. sov_de.qm (shortcut "de" needs to be defined in sov.qrc)
+    // Load e.g. jotocoin_de.qm (shortcut "de" needs to be defined in jotocoin.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. sov_de_DE.qm (shortcut "de_DE" needs to be defined in sov.qrc)
+    // Load e.g. jotocoin_de_DE.qm (shortcut "de_DE" needs to be defined in jotocoin.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -168,14 +168,14 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-/** Class encapsulating SOV startup and shutdown.
+/** Class encapsulating JOTOCOIN startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
-class SOVCore: public QObject
+class JOTOCOINCore: public QObject
 {
     Q_OBJECT
 public:
-    explicit SOVCore();
+    explicit JOTOCOINCore();
 
 public Q_SLOTS:
     void initialize();
@@ -198,13 +198,13 @@ private:
     void handleRunawayException(const std::exception *e);
 };
 
-/** Main SOV application object */
-class SOVApplication: public QApplication
+/** Main JOTOCOIN application object */
+class JOTOCOINApplication: public QApplication
 {
     Q_OBJECT
 public:
-    explicit SOVApplication(int &argc, char **argv);
-    ~SOVApplication();
+    explicit JOTOCOINApplication(int &argc, char **argv);
+    ~JOTOCOINApplication();
 
 #ifdef ENABLE_WALLET
     /// Create payment server
@@ -227,7 +227,7 @@ public:
     /// Get process return value
     int getReturnValue() { return returnValue; }
 
-    /// Get window identifier of QMainWindow (SOVGUI)
+    /// Get window identifier of QMainWindow (JOTOCOINGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -247,7 +247,7 @@ private:
     QThread *coreThread;
     OptionsModel *optionsModel;
     ClientModel *clientModel;
-    SOVGUI *window;
+    JOTOCOINGUI *window;
     QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -260,20 +260,20 @@ private:
     void startThread();
 };
 
-#include "sov.moc"
+#include "jotocoin.moc"
 
-SOVCore::SOVCore():
+JOTOCOINCore::JOTOCOINCore():
     QObject()
 {
 }
 
-void SOVCore::handleRunawayException(const std::exception *e)
+void JOTOCOINCore::handleRunawayException(const std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
     Q_EMIT runawayException(QString::fromStdString(strMiscWarning));
 }
 
-void SOVCore::initialize()
+void JOTOCOINCore::initialize()
 {
     execute_restart = true;
 
@@ -289,7 +289,7 @@ void SOVCore::initialize()
     }
 }
 
-void SOVCore::restart(QStringList args)
+void JOTOCOINCore::restart(QStringList args)
 {
     if(execute_restart) { // Only restart 1x, no matter how often a user clicks on a restart-button
         execute_restart = false;
@@ -313,7 +313,7 @@ void SOVCore::restart(QStringList args)
     }
 }
 
-void SOVCore::shutdown()
+void JOTOCOINCore::shutdown()
 {
     try
     {
@@ -330,7 +330,7 @@ void SOVCore::shutdown()
     }
 }
 
-SOVApplication::SOVApplication(int &argc, char **argv):
+JOTOCOINApplication::JOTOCOINApplication(int &argc, char **argv):
     QApplication(argc, argv),
     coreThread(0),
     optionsModel(0),
@@ -346,17 +346,17 @@ SOVApplication::SOVApplication(int &argc, char **argv):
     setQuitOnLastWindowClosed(false);
 
     // UI per-platform customization
-    // This must be done inside the SOVApplication constructor, or after it, because
+    // This must be done inside the JOTOCOINApplication constructor, or after it, because
     // PlatformStyle::instantiate requires a QApplication
     std::string platformName;
-    platformName = GetArg("-uiplatform", SOVGUI::DEFAULT_UIPLATFORM);
+    platformName = GetArg("-uiplatform", JOTOCOINGUI::DEFAULT_UIPLATFORM);
     platformStyle = PlatformStyle::instantiate(QString::fromStdString(platformName));
     if (!platformStyle) // Fall back to "other" if specified name not found
         platformStyle = PlatformStyle::instantiate("other");
     assert(platformStyle);
 }
 
-SOVApplication::~SOVApplication()
+JOTOCOINApplication::~JOTOCOINApplication()
 {
     if(coreThread)
     {
@@ -385,27 +385,27 @@ SOVApplication::~SOVApplication()
 }
 
 #ifdef ENABLE_WALLET
-void SOVApplication::createPaymentServer()
+void JOTOCOINApplication::createPaymentServer()
 {
     paymentServer = new PaymentServer(this);
 }
 #endif
 
-void SOVApplication::createOptionsModel(bool resetSettings)
+void JOTOCOINApplication::createOptionsModel(bool resetSettings)
 {
     optionsModel = new OptionsModel(NULL, resetSettings);
 }
 
-void SOVApplication::createWindow(const NetworkStyle *networkStyle)
+void JOTOCOINApplication::createWindow(const NetworkStyle *networkStyle)
 {
-    window = new SOVGUI(platformStyle, networkStyle, 0);
+    window = new JOTOCOINGUI(platformStyle, networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
     pollShutdownTimer->start(200);
 }
 
-void SOVApplication::createSplashScreen(const NetworkStyle *networkStyle)
+void JOTOCOINApplication::createSplashScreen(const NetworkStyle *networkStyle)
 {
     SplashScreen *splash = new SplashScreen(0, networkStyle);
     // We don't hold a direct pointer to the splash screen after creation, but the splash
@@ -415,12 +415,12 @@ void SOVApplication::createSplashScreen(const NetworkStyle *networkStyle)
     connect(this, SIGNAL(requestedShutdown()), splash, SLOT(close()));
 }
 
-void SOVApplication::startThread()
+void JOTOCOINApplication::startThread()
 {
     if(coreThread)
         return;
     coreThread = new QThread(this);
-    SOVCore *executor = new SOVCore();
+    JOTOCOINCore *executor = new JOTOCOINCore();
     executor->moveToThread(coreThread);
 
     /*  communication to and from thread */
@@ -437,20 +437,20 @@ void SOVApplication::startThread()
     coreThread->start();
 }
 
-void SOVApplication::parameterSetup()
+void JOTOCOINApplication::parameterSetup()
 {
     InitLogging();
     InitParameterInteraction();
 }
 
-void SOVApplication::requestInitialize()
+void JOTOCOINApplication::requestInitialize()
 {
     qDebug() << __func__ << ": Requesting initialize";
     startThread();
     Q_EMIT requestedInitialize();
 }
 
-void SOVApplication::requestShutdown()
+void JOTOCOINApplication::requestShutdown()
 {
     // Show a simple window indicating shutdown status
     // Do this first as some of the steps may take some time below,
@@ -475,7 +475,7 @@ void SOVApplication::requestShutdown()
     Q_EMIT requestedShutdown();
 }
 
-void SOVApplication::initializeResult(int retval)
+void JOTOCOINApplication::initializeResult(int retval)
 {
     qDebug() << __func__ << ": Initialization result: " << retval;
     // Set exit result: 0 if successful, 1 if failure
@@ -497,8 +497,8 @@ void SOVApplication::initializeResult(int retval)
         {
             walletModel = new WalletModel(platformStyle, pwalletMain, optionsModel);
 
-            window->addWallet(SOVGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(SOVGUI::DEFAULT_WALLET);
+            window->addWallet(JOTOCOINGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(JOTOCOINGUI::DEFAULT_WALLET);
 
             connect(walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
                              paymentServer, SLOT(fetchPaymentACK(CWallet*,const SendCoinsRecipient&,QByteArray)));
@@ -518,7 +518,7 @@ void SOVApplication::initializeResult(int retval)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // sov: URIs or payment requests:
+        // jotocoin: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
                          window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -532,19 +532,19 @@ void SOVApplication::initializeResult(int retval)
     }
 }
 
-void SOVApplication::shutdownResult(int retval)
+void JOTOCOINApplication::shutdownResult(int retval)
 {
     qDebug() << __func__ << ": Shutdown result: " << retval;
     quit(); // Exit main loop after shutdown finished
 }
 
-void SOVApplication::handleRunawayException(const QString &message)
+void JOTOCOINApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", SOVGUI::tr("A fatal error occurred. SOV can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", JOTOCOINGUI::tr("A fatal error occurred. JOTOCOIN can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(EXIT_FAILURE);
 }
 
-WId SOVApplication::getMainWinId() const
+WId JOTOCOINApplication::getMainWinId() const
 {
     if (!window)
         return 0;
@@ -570,10 +570,10 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(sov);
-    Q_INIT_RESOURCE(sov_locale);
+    Q_INIT_RESOURCE(jotocoin);
+    Q_INIT_RESOURCE(jotocoin_locale);
 
-    SOVApplication app(argc, argv);
+    JOTOCOINApplication app(argc, argv);
 #if QT_VERSION > 0x050100
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -622,18 +622,18 @@ int main(int argc, char *argv[])
     // User language is set up: pick a data directory
     Intro::pickDataDirectory();
 
-    /// 6. Determine availability of data directory and parse sov.conf
+    /// 6. Determine availability of data directory and parse jotocoin.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
-        QMessageBox::critical(0, QObject::tr("SOV"),
+        QMessageBox::critical(0, QObject::tr("JOTOCOIN"),
                               QObject::tr("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return EXIT_FAILURE;
     }
     try {
         ReadConfigFile(mapArgs, mapMultiArgs);
     } catch (const std::exception& e) {
-        QMessageBox::critical(0, QObject::tr("SOV"),
+        QMessageBox::critical(0, QObject::tr("JOTOCOIN"),
                               QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));
         return EXIT_FAILURE;
     }
@@ -648,7 +648,7 @@ int main(int argc, char *argv[])
     try {
         SelectParams(ChainNameFromCommandLine());
     } catch(std::exception &e) {
-        QMessageBox::critical(0, QObject::tr("SOV"), QObject::tr("Error: %1").arg(e.what()));
+        QMessageBox::critical(0, QObject::tr("JOTOCOIN"), QObject::tr("Error: %1").arg(e.what()));
         return EXIT_FAILURE;
     }
 #ifdef ENABLE_WALLET
@@ -667,7 +667,7 @@ int main(int argc, char *argv[])
     /// 7a. parse masternode.conf
     std::string strErr;
     if(!masternodeConfig.read(strErr)) {
-        QMessageBox::critical(0, QObject::tr("SOV"),
+        QMessageBox::critical(0, QObject::tr("JOTOCOIN"),
                               QObject::tr("Error reading masternode configuration file: %1").arg(strErr.c_str()));
         return EXIT_FAILURE;
     }
@@ -682,7 +682,7 @@ int main(int argc, char *argv[])
         exit(EXIT_SUCCESS);
 
     // Start up the payment server early, too, so impatient users that click on
-    // sov: links repeatedly have their payment requests routed to this process:
+    // jotocoin: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 
@@ -716,7 +716,7 @@ int main(int argc, char *argv[])
         app.createWindow(networkStyle.data());
         app.requestInitialize();
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
-        WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("SOV didn't yet exit safely..."), (HWND)app.getMainWinId());
+        WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("JOTOCOIN didn't yet exit safely..."), (HWND)app.getMainWinId());
 #endif
         app.exec();
         app.requestShutdown();

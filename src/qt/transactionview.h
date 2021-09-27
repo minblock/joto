@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_TRANSACTIONVIEW_H
-#define SOV_QT_TRANSACTIONVIEW_H
+#ifndef JOTOCOIN_QT_TRANSACTIONVIEW_H
+#define JOTOCOIN_QT_TRANSACTIONVIEW_H
 
 #include "guiutil.h"
 
@@ -120,4 +120,4 @@ public Q_SLOTS:
     void computeSum();
 };
 
-#endif // SOV_QT_TRANSACTIONVIEW_H
+#endif // JOTOCOIN_QT_TRANSACTIONVIEW_H

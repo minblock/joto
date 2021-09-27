@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SOVGUI_H
-#define SOV_QT_SOVGUI_H
+#ifndef JOTOCOIN_QT_JOTOCOINGUI_H
+#define JOTOCOIN_QT_JOTOCOINGUI_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include "amount.h"
@@ -42,10 +42,10 @@ class QProgressDialog;
 QT_END_NAMESPACE
 
 /**
-  SOV GUI main class. This class represents the main window of the SOV UI. It communicates with both the client and
+  JOTOCOIN GUI main class. This class represents the main window of the JOTOCOIN UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
 */
-class SOVGUI : public QMainWindow
+class JOTOCOINGUI : public QMainWindow
 {
     Q_OBJECT
 
@@ -53,8 +53,8 @@ public:
     static const QString DEFAULT_WALLET;
     static const std::string DEFAULT_UIPLATFORM;
 
-    explicit SOVGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = 0);
-    ~SOVGUI();
+    explicit JOTOCOINGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent = 0);
+    ~JOTOCOINGUI();
 
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
@@ -63,7 +63,7 @@ public:
 
 #ifdef ENABLE_WALLET
     /** Set the wallet model.
-        The wallet model represents a sov wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a jotocoin wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     bool addWallet(const QString& name, WalletModel *walletModel);
@@ -251,7 +251,7 @@ private Q_SLOTS:
     void showPeers();
     void showRepair();
 
-    /** Open external (default) editor with sov.conf */
+    /** Open external (default) editor with jotocoin.conf */
     void showConfEditor();
     /** Open external (default) editor with masternode.conf */
     void showMNConfEditor();
@@ -316,4 +316,4 @@ private Q_SLOTS:
     void onMenuSelection(QAction* action);
 };
 
-#endif // SOV_QT_SOVGUI_H
+#endif // JOTOCOIN_QT_JOTOCOINGUI_H

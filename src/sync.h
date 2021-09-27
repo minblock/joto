@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_SYNC_H
-#define SOV_SYNC_H
+#ifndef JOTOCOIN_SYNC_H
+#define JOTOCOIN_SYNC_H
 
 #include "threadsafety.h"
 
@@ -280,4 +280,4 @@ public:
     }
 };
 
-#endif // SOV_SYNC_H
+#endif // JOTOCOIN_SYNC_H

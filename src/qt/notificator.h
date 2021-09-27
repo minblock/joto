@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_NOTIFICATOR_H
-#define SOV_QT_NOTIFICATOR_H
+#ifndef JOTOCOIN_QT_NOTIFICATOR_H
+#define JOTOCOIN_QT_NOTIFICATOR_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include <QIcon>
@@ -77,4 +77,4 @@ private:
 #endif
 };
 
-#endif // SOV_QT_NOTIFICATOR_H
+#endif // JOTOCOIN_QT_NOTIFICATOR_H

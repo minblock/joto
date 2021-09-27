@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_QVALIDATEDLINEEDIT_H
-#define SOV_QT_QVALIDATEDLINEEDIT_H
+#ifndef JOTOCOIN_QT_QVALIDATEDLINEEDIT_H
+#define JOTOCOIN_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -40,4 +40,4 @@ private Q_SLOTS:
     void checkValidity();
 };
 
-#endif // SOV_QT_QVALIDATEDLINEEDIT_H
+#endif // JOTOCOIN_QT_QVALIDATEDLINEEDIT_H

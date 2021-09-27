@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_SUPPORT_PAGELOCKER_H
-#define SOV_SUPPORT_PAGELOCKER_H
+#ifndef JOTOCOIN_SUPPORT_PAGELOCKER_H
+#define JOTOCOIN_SUPPORT_PAGELOCKER_H
 
 #include "support/cleanse.h"
 
@@ -174,4 +174,4 @@ void UnlockObject(const T& t)
     LockedPageManager::Instance().UnlockRange((void*)(&t), sizeof(T));
 }
 
-#endif // SOV_SUPPORT_PAGELOCKER_H
+#endif // JOTOCOIN_SUPPORT_PAGELOCKER_H

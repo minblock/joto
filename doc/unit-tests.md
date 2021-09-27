@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with `make check`.
 
-To run the sovd tests manually, launch `src/test/test_sov`.
+To run the jotocoind tests manually, launch `src/test/test_jotocoin`.
 
-To add more sovd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more jotocoind tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the sov-qt tests manually, launch `src/qt/test/test_sov-qt`
+To run the jotocoin-qt tests manually, launch `src/qt/test/test_jotocoin-qt`
 
-To add more sov-qt tests, add them to the `src/qt/test/` directory and
+To add more jotocoin-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

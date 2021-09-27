@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_TEST_SCRIPTNUM10_H
-#define SOV_TEST_SCRIPTNUM10_H
+#ifndef JOTOCOIN_TEST_SCRIPTNUM10_H
+#define JOTOCOIN_TEST_SCRIPTNUM10_H
 
 #include <algorithm>
 #include <limits>
@@ -23,7 +23,7 @@ public:
 class CScriptNum10
 {
 /**
- * The ScriptNum implementation from SOV Core 0.10.0, for cross-comparison.
+ * The ScriptNum implementation from JOTOCOIN Core 0.10.0, for cross-comparison.
  */
 public:
 
@@ -180,4 +180,4 @@ private:
 };
 
 
-#endif // SOV_TEST_BIGNUM_H
+#endif // JOTOCOIN_TEST_BIGNUM_H

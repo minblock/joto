@@ -1,7 +1,7 @@
 Release Process
 ====================
 
-* Update translations, see [translation_process.md](https://github.com/sovcrypto/sov/blob/master/doc/translation_process.md#syncing-with-transifex)
+* Update translations, see [translation_process.md](https://github.com/jotocoincrypto/jotocoin/blob/master/doc/translation_process.md#syncing-with-transifex)
 * Update hardcoded [seeds](/contrib/seeds)
 
 * * *
@@ -10,14 +10,14 @@ Release Process
 Check out the source code in the following directory hierarchy.
 
 	cd /path/to/your/toplevel/build
-	git clone https://github.com/sovcrypto/gitian.sigs.git
-	git clone https://github.com/sovcrypto/sov-detached-sigs.git
+	git clone https://github.com/jotocoincrypto/gitian.sigs.git
+	git clone https://github.com/jotocoincrypto/jotocoin-detached-sigs.git
 	git clone https://github.com/devrandom/gitian-builder.git
-	git clone https://github.com/sovcrypto/sov.git
+	git clone https://github.com/jotocoincrypto/jotocoin.git
 
-### SOV Core maintainers/release engineers, update (commit) version in sources
+### JOTOCOIN Core maintainers/release engineers, update (commit) version in sources
 
-	pushd ./sov
+	pushd ./jotocoin
 	contrib/verifysfbinaries/verify.sh
 	configure.ac
 	doc/README*
@@ -40,7 +40,7 @@ Check out the source code in the following directory hierarchy.
 
  Setup Gitian descriptors:
 
-	pushd ./sov
+	pushd ./jotocoin
 	export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
 	export VERSION=(new version, e.g. 0.8.0)
 	git fetch
@@ -61,7 +61,7 @@ Check out the source code in the following directory hierarchy.
 ### Fetch and create inputs: (first time, or when dependency versions change)
 
 	mkdir -p inputs
-	wget -P inputs https://sovcore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
+	wget -P inputs https://joto.provigen.net/cfields/osslsigncode-Backports-to-1.7.1.patch
 	wget -P inputs http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
 
  Register and download the Apple SDK: see [OS X readme](README_osx.txt) for details.
@@ -76,52 +76,52 @@ Check out the source code in the following directory hierarchy.
 
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
-	make -C ../sov/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../jotocoin/depends download SOURCES_PATH=`pwd`/cache/common
 
 Only missing files will be fetched, so this is safe to re-run for each build.
 
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 ```
-./bin/gbuild --url sov=/path/to/sov,signature=/path/to/sigs {rest of arguments}
+./bin/gbuild --url jotocoin=/path/to/jotocoin,signature=/path/to/sigs {rest of arguments}
 ```
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign SOV Core for Linux, Windows, and OS X:
+### Build and sign JOTOCOIN Core for Linux, Windows, and OS X:
 
-	./bin/gbuild --commit sov=v${VERSION} ../sov/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../sov/contrib/gitian-descriptors/gitian-linux.yml
-	mv build/out/sov-*.tar.gz build/out/src/sov-*.tar.gz ../
+	./bin/gbuild --commit jotocoin=v${VERSION} ../jotocoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../jotocoin/contrib/gitian-descriptors/gitian-linux.yml
+	mv build/out/jotocoin-*.tar.gz build/out/src/jotocoin-*.tar.gz ../
 
-	./bin/gbuild --commit sov=v${VERSION} ../sov/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../sov/contrib/gitian-descriptors/gitian-win.yml
-	mv build/out/sov-*-win-unsigned.tar.gz inputs/sov-win-unsigned.tar.gz
-	mv build/out/sov-*.zip build/out/sov-*.exe ../
+	./bin/gbuild --commit jotocoin=v${VERSION} ../jotocoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../jotocoin/contrib/gitian-descriptors/gitian-win.yml
+	mv build/out/jotocoin-*-win-unsigned.tar.gz inputs/jotocoin-win-unsigned.tar.gz
+	mv build/out/jotocoin-*.zip build/out/jotocoin-*.exe ../
 
-	./bin/gbuild --commit sov=v${VERSION} ../sov/contrib/gitian-descriptors/gitian-osx.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../sov/contrib/gitian-descriptors/gitian-osx.yml
-	mv build/out/sov-*-osx-unsigned.tar.gz inputs/sov-osx-unsigned.tar.gz
-	mv build/out/sov-*.tar.gz build/out/sov-*.dmg ../
+	./bin/gbuild --commit jotocoin=v${VERSION} ../jotocoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../jotocoin/contrib/gitian-descriptors/gitian-osx.yml
+	mv build/out/jotocoin-*-osx-unsigned.tar.gz inputs/jotocoin-osx-unsigned.tar.gz
+	mv build/out/jotocoin-*.tar.gz build/out/jotocoin-*.dmg ../
 	popd
 
   Build output expected:
 
-  1. source tarball (sov-${VERSION}.tar.gz)
-  2. linux 32-bit and 64-bit dist tarballs (sov-${VERSION}-linux[32|64].tar.gz)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (sov-${VERSION}-win[32|64]-setup-unsigned.exe, sov-${VERSION}-win[32|64].zip)
-  4. OS X unsigned installer and dist tarball (sov-${VERSION}-osx-unsigned.dmg, sov-${VERSION}-osx64.tar.gz)
+  1. source tarball (jotocoin-${VERSION}.tar.gz)
+  2. linux 32-bit and 64-bit dist tarballs (jotocoin-${VERSION}-linux[32|64].tar.gz)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (jotocoin-${VERSION}-win[32|64]-setup-unsigned.exe, jotocoin-${VERSION}-win[32|64].zip)
+  4. OS X unsigned installer and dist tarball (jotocoin-${VERSION}-osx-unsigned.dmg, jotocoin-${VERSION}-osx64.tar.gz)
   5. Gitian signatures (in gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
   Add other gitian builders keys to your gpg keyring
 
-	gpg --import ../sov/contrib/gitian-downloader/*.pgp
+	gpg --import ../jotocoin/contrib/gitian-downloader/*.pgp
 
   Verify the signatures
 
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../sov/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../sov/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../sov/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../jotocoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../jotocoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../jotocoin/contrib/gitian-descriptors/gitian-osx.yml
 
 	popd
 
@@ -139,25 +139,25 @@ Commit your signature to gitian.sigs:
 
   Wait for Windows/OS X detached signatures:
 	Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-	Detached signatures will then be committed to the [sov-detached-sigs](https://github.com/sovcrypto/sov-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+	Detached signatures will then be committed to the [jotocoin-detached-sigs](https://github.com/jotocoincrypto/jotocoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
   Create (and optionally verify) the signed OS X binary:
 
 	pushd ./gitian-builder
-	./bin/gbuild -i --commit signature=v${VERSION} ../sov/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../sov/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../sov/contrib/gitian-descriptors/gitian-osx-signer.yml
-	mv build/out/sov-osx-signed.dmg ../sov-${VERSION}-osx.dmg
+	./bin/gbuild -i --commit signature=v${VERSION} ../jotocoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../jotocoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../jotocoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	mv build/out/jotocoin-osx-signed.dmg ../jotocoin-${VERSION}-osx.dmg
 	popd
 
   Create (and optionally verify) the signed Windows binaries:
 
 	pushd ./gitian-builder
-	./bin/gbuild -i --commit signature=v${VERSION} ../sov/contrib/gitian-descriptors/gitian-win-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../sov/contrib/gitian-descriptors/gitian-win-signer.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../sov/contrib/gitian-descriptors/gitian-win-signer.yml
-	mv build/out/sov-*win64-setup.exe ../sov-${VERSION}-win64-setup.exe
-	mv build/out/sov-*win32-setup.exe ../sov-${VERSION}-win32-setup.exe
+	./bin/gbuild -i --commit signature=v${VERSION} ../jotocoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../jotocoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../jotocoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	mv build/out/jotocoin-*win64-setup.exe ../jotocoin-${VERSION}-win64-setup.exe
+	mv build/out/jotocoin-*win32-setup.exe ../jotocoin-${VERSION}-win32-setup.exe
 	popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -182,21 +182,21 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the sov.org server
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the jotocoin.org server
 
-- Update sov.org
+- Update jotocoin.org
 
 - Announce the release:
 
-  - Release on SOV forum: https://www.sov.org/forum/topic/official-announcements.54/
+  - Release on JOTOCOIN forum: https://www.jotocoin.org/forum/topic/official-announcements.54/
 
-  - SOV-development mailing list
+  - JOTOCOIN-development mailing list
 
-  - Update title of #sovcrypto on Freenode IRC
+  - Update title of #jotocoincrypto on Freenode IRC
 
-  - Optionally reddit /r/sovcrypto, ... but this will usually sort out itself
+  - Optionally reddit /r/jotocoincrypto, ... but this will usually sort out itself
 
-- Notify flare so that he can start building [the PPAs](https://launchpad.net/~sov.org/+archive/ubuntu/sov)
+- Notify flare so that he can start building [the PPAs](https://launchpad.net/~jotocoin.org/+archive/ubuntu/jotocoin)
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 

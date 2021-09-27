@@ -1,19 +1,19 @@
 dnl Helper for cases where a qt dependency is not met.
-dnl Output: If qt version is auto, set sov_enable_qt to false. Else, exit.
-AC_DEFUN([SOV_QT_FAIL],[
-  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
-    if test x$sov_enable_qt != xno; then
-      AC_MSG_WARN([$1; sov-qt frontend will not be built])
+dnl Output: If qt version is auto, set jotocoin_enable_qt to false. Else, exit.
+AC_DEFUN([JOTOCOIN_QT_FAIL],[
+  if test "x$jotocoin_qt_want_version" = "xauto" && test x$jotocoin_qt_force != xyes; then
+    if test x$jotocoin_enable_qt != xno; then
+      AC_MSG_WARN([$1; jotocoin-qt frontend will not be built])
     fi
-    sov_enable_qt=no
-    sov_enable_qt_test=no
+    jotocoin_enable_qt=no
+    jotocoin_enable_qt_test=no
   else
     AC_MSG_ERROR([$1])
   fi
 ])
 
-AC_DEFUN([SOV_QT_CHECK],[
-  if test "x$sov_enable_qt" != "xno" && test x$sov_qt_want_version != xno; then
+AC_DEFUN([JOTOCOIN_QT_CHECK],[
+  if test "x$jotocoin_enable_qt" != "xno" && test x$jotocoin_qt_want_version != xno; then
     true
     $1
   else
@@ -22,43 +22,43 @@ AC_DEFUN([SOV_QT_CHECK],[
   fi
 ])
 
-dnl SOV_QT_PATH_PROGS([FOO], [foo foo2], [/path/to/search/first], [continue if missing])
+dnl JOTOCOIN_QT_PATH_PROGS([FOO], [foo foo2], [/path/to/search/first], [continue if missing])
 dnl Helper for finding the path of programs needed for Qt.
 dnl Inputs: $1: Variable to be set
 dnl Inputs: $2: List of programs to search for
 dnl Inputs: $3: Look for $2 here before $PATH
 dnl Inputs: $4: If "yes", don't fail if $2 is not found.
 dnl Output: $1 is set to the path of $2 if found. $2 are searched in order.
-AC_DEFUN([SOV_QT_PATH_PROGS],[
-  SOV_QT_CHECK([
+AC_DEFUN([JOTOCOIN_QT_PATH_PROGS],[
+  JOTOCOIN_QT_CHECK([
     if test "x$3" != "x"; then
       AC_PATH_PROGS($1,$2,,$3)
     else
       AC_PATH_PROGS($1,$2)
     fi
     if test "x$$1" = "x" && test "x$4" != "xyes"; then
-      SOV_QT_FAIL([$1 not found])
+      JOTOCOIN_QT_FAIL([$1 not found])
     fi
   ])
 ])
 
 dnl Initialize qt input.
-dnl This must be called before any other SOV_QT* macros to ensure that
+dnl This must be called before any other JOTOCOIN_QT* macros to ensure that
 dnl input variables are set correctly.
 dnl CAUTION: Do not use this inside of a conditional.
-AC_DEFUN([SOV_QT_INIT],[
+AC_DEFUN([JOTOCOIN_QT_INIT],[
   dnl enable qt support
   AC_ARG_WITH([gui],
     [AS_HELP_STRING([--with-gui@<:@=no|qt4|qt5|auto@:>@],
-    [build sov-qt GUI (default=auto, qt5 tried first)])],
+    [build jotocoin-qt GUI (default=auto, qt5 tried first)])],
     [
-     sov_qt_want_version=$withval
-     if test x$sov_qt_want_version = xyes; then
-       sov_qt_force=yes
-       sov_qt_want_version=auto
+     jotocoin_qt_want_version=$withval
+     if test x$jotocoin_qt_want_version = xyes; then
+       jotocoin_qt_force=yes
+       jotocoin_qt_want_version=auto
      fi
     ],
-    [sov_qt_want_version=auto])
+    [jotocoin_qt_want_version=auto])
 
   AC_ARG_WITH([qt-incdir],[AS_HELP_STRING([--with-qt-incdir=INC_DIR],[specify qt include path (overridden by pkgconfig)])], [qt_include_path=$withval], [])
   AC_ARG_WITH([qt-libdir],[AS_HELP_STRING([--with-qt-libdir=LIB_DIR],[specify qt lib path (overridden by pkgconfig)])], [qt_lib_path=$withval], [])
@@ -79,10 +79,10 @@ dnl Find the appropriate version of Qt libraries and includes.
 dnl Inputs: $1: Whether or not pkg-config should be used. yes|no. Default: yes.
 dnl Inputs: $2: If $1 is "yes" and --with-gui=auto, which qt version should be
 dnl         tried first.
-dnl Outputs: See _SOV_QT_FIND_LIBS_*
+dnl Outputs: See _JOTOCOIN_QT_FIND_LIBS_*
 dnl Outputs: Sets variables for all qt-related tools.
-dnl Outputs: sov_enable_qt, sov_enable_qt_dbus, sov_enable_qt_test
-AC_DEFUN([SOV_QT_CONFIGURE],[
+dnl Outputs: jotocoin_enable_qt, jotocoin_enable_qt_dbus, jotocoin_enable_qt_test
+AC_DEFUN([JOTOCOIN_QT_CONFIGURE],[
   use_pkgconfig=$1
 
   if test x$use_pkgconfig = x; then
@@ -90,9 +90,9 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
   fi
 
   if test x$use_pkgconfig = xyes; then
-    SOV_QT_CHECK([_SOV_QT_FIND_LIBS_WITH_PKGCONFIG([$2])])
+    JOTOCOIN_QT_CHECK([_JOTOCOIN_QT_FIND_LIBS_WITH_PKGCONFIG([$2])])
   else
-    SOV_QT_CHECK([_SOV_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
+    JOTOCOIN_QT_CHECK([_JOTOCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
   fi
 
   dnl This is ugly and complicated. Yuck. Works as follows:
@@ -102,46 +102,46 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
   dnl Qt4 and Qt5. With Qt5, languages moved into core and the WindowsIntegration
   dnl plugin was added. Since we can't tell if Qt4 is static or not, it is
   dnl assumed for windows builds.
-  dnl _SOV_QT_CHECK_STATIC_PLUGINS does a quick link-check and appends the
+  dnl _JOTOCOIN_QT_CHECK_STATIC_PLUGINS does a quick link-check and appends the
   dnl results to QT_LIBS.
-  SOV_QT_CHECK([
+  JOTOCOIN_QT_CHECK([
   TEMP_CPPFLAGS=$CPPFLAGS
   TEMP_CXXFLAGS=$CXXFLAGS
   CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
-  if test x$sov_qt_got_major_vers = x5; then
-    _SOV_QT_IS_STATIC
-    if test x$sov_cv_static_qt = xyes; then
-      _SOV_QT_FIND_STATIC_PLUGINS
+  if test x$jotocoin_qt_got_major_vers = x5; then
+    _JOTOCOIN_QT_IS_STATIC
+    if test x$jotocoin_cv_static_qt = xyes; then
+      _JOTOCOIN_QT_FIND_STATIC_PLUGINS
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      AC_CACHE_CHECK(for Qt < 5.4, sov_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
+      AC_CACHE_CHECK(for Qt < 5.4, jotocoin_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
           [[#include <QtCore>]],[[
           #if QT_VERSION >= 0x050400
           choke;
           #endif
           ]])],
-        [sov_cv_need_acc_widget=yes],
-        [sov_cv_need_acc_widget=no])
+        [jotocoin_cv_need_acc_widget=yes],
+        [jotocoin_cv_need_acc_widget=no])
       ])
-      if test "x$sov_cv_need_acc_widget" = "xyes"; then
-        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
+      if test "x$jotocoin_cv_need_acc_widget" = "xyes"; then
+        _JOTOCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
       fi
       if test x$TARGET_OS = xwindows; then
-        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)],[-lqwindows])
+        _JOTOCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)],[-lqwindows])
         AC_DEFINE(QT_QPA_PLATFORM_WINDOWS, 1, [Define this symbol if the qt platform is windows])
       elif test x$TARGET_OS = xlinux; then
-        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
+        _JOTOCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
         AC_DEFINE(QT_QPA_PLATFORM_XCB, 1, [Define this symbol if the qt platform is xcb])
       elif test x$TARGET_OS = xdarwin; then
         AX_CHECK_LINK_FLAG([[-framework IOKit]],[QT_LIBS="$QT_LIBS -framework IOKit"],[AC_MSG_ERROR(could not iokit framework)])
-        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
+        _JOTOCOIN_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
         AC_DEFINE(QT_QPA_PLATFORM_COCOA, 1, [Define this symbol if the qt platform is cocoa])
       fi
     fi
   else
     if test x$TARGET_OS = xwindows; then
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      _SOV_QT_CHECK_STATIC_PLUGINS([
+      _JOTOCOIN_QT_CHECK_STATIC_PLUGINS([
          Q_IMPORT_PLUGIN(qcncodecs)
          Q_IMPORT_PLUGIN(qjpcodecs)
          Q_IMPORT_PLUGIN(qtwcodecs)
@@ -155,13 +155,13 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
   ])
 
   if test x$use_pkgconfig$qt_bin_path = xyes; then
-    if test x$sov_qt_got_major_vers = x5; then
+    if test x$jotocoin_qt_got_major_vers = x5; then
       qt_bin_path="`$PKG_CONFIG --variable=host_bins Qt5Core 2>/dev/null`"
     fi
   fi
 
   if test x$use_hardening != xno; then
-    SOV_QT_CHECK([
+    JOTOCOIN_QT_CHECK([
     AC_MSG_CHECKING(whether -fPIE can be used with this Qt config)
     TEMP_CPPFLAGS=$CPPFLAGS
     TEMP_CXXFLAGS=$CXXFLAGS
@@ -180,7 +180,7 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
     CXXFLAGS=$TEMP_CXXFLAGS
     ])
   else
-    SOV_QT_CHECK([
+    JOTOCOIN_QT_CHECK([
     AC_MSG_CHECKING(whether -fPIC is needed with this Qt config)
     TEMP_CPPFLAGS=$CPPFLAGS
     CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
@@ -197,13 +197,13 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
     ])
   fi
 
-  SOV_QT_PATH_PROGS([MOC], [moc-qt${sov_qt_got_major_vers} moc${sov_qt_got_major_vers} moc], $qt_bin_path)
-  SOV_QT_PATH_PROGS([UIC], [uic-qt${sov_qt_got_major_vers} uic${sov_qt_got_major_vers} uic], $qt_bin_path)
-  SOV_QT_PATH_PROGS([RCC], [rcc-qt${sov_qt_got_major_vers} rcc${sov_qt_got_major_vers} rcc], $qt_bin_path)
-  SOV_QT_PATH_PROGS([LRELEASE], [lrelease-qt${sov_qt_got_major_vers} lrelease${sov_qt_got_major_vers} lrelease], $qt_bin_path)
-  SOV_QT_PATH_PROGS([LUPDATE], [lupdate-qt${sov_qt_got_major_vers} lupdate${sov_qt_got_major_vers} lupdate],$qt_bin_path, yes)
+  JOTOCOIN_QT_PATH_PROGS([MOC], [moc-qt${jotocoin_qt_got_major_vers} moc${jotocoin_qt_got_major_vers} moc], $qt_bin_path)
+  JOTOCOIN_QT_PATH_PROGS([UIC], [uic-qt${jotocoin_qt_got_major_vers} uic${jotocoin_qt_got_major_vers} uic], $qt_bin_path)
+  JOTOCOIN_QT_PATH_PROGS([RCC], [rcc-qt${jotocoin_qt_got_major_vers} rcc${jotocoin_qt_got_major_vers} rcc], $qt_bin_path)
+  JOTOCOIN_QT_PATH_PROGS([LRELEASE], [lrelease-qt${jotocoin_qt_got_major_vers} lrelease${jotocoin_qt_got_major_vers} lrelease], $qt_bin_path)
+  JOTOCOIN_QT_PATH_PROGS([LUPDATE], [lupdate-qt${jotocoin_qt_got_major_vers} lupdate${jotocoin_qt_got_major_vers} lupdate],$qt_bin_path, yes)
 
-  SOV_QT_CHECK([
+  JOTOCOIN_QT_CHECK([
     AC_CACHE_CHECK([whether $RCC accepts --format-version option],
                    [ac_cv_prog_rcc_accepts_format_version],
                    [ac_cv_prog_rcc_accepts_format_version=no
@@ -221,30 +221,30 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
   MOC_DEFS='-DHAVE_CONFIG_H -I$(srcdir)'
   case $host in
     *darwin*)
-     SOV_QT_CHECK([
+     JOTOCOIN_QT_CHECK([
        MOC_DEFS="${MOC_DEFS} -DQ_OS_MAC"
        base_frameworks="-framework Foundation -framework ApplicationServices -framework AppKit"
        AX_CHECK_LINK_FLAG([[$base_frameworks]],[QT_LIBS="$QT_LIBS $base_frameworks"],[AC_MSG_ERROR(could not find base frameworks)])
      ])
     ;;
     *mingw*)
-       SOV_QT_CHECK([
+       JOTOCOIN_QT_CHECK([
          AX_CHECK_LINK_FLAG([[-mwindows]],[QT_LDFLAGS="$QT_LDFLAGS -mwindows"],[AC_MSG_WARN(-mwindows linker support not detected)])
        ])
   esac
 
 
   dnl enable qt support
-  AC_MSG_CHECKING(whether to build SOV Core GUI)
-  SOV_QT_CHECK([
-    sov_enable_qt=yes
-    sov_enable_qt_test=yes
+  AC_MSG_CHECKING(whether to build JOTOCOIN Core GUI)
+  JOTOCOIN_QT_CHECK([
+    jotocoin_enable_qt=yes
+    jotocoin_enable_qt_test=yes
     if test x$have_qt_test = xno; then
-      sov_enable_qt_test=no
+      jotocoin_enable_qt_test=no
     fi
-    sov_enable_qt_dbus=no
+    jotocoin_enable_qt_dbus=no
     if test x$use_dbus != xno && test x$have_qt_dbus = xyes; then
-      sov_enable_qt_dbus=yes
+      jotocoin_enable_qt_dbus=yes
     fi
     if test x$use_dbus = xyes && test x$have_qt_dbus = xno; then
       AC_MSG_ERROR("libQtDBus not found. Install libQtDBus or remove --with-qtdbus.")
@@ -253,9 +253,9 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
       AC_MSG_WARN("lupdate is required to update qt translations")
     fi
   ],[
-    sov_enable_qt=no
+    jotocoin_enable_qt=no
   ])
-  AC_MSG_RESULT([$sov_enable_qt (Qt${sov_qt_got_major_vers})])
+  AC_MSG_RESULT([$jotocoin_enable_qt (Qt${jotocoin_qt_got_major_vers})])
 
   AC_SUBST(QT_PIE_FLAGS)
   AC_SUBST(QT_INCLUDES)
@@ -265,7 +265,7 @@ AC_DEFUN([SOV_QT_CONFIGURE],[
   AC_SUBST(QT_DBUS_LIBS)
   AC_SUBST(QT_TEST_INCLUDES)
   AC_SUBST(QT_TEST_LIBS)
-  AC_SUBST(QT_SELECT, qt${sov_qt_got_major_vers})
+  AC_SUBST(QT_SELECT, qt${jotocoin_qt_got_major_vers})
   AC_SUBST(MOC_DEFS)
 ])
 
@@ -275,9 +275,9 @@ dnl ----
 
 dnl Internal. Check if the included version of Qt is Qt5.
 dnl Requires: INCLUDES must be populated as necessary.
-dnl Output: sov_cv_qt5=yes|no
-AC_DEFUN([_SOV_QT_CHECK_QT5],[
-  AC_CACHE_CHECK(for Qt 5, sov_cv_qt5,[
+dnl Output: jotocoin_cv_qt5=yes|no
+AC_DEFUN([_JOTOCOIN_QT_CHECK_QT5],[
+  AC_CACHE_CHECK(for Qt 5, jotocoin_cv_qt5,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
     [[#include <QtCore>]],
     [[
@@ -287,17 +287,17 @@ AC_DEFUN([_SOV_QT_CHECK_QT5],[
       return 0;
       #endif
     ]])],
-    [sov_cv_qt5=yes],
-    [sov_cv_qt5=no])
+    [jotocoin_cv_qt5=yes],
+    [jotocoin_cv_qt5=no])
 ])])
 
 dnl Internal. Check if the linked version of Qt was built as static libs.
 dnl Requires: Qt5. This check cannot determine if Qt4 is static.
 dnl Requires: INCLUDES and LIBS must be populated as necessary.
-dnl Output: sov_cv_static_qt=yes|no
+dnl Output: jotocoin_cv_static_qt=yes|no
 dnl Output: Defines QT_STATICPLUGIN if plugins are static.
-AC_DEFUN([_SOV_QT_IS_STATIC],[
-  AC_CACHE_CHECK(for static Qt, sov_cv_static_qt,[
+AC_DEFUN([_JOTOCOIN_QT_IS_STATIC],[
+  AC_CACHE_CHECK(for static Qt, jotocoin_cv_static_qt,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
     [[#include <QtCore>]],
     [[
@@ -307,10 +307,10 @@ AC_DEFUN([_SOV_QT_IS_STATIC],[
       choke me
       #endif
     ]])],
-    [sov_cv_static_qt=yes],
-    [sov_cv_static_qt=no])
+    [jotocoin_cv_static_qt=yes],
+    [jotocoin_cv_static_qt=no])
   ])
-  if test xsov_cv_static_qt = xyes; then
+  if test xjotocoin_cv_static_qt = xyes; then
     AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol for static Qt plugins])
   fi
 ])
@@ -320,7 +320,7 @@ dnl Requires: INCLUDES and LIBS must be populated as necessary.
 dnl Inputs: $1: A series of Q_IMPORT_PLUGIN().
 dnl Inputs: $2: The libraries that resolve $1.
 dnl Output: QT_LIBS is prepended or configure exits.
-AC_DEFUN([_SOV_QT_CHECK_STATIC_PLUGINS],[
+AC_DEFUN([_JOTOCOIN_QT_CHECK_STATIC_PLUGINS],[
   AC_MSG_CHECKING(for static Qt plugins: $2)
   CHECK_STATIC_PLUGINS_TEMP_LIBS="$LIBS"
   LIBS="$2 $QT_LIBS $LIBS"
@@ -330,16 +330,16 @@ AC_DEFUN([_SOV_QT_CHECK_STATIC_PLUGINS],[
     $1]],
     [[return 0;]])],
     [AC_MSG_RESULT(yes); QT_LIBS="$2 $QT_LIBS"],
-    [AC_MSG_RESULT(no); SOV_QT_FAIL(Could not resolve: $2)])
+    [AC_MSG_RESULT(no); JOTOCOIN_QT_FAIL(Could not resolve: $2)])
   LIBS="$CHECK_STATIC_PLUGINS_TEMP_LIBS"
 ])
 
 dnl Internal. Find paths necessary for linking qt static plugins
-dnl Inputs: sov_qt_got_major_vers. 4 or 5.
+dnl Inputs: jotocoin_qt_got_major_vers. 4 or 5.
 dnl Inputs: qt_plugin_path. optional.
 dnl Outputs: QT_LIBS is appended
-AC_DEFUN([_SOV_QT_FIND_STATIC_PLUGINS],[
-  if test x$sov_qt_got_major_vers = x5; then
+AC_DEFUN([_JOTOCOIN_QT_FIND_STATIC_PLUGINS],[
+  if test x$jotocoin_qt_got_major_vers = x5; then
       if test x$qt_plugin_path != x; then
         QT_LIBS="$QT_LIBS -L$qt_plugin_path/platforms"
         if test -d "$qt_plugin_path/accessible"; then
@@ -368,49 +368,49 @@ AC_DEFUN([_SOV_QT_FIND_STATIC_PLUGINS],[
 ])
 
 dnl Internal. Find Qt libraries using pkg-config.
-dnl Inputs: sov_qt_want_version (from --with-gui=). The version to check
+dnl Inputs: jotocoin_qt_want_version (from --with-gui=). The version to check
 dnl         first.
-dnl Inputs: $1: If sov_qt_want_version is "auto", check for this version
+dnl Inputs: $1: If jotocoin_qt_want_version is "auto", check for this version
 dnl         first.
 dnl Outputs: All necessary QT_* variables are set.
-dnl Outputs: sov_qt_got_major_vers is set to "4" or "5".
+dnl Outputs: jotocoin_qt_got_major_vers is set to "4" or "5".
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
-AC_DEFUN([_SOV_QT_FIND_LIBS_WITH_PKGCONFIG],[
+AC_DEFUN([_JOTOCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
   m4_ifdef([PKG_CHECK_MODULES],[
   auto_priority_version=$1
   if test x$auto_priority_version = x; then
     auto_priority_version=qt5
   fi
-    if test x$sov_qt_want_version = xqt5 ||  ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+    if test x$jotocoin_qt_want_version = xqt5 ||  ( test x$jotocoin_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
       QT_LIB_PREFIX=Qt5
-      sov_qt_got_major_vers=5
+      jotocoin_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      sov_qt_got_major_vers=4
+      jotocoin_qt_got_major_vers=4
     fi
     qt5_modules="Qt5Core Qt5Gui Qt5Network Qt5Widgets"
     qt4_modules="QtCore QtGui QtNetwork"
-    SOV_QT_CHECK([
-      if test x$sov_qt_want_version = xqt5 || ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+    JOTOCOIN_QT_CHECK([
+      if test x$jotocoin_qt_want_version = xqt5 || ( test x$jotocoin_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
         PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes],[have_qt=no])
-      elif test x$sov_qt_want_version = xqt4 || ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
+      elif test x$jotocoin_qt_want_version = xqt4 || ( test x$jotocoin_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
         PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes], [have_qt=no])
       fi
 
       dnl qt version is set to 'auto' and the preferred version wasn't found. Now try the other.
-      if test x$have_qt = xno && test x$sov_qt_want_version = xauto; then
+      if test x$have_qt = xno && test x$jotocoin_qt_want_version = xauto; then
         if test x$auto_priority_version = xqt5; then
-          PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; sov_qt_got_major_vers=4], [have_qt=no])
+          PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; jotocoin_qt_got_major_vers=4], [have_qt=no])
         else
-          PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; sov_qt_got_major_vers=5], [have_qt=no])
+          PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; jotocoin_qt_got_major_vers=5], [have_qt=no])
         fi
       fi
       if test x$have_qt != xyes; then
         have_qt=no
-        SOV_QT_FAIL([Qt dependencies not found])
+        JOTOCOIN_QT_FAIL([Qt dependencies not found])
       fi
     ])
-    SOV_QT_CHECK([
+    JOTOCOIN_QT_CHECK([
       PKG_CHECK_MODULES([QT_TEST], [${QT_LIB_PREFIX}Test], [QT_TEST_INCLUDES="$QT_TEST_CFLAGS"; have_qt_test=yes], [have_qt_test=no])
       if test x$use_dbus != xno; then
         PKG_CHECK_MODULES([QT_DBUS], [${QT_LIB_PREFIX}DBus], [QT_DBUS_INCLUDES="$QT_DBUS_CFLAGS"; have_qt_dbus=yes], [have_qt_dbus=no])
@@ -422,66 +422,66 @@ AC_DEFUN([_SOV_QT_FIND_LIBS_WITH_PKGCONFIG],[
 
 dnl Internal. Find Qt libraries without using pkg-config. Version is deduced
 dnl from the discovered headers.
-dnl Inputs: sov_qt_want_version (from --with-gui=). The version to use.
-dnl         If "auto", the version will be discovered by _SOV_QT_CHECK_QT5.
+dnl Inputs: jotocoin_qt_want_version (from --with-gui=). The version to use.
+dnl         If "auto", the version will be discovered by _JOTOCOIN_QT_CHECK_QT5.
 dnl Outputs: All necessary QT_* variables are set.
-dnl Outputs: sov_qt_got_major_vers is set to "4" or "5".
+dnl Outputs: jotocoin_qt_got_major_vers is set to "4" or "5".
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
-AC_DEFUN([_SOV_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
+AC_DEFUN([_JOTOCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
   TEMP_CPPFLAGS="$CPPFLAGS"
   TEMP_CXXFLAGS="$CXXFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
   TEMP_LIBS="$LIBS"
-  SOV_QT_CHECK([
+  JOTOCOIN_QT_CHECK([
     if test x$qt_include_path != x; then
       QT_INCLUDES="-I$qt_include_path -I$qt_include_path/QtCore -I$qt_include_path/QtGui -I$qt_include_path/QtWidgets -I$qt_include_path/QtNetwork -I$qt_include_path/QtTest -I$qt_include_path/QtDBus"
       CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
     fi
   ])
 
-  SOV_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,SOV_QT_FAIL(QtCore headers missing))])
-  SOV_QT_CHECK([AC_CHECK_HEADER([QApplication],, SOV_QT_FAIL(QtGui headers missing))])
-  SOV_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, SOV_QT_FAIL(QtNetwork headers missing))])
+  JOTOCOIN_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,JOTOCOIN_QT_FAIL(QtCore headers missing))])
+  JOTOCOIN_QT_CHECK([AC_CHECK_HEADER([QApplication],, JOTOCOIN_QT_FAIL(QtGui headers missing))])
+  JOTOCOIN_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, JOTOCOIN_QT_FAIL(QtNetwork headers missing))])
 
-  SOV_QT_CHECK([
-    if test x$sov_qt_want_version = xauto; then
-      _SOV_QT_CHECK_QT5
+  JOTOCOIN_QT_CHECK([
+    if test x$jotocoin_qt_want_version = xauto; then
+      _JOTOCOIN_QT_CHECK_QT5
     fi
-    if test x$sov_cv_qt5 = xyes || test x$sov_qt_want_version = xqt5; then
+    if test x$jotocoin_cv_qt5 = xyes || test x$jotocoin_qt_want_version = xqt5; then
       QT_LIB_PREFIX=Qt5
-      sov_qt_got_major_vers=5
+      jotocoin_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      sov_qt_got_major_vers=4
+      jotocoin_qt_got_major_vers=4
     fi
   ])
 
-  SOV_QT_CHECK([
+  JOTOCOIN_QT_CHECK([
     LIBS=
     if test x$qt_lib_path != x; then
       LIBS="$LIBS -L$qt_lib_path"
     fi
 
     if test x$TARGET_OS = xwindows; then
-      AC_CHECK_LIB([imm32],      [main],, SOV_QT_FAIL(libimm32 not found))
+      AC_CHECK_LIB([imm32],      [main],, JOTOCOIN_QT_FAIL(libimm32 not found))
     fi
   ])
 
-  SOV_QT_CHECK(AC_CHECK_LIB([z] ,[main],,AC_MSG_WARN([zlib not found. Assuming qt has it built-in])))
-  SOV_QT_CHECK(AC_CHECK_LIB([png] ,[main],,AC_MSG_WARN([libpng not found. Assuming qt has it built-in])))
-  SOV_QT_CHECK(AC_CHECK_LIB([jpeg] ,[main],,AC_MSG_WARN([libjpeg not found. Assuming qt has it built-in])))
-  SOV_QT_CHECK(AC_SEARCH_LIBS([pcre16_exec], [qtpcre pcre16],,AC_MSG_WARN([libpcre16 not found. Assuming qt has it built-in])))
-  SOV_QT_CHECK(AC_SEARCH_LIBS([hb_ot_tags_from_script] ,[qtharfbuzzng harfbuzz],,AC_MSG_WARN([libharfbuzz not found. Assuming qt has it built-in or support is disabled])))
-  SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Core]   ,[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXCore not found)))
-  SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Gui]    ,[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXGui not found)))
-  SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Network],[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXNetwork not found)))
-  if test x$sov_qt_got_major_vers = x5; then
-    SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Widgets],[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXWidgets not found)))
+  JOTOCOIN_QT_CHECK(AC_CHECK_LIB([z] ,[main],,AC_MSG_WARN([zlib not found. Assuming qt has it built-in])))
+  JOTOCOIN_QT_CHECK(AC_CHECK_LIB([png] ,[main],,AC_MSG_WARN([libpng not found. Assuming qt has it built-in])))
+  JOTOCOIN_QT_CHECK(AC_CHECK_LIB([jpeg] ,[main],,AC_MSG_WARN([libjpeg not found. Assuming qt has it built-in])))
+  JOTOCOIN_QT_CHECK(AC_SEARCH_LIBS([pcre16_exec], [qtpcre pcre16],,AC_MSG_WARN([libpcre16 not found. Assuming qt has it built-in])))
+  JOTOCOIN_QT_CHECK(AC_SEARCH_LIBS([hb_ot_tags_from_script] ,[qtharfbuzzng harfbuzz],,AC_MSG_WARN([libharfbuzz not found. Assuming qt has it built-in or support is disabled])))
+  JOTOCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Core]   ,[main],,JOTOCOIN_QT_FAIL(lib$QT_LIB_PREFIXCore not found)))
+  JOTOCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Gui]    ,[main],,JOTOCOIN_QT_FAIL(lib$QT_LIB_PREFIXGui not found)))
+  JOTOCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Network],[main],,JOTOCOIN_QT_FAIL(lib$QT_LIB_PREFIXNetwork not found)))
+  if test x$jotocoin_qt_got_major_vers = x5; then
+    JOTOCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Widgets],[main],,JOTOCOIN_QT_FAIL(lib$QT_LIB_PREFIXWidgets not found)))
   fi
   QT_LIBS="$LIBS"
   LIBS="$TEMP_LIBS"
 
-  SOV_QT_CHECK([
+  JOTOCOIN_QT_CHECK([
     LIBS=
     if test x$qt_lib_path != x; then
       LIBS="-L$qt_lib_path"

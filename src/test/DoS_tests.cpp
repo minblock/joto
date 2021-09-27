@@ -13,7 +13,7 @@
 #include "serialize.h"
 #include "util.h"
 
-#include "test/test_sov.h"
+#include "test/test_jotocoin.h"
 
 #include <stdint.h>
 

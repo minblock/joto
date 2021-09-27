@@ -7,10 +7,10 @@
 # Test the BIP66 changeover logic
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
-class BIP66Test(SOVTestFramework):
+class BIP66Test(JOTOCOINTestFramework):
 
     def setup_network(self):
         self.nodes = []

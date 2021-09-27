@@ -1,45 +1,45 @@
-bin_PROGRAMS += bench/bench_sov
+bin_PROGRAMS += bench/bench_jotocoin
 BENCH_SRCDIR = bench
-BENCH_BINARY = bench/bench_sov$(EXEEXT)
+BENCH_BINARY = bench/bench_jotocoin$(EXEEXT)
 
 
-bench_bench_sov_SOURCES = \
-  bench/bench_sov.cpp \
+bench_bench_jotocoin_SOURCES = \
+  bench/bench_jotocoin.cpp \
   bench/bench.cpp \
   bench/bench.h \
   bench/Examples.cpp
 
-bench_bench_sov_CPPFLAGS = $(AM_CPPFLAGS) $(SOV_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
-bench_bench_sov_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bench_bench_sov_LDADD = \
-  $(LIBSOV_SERVER) \
-  $(LIBSOV_COMMON) \
-  $(LIBSOV_UTIL) \
-  $(LIBSOV_CRYPTO) \
+bench_bench_jotocoin_CPPFLAGS = $(AM_CPPFLAGS) $(JOTOCOIN_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
+bench_bench_jotocoin_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bench_bench_jotocoin_LDADD = \
+  $(LIBJOTOCOIN_SERVER) \
+  $(LIBJOTOCOIN_COMMON) \
+  $(LIBJOTOCOIN_UTIL) \
+  $(LIBJOTOCOIN_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
   $(LIBUNIVALUE)
 
 if ENABLE_ZMQ
-bench_bench_sov_LDADD += $(LIBSOV_ZMQ) $(ZMQ_LIBS)
+bench_bench_jotocoin_LDADD += $(LIBJOTOCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-bench_bench_sov_LDADD += $(LIBSOV_WALLET)
+bench_bench_jotocoin_LDADD += $(LIBJOTOCOIN_WALLET)
 endif
 
-bench_bench_sov_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-bench_bench_sov_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+bench_bench_jotocoin_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+bench_bench_jotocoin_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
-CLEAN_SOV_BENCH = bench/*.gcda bench/*.gcno
+CLEAN_JOTOCOIN_BENCH = bench/*.gcda bench/*.gcno
 
-CLEANFILES += $(CLEAN_SOV_BENCH)
+CLEANFILES += $(CLEAN_JOTOCOIN_BENCH)
 
-sov_bench: $(BENCH_BINARY)
+jotocoin_bench: $(BENCH_BINARY)
 
 bench: $(BENCH_BINARY) FORCE
 	$(BENCH_BINARY)
 
-sov_bench_clean : FORCE
-	rm -f $(CLEAN_SOV_BENCH) $(bench_bench_sov_OBJECTS) $(BENCH_BINARY)
+jotocoin_bench_clean : FORCE
+	rm -f $(CLEAN_JOTOCOIN_BENCH) $(bench_bench_jotocoin_OBJECTS) $(BENCH_BINARY)

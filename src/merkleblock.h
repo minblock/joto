@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_MERKLEBLOCK_H
-#define SOV_MERKLEBLOCK_H
+#ifndef JOTOCOIN_MERKLEBLOCK_H
+#define JOTOCOIN_MERKLEBLOCK_H
 
 #include "serialize.h"
 #include "uint256.h"
@@ -153,4 +153,4 @@ public:
     }
 };
 
-#endif // SOV_MERKLEBLOCK_H
+#endif // JOTOCOIN_MERKLEBLOCK_H

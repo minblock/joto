@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_WALLET_WALLETDB_H
-#define SOV_WALLET_WALLETDB_H
+#ifndef JOTOCOIN_WALLET_WALLETDB_H
+#define JOTOCOIN_WALLET_WALLETDB_H
 
 #include "amount.h"
 #include "wallet/db.h"
@@ -151,4 +151,4 @@ void ThreadFlushWalletDB(const std::string& strFile);
 
 bool AutoBackupWallet (CWallet* wallet, std::string strWalletFile, std::string& strBackupWarning, std::string& strBackupError);
 
-#endif // SOV_WALLET_WALLETDB_H
+#endif // JOTOCOIN_WALLET_WALLETDB_H

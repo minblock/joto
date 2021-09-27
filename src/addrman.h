@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_ADDRMAN_H
-#define SOV_ADDRMAN_H
+#ifndef JOTOCOIN_ADDRMAN_H
+#define JOTOCOIN_ADDRMAN_H
 
 #include "netaddress.h"
 #include "protocol.h"
@@ -585,4 +585,4 @@ public:
 
 };
 
-#endif // SOV_ADDRMAN_H
+#endif // JOTOCOIN_ADDRMAN_H

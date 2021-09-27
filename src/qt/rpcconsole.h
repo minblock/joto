@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_RPCCONSOLE_H
-#define SOV_QT_RPCCONSOLE_H
+#ifndef JOTOCOIN_QT_RPCCONSOLE_H
+#define JOTOCOIN_QT_RPCCONSOLE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"
@@ -28,7 +28,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local SOV RPC console. */
+/** Local JOTOCOIN RPC console. */
 class RPCConsole: public QWidget
 {
     Q_OBJECT
@@ -168,4 +168,4 @@ private:
     void updateNetworkState();
 };
 
-#endif // SOV_QT_RPCCONSOLE_H
+#endif // JOTOCOIN_QT_RPCCONSOLE_H

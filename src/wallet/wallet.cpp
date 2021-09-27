@@ -362,7 +362,7 @@ bool CWallet::LoadCScript(const CScript& redeemScript)
      * these. Do not add them to the wallet and warn. */
     if (redeemScript.size() > MAX_SCRIPT_ELEMENT_SIZE)
     {
-        std::string strAddr = CSOVAddress(CScriptID(redeemScript)).ToString();
+        std::string strAddr = CJOTOCOINAddress(CScriptID(redeemScript)).ToString();
         LogPrintf("%s: Warning: This wallet contains a redeemScript of size %i which exceeds maximum size %i thus can never be redeemed. Do not use address %s.\n",
             __func__, redeemScript.size(), MAX_SCRIPT_ELEMENT_SIZE, strAddr);
         return true;
@@ -2760,10 +2760,10 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, CAmount nValueMin, CAmount 
     std::random_shuffle(vCoins.rbegin(), vCoins.rend(), GetRandInt);
 
     // ( bit on if present )
-    // bit 0 - 100SOV+1
-    // bit 1 - 10SOV+1
-    // bit 2 - 1SOV+1
-    // bit 3 - .1SOV+1
+    // bit 0 - 100JOTOCOIN+1
+    // bit 1 - 10JOTOCOIN+1
+    // bit 2 - 1JOTOCOIN+1
+    // bit 3 - .1JOTOCOIN+1
 
     std::vector<int> vecBits;
     if (!CPrivateSend::GetDenominationsBits(nDenom, vecBits)) {
@@ -2908,7 +2908,7 @@ bool CWallet::SelectCoinsGrouppedByAddresses(std::vector<CompactTallyItem>& vecT
     if (LogAcceptCategory("selectcoins")) {
         std::string strMessage = "SelectCoinsGrouppedByAddresses - vecTallyRet:\n";
         BOOST_FOREACH(CompactTallyItem& item, vecTallyRet)
-            strMessage += strprintf("  %s %f\n", CSOVAddress(item.txdest).ToString().c_str(), float(item.nAmount)/COIN);
+            strMessage += strprintf("  %s %f\n", CJOTOCOINAddress(item.txdest).ToString().c_str(), float(item.nAmount)/COIN);
         LogPrint("selectcoins", "%s", strMessage);
     }
 
@@ -3010,7 +3010,7 @@ bool CWallet::GetOutpointAndKeysFromOutput(const COutput& out, COutPoint& outpoi
 
     CTxDestination address1;
     ExtractDestination(pubScript, address1);
-    CSOVAddress address2(address1);
+    CJOTOCOINAddress address2(address1);
 
     CKeyID keyID;
     if (!address2.GetKeyID(keyID)) {
@@ -3282,7 +3282,7 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt
                     return false;
                 }
                 if (fUseInstantSend && nValueIn > sporkManager.GetSporkValue(SPORK_5_INSTANTSEND_MAX_VALUE)*COIN) {
-                    strFailReason += " " + strprintf(_("InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 SOV."), sporkManager.GetSporkValue(SPORK_5_INSTANTSEND_MAX_VALUE));
+                    strFailReason += " " + strprintf(_("InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 JOTOCOIN."), sporkManager.GetSporkValue(SPORK_5_INSTANTSEND_MAX_VALUE));
                     return false;
                 }
 
@@ -3316,7 +3316,7 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt
 
                         // Fill a vout to ourself
                         // TODO: pass in scriptChange instead of reservekey so
-                        // change transaction isn't always pay-to-sov-address
+                        // change transaction isn't always pay-to-jotocoin-address
                         CScript scriptChange;
 
                         // coin control: send change to custom address
@@ -3674,9 +3674,9 @@ bool CWallet::SetAddressBook(const CTxDestination& address, const string& strNam
                              strPurpose, (fUpdated ? CT_UPDATED : CT_NEW) );
     if (!fFileBacked)
         return false;
-    if (!strPurpose.empty() && !CWalletDB(strWalletFile).WritePurpose(CSOVAddress(address).ToString(), strPurpose))
+    if (!strPurpose.empty() && !CWalletDB(strWalletFile).WritePurpose(CJOTOCOINAddress(address).ToString(), strPurpose))
         return false;
-    return CWalletDB(strWalletFile).WriteName(CSOVAddress(address).ToString(), strName);
+    return CWalletDB(strWalletFile).WriteName(CJOTOCOINAddress(address).ToString(), strName);
 }
 
 bool CWallet::DelAddressBook(const CTxDestination& address)
@@ -3687,7 +3687,7 @@ bool CWallet::DelAddressBook(const CTxDestination& address)
         if(fFileBacked)
         {
             // Delete destdata tuples associated with address
-            std::string strAddress = CSOVAddress(address).ToString();
+            std::string strAddress = CJOTOCOINAddress(address).ToString();
             BOOST_FOREACH(const PAIRTYPE(string, string) &item, mapAddressBook[address].destdata)
             {
                 CWalletDB(strWalletFile).EraseDestData(strAddress, item.first);
@@ -3700,8 +3700,8 @@ bool CWallet::DelAddressBook(const CTxDestination& address)
 
     if (!fFileBacked)
         return false;
-    CWalletDB(strWalletFile).ErasePurpose(CSOVAddress(address).ToString());
-    return CWalletDB(strWalletFile).EraseName(CSOVAddress(address).ToString());
+    CWalletDB(strWalletFile).ErasePurpose(CJOTOCOINAddress(address).ToString());
+    return CWalletDB(strWalletFile).EraseName(CJOTOCOINAddress(address).ToString());
 }
 
 bool CWallet::SetDefaultKey(const CPubKey &vchPubKey)
@@ -4309,7 +4309,7 @@ bool CWallet::AddDestData(const CTxDestination &dest, const std::string &key, co
     mapAddressBook[dest].destdata.insert(std::make_pair(key, value));
     if (!fFileBacked)
         return true;
-    return CWalletDB(strWalletFile).WriteDestData(CSOVAddress(dest).ToString(), key, value);
+    return CWalletDB(strWalletFile).WriteDestData(CJOTOCOINAddress(dest).ToString(), key, value);
 }
 
 bool CWallet::EraseDestData(const CTxDestination &dest, const std::string &key)
@@ -4318,7 +4318,7 @@ bool CWallet::EraseDestData(const CTxDestination &dest, const std::string &key)
         return false;
     if (!fFileBacked)
         return true;
-    return CWalletDB(strWalletFile).EraseDestData(CSOVAddress(dest).ToString(), key);
+    return CWalletDB(strWalletFile).EraseDestData(CJOTOCOINAddress(dest).ToString(), key);
 }
 
 bool CWallet::LoadDestData(const CTxDestination &dest, const std::string &key, const std::string &value)

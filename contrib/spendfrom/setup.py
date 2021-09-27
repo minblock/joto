@@ -1,9 +1,9 @@
 from distutils.core import setup
-setup(name='SOVspendfrom',
+setup(name='JOTOCOINspendfrom',
       version='1.0',
-      description='Command-line utility for sov "coin control"',
+      description='Command-line utility for jotocoin "coin control"',
       author='Gavin Andresen',
-      author_email='gavin@sovfoundation.org',
+      author_email='gavin@jotocoinfoundation.org',
       requires=['jsonrpc'],
       scripts=['spendfrom.py'],
       )

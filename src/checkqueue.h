@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_CHECKQUEUE_H
-#define SOV_CHECKQUEUE_H
+#ifndef JOTOCOIN_CHECKQUEUE_H
+#define JOTOCOIN_CHECKQUEUE_H
 
 #include <algorithm>
 #include <vector>
@@ -212,4 +212,4 @@ public:
     }
 };
 
-#endif // SOV_CHECKQUEUE_H
+#endif // JOTOCOIN_CHECKQUEUE_H

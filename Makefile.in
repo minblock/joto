@@ -109,9 +109,9 @@ am__aclocal_m4_deps = $(top_srcdir)/build-aux/m4/ax_boost_base.m4 \
 	$(top_srcdir)/build-aux/m4/ltsugar.m4 \
 	$(top_srcdir)/build-aux/m4/ltversion.m4 \
 	$(top_srcdir)/build-aux/m4/lt~obsolete.m4 \
-	$(top_srcdir)/build-aux/m4/sov_find_bdb48.m4 \
-	$(top_srcdir)/build-aux/m4/sov_qt.m4 \
-	$(top_srcdir)/build-aux/m4/sov_subdir_to_include.m4 \
+	$(top_srcdir)/build-aux/m4/jotocoin_find_bdb48.m4 \
+	$(top_srcdir)/build-aux/m4/jotocoin_qt.m4 \
+	$(top_srcdir)/build-aux/m4/jotocoin_subdir_to_include.m4 \
 	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
@@ -121,10 +121,10 @@ DIST_COMMON = $(srcdir)/Makefile.am $(top_srcdir)/configure \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = $(top_builddir)/src/config/sov-config.h
-CONFIG_CLEAN_FILES = libsovconsensus.pc share/setup.nsi \
+CONFIG_HEADER = $(top_builddir)/src/config/jotocoin-config.h
+CONFIG_CLEAN_FILES = libjotocoinconsensus.pc share/setup.nsi \
 	share/qt/Info.plist src/test/buildenv.py \
-	qa/pull-tester/run-sovd-for-test.sh \
+	qa/pull-tester/run-jotocoind-for-test.sh \
 	qa/pull-tester/tests_config.py
 CONFIG_CLEAN_VPATH_FILES =
 SCRIPTS = $(dist_noinst_SCRIPTS)
@@ -214,18 +214,18 @@ CTAGS = ctags
 CSCOPE = cscope
 DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in \
-	$(srcdir)/libsovconsensus.pc.in \
+	$(srcdir)/libjotocoinconsensus.pc.in \
 	$(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
 	$(top_srcdir)/build-aux/config.sub \
 	$(top_srcdir)/build-aux/install-sh \
 	$(top_srcdir)/build-aux/ltmain.sh \
 	$(top_srcdir)/build-aux/missing \
-	$(top_srcdir)/qa/pull-tester/run-sovd-for-test.sh.in \
+	$(top_srcdir)/qa/pull-tester/run-jotocoind-for-test.sh.in \
 	$(top_srcdir)/qa/pull-tester/tests_config.py.in \
 	$(top_srcdir)/share/qt/Info.plist.in \
 	$(top_srcdir)/share/setup.nsi.in \
-	$(top_srcdir)/src/config/sov-config.h.in \
+	$(top_srcdir)/src/config/jotocoin-config.h.in \
 	$(top_srcdir)/src/test/buildenv.py.in COPYING INSTALL \
 	build-aux/compile build-aux/config.guess build-aux/config.sub \
 	build-aux/install-sh build-aux/ltmain.sh build-aux/missing
@@ -508,26 +508,26 @@ top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I build-aux/m4
 SUBDIRS = src
 GZIP_ENV = "-9n"
-@BUILD_SOV_LIBS_TRUE@pkgconfigdir = $(libdir)/pkgconfig
-@BUILD_SOV_LIBS_TRUE@pkgconfig_DATA = libsovconsensus.pc
-SOVD_BIN = $(top_builddir)/src/sovd$(EXEEXT)
-SOV_QT_BIN = $(top_builddir)/src/qt/sov-qt$(EXEEXT)
-SOV_CLI_BIN = $(top_builddir)/src/sov-cli$(EXEEXT)
-SOV_WIN_INSTALLER = $(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
-OSX_APP = SOV-Qt.app
-OSX_DMG = SOV-Core.dmg
+@BUILD_JOTOCOIN_LIBS_TRUE@pkgconfigdir = $(libdir)/pkgconfig
+@BUILD_JOTOCOIN_LIBS_TRUE@pkgconfig_DATA = libjotocoinconsensus.pc
+JOTOCOIND_BIN = $(top_builddir)/src/jotocoind$(EXEEXT)
+JOTOCOIN_QT_BIN = $(top_builddir)/src/qt/jotocoin-qt$(EXEEXT)
+JOTOCOIN_CLI_BIN = $(top_builddir)/src/jotocoin-cli$(EXEEXT)
+JOTOCOIN_WIN_INSTALLER = $(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
+OSX_APP = JOTOCOIN-Qt.app
+OSX_DMG = JOTOCOIN-Core.dmg
 OSX_BACKGROUND_IMAGE = background.tiff
 OSX_DEPLOY_SCRIPT = $(top_srcdir)/contrib/macdeploy/macdeployqtplus
 OSX_FANCY_PLIST = $(top_srcdir)/contrib/macdeploy/fancy.plist
 OSX_BASE_LPROJ_DIR = $(top_srcdir)/contrib/macdeploy/Base.lproj/InfoPlist.strings
-OSX_INSTALLER_ICONS = $(top_srcdir)/src/qt/res/icons/sov.icns
+OSX_INSTALLER_ICONS = $(top_srcdir)/src/qt/res/icons/jotocoin.icns
 OSX_PLIST = $(top_srcdir)/share/qt/Info.plist #not installed
 OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 DIST_DOCS = $(wildcard doc/*.md) $(wildcard doc/release-notes/*.md)
 BIN_CHECKS = $(top_srcdir)/contrib/devtools/symbol-check.py \
            $(top_srcdir)/contrib/devtools/security-check.py
 
-WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/sov.ico \
+WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/jotocoin.ico \
   $(top_srcdir)/share/pixmaps/nsis-header.bmp \
   $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
   $(top_srcdir)/doc/README_windows.txt
@@ -539,19 +539,19 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) $
   $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
 COVERAGE_INFO = baseline_filtered_combined.info baseline.info block_test.info \
-  leveldb_baseline.info test_sov_filtered.info total_coverage.info \
+  leveldb_baseline.info test_jotocoin_filtered.info total_coverage.info \
   baseline_filtered.info block_test_filtered.info rpc_test.info rpc_test_filtered.info \
-  leveldb_baseline_filtered.info test_sov_coverage.info test_sov.info
+  leveldb_baseline_filtered.info test_jotocoin_coverage.info test_jotocoin.info
 
 OSX_APP_BUILT = $(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
-  $(OSX_APP)/Contents/Resources/sov.icns $(OSX_APP)/Contents/Info.plist \
-  $(OSX_APP)/Contents/MacOS/SOV-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+  $(OSX_APP)/Contents/Resources/jotocoin.icns $(OSX_APP)/Contents/Info.plist \
+  $(OSX_APP)/Contents/MacOS/JOTOCOIN-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
 @BUILD_DARWIN_FALSE@APP_DIST_DIR = $(top_builddir)/dist
 @BUILD_DARWIN_FALSE@APP_DIST_EXTRAS = $(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE) $(APP_DIST_DIR)/.DS_Store $(APP_DIST_DIR)/Applications
 dist_noinst_SCRIPTS = autogen.sh
 EXTRA_DIST = $(top_srcdir)/share/genbuild.sh qa/pull-tester/rpc-tests.py qa/rpc-tests $(DIST_DOCS) $(WINDOWS_PACKAGING) $(OSX_PACKAGING) $(BIN_CHECKS)
-CLEANFILES = $(OSX_DMG) $(SOV_WIN_INSTALLER)
+CLEANFILES = $(OSX_DMG) $(JOTOCOIN_WIN_INSTALLER)
 all: all-recursive
 
 .SUFFIXES:
@@ -589,21 +589,21 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
-src/config/sov-config.h: src/config/stamp-h1
+src/config/jotocoin-config.h: src/config/stamp-h1
 	@test -f $@ || rm -f src/config/stamp-h1
 	@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) src/config/stamp-h1
 
-src/config/stamp-h1: $(top_srcdir)/src/config/sov-config.h.in $(top_builddir)/config.status
+src/config/stamp-h1: $(top_srcdir)/src/config/jotocoin-config.h.in $(top_builddir)/config.status
 	@rm -f src/config/stamp-h1
-	cd $(top_builddir) && $(SHELL) ./config.status src/config/sov-config.h
-$(top_srcdir)/src/config/sov-config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
+	cd $(top_builddir) && $(SHELL) ./config.status src/config/jotocoin-config.h
+$(top_srcdir)/src/config/jotocoin-config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps) 
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f src/config/stamp-h1
 	touch $@
 
 distclean-hdr:
-	-rm -f src/config/sov-config.h src/config/stamp-h1
-libsovconsensus.pc: $(top_builddir)/config.status $(srcdir)/libsovconsensus.pc.in
+	-rm -f src/config/jotocoin-config.h src/config/stamp-h1
+libjotocoinconsensus.pc: $(top_builddir)/config.status $(srcdir)/libjotocoinconsensus.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 share/setup.nsi: $(top_builddir)/config.status $(top_srcdir)/share/setup.nsi.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
@@ -611,7 +611,7 @@ share/qt/Info.plist: $(top_builddir)/config.status $(top_srcdir)/share/qt/Info.p
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 src/test/buildenv.py: $(top_builddir)/config.status $(top_srcdir)/src/test/buildenv.py.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
-qa/pull-tester/run-sovd-for-test.sh: $(top_builddir)/config.status $(top_srcdir)/qa/pull-tester/run-sovd-for-test.sh.in
+qa/pull-tester/run-jotocoind-for-test.sh: $(top_builddir)/config.status $(top_srcdir)/qa/pull-tester/run-jotocoind-for-test.sh.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 qa/pull-tester/tests_config.py: $(top_builddir)/config.status $(top_srcdir)/qa/pull-tester/tests_config.py.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
@@ -1083,11 +1083,11 @@ distcheck-hook:
 distcleancheck:
 	@:
 
-$(SOV_WIN_INSTALLER): all-recursive
+$(JOTOCOIN_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(SOVD_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(SOV_QT_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(SOV_CLI_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(JOTOCOIND_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(JOTOCOIN_QT_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(JOTOCOIN_CLI_BIN) $(top_builddir)/release
 	@test -f $(MAKENSIS) && $(MAKENSIS) -V2 $(top_builddir)/share/setup.nsi || \
 	  echo error: could not build $@
 	@echo built $@
@@ -1107,11 +1107,11 @@ $(OSX_APP)/Contents/Info.plist: $(OSX_PLIST)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/Resources/sov.icns: $(OSX_INSTALLER_ICONS)
+$(OSX_APP)/Contents/Resources/jotocoin.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/SOV-Qt: $(SOV_QT_BIN)
+$(OSX_APP)/Contents/MacOS/JOTOCOIN-Qt: $(JOTOCOIN_QT_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
@@ -1128,10 +1128,10 @@ $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings: $(OSX_BASE_LPROJ_DIR
 @BUILD_DARWIN_FALSE@	@rm -f $@
 @BUILD_DARWIN_FALSE@	@cd $(@D); $(LN_S) /Applications $(@F)
 
-@BUILD_DARWIN_FALSE@$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/SOV-Qt
+@BUILD_DARWIN_FALSE@$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/JOTOCOIN-Qt
 
 @BUILD_DARWIN_FALSE@$(OSX_DMG): $(APP_DIST_EXTRAS)
-@BUILD_DARWIN_FALSE@	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "SOV-Core" -no-pad -r -dir-mode 0755 -apple -o $@ dist
+@BUILD_DARWIN_FALSE@	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "JOTOCOIN-Core" -no-pad -r -dir-mode 0755 -apple -o $@ dist
 
 @BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE): contrib/macdeploy/$(OSX_BACKGROUND_IMAGE)
 @BUILD_DARWIN_FALSE@	$(MKDIR_P) $(@D)
@@ -1139,22 +1139,22 @@ $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings: $(OSX_BASE_LPROJ_DIR
 @BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/.DS_Store: contrib/macdeploy/DS_Store
 @BUILD_DARWIN_FALSE@	$(INSTALL) $< $@
 
-@BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/SOV-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
+@BUILD_DARWIN_FALSE@$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/JOTOCOIN-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
 @BUILD_DARWIN_FALSE@	INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
 
 @BUILD_DARWIN_FALSE@deploydir: $(APP_DIST_EXTRAS)
 
 @TARGET_DARWIN_TRUE@appbundle: $(OSX_APP_BUILT)
 @TARGET_DARWIN_TRUE@deploy: $(OSX_DMG)
-@TARGET_WINDOWS_TRUE@deploy: $(SOV_WIN_INSTALLER)
+@TARGET_WINDOWS_TRUE@deploy: $(JOTOCOIN_WIN_INSTALLER)
 
-$(SOV_QT_BIN): FORCE
+$(JOTOCOIN_QT_BIN): FORCE
 	$(MAKE) -C src qt/$(@F)
 
-$(SOVD_BIN): FORCE
+$(JOTOCOIND_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(SOV_CLI_BIN): FORCE
+$(JOTOCOIN_CLI_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
 @USE_LCOV_TRUE@baseline.info:
@@ -1172,26 +1172,26 @@ $(SOV_CLI_BIN): FORCE
 @USE_LCOV_TRUE@baseline_filtered_combined.info: leveldb_baseline_filtered.info baseline_filtered.info
 @USE_LCOV_TRUE@	$(LCOV) -a leveldb_baseline_filtered.info -a baseline_filtered.info -o $@
 
-@USE_LCOV_TRUE@test_sov.info: baseline_filtered_combined.info
+@USE_LCOV_TRUE@test_jotocoin.info: baseline_filtered_combined.info
 @USE_LCOV_TRUE@	$(MAKE) -C src/ check
-@USE_LCOV_TRUE@	$(LCOV) -c -d $(abs_builddir)/src -t test_sov -o $@
+@USE_LCOV_TRUE@	$(LCOV) -c -d $(abs_builddir)/src -t test_jotocoin -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z -d $(abs_builddir)/src
 @USE_LCOV_TRUE@	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
-@USE_LCOV_TRUE@test_sov_filtered.info: test_sov.info
+@USE_LCOV_TRUE@test_jotocoin_filtered.info: test_jotocoin.info
 @USE_LCOV_TRUE@	$(LCOV) -r $< "/usr/include/*" -o $@
 
-@USE_LCOV_TRUE@block_test.info: test_sov_filtered.info
+@USE_LCOV_TRUE@block_test.info: test_jotocoin_filtered.info
 @USE_LCOV_TRUE@	$(MKDIR_P) qa/tmp
-@USE_LCOV_TRUE@	-@TIMEOUT=15 qa/pull-tester/run-sovd-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS)
-@USE_LCOV_TRUE@	$(LCOV) -c -d $(abs_builddir)/src --t SOVJBlockTest -o $@
+@USE_LCOV_TRUE@	-@TIMEOUT=15 qa/pull-tester/run-jotocoind-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS)
+@USE_LCOV_TRUE@	$(LCOV) -c -d $(abs_builddir)/src --t JOTOCOINJBlockTest -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z -d $(abs_builddir)/src
 @USE_LCOV_TRUE@	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
 @USE_LCOV_TRUE@block_test_filtered.info: block_test.info
 @USE_LCOV_TRUE@	$(LCOV) -r $< "/usr/include/*" -o $@
 
-@USE_LCOV_TRUE@rpc_test.info: test_sov_filtered.info
+@USE_LCOV_TRUE@rpc_test.info: test_jotocoin_filtered.info
 @USE_LCOV_TRUE@	-@TIMEOUT=15 python qa/pull-tester/rpc-tests.py $(EXTENDED_RPC_TESTS)
 @USE_LCOV_TRUE@	$(LCOV) -c -d $(abs_builddir)/src --t rpc-tests -o $@
 @USE_LCOV_TRUE@	$(LCOV) -z -d $(abs_builddir)/src
@@ -1200,13 +1200,13 @@ $(SOV_CLI_BIN): FORCE
 @USE_LCOV_TRUE@rpc_test_filtered.info: rpc_test.info
 @USE_LCOV_TRUE@	$(LCOV) -r $< "/usr/include/*" -o $@
 
-@USE_LCOV_TRUE@test_sov_coverage.info: baseline_filtered_combined.info test_sov_filtered.info
-@USE_LCOV_TRUE@	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_sov_filtered.info -o $@
+@USE_LCOV_TRUE@test_jotocoin_coverage.info: baseline_filtered_combined.info test_jotocoin_filtered.info
+@USE_LCOV_TRUE@	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_jotocoin_filtered.info -o $@
 
-@USE_LCOV_TRUE@total_coverage.info: baseline_filtered_combined.info test_sov_filtered.info block_test_filtered.info rpc_test_filtered.info
-@USE_LCOV_TRUE@	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_sov_filtered.info -a block_test_filtered.info -a rpc_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+@USE_LCOV_TRUE@total_coverage.info: baseline_filtered_combined.info test_jotocoin_filtered.info block_test_filtered.info rpc_test_filtered.info
+@USE_LCOV_TRUE@	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_jotocoin_filtered.info -a block_test_filtered.info -a rpc_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-@USE_LCOV_TRUE@test_sov.coverage/.dirstamp:  test_sov_coverage.info
+@USE_LCOV_TRUE@test_jotocoin.coverage/.dirstamp:  test_jotocoin_coverage.info
 @USE_LCOV_TRUE@	$(GENHTML) -s $< -o $(@D)
 @USE_LCOV_TRUE@	@touch $@
 
@@ -1214,16 +1214,16 @@ $(SOV_CLI_BIN): FORCE
 @USE_LCOV_TRUE@	$(GENHTML) -s $< -o $(@D)
 @USE_LCOV_TRUE@	@touch $@
 
-@USE_LCOV_TRUE@cov: test_sov.coverage/.dirstamp total.coverage/.dirstamp
+@USE_LCOV_TRUE@cov: test_jotocoin.coverage/.dirstamp total.coverage/.dirstamp
 
-# SOV: disable the test until upstream switches from convoluted comparison tool
-# Ref https://github.com/sov/sov/issues/4545
+# JOTOCOIN: disable the test until upstream switches from convoluted comparison tool
+# Ref https://github.com/jotocoin/jotocoin/issues/4545
 @USE_COMPARISON_TOOL_TRUE@check-local:
 
 .INTERMEDIATE: $(COVERAGE_INFO)
 
 clean-local:
-	rm -rf coverage_percent.txt test_sov.coverage/ total.coverage/ qa/tmp/ cache/ $(OSX_APP)
+	rm -rf coverage_percent.txt test_jotocoin.coverage/ total.coverage/ qa/tmp/ cache/ $(OSX_APP)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

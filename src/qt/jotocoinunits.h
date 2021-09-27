@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SOVUNITS_H
-#define SOV_QT_SOVUNITS_H
+#ifndef JOTOCOIN_QT_JOTOCOINUNITS_H
+#define JOTOCOIN_QT_JOTOCOINUNITS_H
 
 #include "amount.h"
 
@@ -42,24 +42,24 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** SOV unit definitions. Encapsulates parsing and formatting
+/** JOTOCOIN unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class SOVUnits: public QAbstractListModel
+class JOTOCOINUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit SOVUnits(QObject *parent);
+    explicit JOTOCOINUnits(QObject *parent);
 
-    /** SOV units.
-      @note Source: https://en.sov.it/wiki/Units . Please add only sensible ones
+    /** JOTOCOIN units.
+      @note Source: https://en.jotocoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit
     {
-        SOV,
-        mSOV,
-        uSOV,
+        JOTOCOIN,
+        mJOTOCOIN,
+        uJOTOCOIN,
         duffs
     };
 
@@ -127,8 +127,8 @@ public:
     static CAmount maxMoney();
 
 private:
-    QList<SOVUnits::Unit> unitlist;
+    QList<JOTOCOINUnits::Unit> unitlist;
 };
-typedef SOVUnits::Unit SOVUnit;
+typedef JOTOCOINUnits::Unit JOTOCOINUnit;
 
-#endif // SOV_QT_SOVUNITS_H
+#endif // JOTOCOIN_QT_JOTOCOINUNITS_H

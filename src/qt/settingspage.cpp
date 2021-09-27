@@ -1,13 +1,13 @@
 #include "settingspage.h"
 #include "util.h" // for GetBoolArg
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "sovunits.h"
+#include "jotocoinunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -126,7 +126,7 @@ SettingsPage::SettingsPage(const PlatformStyle *platformStyle, QWidget *parent) 
         }
     }
 
-    ui->unit->setModel(new SOVUnits(this));
+    ui->unit->setModel(new JOTOCOINUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -176,7 +176,7 @@ SettingsPage::SettingsPage(const PlatformStyle *platformStyle, QWidget *parent) 
 void SettingsPage::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->sovAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->jotocoinAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 

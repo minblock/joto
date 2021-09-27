@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "SOV"
-            VALUE "FileDescription",    "sov-tx (CLI SOV transaction editor utility)"
+            VALUE "CompanyName",        "JOTOCOIN"
+            VALUE "FileDescription",    "jotocoin-tx (CLI JOTOCOIN transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "sov-tx"
+            VALUE "InternalName",       "jotocoin-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "sov-tx.exe"
-            VALUE "ProductName",        "sov-tx"
+            VALUE "OriginalFilename",   "jotocoin-tx.exe"
+            VALUE "ProductName",        "jotocoin-tx"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

@@ -1,5 +1,5 @@
-#ifndef SOV_TEST_TEST_SOV_H
-#define SOV_TEST_TEST_SOV_H
+#ifndef JOTOCOIN_TEST_TEST_JOTOCOIN_H
+#define JOTOCOIN_TEST_TEST_JOTOCOIN_H
 
 #include "chainparamsbase.h"
 #include "key.h"

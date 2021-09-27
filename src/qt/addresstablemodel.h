@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_ADDRESSTABLEMODEL_H
-#define SOV_QT_ADDRESSTABLEMODEL_H
+#ifndef JOTOCOIN_QT_ADDRESSTABLEMODEL_H
+#define JOTOCOIN_QT_ADDRESSTABLEMODEL_H
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -26,7 +26,7 @@ public:
 
     enum ColumnIndex {
         Label = 0,   /**< User specified label */
-        Address = 1  /**< SOV address */
+        Address = 1  /**< JOTOCOIN address */
     };
 
     enum RoleIndex {
@@ -92,4 +92,4 @@ public Q_SLOTS:
     friend class AddressTablePriv;
 };
 
-#endif // SOV_QT_ADDRESSTABLEMODEL_H
+#endif // JOTOCOIN_QT_ADDRESSTABLEMODEL_H

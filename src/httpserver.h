@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_HTTPSERVER_H
-#define SOV_HTTPSERVER_H
+#ifndef JOTOCOIN_HTTPSERVER_H
+#define JOTOCOIN_HTTPSERVER_H
 
 #include <string>
 #include <stdint.h>
@@ -146,4 +146,4 @@ private:
     struct event* ev;
 };
 
-#endif // SOV_HTTPSERVER_H
+#endif // JOTOCOIN_HTTPSERVER_H

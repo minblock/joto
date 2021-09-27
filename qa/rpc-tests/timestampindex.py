@@ -9,11 +9,11 @@
 
 import time
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
 
-class TimestampIndexTest(SOVTestFramework):
+class TimestampIndexTest(JOTOCOINTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)

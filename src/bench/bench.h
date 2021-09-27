@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_BENCH_BENCH_H
-#define SOV_BENCH_BENCH_H
+#ifndef JOTOCOIN_BENCH_BENCH_H
+#define JOTOCOIN_BENCH_BENCH_H
 
 #include <map>
 #include <string>
@@ -69,4 +69,4 @@ namespace benchmark {
 #define BENCHMARK(n) \
     benchmark::BenchRunner BOOST_PP_CAT(bench_, BOOST_PP_CAT(__LINE__, n))(BOOST_PP_STRINGIZE(n), n);
 
-#endif // SOV_BENCH_BENCH_H
+#endif // JOTOCOIN_BENCH_BENCH_H

@@ -5,7 +5,7 @@
 #include "support/pagelocker.h"
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #ifdef WIN32

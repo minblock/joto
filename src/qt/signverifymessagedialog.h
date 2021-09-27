@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SIGNVERIFYMESSAGEDIALOG_H
-#define SOV_QT_SIGNVERIFYMESSAGEDIALOG_H
+#ifndef JOTOCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
+#define JOTOCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H
 
 #include <QDialog>
 
@@ -50,4 +50,4 @@ private Q_SLOTS:
     void on_clearButton_VM_clicked();
 };
 
-#endif // SOV_QT_SIGNVERIFYMESSAGEDIALOG_H
+#endif // JOTOCOIN_QT_SIGNVERIFYMESSAGEDIALOG_H

@@ -4,9 +4,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "sovgui.h"
+#include "jotocoingui.h"
 
-#include "sovunits.h"
+#include "jotocoinunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -69,7 +69,7 @@
 #include <QUrlQuery>
 #endif
 
-const std::string SOVGUI::DEFAULT_UIPLATFORM =
+const std::string JOTOCOINGUI::DEFAULT_UIPLATFORM =
 #if defined(Q_OS_MAC)
         "macosx"
 #elif defined(Q_OS_WIN)
@@ -79,9 +79,9 @@ const std::string SOVGUI::DEFAULT_UIPLATFORM =
 #endif
         ;
 
-const QString SOVGUI::DEFAULT_WALLET = "~Default";
+const QString JOTOCOINGUI::DEFAULT_WALLET = "~Default";
 
-SOVGUI::SOVGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
+JOTOCOINGUI::JOTOCOINGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
     QMainWindow(parent),
     clientModel(0),
     walletFrame(0),
@@ -135,7 +135,7 @@ SOVGUI::SOVGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkSt
 
     GUIUtil::restoreWindowGeometry("nWindow", QSize(850, 550), this);
 
-    QString windowTitle = tr("SOV") + " - ";
+    QString windowTitle = tr("JOTOCOIN") + " - ";
 #ifdef ENABLE_WALLET
     /* if compiled with wallet support, -disablewallet can still disable the wallet */
     enableWallet = !GetBoolArg("-disablewallet", false);
@@ -230,7 +230,7 @@ SOVGUI::SOVGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkSt
     
     QHBoxLayout *layoutLogo = new QHBoxLayout;
     QSpacerItem *horizontalSpacerLeft = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-    QPixmap pixmapLogo(":/images/light/sov_logo_horizontal");
+    QPixmap pixmapLogo(":/images/light/jotocoin_logo_horizontal");
     statusbar->setObjectName(QStringLiteral("frameLogo"));
     QSpacerItem *horizontalSpacerRight = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
     QLabel *labelLogo = new QLabel;
@@ -280,7 +280,7 @@ SOVGUI::SOVGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkSt
 #endif
 }
 
-SOVGUI::~SOVGUI()
+JOTOCOINGUI::~JOTOCOINGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -296,7 +296,7 @@ SOVGUI::~SOVGUI()
     delete rpcConsole;
 }
 
-void SOVGUI::createActions()
+void JOTOCOINGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
@@ -313,7 +313,7 @@ void SOVGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/" + theme + "/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a SOV address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a JOTOCOIN address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -328,7 +328,7 @@ void SOVGUI::createActions()
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
     receiveCoinsAction = new QAction(QIcon(":/icons/" + theme + "/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and sov: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and jotocoin: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -421,15 +421,15 @@ void SOVGUI::createActions()
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(tr("&About SOV"), this);
-    aboutAction->setStatusTip(tr("Show information about SOV"));
+    aboutAction = new QAction(tr("&About JOTOCOIN"), this);
+    aboutAction->setStatusTip(tr("Show information about JOTOCOIN"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutAction->setEnabled(false);
     aboutQtAction = new QAction(tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction("Settings...", this);
-    optionsAction->setStatusTip(tr("Modify configuration options for SOV"));
+    optionsAction->setStatusTip(tr("Modify configuration options for JOTOCOIN"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     optionsAction->setEnabled(false);
     toggleHideAction = new QAction(tr("&Show / Hide"), this);
@@ -446,9 +446,9 @@ void SOVGUI::createActions()
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your SOV addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your JOTOCOIN addresses to prove you own them"));
     verifyMessageAction = new QAction(tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified SOV addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified JOTOCOIN addresses"));
 
     openInfoAction = new QAction(tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
@@ -479,11 +479,11 @@ void SOVGUI::createActions()
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a sov: URI or payment request"));
+    openAction->setStatusTip(tr("Open a jotocoin: URI or payment request"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the SOV help message to get a list with possible SOV command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the JOTOCOIN help message to get a list with possible JOTOCOIN command-line options"));
 
     showPrivateSendHelpAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&PrivateSend information"), this);
     showPrivateSendHelpAction->setMenuRole(QAction::NoRole);
@@ -546,7 +546,7 @@ void SOVGUI::createActions()
 }
 
 
-void SOVGUI::createToolBars(QWidget* statusbar)
+void JOTOCOINGUI::createToolBars(QWidget* statusbar)
 {
     if(walletFrame)
     {
@@ -585,7 +585,7 @@ void SOVGUI::createToolBars(QWidget* statusbar)
     }
 }
 
-void SOVGUI::setClientModel(ClientModel *clientModel)
+void JOTOCOINGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
     if(clientModel)
@@ -675,7 +675,7 @@ void SOVGUI::setClientModel(ClientModel *clientModel)
 }
 
 #ifdef ENABLE_WALLET
-bool SOVGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool JOTOCOINGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     if(!walletFrame)
         return false;
@@ -683,14 +683,14 @@ bool SOVGUI::addWallet(const QString& name, WalletModel *walletModel)
     return walletFrame->addWallet(name, walletModel);
 }
 
-bool SOVGUI::setCurrentWallet(const QString& name)
+bool JOTOCOINGUI::setCurrentWallet(const QString& name)
 {
     if(!walletFrame)
         return false;
     return walletFrame->setCurrentWallet(name);
 }
 
-void SOVGUI::removeAllWallets()
+void JOTOCOINGUI::removeAllWallets()
 {
     if(!walletFrame)
         return;
@@ -699,7 +699,7 @@ void SOVGUI::removeAllWallets()
 }
 #endif // ENABLE_WALLET
 
-void SOVGUI::setWalletActionsEnabled(bool enabled)
+void JOTOCOINGUI::setWalletActionsEnabled(bool enabled)
 {
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
@@ -722,17 +722,17 @@ void SOVGUI::setWalletActionsEnabled(bool enabled)
     openAction->setEnabled(enabled);
 }
 
-void SOVGUI::createTrayIcon(const NetworkStyle *networkStyle)
+void JOTOCOINGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
     trayIcon = new QSystemTrayIcon(this);
-    QString toolTip = tr("SOV client") + " " + networkStyle->getTitleAddText();
+    QString toolTip = tr("JOTOCOIN client") + " " + networkStyle->getTitleAddText();
     trayIcon->setToolTip(toolTip);
     trayIcon->setIcon(networkStyle->getTrayAndWindowIcon());
     trayIcon->hide();
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-void SOVGUI::createIconMenu(QMenu *pmenu)
+void JOTOCOINGUI::createIconMenu(QMenu *pmenu)
 {
     // Configuration of the tray icon (or dock icon) icon menu
     pmenu->addAction(toggleHideAction);
@@ -761,7 +761,7 @@ void SOVGUI::createIconMenu(QMenu *pmenu)
 }
 
 #ifndef Q_OS_MAC
-void SOVGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void JOTOCOINGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -771,7 +771,7 @@ void SOVGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void SOVGUI::optionsClicked()
+void JOTOCOINGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -781,7 +781,7 @@ void SOVGUI::optionsClicked()
     dlg.exec();
 }
 
-void SOVGUI::aboutClicked()
+void JOTOCOINGUI::aboutClicked()
 {
     if(!clientModel)
         return;
@@ -790,7 +790,7 @@ void SOVGUI::aboutClicked()
     dlg.exec();
 }
 
-void SOVGUI::showDebugWindow()
+void JOTOCOINGUI::showDebugWindow()
 {
     rpcConsole->showNormal();
     rpcConsole->show();
@@ -798,57 +798,57 @@ void SOVGUI::showDebugWindow()
     rpcConsole->activateWindow();
 }
 
-void SOVGUI::showInfo()
+void JOTOCOINGUI::showInfo()
 {
     toolsAction->setChecked(true);
     walletFrame->gotoToolsPageTab(ToolsPage::TAB_INFO);
 }
 
-void SOVGUI::showConsole()
+void JOTOCOINGUI::showConsole()
 {
     toolsAction->setChecked(true);
     walletFrame->gotoToolsPageTab(ToolsPage::TAB_CONSOLE);
 }
 
-void SOVGUI::showGraph()
+void JOTOCOINGUI::showGraph()
 {
     toolsAction->setChecked(true);
     walletFrame->gotoToolsPageTab(ToolsPage::TAB_GRAPH);
 }
 
-void SOVGUI::showPeers()
+void JOTOCOINGUI::showPeers()
 {
     toolsAction->setChecked(true);
     walletFrame->gotoToolsPageTab(ToolsPage::TAB_PEERS);
 }
 
-void SOVGUI::showRepair()
+void JOTOCOINGUI::showRepair()
 {
     toolsAction->setChecked(true);
     walletFrame->gotoToolsPageTab(ToolsPage::TAB_REPAIR);
 }
 
-void SOVGUI::showConfEditor()
+void JOTOCOINGUI::showConfEditor()
 {
     GUIUtil::openConfigfile();
 }
 
-void SOVGUI::showMNConfEditor()
+void JOTOCOINGUI::showMNConfEditor()
 {
     GUIUtil::openMNConfigfile();
 }
 
-void SOVGUI::showBackups()
+void JOTOCOINGUI::showBackups()
 {
     GUIUtil::showBackups();
 }
 
-void SOVGUI::showHelpMessageClicked()
+void JOTOCOINGUI::showHelpMessageClicked()
 {
     helpMessageDialog->show();
 }
 
-void SOVGUI::showPrivateSendHelpClicked()
+void JOTOCOINGUI::showPrivateSendHelpClicked()
 {
     if(!clientModel)
         return;
@@ -858,7 +858,7 @@ void SOVGUI::showPrivateSendHelpClicked()
 }
 
 #ifdef ENABLE_WALLET
-void SOVGUI::openClicked()
+void JOTOCOINGUI::openClicked()
 {
     OpenURIDialog dlg(this);
     if(dlg.exec())
@@ -867,31 +867,31 @@ void SOVGUI::openClicked()
     }
 }
 
-void SOVGUI::gotoOverviewPage()
+void JOTOCOINGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void SOVGUI::gotoHistoryPage()
+void JOTOCOINGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void SOVGUI::gotoSettingsPage() 
+void JOTOCOINGUI::gotoSettingsPage() 
 {
     settingsAction->setChecked(true);
     if(walletFrame) walletFrame->gotoSettingsPage();
 }
 
-void SOVGUI::gotoToolsPage()
+void JOTOCOINGUI::gotoToolsPage()
 {
     toolsAction->setChecked(true);
     if(toolsAction) walletFrame->gotoToolsPage();
 }
 
-void SOVGUI::gotoMasternodePage()
+void JOTOCOINGUI::gotoMasternodePage()
 {
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
@@ -900,30 +900,30 @@ void SOVGUI::gotoMasternodePage()
     }
 }
 
-void SOVGUI::gotoReceiveCoinsPage()
+void JOTOCOINGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void SOVGUI::gotoSendCoinsPage(QString addr)
+void JOTOCOINGUI::gotoSendCoinsPage(QString addr)
 {
     sendCoinsAction->setChecked(true);
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void SOVGUI::gotoSignMessageTab(QString addr)
+void JOTOCOINGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void SOVGUI::gotoVerifyMessageTab(QString addr)
+void JOTOCOINGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 #endif // ENABLE_WALLET
 
-void SOVGUI::updateNetworkState()
+void JOTOCOINGUI::updateNetworkState()
 {
     int count = clientModel->getNumConnections();
     QString icon;
@@ -938,7 +938,7 @@ void SOVGUI::updateNetworkState()
     }
 
     if (clientModel->getNetworkActive()) {
-        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to SOV network", "", count));
+        labelConnectionsIcon->setToolTip(tr("%n active connection(s) to JOTOCOIN network", "", count));
     } else {
         labelConnectionsIcon->setToolTip(tr("Network activity disabled"));
         icon = ":/icons/" + theme + "/network_disabled";
@@ -947,17 +947,17 @@ void SOVGUI::updateNetworkState()
     labelConnectionsIcon->setPixmap(platformStyle->SingleColorIcon(icon).pixmap(32, 32));
 }
 
-void SOVGUI::setNumConnections(int count)
+void JOTOCOINGUI::setNumConnections(int count)
 {
     updateNetworkState();
 }
 
-void SOVGUI::setNetworkActive(bool networkActive)
+void JOTOCOINGUI::setNetworkActive(bool networkActive)
 {
     updateNetworkState();
 }
 
-void SOVGUI::updateHeadersSyncProgressLabel()
+void JOTOCOINGUI::updateHeadersSyncProgressLabel()
 {
     int64_t headersTipTime = clientModel->getHeaderTipTime();
     int headersTipHeight = clientModel->getHeaderTipHeight();
@@ -966,7 +966,7 @@ void SOVGUI::updateHeadersSyncProgressLabel()
         progressBarLabel->setText(tr("Syncing Headers (%1%)...").arg(QString::number(100.0 / (headersTipHeight+estHeadersLeft)*headersTipHeight, 'f', 1)));
 }
 
-void SOVGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
+void JOTOCOINGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
 {
     if (modalOverlay)
     {
@@ -1024,7 +1024,7 @@ void SOVGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerific
 #ifdef ENABLE_WALLET
     if (walletFrame)
     {
-        if(secs < 25*60) // 90*60 in sov
+        if(secs < 25*60) // 90*60 in jotocoin
         {
             modalOverlay->showHide(true, true);
             // TODO instead of hiding it forever, we should add meaningful information about MN sync to the overlay
@@ -1078,7 +1078,7 @@ void SOVGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerific
     progressBar->setToolTip(tooltip);
 }
 
-void SOVGUI::setAdditionalDataSyncProgress(double nSyncProgress)
+void JOTOCOINGUI::setAdditionalDataSyncProgress(double nSyncProgress)
 {
     if(!clientModel)
         return;
@@ -1134,9 +1134,9 @@ void SOVGUI::setAdditionalDataSyncProgress(double nSyncProgress)
     progressBar->setToolTip(tooltip);
 }
 
-void SOVGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void JOTOCOINGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("SOV"); // default title
+    QString strTitle = tr("JOTOCOIN"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1162,7 +1162,7 @@ void SOVGUI::message(const QString &title, const QString &message, unsigned int 
             break;
         }
     }
-    // Append title to "SOV - "
+    // Append title to "JOTOCOIN - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 
@@ -1193,7 +1193,7 @@ void SOVGUI::message(const QString &title, const QString &message, unsigned int 
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void SOVGUI::changeEvent(QEvent *e)
+void JOTOCOINGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -1212,7 +1212,7 @@ void SOVGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void SOVGUI::closeEvent(QCloseEvent *event)
+void JOTOCOINGUI::closeEvent(QCloseEvent *event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if(clientModel && clientModel->getOptionsModel())
@@ -1229,7 +1229,7 @@ void SOVGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void SOVGUI::showEvent(QShowEvent *event)
+void JOTOCOINGUI::showEvent(QShowEvent *event)
 {
     // enable the debug window when the main window shows up
     openInfoAction->setEnabled(true);
@@ -1242,11 +1242,11 @@ void SOVGUI::showEvent(QShowEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-void SOVGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
+void JOTOCOINGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
 {
     // On new transaction, make an info balloon
     QString msg = tr("Date: %1\n").arg(date) +
-                  tr("Amount: %1\n").arg(SOVUnits::formatWithUnit(unit, amount, true)) +
+                  tr("Amount: %1\n").arg(JOTOCOINUnits::formatWithUnit(unit, amount, true)) +
                   tr("Type: %1\n").arg(type);
     if (!label.isEmpty())
         msg += tr("Label: %1\n").arg(label);
@@ -1257,14 +1257,14 @@ void SOVGUI::incomingTransaction(const QString& date, int unit, const CAmount& a
 }
 #endif // ENABLE_WALLET
 
-void SOVGUI::dragEnterEvent(QDragEnterEvent *event)
+void JOTOCOINGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void SOVGUI::dropEvent(QDropEvent *event)
+void JOTOCOINGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -1276,7 +1276,7 @@ void SOVGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-bool SOVGUI::eventFilter(QObject *object, QEvent *event)
+bool JOTOCOINGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -1289,7 +1289,7 @@ bool SOVGUI::eventFilter(QObject *object, QEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-bool SOVGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
+bool JOTOCOINGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     // URI has to be valid
     if (walletFrame && walletFrame->handlePaymentRequest(recipient))
@@ -1301,7 +1301,7 @@ bool SOVGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
     return false;
 }
 
-void SOVGUI::setHDStatus(int hdEnabled)
+void JOTOCOINGUI::setHDStatus(int hdEnabled)
 {
     QString theme = GUIUtil::getThemeName();
 
@@ -1312,7 +1312,7 @@ void SOVGUI::setHDStatus(int hdEnabled)
     labelWalletHDStatusIcon->setEnabled(hdEnabled);
 }
 
-void SOVGUI::setEncryptionStatus(int status)
+void JOTOCOINGUI::setEncryptionStatus(int status)
 {
     QString theme = GUIUtil::getThemeName();
     switch(status)
@@ -1359,7 +1359,7 @@ void SOVGUI::setEncryptionStatus(int status)
 }
 #endif // ENABLE_WALLET
 
-void SOVGUI::showNormalIfMinimized(bool fToggleHidden)
+void JOTOCOINGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     if(!clientModel)
         return;
@@ -1384,12 +1384,12 @@ void SOVGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void SOVGUI::toggleHidden()
+void JOTOCOINGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void SOVGUI::detectShutdown()
+void JOTOCOINGUI::detectShutdown()
 {
     if (ShutdownRequested())
     {
@@ -1399,7 +1399,7 @@ void SOVGUI::detectShutdown()
     }
 }
 
-void SOVGUI::showProgress(const QString &title, int nProgress)
+void JOTOCOINGUI::showProgress(const QString &title, int nProgress)
 {
     if (nProgress == 0)
     {
@@ -1422,7 +1422,7 @@ void SOVGUI::showProgress(const QString &title, int nProgress)
         progressDialog->setValue(nProgress);
 }
 
-void SOVGUI::setTrayIconVisible(bool fHideTrayIcon)
+void JOTOCOINGUI::setTrayIconVisible(bool fHideTrayIcon)
 {
     if (trayIcon)
     {
@@ -1430,13 +1430,13 @@ void SOVGUI::setTrayIconVisible(bool fHideTrayIcon)
     }
 }
 
-void SOVGUI::showModalOverlay()
+void JOTOCOINGUI::showModalOverlay()
 {
     if (modalOverlay && (progressBar->isVisible() || modalOverlay->isLayerVisible()))
         modalOverlay->toggleVisibility();
 }
 
-static bool ThreadSafeMessageBox(SOVGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(JOTOCOINGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -1453,21 +1453,21 @@ static bool ThreadSafeMessageBox(SOVGUI *gui, const std::string& message, const 
     return ret;
 }
 
-void SOVGUI::subscribeToCoreSignals()
+void JOTOCOINGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
     uiInterface.ThreadSafeQuestion.connect(boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void SOVGUI::unsubscribeFromCoreSignals()
+void JOTOCOINGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
     uiInterface.ThreadSafeQuestion.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void SOVGUI::toggleNetworkActive()
+void JOTOCOINGUI::toggleNetworkActive()
 {
     if (clientModel) {
         clientModel->setNetworkActive(!clientModel->getNetworkActive());
@@ -1475,7 +1475,7 @@ void SOVGUI::toggleNetworkActive()
 }
 
 /** Get restart command-line parameters and request restart */
-void SOVGUI::handleRestart(QStringList args)
+void JOTOCOINGUI::handleRestart(QStringList args)
 {
     if (!ShutdownRequested())
         Q_EMIT requestedRestart(args);
@@ -1487,12 +1487,12 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
 {
     createContextMenu();
     setToolTip(tr("Unit to show amounts in. Click to select another unit."));
-    QList<SOVUnits::Unit> units = SOVUnits::availableUnits();
+    QList<JOTOCOINUnits::Unit> units = JOTOCOINUnits::availableUnits();
     int max_width = 0;
     const QFontMetrics fm(font());
-    Q_FOREACH (const SOVUnits::Unit unit, units)
+    Q_FOREACH (const JOTOCOINUnits::Unit unit, units)
     {
-        max_width = qMax(max_width, fm.width(SOVUnits::name(unit)));
+        max_width = qMax(max_width, fm.width(JOTOCOINUnits::name(unit)));
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
@@ -1509,9 +1509,9 @@ void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event)
 void UnitDisplayStatusBarControl::createContextMenu()
 {
     menu = new QMenu(this);
-    Q_FOREACH(SOVUnits::Unit u, SOVUnits::availableUnits())
+    Q_FOREACH(JOTOCOINUnits::Unit u, JOTOCOINUnits::availableUnits())
     {
-        QAction *menuAction = new QAction(QString(SOVUnits::name(u)), this);
+        QAction *menuAction = new QAction(QString(JOTOCOINUnits::name(u)), this);
         menuAction->setData(QVariant(u));
         menu->addAction(menuAction);
     }
@@ -1536,7 +1536,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *optionsModel)
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
-    setText(SOVUnits::name(newUnits));
+    setText(JOTOCOINUnits::name(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */

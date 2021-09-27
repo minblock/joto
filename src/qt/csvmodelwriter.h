@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_CSVMODELWRITER_H
-#define SOV_QT_CSVMODELWRITER_H
+#ifndef JOTOCOIN_QT_CSVMODELWRITER_H
+#define JOTOCOIN_QT_CSVMODELWRITER_H
 
 #include <QList>
 #include <QObject>
@@ -43,4 +43,4 @@ private:
     QList<Column> columns;
 };
 
-#endif // SOV_QT_CSVMODELWRITER_H
+#endif // JOTOCOIN_QT_CSVMODELWRITER_H

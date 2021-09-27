@@ -1,20 +1,20 @@
 <!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/translations">
-        <file alias="bg">locale/sov_bg.qm</file>
-        <file alias="de">locale/sov_de.qm</file>
-        <file alias="en">locale/sov_en.qm</file>
-        <file alias="es">locale/sov_es.qm</file>
-        <file alias="fi">locale/sov_fi.qm</file>
-        <file alias="fr">locale/sov_fr.qm</file>
-        <file alias="it">locale/sov_it.qm</file>
-        <file alias="ja">locale/sov_ja.qm</file>
-        <file alias="pl">locale/sov_pl.qm</file>
-        <file alias="pt">locale/sov_pt.qm</file>
-        <file alias="ru">locale/sov_ru.qm</file>
-        <file alias="sk">locale/sov_sk.qm</file>
-        <file alias="sv">locale/sov_sv.qm</file>
-        <file alias="vi">locale/sov_vi.qm</file>
-        <file alias="zh_CN">locale/sov_zh_CN.qm</file>
-        <file alias="zh_TW">locale/sov_zh_TW.qm</file>
+        <file alias="bg">locale/jotocoin_bg.qm</file>
+        <file alias="de">locale/jotocoin_de.qm</file>
+        <file alias="en">locale/jotocoin_en.qm</file>
+        <file alias="es">locale/jotocoin_es.qm</file>
+        <file alias="fi">locale/jotocoin_fi.qm</file>
+        <file alias="fr">locale/jotocoin_fr.qm</file>
+        <file alias="it">locale/jotocoin_it.qm</file>
+        <file alias="ja">locale/jotocoin_ja.qm</file>
+        <file alias="pl">locale/jotocoin_pl.qm</file>
+        <file alias="pt">locale/jotocoin_pt.qm</file>
+        <file alias="ru">locale/jotocoin_ru.qm</file>
+        <file alias="sk">locale/jotocoin_sk.qm</file>
+        <file alias="sv">locale/jotocoin_sv.qm</file>
+        <file alias="vi">locale/jotocoin_vi.qm</file>
+        <file alias="zh_CN">locale/jotocoin_zh_CN.qm</file>
+        <file alias="zh_TW">locale/jotocoin_zh_TW.qm</file>
     </qresource>
 </RCC>

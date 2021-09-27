@@ -3,36 +3,36 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "sovunits.h"
+#include "jotocoinunits.h"
 #include "chainparams.h"
 #include "primitives/transaction.h"
 
 #include <QSettings>
 #include <QStringList>
 
-SOVUnits::SOVUnits(QObject *parent):
+JOTOCOINUnits::JOTOCOINUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<SOVUnits::Unit> SOVUnits::availableUnits()
+QList<JOTOCOINUnits::Unit> JOTOCOINUnits::availableUnits()
 {
-    QList<SOVUnits::Unit> unitlist;
-    unitlist.append(SOV);
-    unitlist.append(mSOV);
-    unitlist.append(uSOV);
+    QList<JOTOCOINUnits::Unit> unitlist;
+    unitlist.append(JOTOCOIN);
+    unitlist.append(mJOTOCOIN);
+    unitlist.append(uJOTOCOIN);
     unitlist.append(duffs);
     return unitlist;
 }
 
-bool SOVUnits::valid(int unit)
+bool JOTOCOINUnits::valid(int unit)
 {
     switch(unit)
     {
-    case SOV:
-    case mSOV:
-    case uSOV:
+    case JOTOCOIN:
+    case mJOTOCOIN:
+    case uJOTOCOIN:
     case duffs:
         return true;
     default:
@@ -40,15 +40,15 @@ bool SOVUnits::valid(int unit)
     }
 }
 
-QString SOVUnits::name(int unit)
+QString JOTOCOINUnits::name(int unit)
 {
     if(Params().NetworkIDString() == CBaseChainParams::MAIN)
     {
         switch(unit)
         {
-            case SOV: return QString("SOV");
-            case mSOV: return QString("mSOV");
-            case uSOV: return QString::fromUtf8("μSOV");
+            case JOTOCOIN: return QString("JOTOCOIN");
+            case mJOTOCOIN: return QString("mJOTOCOIN");
+            case uJOTOCOIN: return QString::fromUtf8("μJOTOCOIN");
             case duffs: return QString("duffs");
             default: return QString("???");
         }
@@ -57,25 +57,25 @@ QString SOVUnits::name(int unit)
     {
         switch(unit)
         {
-            case SOV: return QString("tSOV");
-            case mSOV: return QString("mtSOV");
-            case uSOV: return QString::fromUtf8("μtSOV");
+            case JOTOCOIN: return QString("tJOTOCOIN");
+            case mJOTOCOIN: return QString("mtJOTOCOIN");
+            case uJOTOCOIN: return QString::fromUtf8("μtJOTOCOIN");
             case duffs: return QString("tduffs");
             default: return QString("???");
         }
     }
 }
 
-QString SOVUnits::description(int unit)
+QString JOTOCOINUnits::description(int unit)
 {
     if(Params().NetworkIDString() == CBaseChainParams::MAIN)
     {
         switch(unit)
         {
-            case SOV: return QString("SOV");
-            case mSOV: return QString("Milli-SOV (1 / 1" THIN_SP_UTF8 "000)");
-            case uSOV: return QString("Micro-SOV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-SOV (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case JOTOCOIN: return QString("JOTOCOIN");
+            case mJOTOCOIN: return QString("Milli-JOTOCOIN (1 / 1" THIN_SP_UTF8 "000)");
+            case uJOTOCOIN: return QString("Micro-JOTOCOIN (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-JOTOCOIN (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -83,40 +83,40 @@ QString SOVUnits::description(int unit)
     {
         switch(unit)
         {
-            case SOV: return QString("TestSOVs");
-            case mSOV: return QString("Milli-TestSOV (1 / 1" THIN_SP_UTF8 "000)");
-            case uSOV: return QString("Micro-TestSOV (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case duffs: return QString("Ten Nano-TestSOV (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case JOTOCOIN: return QString("TestJOTOCOINs");
+            case mJOTOCOIN: return QString("Milli-TestJOTOCOIN (1 / 1" THIN_SP_UTF8 "000)");
+            case uJOTOCOIN: return QString("Micro-TestJOTOCOIN (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case duffs: return QString("Ten Nano-TestJOTOCOIN (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
 }
 
-qint64 SOVUnits::factor(int unit)
+qint64 JOTOCOINUnits::factor(int unit)
 {
     switch(unit)
     {
-    case SOV:  return 100000000;
-    case mSOV: return 100000;
-    case uSOV: return 100;
+    case JOTOCOIN:  return 100000000;
+    case mJOTOCOIN: return 100000;
+    case uJOTOCOIN: return 100;
     case duffs: return 1;
     default:   return 100000000;
     }
 }
 
-int SOVUnits::decimals(int unit)
+int JOTOCOINUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case SOV: return 8;
-    case mSOV: return 5;
-    case uSOV: return 2;
+    case JOTOCOIN: return 8;
+    case mJOTOCOIN: return 5;
+    case uJOTOCOIN: return 2;
     case duffs: return 0;
     default: return 0;
     }
 }
 
-QString SOVUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
+QString JOTOCOINUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -159,19 +159,19 @@ QString SOVUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyl
 // Please take care to use formatHtmlWithUnit instead, when
 // appropriate.
 
-QString SOVUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString JOTOCOINUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
 }
 
-QString SOVUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString JOTOCOINUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
     return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
 }
 
-QString SOVUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString JOTOCOINUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QSettings settings;
     int digits = settings.value("digits").toInt();
@@ -182,14 +182,14 @@ QString SOVUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, 
     return result + QString(" ") + name(unit);
 }
 
-QString SOVUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString JOTOCOINUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QString str(floorWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
     return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
 }
 
-bool SOVUnits::parse(int unit, const QString &value, CAmount *val_out)
+bool JOTOCOINUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -228,23 +228,23 @@ bool SOVUnits::parse(int unit, const QString &value, CAmount *val_out)
     return ok;
 }
 
-QString SOVUnits::getAmountColumnTitle(int unit)
+QString JOTOCOINUnits::getAmountColumnTitle(int unit)
 {
     QString amountTitle = QObject::tr("Amount");
-    if (SOVUnits::valid(unit))
+    if (JOTOCOINUnits::valid(unit))
     {
-        amountTitle += " ("+SOVUnits::name(unit) + ")";
+        amountTitle += " ("+JOTOCOINUnits::name(unit) + ")";
     }
     return amountTitle;
 }
 
-int SOVUnits::rowCount(const QModelIndex &parent) const
+int JOTOCOINUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant SOVUnits::data(const QModelIndex &index, int role) const
+QVariant JOTOCOINUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())
@@ -264,7 +264,7 @@ QVariant SOVUnits::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-CAmount SOVUnits::maxMoney()
+CAmount JOTOCOINUnits::maxMoney()
 {
     return MAX_MONEY;
 }

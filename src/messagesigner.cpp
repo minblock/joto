@@ -11,7 +11,7 @@
 
 bool CMessageSigner::GetKeysFromSecret(const std::string strSecret, CKey& keyRet, CPubKey& pubkeyRet)
 {
-    CSOVSecret vchSecret;
+    CJOTOCOINSecret vchSecret;
 
     if(!vchSecret.SetString(strSecret)) return false;
 

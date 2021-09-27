@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_COMPAT_H
-#define SOV_COMPAT_H
+#ifndef JOTOCOIN_COMPAT_H
+#define JOTOCOIN_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #ifdef WIN32
@@ -101,4 +101,4 @@ bool static inline IsSelectableSocket(SOCKET s) {
 #endif
 }
 
-#endif // SOV_COMPAT_H
+#endif // JOTOCOIN_COMPAT_H

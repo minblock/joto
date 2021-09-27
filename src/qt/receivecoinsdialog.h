@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_RECEIVECOINSDIALOG_H
-#define SOV_QT_RECEIVECOINSDIALOG_H
+#ifndef JOTOCOIN_QT_RECEIVECOINSDIALOG_H
+#define JOTOCOIN_QT_RECEIVECOINSDIALOG_H
 
 #include "guiutil.h"
 
@@ -27,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** Dialog for requesting payment of sov */
+/** Dialog for requesting payment of jotocoin */
 class ReceiveCoinsDialog : public QDialog
 {
     Q_OBJECT
@@ -79,4 +79,4 @@ private Q_SLOTS:
     void updateRequestView(int);
 };
 
-#endif // SOV_QT_RECEIVECOINSDIALOG_H
+#endif // JOTOCOIN_QT_RECEIVECOINSDIALOG_H

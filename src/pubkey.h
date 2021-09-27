@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_PUBKEY_H
-#define SOV_PUBKEY_H
+#ifndef JOTOCOIN_PUBKEY_H
+#define JOTOCOIN_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -245,4 +245,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // SOV_PUBKEY_H
+#endif // JOTOCOIN_PUBKEY_H

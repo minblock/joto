@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_THREADINTERRUPT_H
-#define SOV_THREADINTERRUPT_H
+#ifndef JOTOCOIN_THREADINTERRUPT_H
+#define JOTOCOIN_THREADINTERRUPT_H
 
 #include <atomic>
 #include <chrono>
@@ -31,4 +31,4 @@ private:
     std::atomic<bool> flag;
 };
 
-#endif //SOV_THREADINTERRUPT_H
+#endif //JOTOCOIN_THREADINTERRUPT_H

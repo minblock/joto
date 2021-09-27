@@ -7,7 +7,7 @@
 # Test rpc http basics
 #
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
 try:
@@ -19,7 +19,7 @@ try:
 except ImportError:
     import urlparse
 
-class HTTPBasicsTest (SOVTestFramework):
+class HTTPBasicsTest (JOTOCOINTestFramework):
     def setup_nodes(self):
         return start_nodes(4, self.options.tmpdir)
 
@@ -94,7 +94,7 @@ class HTTPBasicsTest (SOVTestFramework):
         conn.request('POST', '/', '{"method": "getbestblockhash"}', headers)
         out1 = conn.getresponse().read()
         assert(b'"error":null' in out1)
-        assert(conn.sock!=None) #connection must be closed because sovd should use keep-alive by default
+        assert(conn.sock!=None) #connection must be closed because jotocoind should use keep-alive by default
 
         # Check excessive request size
         conn = httplib.HTTPConnection(urlNode2.hostname, urlNode2.port)

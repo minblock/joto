@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_SENDCOINSDIALOG_H
-#define SOV_QT_SENDCOINSDIALOG_H
+#ifndef JOTOCOIN_QT_SENDCOINSDIALOG_H
+#define JOTOCOIN_QT_SENDCOINSDIALOG_H
 
 #include "walletmodel.h"
 
@@ -28,7 +28,7 @@ QT_END_NAMESPACE
 
 const int defaultConfirmTarget = 25;
 
-/** Dialog for sending sovs */
+/** Dialog for sending jotocoins */
 class SendCoinsDialog : public QDialog
 {
     Q_OBJECT
@@ -103,4 +103,4 @@ Q_SIGNALS:
     void message(const QString &title, const QString &message, unsigned int style);
 };
 
-#endif // SOV_QT_SENDCOINSDIALOG_H
+#endif // JOTOCOIN_QT_SENDCOINSDIALOG_H

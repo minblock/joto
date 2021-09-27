@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_TXDB_H
-#define SOV_TXDB_H
+#ifndef JOTOCOIN_TXDB_H
+#define JOTOCOIN_TXDB_H
 
 #include "coins.h"
 #include "dbwrapper.h"
@@ -36,7 +36,7 @@ static const int64_t nMinDbCache = 4;
 static const int64_t nMaxBlockDBCache = 2;
 //! Max memory allocated to block tree DB specific cache, if -txindex (MiB)
 // Unlike for the UTXO database, for the txindex scenario the leveldb cache make
-// a meaningful difference: https://github.com/sov/sov/pull/8273#issuecomment-229601991
+// a meaningful difference: https://github.com/jotocoin/jotocoin/pull/8273#issuecomment-229601991
 static const int64_t nMaxBlockDBAndTxIndexCache = 1024;
 //! Max memory allocated to coin DB specific cache (MiB)
 static const int64_t nMaxCoinsDBCache = 8;
@@ -140,4 +140,4 @@ public:
     bool LoadBlockIndexGuts(boost::function<CBlockIndex*(const uint256&)> insertBlockIndex);
 };
 
-#endif // SOV_TXDB_H
+#endif // JOTOCOIN_TXDB_H

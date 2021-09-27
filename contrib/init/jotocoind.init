@@ -1,36 +1,36 @@
 #!/bin/bash
 #
-#  sovd The SOV Core server.
+#  jotocoind The JOTOCOIN Core server.
 #
 #
 # chkconfig: 345 80 20
-# description: sovd
-# processname: sovd
+# description: jotocoind
+# processname: jotocoind
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/sovd, see below
-if [ -f /etc/sysconfig/sovd ]; then
-        . /etc/sysconfig/sovd
+# you can override defaults in /etc/sysconfig/jotocoind, see below
+if [ -f /etc/sysconfig/jotocoind ]; then
+        . /etc/sysconfig/jotocoind
 fi
 
 RETVAL=0
 
-prog=sovd
-# you can override the lockfile via SOVD_LOCKFILE in /etc/sysconfig/sovd
-lockfile=${SOVD_LOCKFILE-/var/lock/subsys/sovd}
+prog=jotocoind
+# you can override the lockfile via JOTOCOIND_LOCKFILE in /etc/sysconfig/jotocoind
+lockfile=${JOTOCOIND_LOCKFILE-/var/lock/subsys/jotocoind}
 
-# sovd defaults to /usr/bin/sovd, override with SOVD_BIN
-sovd=${SOVD_BIN-/usr/bin/sovd}
+# jotocoind defaults to /usr/bin/jotocoind, override with JOTOCOIND_BIN
+jotocoind=${JOTOCOIND_BIN-/usr/bin/jotocoind}
 
-# sovd opts default to -disablewallet, override with SOVD_OPTS
-sovd_opts=${SOVD_OPTS--disablewallet}
+# jotocoind opts default to -disablewallet, override with JOTOCOIND_OPTS
+jotocoind_opts=${JOTOCOIND_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "
-    daemon $DAEMONOPTS $sovd $sovd_opts
+    daemon $DAEMONOPTS $jotocoind $jotocoind_opts
     RETVAL=$?
     echo
     [ $RETVAL -eq 0 ] && touch $lockfile

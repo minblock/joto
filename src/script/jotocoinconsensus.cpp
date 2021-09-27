@@ -3,7 +3,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "sovconsensus.h"
+#include "jotocoinconsensus.h"
 
 #include "primitives/transaction.h"
 #include "pubkey.h"
@@ -54,7 +54,7 @@ private:
     size_t m_remaining;
 };
 
-inline int set_error(sovconsensus_error* ret, sovconsensus_error serror)
+inline int set_error(jotocoinconsensus_error* ret, jotocoinconsensus_error serror)
 {
     if (ret)
         *ret = serror;
@@ -69,30 +69,30 @@ struct ECCryptoClosure
 ECCryptoClosure instance_of_eccryptoclosure;
 }
 
-int sovconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
+int jotocoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
                                     const unsigned char *txTo        , unsigned int txToLen,
-                                    unsigned int nIn, unsigned int flags, sovconsensus_error* err)
+                                    unsigned int nIn, unsigned int flags, jotocoinconsensus_error* err)
 {
     try {
         TxInputStream stream(SER_NETWORK, PROTOCOL_VERSION, txTo, txToLen);
         CTransaction tx;
         stream >> tx;
         if (nIn >= tx.vin.size())
-            return set_error(err, sovconsensus_ERR_TX_INDEX);
+            return set_error(err, jotocoinconsensus_ERR_TX_INDEX);
         if (tx.GetSerializeSize(SER_NETWORK, PROTOCOL_VERSION) != txToLen)
-            return set_error(err, sovconsensus_ERR_TX_SIZE_MISMATCH);
+            return set_error(err, jotocoinconsensus_ERR_TX_SIZE_MISMATCH);
 
          // Regardless of the verification result, the tx did not error.
-         set_error(err, sovconsensus_ERR_OK);
+         set_error(err, jotocoinconsensus_ERR_OK);
 
         return VerifyScript(tx.vin[nIn].scriptSig, CScript(scriptPubKey, scriptPubKey + scriptPubKeyLen), flags, TransactionSignatureChecker(&tx, nIn), NULL);
     } catch (const std::exception&) {
-        return set_error(err, sovconsensus_ERR_TX_DESERIALIZE); // Error deserializing
+        return set_error(err, jotocoinconsensus_ERR_TX_DESERIALIZE); // Error deserializing
     }
 }
 
-unsigned int sovconsensus_version()
+unsigned int jotocoinconsensus_version()
 {
     // Just use the API version for now
-    return SOVCONSENSUS_API_VER;
+    return JOTOCOINCONSENSUS_API_VER;
 }

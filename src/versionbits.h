@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_CONSENSUS_VERSIONBITS
-#define SOV_CONSENSUS_VERSIONBITS
+#ifndef JOTOCOIN_CONSENSUS_VERSIONBITS
+#define JOTOCOIN_CONSENSUS_VERSIONBITS
 
 #include "chain.h"
 #include <map>

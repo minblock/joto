@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_MERKLE
-#define SOV_MERKLE
+#ifndef JOTOCOIN_MERKLE
+#define JOTOCOIN_MERKLE
 
 #include <stdint.h>
 #include <vector>

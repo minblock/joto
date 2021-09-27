@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../sov.qrc"/>
+  <include location="../jotocoin.qrc"/>
  </resources>
  <connections/>
 </ui>

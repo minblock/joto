@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_PRIMITIVES_BLOCK_H
-#define SOV_PRIMITIVES_BLOCK_H
+#ifndef JOTOCOIN_PRIMITIVES_BLOCK_H
+#define JOTOCOIN_PRIMITIVES_BLOCK_H
 
 #include "primitives/transaction.h"
 #include "serialize.h"
@@ -160,4 +160,4 @@ struct CBlockLocator
     }
 };
 
-#endif // SOV_PRIMITIVES_BLOCK_H
+#endif // JOTOCOIN_PRIMITIVES_BLOCK_H

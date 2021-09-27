@@ -2,13 +2,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_UTILITYDIALOG_H
-#define SOV_QT_UTILITYDIALOG_H
+#ifndef JOTOCOIN_QT_UTILITYDIALOG_H
+#define JOTOCOIN_QT_UTILITYDIALOG_H
 
 #include <QDialog>
 #include <QObject>
 
-class SOVGUI;
+class JOTOCOINGUI;
 class ClientModel;
 
 namespace Ui {
@@ -49,10 +49,10 @@ class ShutdownWindow : public QWidget
 
 public:
     ShutdownWindow(QWidget *parent=0, Qt::WindowFlags f=0);
-    static QWidget *showShutdownWindow(SOVGUI *window);
+    static QWidget *showShutdownWindow(JOTOCOINGUI *window);
 
 protected:
     void closeEvent(QCloseEvent *event);
 };
 
-#endif // SOV_QT_UTILITYDIALOG_H
+#endif // JOTOCOIN_QT_UTILITYDIALOG_H

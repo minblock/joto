@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_QT_TRANSACTIONDESC_H
-#define SOV_QT_TRANSACTIONDESC_H
+#ifndef JOTOCOIN_QT_TRANSACTIONDESC_H
+#define JOTOCOIN_QT_TRANSACTIONDESC_H
 
 #include <QObject>
 #include <QString>
@@ -28,4 +28,4 @@ private:
     static QString FormatTxStatus(const CWalletTx& wtx);
 };
 
-#endif // SOV_QT_TRANSACTIONDESC_H
+#endif // JOTOCOIN_QT_TRANSACTIONDESC_H

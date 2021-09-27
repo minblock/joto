@@ -5,7 +5,7 @@
 #
 
 from test_framework.mininode import *
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 import time
 
@@ -80,15 +80,15 @@ class TestNode(NodeConnCB):
         self.ping_counter += 1
         return success
 
-class MaxUploadTest(SOVTestFramework):
+class MaxUploadTest(JOTOCOINTestFramework):
     def __init__(self):
         self.utxo = []
         self.txouts = gen_return_txouts()
  
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("SOVD", "sovd"),
-                          help="sovd binary to test")
+                          default=os.getenv("JOTOCOIND", "jotocoind"),
+                          help="jotocoind binary to test")
 
     def setup_chain(self):
         initialize_chain_clean(self.options.tmpdir, 2)

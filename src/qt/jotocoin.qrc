@@ -1,6 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/icons">
-        <file alias="sov">res/icons/sov.png</file>
+        <file alias="jotocoin">res/icons/jotocoin.png</file>
         <file alias="prompticon">res/icons/chevron.png</file>
         <file alias="warning">res/icons/warning.png</file>
     </qresource>
@@ -251,7 +251,7 @@
     </qresource>
     <qresource prefix="/images/drkblue">
         <file alias="about">res/images/drkblue/about.png</file>
-        <file alias="sov_logo_horizontal">res/images/drkblue/sov_logo_horizontal.png</file>
+        <file alias="jotocoin_logo_horizontal">res/images/drkblue/jotocoin_logo_horizontal.png</file>
         <file alias="unchecked">res/images/drkblue/unchecked.png</file>
         <file alias="checked">res/images/drkblue/checked.png</file>
         <file alias="drkblue_downArrow">res/images/drkblue/drkblue_downArrow.png</file>
@@ -266,7 +266,7 @@
     </qresource>
     <qresource prefix="/images/crownium">
         <file alias="about">res/images/crownium/about.png</file>
-        <file alias="sov_logo_horizontal">res/images/crownium/sov_logo_horizontal.png</file>
+        <file alias="jotocoin_logo_horizontal">res/images/crownium/jotocoin_logo_horizontal.png</file>
         <file alias="unchecked">res/images/crownium/unchecked.png</file>
         <file alias="checked">res/images/crownium/checked.png</file>
         <file alias="drkblue_downArrow">res/images/crownium/drkblue_downArrow.png</file>
@@ -281,7 +281,7 @@
     </qresource>
     <qresource prefix="/images/light">
         <file alias="about">res/images/light/about.png</file>
-        <file alias="sov_logo_horizontal">res/images/light/sov_logo_horizontal.png</file>
+        <file alias="jotocoin_logo_horizontal">res/images/light/jotocoin_logo_horizontal.png</file>
         <file alias="unchecked">res/images/light/unchecked.png</file>
         <file alias="checked">res/images/light/checked.png</file>
         <file alias="drkblue_downArrow">res/images/light/drkblue_downArrow.png</file>
@@ -302,7 +302,7 @@
     </qresource>
     <qresource prefix="/images/trad">
         <file alias="about">res/images/trad/about.png</file>
-        <file alias="sov_logo_horizontal">res/images/trad/sov_logo_horizontal.png</file>
+        <file alias="jotocoin_logo_horizontal">res/images/trad/jotocoin_logo_horizontal.png</file>
         <file alias="drkblue_downArrow">res/images/trad/drkblue_downArrow.png</file>
         <file alias="drkblue_downArrow_small">res/images/trad/drkblue_downArrow_small.png</file>
         <file alias="drkblue_upArrow_small">res/images/trad/drkblue_upArrow_small.png</file>

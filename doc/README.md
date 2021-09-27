@@ -1,36 +1,36 @@
-SOV Core 0.12.1
+JOTOCOIN Core 0.12.1
 =====================
 
-This is the official reference wallet for SOV digital currency and comprises the backbone of the SOV peer-to-peer network. You can [download SOV Core](https://www.sov.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for JOTOCOIN digital currency and comprises the backbone of the JOTOCOIN peer-to-peer network. You can [download JOTOCOIN Core](https://www.jotocoin.org/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
-The following are some helpful notes on how to run SOV on your native platform.
+The following are some helpful notes on how to run JOTOCOIN on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/sov-qt` (GUI) or
-- `bin/sovd` (headless)
+- `bin/jotocoin-qt` (GUI) or
+- `bin/jotocoind` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run sov-qt.exe.
+Unpack the files into a directory, and then run jotocoin-qt.exe.
 
 ### OS X
 
-Drag SOV-Qt to your applications folder, and then run SOV-Qt.
+Drag JOTOCOIN-Qt to your applications folder, and then run JOTOCOIN-Qt.
 
 ### Need Help?
 
-* See the [SOV documentation](https://dashpay.atlassian.net/wiki/display/DOC)
+* See the [JOTOCOIN documentation](https://dashpay.atlassian.net/wiki/display/DOC)
 for help and more information.
 * Ask for help on the [BitcoinTalk](https://bitcointalk.org/) forums.
 
 Building
 ---------------------
-The following are developer notes on how to build SOV Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build JOTOCOIN Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -40,7 +40,7 @@ The following are developer notes on how to build SOV Core on your native platfo
 
 Development
 ---------------------
-The SOV Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The JOTOCOIN Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -56,8 +56,8 @@ The SOV Core repo's [root README](/README.md) contains relevant information on t
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [SOVTalk](https://sovtalk.org/) forums, in the Development & Technical Discussion board.
-* Discuss on [#sovcrypto](http://webchat.freenode.net/?channels=sovcrypto) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=sovcrypto).
+* Discuss on the [JOTOCOINTalk](https://jotocointalk.org/) forums, in the Development & Technical Discussion board.
+* Discuss on [#jotocoincrypto](http://webchat.freenode.net/?channels=jotocoincrypto) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=jotocoincrypto).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

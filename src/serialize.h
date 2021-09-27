@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_SERIALIZE_H
-#define SOV_SERIALIZE_H
+#ifndef JOTOCOIN_SERIALIZE_H
+#define JOTOCOIN_SERIALIZE_H
 
 #include "compat/endian.h"
 
@@ -1055,4 +1055,4 @@ inline void SerReadWriteMany(Stream& s, int nType, int nVersion, CSerActionUnser
     ::UnserializeMany(s, nType, nVersion, args...);
 }
 
-#endif // SOV_SERIALIZE_H
+#endif // JOTOCOIN_SERIALIZE_H

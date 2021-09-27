@@ -19,7 +19,7 @@ std::map<uint256, CSporkMessage> mapSporks;
 
 void CSporkManager::ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv, CConnman& connman)
 {
-    if(fLiteMode) return; // disable all SOV specific functionality
+    if(fLiteMode) return; // disable all JOTOCOIN specific functionality
 
     if (strCommand == NetMsgType::SPORK) {
 

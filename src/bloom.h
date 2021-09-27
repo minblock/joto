@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_BLOOM_H
-#define SOV_BLOOM_H
+#ifndef JOTOCOIN_BLOOM_H
+#define JOTOCOIN_BLOOM_H
 
 #include "serialize.h"
 
@@ -135,4 +135,4 @@ private:
 };
 
 
-#endif // SOV_BLOOM_H
+#endif // JOTOCOIN_BLOOM_H

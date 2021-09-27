@@ -1,7 +1,7 @@
 // Copyright (c) 2014-2017 The Dash Core developers
 // Distributed under the MIT software license, see the accompanying
-#ifndef SOV_HDCHAIN_H
-#define SOV_HDCHAIN_H
+#ifndef JOTOCOIN_HDCHAIN_H
+#define JOTOCOIN_HDCHAIN_H
 
 #include "key.h"
 #include "sync.h"
@@ -149,4 +149,4 @@ public:
     std::string GetKeyPath() const;
 };
 
-#endif // SOV_HDCHAIN_H
+#endif // JOTOCOIN_HDCHAIN_H

@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SOV_ZMQ_ZMQCONFIG_H
-#define SOV_ZMQ_ZMQCONFIG_H
+#ifndef JOTOCOIN_ZMQ_ZMQCONFIG_H
+#define JOTOCOIN_ZMQ_ZMQCONFIG_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/sov-config.h"
+#include "config/jotocoin-config.h"
 #endif
 
 #include <stdarg.h>
@@ -21,4 +21,4 @@
 
 void zmqError(const char *str);
 
-#endif // SOV_ZMQ_ZMQCONFIG_H
+#endif // JOTOCOIN_ZMQ_ZMQCONFIG_H

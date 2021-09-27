@@ -5,12 +5,12 @@
 
 # Exercise the wallet keypool, and interaction with wallet encryption/locking
 
-# Add python-sovrpc to module search path:
+# Add python-jotocoinrpc to module search path:
 
-from test_framework.test_framework import SOVTestFramework
+from test_framework.test_framework import JOTOCOINTestFramework
 from test_framework.util import *
 
-class KeyPoolTest(SOVTestFramework):
+class KeyPoolTest(JOTOCOINTestFramework):
 
     def run_test(self):
         nodes = self.nodes
@@ -21,7 +21,7 @@ class KeyPoolTest(SOVTestFramework):
 
         # Encrypt wallet and wait to terminate
         nodes[0].encryptwallet('test')
-        sovd_processes[0].wait()
+        jotocoind_processes[0].wait()
         # Restart node 0
         nodes[0] = start_node(0, self.options.tmpdir, ['-usehd=1'])
         # Keep creating keys
