@@ -243,11 +243,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop JOTO Core server.");
+            "\nStop SOV Core server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "JOTO Core server stopping";
+    return "SOV Core server stopping";
 }
 
 /**
@@ -343,20 +343,20 @@ static const CRPCCommand vRPCCommands[] =
     { "hidden",             "resendwallettransactions", &resendwallettransactions, true},
 #endif
 
-    /* JOTO features */
-    { "joto",               "masternode",             &masternode,             true  },
-    { "joto",               "masternodelist",         &masternodelist,         true  },
-    { "joto",               "masternodebroadcast",    &masternodebroadcast,    true  },
-    { "joto",               "gobject",                &gobject,                true  },
-    { "joto",               "getgovernanceinfo",      &getgovernanceinfo,      true  },
-    { "joto",               "getsuperblockbudget",    &getsuperblockbudget,    true  },
-    { "joto",               "voteraw",                &voteraw,                true  },
-    { "joto",               "mnsync",                 &mnsync,                 true  },
-    { "joto",               "spork",                  &spork,                  true  },
-    { "joto",               "getpoolinfo",            &getpoolinfo,            true  },
-    { "joto",               "sentinelping",           &sentinelping,           true  },
+    /* SOV features */
+    { "sov",               "masternode",             &masternode,             true  },
+    { "sov",               "masternodelist",         &masternodelist,         true  },
+    { "sov",               "masternodebroadcast",    &masternodebroadcast,    true  },
+    { "sov",               "gobject",                &gobject,                true  },
+    { "sov",               "getgovernanceinfo",      &getgovernanceinfo,      true  },
+    { "sov",               "getsuperblockbudget",    &getsuperblockbudget,    true  },
+    { "sov",               "voteraw",                &voteraw,                true  },
+    { "sov",               "mnsync",                 &mnsync,                 true  },
+    { "sov",               "spork",                  &spork,                  true  },
+    { "sov",               "getpoolinfo",            &getpoolinfo,            true  },
+    { "sov",               "sentinelping",           &sentinelping,           true  },
 #ifdef ENABLE_WALLET
-    { "joto",               "privatesend",            &privatesend,            false },
+    { "sov",               "privatesend",            &privatesend,            false },
 
     /* Wallet */
     { "wallet",             "keepass",                &keepass,                true },
@@ -580,7 +580,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(const std::string& methodname, const std::string& args)
 {
-    return "> joto-cli " + methodname + " " + args + "\n";
+    return "> sov-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(const std::string& methodname, const std::string& args)

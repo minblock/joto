@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/joto-config.h"
+#include "config/sov-config.h"
 #endif
 
 #include "util.h"
@@ -104,7 +104,7 @@ namespace boost {
 
 using namespace std;
 
-//JOTO only features
+//SOV only features
 bool fMasterNode = false;
 bool fLiteMode = false;
 /**
@@ -116,8 +116,8 @@ bool fLiteMode = false;
 */
 int nWalletBackups = 10;
 
-const char * const JOTO_CONF_FILENAME = "joto.conf";
-const char * const JOTO_PID_FILENAME = "jotod.pid";
+const char * const SOV_CONF_FILENAME = "sov.conf";
+const char * const SOV_PID_FILENAME = "sovd.pid";
 
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
@@ -271,8 +271,8 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "joto" is a composite category enabling all JOTO-related debug output
-            if(ptrCategory->count(string("joto"))) {
+            // "sov" is a composite category enabling all SOV-related debug output
+            if(ptrCategory->count(string("sov"))) {
                 ptrCategory->insert(string("privatesend"));
                 ptrCategory->insert(string("instantsend"));
                 ptrCategory->insert(string("masternode"));
@@ -496,7 +496,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "joto";
+    const char* pszModule = "sov";
 #endif
     if (pex)
         return strprintf(
@@ -516,13 +516,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\JOTOCore
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\JOTOCore
-    // Mac: ~/Library/Application Support/JOTOCore
-    // Unix: ~/.jotocore
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\SOVCore
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\SOVCore
+    // Mac: ~/Library/Application Support/SOVCore
+    // Unix: ~/.sovcore
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "JOTOCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "SOVCore";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -532,10 +532,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/JOTOCore";
+    return pathRet / "Library/Application Support/SOVCore";
 #else
     // Unix
-    return pathRet / ".jotocore";
+    return pathRet / ".sovcore";
 #endif
 #endif
 }
@@ -610,7 +610,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", JOTO_CONF_FILENAME));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", SOV_CONF_FILENAME));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -629,7 +629,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good()){
-        // Create empty joto.conf if it does not excist
+        // Create empty sov.conf if it does not excist
         FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
         if (configFile != NULL)
             fclose(configFile);
@@ -641,7 +641,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {
-        // Don't overwrite existing settings so command line settings override joto.conf
+        // Don't overwrite existing settings so command line settings override sov.conf
         string strKey = string("-") + it->string_key;
         string strValue = it->value[0];
         InterpretNegativeSetting(strKey, strValue);
@@ -656,7 +656,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", JOTO_PID_FILENAME));
+    boost::filesystem::path pathPidFile(GetArg("-pid", SOV_PID_FILENAME));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

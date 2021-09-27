@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_UINT256_H
-#define JOTO_UINT256_H
+#ifndef SOV_UINT256_H
+#define SOV_UINT256_H
 
 #include <assert.h>
 #include <cstring>
@@ -185,4 +185,4 @@ public:
 };
 
 
-#endif // JOTO_UINT256_H
+#endif // SOV_UINT256_H

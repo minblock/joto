@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_NETBASE_H
-#define JOTO_NETBASE_H
+#ifndef SOV_NETBASE_H
+#define SOV_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/joto-config.h"
+#include "config/sov-config.h"
 #endif
 
 #include "compat.h"
@@ -65,4 +65,4 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking);
 struct timeval MillisToTimeval(int64_t nTimeout);
 void InterruptSocks5(bool interrupt);
 
-#endif // JOTO_NETBASE_H
+#endif // SOV_NETBASE_H

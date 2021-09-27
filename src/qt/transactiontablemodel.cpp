@@ -243,7 +243,7 @@ TransactionTableModel::TransactionTableModel(const PlatformStyle *platformStyle,
         fProcessingQueuedTransactions(false),
         platformStyle(platformStyle)
 {
-    columns << QString() << QString() << tr("Date") << tr("Type") << tr("Address / Label") << JOTOUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+    columns << QString() << QString() << tr("Date") << tr("Type") << tr("Address / Label") << SOVUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     priv->refreshWallet();
 
     connect(walletModel->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
@@ -260,7 +260,7 @@ TransactionTableModel::~TransactionTableModel()
 /** Updates the column title to "Amount (DisplayUnit)" and emits headerDataChanged() signal for table headers to react. */
 void TransactionTableModel::updateAmountColumnTitle()
 {
-    columns[Amount] = JOTOUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
+    columns[Amount] = SOVUnits::getAmountColumnTitle(walletModel->getOptionsModel()->getDisplayUnit());
     Q_EMIT headerDataChanged(Qt::Horizontal,Amount,Amount);
 }
 
@@ -471,9 +471,9 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord *wtx) const
     return QVariant();
 }
 
-QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed, JOTOUnits::SeparatorStyle separators) const
+QString TransactionTableModel::formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed, SOVUnits::SeparatorStyle separators) const
 {
-    QString str = JOTOUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), wtx->credit + wtx->debit, false, separators);
+    QString str = SOVUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), wtx->credit + wtx->debit, false, separators);
     if(showUnconfirmed)
     {
         if(!wtx->status.countsForBalance)
@@ -577,7 +577,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         case ToAddress:
             return formatTxToAddress(rec, false);
         case Amount:
-            return formatTxAmount(rec, true, JOTOUnits::separatorAlways);
+            return formatTxAmount(rec, true, SOVUnits::separatorAlways);
         }
         break;
     case Qt::EditRole:
@@ -668,14 +668,14 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
                 details.append(QString::fromStdString(rec->address));
                 details.append(" ");
             }
-            details.append(formatTxAmount(rec, false, JOTOUnits::separatorNever));
+            details.append(formatTxAmount(rec, false, SOVUnits::separatorNever));
             return details;
         }
     case ConfirmedRole:
         return rec->status.countsForBalance;
     case FormattedAmountRole:
         // Used for copy/export, so don't include separators
-        return formatTxAmount(rec, false, JOTOUnits::separatorNever);
+        return formatTxAmount(rec, false, SOVUnits::separatorNever);
     case StatusRole:
         return rec->status.status;
     }

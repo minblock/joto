@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_MINER_H
-#define JOTO_MINER_H
+#ifndef SOV_MINER_H
+#define SOV_MINER_H
 
 #include "primitives/block.h"
 
@@ -31,11 +31,11 @@ struct CBlockTemplate
 };
 
 /** Run the miner threads */
-void GenerateJOTOs(bool fGenerate, int nThreads, const CChainParams& chainparams, CConnman& connman);
+void GenerateSOVs(bool fGenerate, int nThreads, const CChainParams& chainparams, CConnman& connman);
 /** Generate a new block, without valid proof-of-work */
 CBlockTemplate* CreateNewBlock(const CChainParams& chainparams, const CScript& scriptPubKeyIn);
 /** Modify the extranonce in a block */
 void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 int64_t UpdateTime(CBlockHeader* pblock, const Consensus::Params& consensusParams, const CBlockIndex* pindexPrev);
 
-#endif // JOTO_MINER_H
+#endif // SOV_MINER_H

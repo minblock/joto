@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_UNDO_H
-#define JOTO_UNDO_H
+#ifndef SOV_UNDO_H
+#define SOV_UNDO_H
 
 #include "compressor.h" 
 #include "consensus/consensus.h"
@@ -108,4 +108,4 @@ public:
     }
 };
 
-#endif // JOTO_UNDO_H
+#endif // SOV_UNDO_H

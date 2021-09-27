@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_COINCONTROL_H
-#define JOTO_COINCONTROL_H
+#ifndef SOV_COINCONTROL_H
+#define SOV_COINCONTROL_H
 
 #include "primitives/transaction.h"
 
@@ -71,4 +71,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // JOTO_COINCONTROL_H
+#endif // SOV_COINCONTROL_H

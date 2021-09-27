@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_ALERT_H
-#define JOTO_ALERT_H
+#ifndef SOV_ALERT_H
+#define SOV_ALERT_H
 
 #include "serialize.h"
 #include "sync.h"
@@ -112,4 +112,4 @@ public:
     static CAlert getAlertByHash(const uint256 &hash);
 };
 
-#endif // JOTO_ALERT_H
+#endif // SOV_ALERT_H

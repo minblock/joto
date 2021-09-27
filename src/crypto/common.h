@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_CRYPTO_COMMON_H
-#define JOTO_CRYPTO_COMMON_H
+#ifndef SOV_CRYPTO_COMMON_H
+#define SOV_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include "joto-config.h"
+#include "sov-config.h"
 #endif
 
 #include <stdint.h>
@@ -63,4 +63,4 @@ void static inline WriteBE64(unsigned char* ptr, uint64_t x)
     *((uint64_t*)ptr) = htobe64(x);
 }
 
-#endif // JOTO_CRYPTO_COMMON_H
+#endif // SOV_CRYPTO_COMMON_H

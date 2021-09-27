@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_STREAMS_H
-#define JOTO_STREAMS_H
+#ifndef SOV_STREAMS_H
+#define SOV_STREAMS_H
 
 #include "support/allocators/zeroafterfree.h"
 #include "serialize.h"
@@ -617,4 +617,4 @@ public:
     }
 };
 
-#endif // JOTO_STREAMS_H
+#endif // SOV_STREAMS_H

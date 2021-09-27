@@ -33,13 +33,13 @@ Shutdown again, restore using importwallet,
 and confirm again balances are correct.
 """
 
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 from random import randint
 import logging
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
-class WalletBackupTest(JOTOTestFramework):
+class WalletBackupTest(SOVTestFramework):
 
     def setup_chain(self):
         logging.info("Initializing test directory "+self.options.tmpdir)

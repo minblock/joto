@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_TRANSACTIONRECORD_H
-#define JOTO_QT_TRANSACTIONRECORD_H
+#ifndef SOV_QT_TRANSACTIONRECORD_H
+#define SOV_QT_TRANSACTIONRECORD_H
 
 #include "amount.h"
 #include "uint256.h"
@@ -150,4 +150,4 @@ public:
     bool statusUpdateNeeded();
 };
 
-#endif // JOTO_QT_TRANSACTIONRECORD_H
+#endif // SOV_QT_TRANSACTIONRECORD_H

@@ -1,21 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package jotod/joto-qt
-for Debian-based Linux systems. If you compile jotod/joto-qt yourself, there are some useful files here.
+This directory contains files used to package sovd/sov-qt
+for Debian-based Linux systems. If you compile sovd/sov-qt yourself, there are some useful files here.
 
-## joto: URI support ##
+## sov: URI support ##
 
 
-joto-qt.desktop  (Gnome / Open Desktop)
+sov-qt.desktop  (Gnome / Open Desktop)
 To install:
 
-	sudo desktop-file-install joto-qt.desktop
+	sudo desktop-file-install sov-qt.desktop
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your joto-qt binary to `/usr/bin`
-and the `../../share/pixmaps/joto128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your sov-qt binary to `/usr/bin`
+and the `../../share/pixmaps/sov128.png` to `/usr/share/pixmaps`
 
-joto-qt.protocol (KDE)
+sov-qt.protocol (KDE)
 

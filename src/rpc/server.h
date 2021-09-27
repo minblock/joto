@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_RPCSERVER_H
-#define JOTO_RPCSERVER_H
+#ifndef SOV_RPCSERVER_H
+#define SOV_RPCSERVER_H
 
 #include "amount.h"
 #include "rpc/protocol.h"
@@ -123,7 +123,7 @@ public:
 };
 
 /**
- * JOTO RPC command dispatcher.
+ * SOV RPC command dispatcher.
  */
 class CRPCTable
 {
@@ -304,4 +304,4 @@ void InterruptRPC();
 void StopRPC();
 std::string JSONRPCExecBatch(const UniValue& vReq);
 
-#endif // JOTO_RPCSERVER_H
+#endif // SOV_RPCSERVER_H

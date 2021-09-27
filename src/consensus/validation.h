@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_CONSENSUS_VALIDATION_H
-#define JOTO_CONSENSUS_VALIDATION_H
+#ifndef SOV_CONSENSUS_VALIDATION_H
+#define SOV_CONSENSUS_VALIDATION_H
 
 #include <string>
 
@@ -82,4 +82,4 @@ public:
     std::string GetDebugMessage() const { return strDebugMessage; }
 };
 
-#endif // JOTO_CONSENSUS_VALIDATION_H
+#endif // SOV_CONSENSUS_VALIDATION_H

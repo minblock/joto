@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>joto.icns</string>
+  <string>sov.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>JOTO-Qt</string>
+  <string>SOV-Qt</string>
   
   <key>CFBundleName</key>
-  <string>JOTO-Qt</string>
+  <string>SOV-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.joto.JOTO-Qt</string>
+  <string>org.sov.SOV-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.joto.jotocryptoment</string>
+      <string>org.sov.sovcryptoment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>joto</string>
+        <string>sov</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.joto.paymentrequest</string>
+      <string>org.sov.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>JOTO payment request</string>
+      <string>SOV payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-joto-payment-request</string>
+        <string>application/x-sov-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>jotocryptomentrequest</string>
+          <string>sovcryptomentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.joto.paymentrequest</string>
+        <string>org.sov.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

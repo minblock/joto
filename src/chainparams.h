@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_CHAINPARAMS_H
-#define JOTO_CHAINPARAMS_H
+#ifndef SOV_CHAINPARAMS_H
+#define SOV_CHAINPARAMS_H
 
 #include "chainparamsbase.h"
 #include "consensus/params.h"
@@ -34,7 +34,7 @@ struct CCheckpointData {
 
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
- * JOTO system. There are three: the main network on which people trade goods
+ * SOV system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
  * a regression test mode which is intended for private networks only. It has
  * minimal difficulty to ensure that blocks can be found instantly.
@@ -127,4 +127,4 @@ CChainParams& Params(const std::string& chain);
  */
 void SelectParams(const std::string& chain);
 
-#endif // JOTO_CHAINPARAMS_H
+#endif // SOV_CHAINPARAMS_H

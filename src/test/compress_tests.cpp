@@ -4,7 +4,7 @@
 
 #include "compressor.h"
 #include "util.h"
-#include "test/test_joto.h"
+#include "test/test_sov.h"
 
 #include <stdint.h>
 
@@ -17,10 +17,10 @@
 #define NUM_MULTIPLES_CENT 10000
 
 // amounts 1 .. 10000
-#define NUM_MULTIPLES_1JOTO 10000
+#define NUM_MULTIPLES_1SOV 10000
 
 // amounts 50 .. 21000000
-#define NUM_MULTIPLES_50JOTO 420000
+#define NUM_MULTIPLES_50SOV 420000
 
 BOOST_FIXTURE_TEST_SUITE(compress_tests, BasicTestingSetup)
 
@@ -52,10 +52,10 @@ BOOST_AUTO_TEST_CASE(compress_amounts)
     for (uint64_t i = 1; i <= NUM_MULTIPLES_CENT; i++)
         BOOST_CHECK(TestEncode(i * CENT));
 
-    for (uint64_t i = 1; i <= NUM_MULTIPLES_1JOTO; i++)
+    for (uint64_t i = 1; i <= NUM_MULTIPLES_1SOV; i++)
         BOOST_CHECK(TestEncode(i * COIN));
 
-    for (uint64_t i = 1; i <= NUM_MULTIPLES_50JOTO; i++)
+    for (uint64_t i = 1; i <= NUM_MULTIPLES_50SOV; i++)
         BOOST_CHECK(TestEncode(i * 50 * COIN));
 
     for (uint64_t i = 0; i < 100000; i++)

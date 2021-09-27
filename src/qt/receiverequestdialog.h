@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_RECEIVEREQUESTDIALOG_H
-#define JOTO_QT_RECEIVEREQUESTDIALOG_H
+#ifndef SOV_QT_RECEIVEREQUESTDIALOG_H
+#define SOV_QT_RECEIVEREQUESTDIALOG_H
 
 #include "walletmodel.h"
 
@@ -67,4 +67,4 @@ private:
     SendCoinsRecipient info;
 };
 
-#endif // JOTO_QT_RECEIVEREQUESTDIALOG_H
+#endif // SOV_QT_RECEIVEREQUESTDIALOG_H

@@ -45,7 +45,7 @@
  * =========================
  *
  *   // network
- *   CJOTONetwork lvl, network-type, network-status, network-error, milestone-status*
+ *   CSOVNetwork lvl, network-type, network-status, network-error, milestone-status*
  *   CCategory lvl, category-type, status, status-error
  *   CNetworkGlobalVariable lvl, global-type, status, status-error
  *   // base: actor
@@ -79,7 +79,7 @@
  *  TREE STRUCTURE
  *  ===========================================
  * 
- *  JOTO NETWORK (ROOT)
+ *  SOV NETWORK (ROOT)
  *      -> NETWORK GLOBOLS
  *          -> SWITCHES, SETTINGS
  *      -> CATEGORIES
@@ -117,7 +117,7 @@ private:
     int nLevel;
     std::string strCategory;
 
-    // Current OBJECT STATUS (see http://govman.joto.org/index.php/Documentation_:_Status_Field)
+    // Current OBJECT STATUS (see http://govman.sov.org/index.php/Documentation_:_Status_Field)
     int nStatusID;
     std::string strStatusMessage;
 
@@ -130,7 +130,7 @@ public:
 };
 
 // // root node
-class CJOTONetwork : public CGovernanceObject
+class CSOVNetwork : public CGovernanceObject
 {
 private:
     std::string strName;
@@ -138,7 +138,7 @@ private:
 
 
 public:
-    CJOTONetwork(UniValue objIn)
+    CSOVNetwork(UniValue objIn)
     {
         strName = objIn["name"].get_str();
         strURL = objIn["name"].get_str();
@@ -174,9 +174,9 @@ public:
 
 };
 
-// // can be under: JOTONetwork
+// // can be under: SOVNetwork
 // //   -- signature requirements : Key1(User)
-// class CJOTONetworkVariable : public CGovernanceObject
+// class CSOVNetworkVariable : public CGovernanceObject
 // {
 // private:
 
@@ -279,7 +279,7 @@ public:
 //     // isRootCategory()
 //     // {
 //     //     // root categories won't have categories as parents
-//     //     return (IsType() == JOTONetwork);
+//     //     return (IsType() == SOVNetwork);
 //     // }
 
 //     // isSubcategoryOf(std::string strParentName)

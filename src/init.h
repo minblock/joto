@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_INIT_H
-#define JOTO_INIT_H
+#ifndef SOV_INIT_H
+#define SOV_INIT_H
 
 #include <string>
 
@@ -32,8 +32,8 @@ void PrepareShutdown();
 
 /** The help message mode determines what help message to show */
 enum HelpMessageMode {
-    HMM_JOTOD,
-    HMM_JOTO_QT
+    HMM_SOVD,
+    HMM_SOV_QT
 };
 
 /** Help for options shared between UI and daemon (for -help) */
@@ -41,4 +41,4 @@ std::string HelpMessage(HelpMessageMode mode);
 /** Returns licensing information (for -version) */
 std::string LicenseInfo();
 
-#endif // JOTO_INIT_H
+#endif // SOV_INIT_H

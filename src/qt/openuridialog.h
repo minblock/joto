@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_OPENURIDIALOG_H
-#define JOTO_QT_OPENURIDIALOG_H
+#ifndef SOV_QT_OPENURIDIALOG_H
+#define SOV_QT_OPENURIDIALOG_H
 
 #include <QDialog>
 
@@ -31,4 +31,4 @@ private:
     Ui::OpenURIDialog *ui;
 };
 
-#endif // JOTO_QT_OPENURIDIALOG_H
+#endif // SOV_QT_OPENURIDIALOG_H

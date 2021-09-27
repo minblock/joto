@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_SCRIPT_SCRIPT_ERROR_H
-#define JOTO_SCRIPT_SCRIPT_ERROR_H
+#ifndef SOV_SCRIPT_SCRIPT_ERROR_H
+#define SOV_SCRIPT_SCRIPT_ERROR_H
 
 typedef enum ScriptError_t
 {
@@ -59,4 +59,4 @@ typedef enum ScriptError_t
 
 const char* ScriptErrorString(const ScriptError error);
 
-#endif // JOTO_SCRIPT_SCRIPT_ERROR_H
+#endif // SOV_SCRIPT_SCRIPT_ERROR_H

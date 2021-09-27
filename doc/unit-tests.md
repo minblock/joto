@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with `make check`.
 
-To run the jotod tests manually, launch `src/test/test_joto`.
+To run the sovd tests manually, launch `src/test/test_sov`.
 
-To add more jotod tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more sovd tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the `test/` directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the joto-qt tests manually, launch `src/qt/test/test_joto-qt`
+To run the sov-qt tests manually, launch `src/qt/test/test_sov-qt`
 
-To add more joto-qt tests, add them to the `src/qt/test/` directory and
+To add more sov-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

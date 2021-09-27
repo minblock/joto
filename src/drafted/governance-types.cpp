@@ -7,8 +7,8 @@ GovernanceObjectType GovernanceStringToType(std::string strType) {
     if(strType == "AllTypes") type = AllTypes;
     if(strType == "Error") type = Error;
     if(strType == "ValueOverride") type = ValueOverride;
-    if(strType == "JOTONetwork") type = JOTONetwork;
-    if(strType == "JOTONetworkVariable") type = JOTONetworkVariable;
+    if(strType == "SOVNetwork") type = SOVNetwork;
+    if(strType == "SOVNetworkVariable") type = SOVNetworkVariable;
     if(strType == "Category") type = Category;
     if(strType == "Group") type = Group;
     if(strType == "User") type = User;
@@ -28,8 +28,8 @@ std::string GovernanceTypeToString(GovernanceObjectType type) {
     if(type == AllTypes) s = "AllTypes";
     if(type == Error) s = "Error";
     if(type == ValueOverride) s = "ValueOverride";
-    if(type == JOTONetwork) s = "JOTONetwork";
-    if(type == JOTONetworkVariable) s = "JOTONetworkVariable";
+    if(type == SOVNetwork) s = "SOVNetwork";
+    if(type == SOVNetworkVariable) s = "SOVNetworkVariable";
     if(type == Category) s = "Category";
     if(type == Group) s = "Group";
     if(type == User) s = "User";

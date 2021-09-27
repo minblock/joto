@@ -1,8 +1,8 @@
-Source: joto
+Source: sov
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@joto.org>
-Uploaders: Holger Schinzel <holger@joto.org>
+Maintainer: Holger Schinzel <holger@sov.org>
+Uploaders: Holger Schinzel <holger@sov.org>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -24,45 +24,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://www.joto.org/
-Vcs-Git: git://github.com/jotocrypto/joto.git
-Vcs-Browser: https://github.com/jotocrypto/joto
+Homepage: https://www.sov.org/
+Vcs-Git: git://github.com/sovcrypto/sov.git
+Vcs-Browser: https://github.com/sovcrypto/sov
 
-Package: jotod
+Package: sovd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- JOTO is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. JOTO uses peer-to-peer
+ SOV is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. SOV uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. JOTO Core
+ and issuing money are carried out collectively by the network. SOV Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, jotod, and the CLI tool
- joto-cli to interact with the daemon.
+ This package provides the daemon, sovd, and the CLI tool
+ sov-cli to interact with the daemon.
 
-Package: joto-qt
+Package: sov-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- JOTO is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. JOTO uses peer-to-peer
+ SOV is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. SOV uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. JOTO Core
+ and issuing money are carried out collectively by the network. SOV Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides JOTO-Qt, a GUI for JOTO based on Qt.
+ This package provides SOV-Qt, a GUI for SOV based on Qt.
 
-Package: joto-tx
+Package: sov-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- JOTO is an experimental new digital currency that enables anonymous, instant
- payments to anyone, anywhere in the world. JOTO uses peer-to-peer
+ SOV is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. SOV uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. JOTO Core
+ and issuing money are carried out collectively by the network. SOV Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides joto-tx, a command-line transaction creation
- tool which can be used without a joto daemon.  Some means of
+ This package provides sov-tx, a command-line transaction creation
+ tool which can be used without a sov daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

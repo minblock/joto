@@ -5,15 +5,15 @@
 import socket
 
 from test_framework.socks5 import Socks5Configuration, Socks5Command, Socks5Server, AddressType
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 from test_framework.netutil import test_ipv6_local
 '''
 Test plan:
-- Start jotod's with different proxy configurations
+- Start sovd's with different proxy configurations
 - Use addnode to initiate connections
 - Verify that proxies are connected to, and the right connection command is given
-- Proxy configurations to test on jotod side:
+- Proxy configurations to test on sovd side:
     - `-proxy` (proxy everything)
     - `-onion` (proxy just onions)
     - `-proxyrandomize` Circuit randomization
@@ -23,8 +23,8 @@ Test plan:
     - proxy on IPv6
 
 - Create various proxies (as threads)
-- Create jotods that connect to them
-- Manipulate the jotods using addnode (onetry) an observe effects
+- Create sovds that connect to them
+- Manipulate the sovds using addnode (onetry) an observe effects
 
 addnode connect to IPv4
 addnode connect to IPv6
@@ -33,7 +33,7 @@ addnode connect to generic DNS name
 '''
 
 
-class ProxyTest(JOTOTestFramework):
+class ProxyTest(SOVTestFramework):
     def __init__(self):
         self.have_ipv6 = test_ipv6_local()
         # Create two proxies on different ports
@@ -84,7 +84,7 @@ class ProxyTest(JOTOTestFramework):
         node.addnode("15.61.23.23:1234", "onetry")
         cmd = proxies[0].queue.get()
         assert(isinstance(cmd, Socks5Command))
-        # Note: jotod's SOCKS5 implementation only sends atyp DOMAINNAME, even if connecting directly to IPv4/IPv6
+        # Note: sovd's SOCKS5 implementation only sends atyp DOMAINNAME, even if connecting directly to IPv4/IPv6
         assert_equal(cmd.atyp, AddressType.DOMAINNAME)
         assert_equal(cmd.addr, b"15.61.23.23")
         assert_equal(cmd.port, 1234)
@@ -98,7 +98,7 @@ class ProxyTest(JOTOTestFramework):
             node.addnode("[1233:3432:2434:2343:3234:2345:6546:4534]:5443", "onetry")
             cmd = proxies[1].queue.get()
             assert(isinstance(cmd, Socks5Command))
-            # Note: jotod's SOCKS5 implementation only sends atyp DOMAINNAME, even if connecting directly to IPv4/IPv6
+            # Note: sovd's SOCKS5 implementation only sends atyp DOMAINNAME, even if connecting directly to IPv4/IPv6
             assert_equal(cmd.atyp, AddressType.DOMAINNAME)
             assert_equal(cmd.addr, b"1233:3432:2434:2343:3234:2345:6546:4534")
             assert_equal(cmd.port, 5443)
@@ -109,11 +109,11 @@ class ProxyTest(JOTOTestFramework):
 
         if test_onion:
             # Test: outgoing onion connection through node
-            node.addnode("jotoostk4e4re.onion:8333", "onetry")
+            node.addnode("sovostk4e4re.onion:8333", "onetry")
             cmd = proxies[2].queue.get()
             assert(isinstance(cmd, Socks5Command))
             assert_equal(cmd.atyp, AddressType.DOMAINNAME)
-            assert_equal(cmd.addr, b"jotoostk4e4re.onion")
+            assert_equal(cmd.addr, b"sovostk4e4re.onion")
             assert_equal(cmd.port, 8333)
             if not auth:
                 assert_equal(cmd.username, None)

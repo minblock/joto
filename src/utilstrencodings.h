@@ -6,8 +6,8 @@
 /**
  * Utilities for converting data from/to strings.
  */
-#ifndef JOTO_UTILSTRENCODINGS_H
-#define JOTO_UTILSTRENCODINGS_H
+#ifndef SOV_UTILSTRENCODINGS_H
+#define SOV_UTILSTRENCODINGS_H
 
 #include <stdint.h>
 #include <string>
@@ -130,4 +130,4 @@ bool TimingResistantEqual(const T& a, const T& b)
  */
 bool ParseFixedPoint(const std::string &val, int decimals, int64_t *amount_out);
 
-#endif // JOTO_UTILSTRENCODINGS_H
+#endif // SOV_UTILSTRENCODINGS_H

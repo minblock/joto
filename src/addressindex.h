@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_ADDRESSINDEX_H
-#define JOTO_ADDRESSINDEX_H
+#ifndef SOV_ADDRESSINDEX_H
+#define SOV_ADDRESSINDEX_H
 
 #include "uint256.h"
 #include "amount.h"
@@ -79,4 +79,4 @@ struct CMempoolAddressDeltaKeyCompare
     }
 };
 
-#endif // JOTO_ADDRESSINDEX_H
+#endif // SOV_ADDRESSINDEX_H

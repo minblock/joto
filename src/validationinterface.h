@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_VALIDATIONINTERFACE_H
-#define JOTO_VALIDATIONINTERFACE_H
+#ifndef SOV_VALIDATIONINTERFACE_H
+#define SOV_VALIDATIONINTERFACE_H
 
 #include <boost/signals2/signal.hpp>
 #include <boost/shared_ptr.hpp>
@@ -76,4 +76,4 @@ struct CMainSignals {
 
 CMainSignals& GetMainSignals();
 
-#endif // JOTO_VALIDATIONINTERFACE_H
+#endif // SOV_VALIDATIONINTERFACE_H

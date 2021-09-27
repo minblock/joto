@@ -7,7 +7,7 @@
 # Test ZMQ interface
 #
 
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 import zmq
 import binascii
@@ -21,7 +21,7 @@ try:
 except ImportError:
     import urlparse
 
-class ZMQTest (JOTOTestFramework):
+class ZMQTest (SOVTestFramework):
 
     port = 28332
 

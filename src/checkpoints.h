@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_CHECKPOINTS_H
-#define JOTO_CHECKPOINTS_H
+#ifndef SOV_CHECKPOINTS_H
+#define SOV_CHECKPOINTS_H
 
 #include "uint256.h"
 
@@ -26,4 +26,4 @@ double GuessVerificationProgress(const CCheckpointData& data, CBlockIndex* pinde
 
 } //namespace Checkpoints
 
-#endif // JOTO_CHECKPOINTS_H
+#endif // SOV_CHECKPOINTS_H

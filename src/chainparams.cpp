@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The JOTO Core developers
+// Copyright (c) 2017-2018 The SOV Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -55,8 +55,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Provigen Networks is accepting Reversaronies";
-    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+    const char* pszTimestamp = "SOV Coin";
+    const CScript genesisOutputScript = CScript() << ParseHex("04174c0933f7ed53fc996de0c252cd6bbf9e9b8161dcda7615c2503dbd5d48f02bdb72bd216af26b6815e0b2f50381100916a7eb7b1a88aeb8debb0803250d8401") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -96,14 +96,14 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 1;
-        consensus.BIP34Hash = uint256S("0x000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b");
+        consensus.BIP34Hash = uint256S("0x000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343");
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
         consensus.nZawyLwmaAveragingWindow = 65;
         consensus.nZawyLwmaAjustedWeight = 3927;
 
-        consensus.nPowTargetTimespan = 1 * 60; // JOTO: 1 hour
-        consensus.nPowTargetSpacing = 1 * 60; // JOTO: 1 minutes
+        consensus.nPowTargetTimespan = 1 * 60; // SOV: 1 hour
+        consensus.nPowTargetSpacing = 1 * 60; // SOV: 1 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.useDarkGravityWave = false;
@@ -115,22 +115,21 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 9999999ULL; //  May 5th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 9999999ULL; // May 5th, 2021
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1486252800; // Feb 5th, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517788800; // Feb 5th, 2018
 
         // Deployment of DIP0001
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 9999999ULL; //  May 5th, 2021
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 9999999ULL; //  May 5th, 2021
-
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1508025600; // Oct 15th, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1539561600; // Oct 15th, 2018
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
-        //consensus.nMinimumChainWork = uint256S("0x0000042b167ea67fb4b0953b6aa510589b2e2ebc6363ee0aeb47a4c35af9078b"); // 0     
+        //consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000100a308553b4863b755"); // 782700
 
         // By default assume that the signatures in ancestors of this block are valid.
-        //consensus.defaultAssumeValid = uint256S("0x0000042b167ea67fb4b0953b6aa510589b2e2ebc6363ee0aeb47a4c35af9078b"); // 0     
+        //consensus.defaultAssumeValid = uint256S("0x000000000000001c172f518793c3b9e83f202284615592f87fe3506ce964dcd4"); // 782700
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x00");
@@ -143,38 +142,83 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xd4;
+        pchMessageStart[0] = 0xae;
         pchMessageStart[1] = 0x7e;
         pchMessageStart[2] = 0x5d;
         pchMessageStart[3] = 0x74;
-        vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
-        nDefaultPort = 5555;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in joto
+        vAlertPubKey = ParseHex("048c4ef0c2c635687f6077a742be01a05748370a24a6d5209283d727e7825bf5b259256169f638e7f845c923abe6f3b3f64177f8dd354c447fbe2ad933f457febe");
+        nDefaultPort = 7777;
+        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in sov
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1630033370, 424019, 0x1e0ffff0, 1, 50 * COIN); //first 50 coins were burned
+        genesis = CreateGenesisBlock(, , , 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("000001bf3e8dab246208b780f730f029204dc53979048c7f5c77b0703d28a29b"));
-        assert(genesis.hashMerkleRoot == uint256S("fbf51cd28a5652a878b37acefe27284df53b6ec56d330c76747da85fc92e3039"));
+   /*
+	 //////////////
+        //////////////
+                // calculate Genesis Block
+                // Reset genesis
+                consensus.hashGenesisBlock = uint256S("0x");
+                std::cout << std::string("Begin calculating Mainnet Genesis Block:\n");
+                if (true && (genesis.GetHash() != consensus.hashGenesisBlock)) {
+                    LogPrintf("Calculating Mainnet Genesis Block:\n");
+                    arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+                    uint256 hash;
+                    genesis.nNonce = 0;
+                    // This will figure out a valid hash and Nonce if you're
+                    // creating a different genesis block:
+                    // uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+                    // hashTarget.SetCompact(genesis.nBits, &fNegative, &fOverflow).getuint256();
+                    // while (genesis.GetHash() > hashTarget)
+                    while (UintToArith256(genesis.GetHash()) > hashTarget)
+                    {
+                        ++genesis.nNonce;
+                        if (genesis.nNonce == 0)
+                        {
+                            LogPrintf("NONCE WRAPPED, incrementing time");
+                            std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+                            ++genesis.nTime;
+                        }
+                        if (genesis.nNonce % 10000 == 0)
+                        {
+                            LogPrintf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str());
+                            // std::cout << strNetworkID << " nonce: " << genesis.nNonce << " time: " << genesis.nTime << " hash: " << genesis.GetHash().ToString().c_str() << "\n";
+                        }
+                    }
+                    std::cout << "Mainnet ---\n";
+                    std::cout << "  nonce: " << genesis.nNonce <<  "\n";
+                    std::cout << "   time: " << genesis.nTime << "\n";
+                    std::cout << "   hash: " << genesis.GetHash().ToString().c_str() << "\n";
+                    std::cout << "   merklehash: "  << genesis.hashMerkleRoot.ToString().c_str() << "\n";
+                    // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
+                }
+                std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
+     */
+        assert(consensus.hashGenesisBlock == uint256S(""));
+        assert(genesis.hashMerkleRoot == uint256S(""));
 
-
-        vSeeds.push_back(CDNSSeedData("192.3.3.28", "192.3.3.28"));
+        //vSeeds.push_back(CDNSSeedData("217.69.13.119", "217.69.13.119"));
+        //vSeeds.push_back(CDNSSeedData("45.76.189.173", "45.76.189.173"));
+        //vSeeds.push_back(CDNSSeedData("207.148.80.120", "207.148.80.120"));
+        //vSeeds.push_back(CDNSSeedData("202.182.114.244", "202.182.114.244"));
+        //vSeeds.push_back(CDNSSeedData("80.240.31.33", "80.240.31.33"));
+        //vSeeds.push_back(CDNSSeedData("45.32.26.177", "45.32.26.177"));
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
-        // JOTO addresses start with '7 or 8'
+        // SOV addresses start with 'S'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,17);
-        // JOTO script addresses start with '8'
+        // SOV script addresses start with '8'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,18);
-        // JOTO private keys start with 't'
+        // SOV private keys start with 't'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128+63);
-        // JOTO BIP32 pubkeys start with 'xpub' (JOTO defaults)
+        // SOV BIP32 pubkeys start with 'xpub' (SOV defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        // JOTO BIP32 prvkeys start with 'xprv' (JOTO defaults)
+        // SOV BIP32 prvkeys start with 'xprv' (SOV defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        // JOTO BIP44 coin type is '243'
+        // SOV BIP44 coin type is '243'
         nExtCoinType = 243;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -187,15 +231,15 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
-        strSporkPubKey = "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f";
+        strSporkPubKey = "0406d43be70bd276010ad0ca49c6ad33564a9b8bc7f5461f97182e2f14cd0608f71e31b45112f98ff2ddca58ab9855be5bcf17fb7c71aca006cec7280da1379415";
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  138, uint256S("00000000830135e52c80a24a28158a7def0bec6552fbf5600a58e71688bd4b24")),
-            1630048754,, // * UNIX timestamp of last checkpoint block
-            139,    // * total number of transactions between genesis and last checkpoint
+            (  0, uint256S("0000093e6f9d658353d8def21d98a5a5126a388a7c5987bce7cac4ccf5299dd0")),
+            , // * UNIX timestamp of last checkpoint block
+            0,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            1000        // * estimated number of transactions per day after checkpoint
+            500        // * estimated number of transactions per day after checkpoint
         };
     }
 };
@@ -235,8 +279,8 @@ public:
         consensus.nZawyLwmaAveragingWindow = 65;
         consensus.nZawyLwmaAjustedWeight = 3927;
 
-        consensus.nPowTargetTimespan = 30 * 60 * 2; // JOTO: 1 hour
-        consensus.nPowTargetSpacing = 2 * 60; // JOTO: 2 minutes
+        consensus.nPowTargetTimespan = 30 * 60 * 2; // SOV: 1 hour
+        consensus.nPowTargetSpacing = 2 * 60; // SOV: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.useDarkGravityWave = false;
@@ -268,34 +312,34 @@ public:
         pchMessageStart[1] = 0xbb;
         pchMessageStart[2] = 0xca;
         pchMessageStart[3] = 0x45;
-        vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
-        nDefaultPort = 8555;
+        vAlertPubKey = ParseHex("046e05270f6d736f006cb682c9e15998e3505e6185475f7e1a9bc5a4965984b6933ed8988336006ad07d0b5ae408bf5805183c5a94ab376d0e50f0c51ab30f6662");
+        nDefaultPort = 5583;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1525413615UL, 1507179UL, 0x1e0ffff0, 1, 150000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x0000083e1f4099f7130875aeccf9eb77f48db127db614ecd54da5e0df1f8def3"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
+       // assert(consensus.hashGenesisBlock == uint256S("0x"));
+        //assert(genesis.hashMerkleRoot == uint256S("0xd5dec0980d7b84cc1c048eb8706afe68bbbdb07fdefab76de8d176dfcb858ae8"));
 
-        vSeeds.push_back(CDNSSeedData("testnet-joto.pgn.one", "testnet.seed-joto.pgn.one"));
-        vSeeds.push_back(CDNSSeedData("fixed-seeds-joto.pgn.one", "testnet.fixed-seeds-joto.pgn.one"));
+        //vSeeds.push_back(CDNSSeedData("testnet.sovproject.org", "testnet.seed.sovproject.org"));
+        //vSeeds.push_back(CDNSSeedData("fixed-seeds.sovproject.org", "testnet.fixed-seeds.sovproject.org"));
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
-        // Testnet JOTO addresses start with 'm'
+        // Testnet SOV addresses start with 'm'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,110);
-        // Testnet JOTO script addresses start with '9'
+        // Testnet SOV script addresses start with '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,21);
-        // Testnet private keys start with '9' or 'c' (JOTO defaults)
+        // Testnet private keys start with '9' or 'c' (SOV defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet JOTO BIP32 pubkeys start with 'tpub' (JOTO defaults)
+        // Testnet SOV BIP32 pubkeys start with 'tpub' (SOV defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet JOTO BIP32 prvkeys start with 'tprv' (JOTO defaults)
+        // Testnet SOV BIP32 prvkeys start with 'tprv' (SOV defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Testnet JOTO BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet SOV BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -355,8 +399,8 @@ public:
         consensus.nZawyLwmaAveragingWindow = 65;
         consensus.nZawyLwmaAjustedWeight = 3927;
 
-        consensus.nPowTargetTimespan = 30 * 60 * 2; // JOTO: 1 hour
-        consensus.nPowTargetSpacing = 2 * 60; // JOTO: 2 minutes
+        consensus.nPowTargetTimespan = 30 * 60 * 2; // SOV: 1 hour
+        consensus.nPowTargetSpacing = 2 * 60; // SOV: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.useDarkGravityWave = false;
@@ -382,15 +426,15 @@ public:
         pchMessageStart[1] = 0xaf;
         pchMessageStart[2] = 0xbf;
         pchMessageStart[3] = 0xf5;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in joto
+        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in sov
         nDelayGetHeadersTime = 0; // never delay GETHEADERS in regtests
         nDefaultPort = 17978;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1522201627, 1282268, 0x1e0ffff0, 1, 150000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //assert(consensus.hashGenesisBlock == uint256S("0x0000005a463172093e57a1126c2f7639295de93b6bfcaa3db8e4599be7c8190f"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x98d5649a7aaf6e2915c9e6a9a24d81518c41065067fa5abf304967dd0213d70b"));
+       // assert(consensus.hashGenesisBlock == uint256S("0x"));
+        //assert(genesis.hashMerkleRoot == uint256S("0xd5dec0980d7b84cc1c048eb8706afe68bbbdb07fdefab76de8d176dfcb858ae8"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
@@ -405,23 +449,23 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0x0000005a463172093e57a1126c2f7639295de93b6bfcaa3db8e4599be7c8190f")),
+            ( 0, uint256S("0x000005ec6d48ac579d697448a82e93127b94403770629399cf561caa216a694b")),
             1522201627,
             0,
             0
         };
-        // Regtest JOTO addresses start with 'o'
+        // Regtest SOV addresses start with 'o'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,115);
-        // Regtest JOTO script addresses start with 'a'
+        // Regtest SOV script addresses start with 'a'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,83);
-        // Regtest private keys start with '9' or 'c' (JOTO defaults)
+        // Regtest private keys start with '9' or 'c' (SOV defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest JOTO BIP32 pubkeys start with 'tpub' (JOTO defaults)
+        // Regtest SOV BIP32 pubkeys start with 'tpub' (SOV defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest JOTO BIP32 prvkeys start with 'tprv' (JOTO defaults)
+        // Regtest SOV BIP32 prvkeys start with 'tprv' (SOV defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
 
-        // Regtest JOTO BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest SOV BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
    }
 };

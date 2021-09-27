@@ -1,7 +1,7 @@
 WINDOWS BUILD NOTES
 ====================
 
-Some notes on how to build JOTO Core for Windows.
+Some notes on how to build SOV Core for Windows.
 
 Most developers use cross-compilation from Ubuntu to build executables for
 Windows. This is also used to build the release binaries.
@@ -28,9 +28,9 @@ First install the toolchains:
 
 Download the source:
     
-    mkdir joto
-    cd joto
-    git clone https://github.com/JotoCoinX/JotoCoin.git
+    mkdir sov
+    cd sov
+    git clone https://github.com/SovCoinX/SovCoin.git
     
 
 To build executables for Windows 32-bit:

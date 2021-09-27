@@ -5,7 +5,7 @@
 
 # Exercise the listreceivedbyaddress API
 
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 
 
@@ -25,7 +25,7 @@ def get_sub_array_from_array(object_array, to_match):
         return item
     return []
 
-class ReceivedByTest(JOTOTestFramework):
+class ReceivedByTest(SOVTestFramework):
 
     def setup_nodes(self):
         #This test requires mocktime

@@ -36,7 +36,7 @@ using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// JOTOMiner
+// SOVMiner
 //
 
 //
@@ -282,7 +282,7 @@ CBlockTemplate* CreateNewBlock(const CChainParams& chainparams, const CScript& s
 
         }
 
-        // NOTE: unlike in joto, we need to pass PREVIOUS block height here
+        // NOTE: unlike in sov, we need to pass PREVIOUS block height here
         CAmount blockReward = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight, Params().GetConsensus());
 
         // Compute regular coinbase transaction.
@@ -343,7 +343,7 @@ void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned
 // Internal miner
 //
 
-// ***TODO*** ScanHash is not yet used in JOTO
+// ***TODO*** ScanHash is not yet used in SOV
 //
 // ScanHash scans nonces looking for a hash with at least some zero bits.
 // The nonce is usually preserved between calls, but periodically or if the
@@ -399,12 +399,12 @@ static bool ProcessBlockFound(const CBlock* pblock, const CChainParams& chainpar
     return true;
 }
 
-// ***TODO*** that part changed in joto, we are using a mix with old one here for now
-void static JOTOMiner(const CChainParams& chainparams, CConnman& connman)
+// ***TODO*** that part changed in sov, we are using a mix with old one here for now
+void static SOVMiner(const CChainParams& chainparams, CConnman& connman)
 {
-    LogPrintf("JOTOMiner -- started\n");
+    LogPrintf("SOVMiner -- started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("joto-miner");
+    RenameThread("sov-miner");
 
     unsigned int nExtraNonce = 0;
 
@@ -441,13 +441,13 @@ void static JOTOMiner(const CChainParams& chainparams, CConnman& connman)
             std::unique_ptr<CBlockTemplate> pblocktemplate(CreateNewBlock(chainparams, coinbaseScript->reserveScript));
             if (!pblocktemplate.get())
             {
-                LogPrintf("JOTOMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
+                LogPrintf("SOVMiner -- Keypool ran out, please call keypoolrefill before restarting the mining thread\n");
                 return;
             }
             CBlock *pblock = &pblocktemplate->block;
             IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            LogPrintf("JOTOMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+            LogPrintf("SOVMiner -- Running miner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
                 ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
             //
@@ -467,7 +467,7 @@ void static JOTOMiner(const CChainParams& chainparams, CConnman& connman)
                     {
                         // Found a solution
                         SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                        LogPrintf("JOTOMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
+                        LogPrintf("SOVMiner:\n  proof-of-work found\n  hash: %s\n  target: %s\n", hash.GetHex(), hashTarget.GetHex());
                         ProcessBlockFound(pblock, chainparams);
                         SetThreadPriority(THREAD_PRIORITY_LOWEST);
                         coinbaseScript->KeepScript();
@@ -511,17 +511,17 @@ void static JOTOMiner(const CChainParams& chainparams, CConnman& connman)
     }
     catch (const boost::thread_interrupted&)
     {
-        LogPrintf("JOTOMiner -- terminated\n");
+        LogPrintf("SOVMiner -- terminated\n");
         throw;
     }
     catch (const std::runtime_error &e)
     {
-        LogPrintf("JOTOMiner -- runtime error: %s\n", e.what());
+        LogPrintf("SOVMiner -- runtime error: %s\n", e.what());
         return;
     }
 }
 
-void GenerateJOTOs(bool fGenerate, int nThreads, const CChainParams& chainparams, CConnman& connman)
+void GenerateSOVs(bool fGenerate, int nThreads, const CChainParams& chainparams, CConnman& connman)
 {
     static boost::thread_group* minerThreads = NULL;
 
@@ -540,5 +540,5 @@ void GenerateJOTOs(bool fGenerate, int nThreads, const CChainParams& chainparams
 
     minerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)
-        minerThreads->create_thread(boost::bind(&JOTOMiner, boost::cref(chainparams), boost::ref(connman)));
+        minerThreads->create_thread(boost::bind(&SOVMiner, boost::cref(chainparams), boost::ref(connman)));
 }

@@ -1,16 +1,16 @@
-JOTO Core version 0.12.2.3
+SOV Core version 0.12.2.3
 ==========================
 
 Release is now available from:
 
-  <https://www.joto.org/downloads/#wallets>
+  <https://www.sov.org/downloads/#wallets>
 
 This is a new minor version release, bringing various bugfixes and other
 improvements.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/jotocrypto/joto/issues>
+  <https://github.com/sovcrypto/sov/issues>
 
 
 Upgrading and downgrading
@@ -21,15 +21,15 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
-installer (on Windows) or just copy over /Applications/JOTO-Qt (on Mac) or
-jotod/joto-qt (on Linux).
+installer (on Windows) or just copy over /Applications/SOV-Qt (on Mac) or
+sovd/sov-qt (on Linux).
 
 Downgrade warning
 -----------------
 
 ### Downgrade to a version < 0.12.2.2
 
-Because release 0.12.2.2 included the [per-UTXO fix](release-notes/joto/release-notes-0.12.2.2.md#per-utxo-fix)
+Because release 0.12.2.2 included the [per-UTXO fix](release-notes/sov/release-notes-0.12.2.2.md#per-utxo-fix)
 which changed the structure of the internal database, you will have to reindex
 the database if you decide to use any pre-0.12.2.2 version.
 
@@ -76,25 +76,25 @@ This release also fixes a few crashes and compatibility issues.
 0.12.2.3 Change log
 ===================
 
-See detailed [change log](https://github.com/jotocrypto/joto/compare/v0.12.2.2...jotocrypto:v0.12.2.3) below.
+See detailed [change log](https://github.com/sovcrypto/sov/compare/v0.12.2.2...sovcrypto:v0.12.2.3) below.
 
 ### Backports:
-- [`068b20bc7`](https://github.com/jotocrypto/joto/commit/068b20bc7) Merge #8256: BUG: joto-qt crash
-- [`f71ab1daf`](https://github.com/jotocrypto/joto/commit/f71ab1daf) Merge #11847: Fixes compatibility with boost 1.66 (#1836)
+- [`068b20bc7`](https://github.com/sovcrypto/sov/commit/068b20bc7) Merge #8256: BUG: sov-qt crash
+- [`f71ab1daf`](https://github.com/sovcrypto/sov/commit/f71ab1daf) Merge #11847: Fixes compatibility with boost 1.66 (#1836)
 
 ### PrivateSend:
-- [`fa5fc418a`](https://github.com/jotocrypto/joto/commit/fa5fc418a) Fix -liquidityprovider option (#1829)
-- [`d261575b4`](https://github.com/jotocrypto/joto/commit/d261575b4) Skip existing masternode conections on mixing (#1833)
-- [`21a10057d`](https://github.com/jotocrypto/joto/commit/21a10057d) Protect CKeyHolderStorage via mutex (#1834)
-- [`476888683`](https://github.com/jotocrypto/joto/commit/476888683) Avoid reference leakage in CKeyHolderStorage::AddKey (#1840)
+- [`fa5fc418a`](https://github.com/sovcrypto/sov/commit/fa5fc418a) Fix -liquidityprovider option (#1829)
+- [`d261575b4`](https://github.com/sovcrypto/sov/commit/d261575b4) Skip existing masternode conections on mixing (#1833)
+- [`21a10057d`](https://github.com/sovcrypto/sov/commit/21a10057d) Protect CKeyHolderStorage via mutex (#1834)
+- [`476888683`](https://github.com/sovcrypto/sov/commit/476888683) Avoid reference leakage in CKeyHolderStorage::AddKey (#1840)
 
 ### InstantSend:
-- [`d6e2aa843`](https://github.com/jotocrypto/joto/commit/d6e2aa843) Swap iterations and fUseInstantSend parameters in ApproximateBestSubset (#1819)
-- [`c9bafe154`](https://github.com/jotocrypto/joto/commit/c9bafe154) Vote on IS only if it was accepted to mempool (#1826)
+- [`d6e2aa843`](https://github.com/sovcrypto/sov/commit/d6e2aa843) Swap iterations and fUseInstantSend parameters in ApproximateBestSubset (#1819)
+- [`c9bafe154`](https://github.com/sovcrypto/sov/commit/c9bafe154) Vote on IS only if it was accepted to mempool (#1826)
 
 ### Other:
-- [`ada41c3af`](https://github.com/jotocrypto/joto/commit/ada41c3af) Fix crash on exit when -createwalletbackups=0 (#1810)
-- [`63e0e30e3`](https://github.com/jotocrypto/joto/commit/63e0e30e3) bump version to 0.12.2.3 (#1827)
+- [`ada41c3af`](https://github.com/sovcrypto/sov/commit/ada41c3af) Fix crash on exit when -createwalletbackups=0 (#1810)
+- [`63e0e30e3`](https://github.com/sovcrypto/sov/commit/63e0e30e3) bump version to 0.12.2.3 (#1827)
 
 Credits
 =======
@@ -105,15 +105,15 @@ Thanks to everyone who directly contributed to this release:
 - lodgepole
 - UdjinM6
 
-As well as JOTO Core Developers and everyone that submitted issues,
+As well as SOV Core Developers and everyone that submitted issues,
 reviewed pull requests or helped translating on
-[Transifex](https://www.transifex.com/projects/p/joto/).
+[Transifex](https://www.transifex.com/projects/p/sov/).
 
 
 Older releases
 ==============
 
-JOTO was previously known as Darkcoin.
+SOV was previously known as Darkcoin.
 
 Darkcoin tree 0.8.x was a fork of Litecoin tree 0.8, original name was XCoin
 which was first released on Jan/18/2014.
@@ -124,22 +124,22 @@ the 0.8.x tree and was first released on Mar/13/2014.
 Darkcoin tree 0.10.x used to be the closed source implementation of Darksend
 which was released open source on Sep/25/2014.
 
-JOTO Core tree 0.11.x was a fork of JOTO Core tree 0.9,
-Darkcoin was rebranded to JOTO.
+SOV Core tree 0.11.x was a fork of SOV Core tree 0.9,
+Darkcoin was rebranded to SOV.
 
-JOTO Core tree 0.12.0.x was a fork of JOTO Core tree 0.10.
+SOV Core tree 0.12.0.x was a fork of SOV Core tree 0.10.
 
-JOTO Core tree 0.12.1.x was a fork of JOTO Core tree 0.12.
+SOV Core tree 0.12.1.x was a fork of SOV Core tree 0.12.
 
 These release are considered obsolete. Old release notes can be found here:
 
-- [v0.12.2.2](release-notes/joto/release-notes-0.12.2.2.md) released Dec/17/2017
-- [v0.12.2](release-notes/joto/release-notes-0.12.2.md) released Nov/08/2017
-- [v0.12.1](release-notes/joto/release-notes-0.12.1.md) released Feb/06/2017
-- [v0.12.0](release-notes/joto/release-notes-0.12.0.md) released Jun/15/2015
-- [v0.11.2](release-notes/joto/release-notes-0.11.2.md) released Mar/04/2015
-- [v0.11.1](release-notes/joto/release-notes-0.11.1.md) released Feb/10/2015
-- [v0.11.0](release-notes/joto/release-notes-0.11.0.md) released Jan/15/2015
-- [v0.10.x](release-notes/joto/release-notes-0.10.0.md) released Sep/25/2014
-- [v0.9.x](release-notes/joto/release-notes-0.9.0.md) released Mar/13/2014
+- [v0.12.2.2](release-notes/sov/release-notes-0.12.2.2.md) released Dec/17/2017
+- [v0.12.2](release-notes/sov/release-notes-0.12.2.md) released Nov/08/2017
+- [v0.12.1](release-notes/sov/release-notes-0.12.1.md) released Feb/06/2017
+- [v0.12.0](release-notes/sov/release-notes-0.12.0.md) released Jun/15/2015
+- [v0.11.2](release-notes/sov/release-notes-0.11.2.md) released Mar/04/2015
+- [v0.11.1](release-notes/sov/release-notes-0.11.1.md) released Feb/10/2015
+- [v0.11.0](release-notes/sov/release-notes-0.11.0.md) released Jan/15/2015
+- [v0.10.x](release-notes/sov/release-notes-0.10.0.md) released Sep/25/2014
+- [v0.9.x](release-notes/sov/release-notes-0.9.0.md) released Mar/13/2014
 

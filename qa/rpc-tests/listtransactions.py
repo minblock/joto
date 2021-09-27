@@ -5,7 +5,7 @@
 
 # Exercise the listtransactions API
 
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 from test_framework.mininode import CTransaction, COIN
 from io import BytesIO
@@ -16,7 +16,7 @@ def txFromHex(hexstring):
     tx.deserialize(f)
     return tx
 
-class ListTransactionsTest(JOTOTestFramework):
+class ListTransactionsTest(SOVTestFramework):
 
     def setup_nodes(self):
         #This test requires mocktime
@@ -94,7 +94,7 @@ class ListTransactionsTest(JOTOTestFramework):
                            {"category":"receive","amount":Decimal("0.1")},
                            {"txid":txid, "account" : "watchonly"} )
 
-        # rbf is disabled in JOTO Core
+        # rbf is disabled in SOV Core
         # self.run_rbf_opt_in_test()
 
     # Check that the opt-in-rbf flag works properly, for sent and received

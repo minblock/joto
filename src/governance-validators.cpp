@@ -168,7 +168,7 @@ bool CProposalValidator::ValidatePaymentAddress()
         return false;
     }
 
-    CJOTOAddress address(strPaymentAddress);
+    CSOVAddress address(strPaymentAddress);
     if(!address.IsValid()) {
         strErrorMessages += "payment_address is invalid;";
         return false;

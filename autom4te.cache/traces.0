@@ -3891,7 +3891,7 @@ else
 fi
 AC_LANG_POP
 ])
-m4trace:build-aux/m4/joto_find_bdb48.m4:1: -1- AC_DEFUN([JOTO_FIND_BDB48], [
+m4trace:build-aux/m4/sov_find_bdb48.m4:1: -1- AC_DEFUN([SOV_FIND_BDB48], [
   AC_MSG_CHECKING([for Berkeley DB C++ headers])
   BDB_CPPFLAGS=
   BDB_LIBS=
@@ -3931,16 +3931,16 @@ m4trace:build-aux/m4/joto_find_bdb48.m4:1: -1- AC_DEFUN([JOTO_FIND_BDB48], [
   done
   if test "x$bdbpath" = "xX"; then
     AC_MSG_RESULT([no])
-    AC_MSG_ERROR([libdb_cxx headers missing, JOTO Core requires this library for wallet functionality (--disable-wallet to disable wallet functionality)])
+    AC_MSG_ERROR([libdb_cxx headers missing, SOV Core requires this library for wallet functionality (--disable-wallet to disable wallet functionality)])
   elif test "x$bdb48path" = "xX"; then
-    JOTO_SUBDIR_TO_INCLUDE(BDB_CPPFLAGS,[${bdbpath}],db_cxx)
+    SOV_SUBDIR_TO_INCLUDE(BDB_CPPFLAGS,[${bdbpath}],db_cxx)
     AC_ARG_WITH([incompatible-bdb],[AS_HELP_STRING([--with-incompatible-bdb], [allow using a bdb version other than 4.8])],[
       AC_MSG_WARN([Found Berkeley DB other than 4.8; wallets opened by this build will not be portable!])
     ],[
       AC_MSG_ERROR([Found Berkeley DB other than 4.8, required for portable wallets (--with-incompatible-bdb to ignore or --disable-wallet to disable wallet functionality)])
     ])
   else
-    JOTO_SUBDIR_TO_INCLUDE(BDB_CPPFLAGS,[${bdb48path}],db_cxx)
+    SOV_SUBDIR_TO_INCLUDE(BDB_CPPFLAGS,[${bdb48path}],db_cxx)
     bdbpath="${bdb48path}"
   fi
   AC_SUBST(BDB_CPPFLAGS)
@@ -3953,23 +3953,23 @@ m4trace:build-aux/m4/joto_find_bdb48.m4:1: -1- AC_DEFUN([JOTO_FIND_BDB48], [
     ])
   done
   if test "x$BDB_LIBS" = "x"; then
-      AC_MSG_ERROR([libdb_cxx missing, JOTO Core requires this library for wallet functionality (--disable-wallet to disable wallet functionality)])
+      AC_MSG_ERROR([libdb_cxx missing, SOV Core requires this library for wallet functionality (--disable-wallet to disable wallet functionality)])
   fi
   AC_SUBST(BDB_LIBS)
 ])
-m4trace:build-aux/m4/joto_qt.m4:3: -1- AC_DEFUN([JOTO_QT_FAIL], [
-  if test "x$joto_qt_want_version" = "xauto" && test x$joto_qt_force != xyes; then
-    if test x$joto_enable_qt != xno; then
-      AC_MSG_WARN([$1; joto-qt frontend will not be built])
+m4trace:build-aux/m4/sov_qt.m4:3: -1- AC_DEFUN([SOV_QT_FAIL], [
+  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
+    if test x$sov_enable_qt != xno; then
+      AC_MSG_WARN([$1; sov-qt frontend will not be built])
     fi
-    joto_enable_qt=no
-    joto_enable_qt_test=no
+    sov_enable_qt=no
+    sov_enable_qt_test=no
   else
     AC_MSG_ERROR([$1])
   fi
 ])
-m4trace:build-aux/m4/joto_qt.m4:15: -1- AC_DEFUN([JOTO_QT_CHECK], [
-  if test "x$joto_enable_qt" != "xno" && test x$joto_qt_want_version != xno; then
+m4trace:build-aux/m4/sov_qt.m4:15: -1- AC_DEFUN([SOV_QT_CHECK], [
+  if test "x$sov_enable_qt" != "xno" && test x$sov_qt_want_version != xno; then
     true
     $1
   else
@@ -3977,31 +3977,31 @@ m4trace:build-aux/m4/joto_qt.m4:15: -1- AC_DEFUN([JOTO_QT_CHECK], [
     $2
   fi
 ])
-m4trace:build-aux/m4/joto_qt.m4:32: -1- AC_DEFUN([JOTO_QT_PATH_PROGS], [
-  JOTO_QT_CHECK([
+m4trace:build-aux/m4/sov_qt.m4:32: -1- AC_DEFUN([SOV_QT_PATH_PROGS], [
+  SOV_QT_CHECK([
     if test "x$3" != "x"; then
       AC_PATH_PROGS($1,$2,,$3)
     else
       AC_PATH_PROGS($1,$2)
     fi
     if test "x$$1" = "x" && test "x$4" != "xyes"; then
-      JOTO_QT_FAIL([$1 not found])
+      SOV_QT_FAIL([$1 not found])
     fi
   ])
 ])
-m4trace:build-aux/m4/joto_qt.m4:49: -1- AC_DEFUN([JOTO_QT_INIT], [
+m4trace:build-aux/m4/sov_qt.m4:49: -1- AC_DEFUN([SOV_QT_INIT], [
   dnl enable qt support
   AC_ARG_WITH([gui],
     [AS_HELP_STRING([--with-gui@<:@=no|qt4|qt5|auto@:>@],
-    [build joto-qt GUI (default=auto, qt5 tried first)])],
+    [build sov-qt GUI (default=auto, qt5 tried first)])],
     [
-     joto_qt_want_version=$withval
-     if test x$joto_qt_want_version = xyes; then
-       joto_qt_force=yes
-       joto_qt_want_version=auto
+     sov_qt_want_version=$withval
+     if test x$sov_qt_want_version = xyes; then
+       sov_qt_force=yes
+       sov_qt_want_version=auto
      fi
     ],
-    [joto_qt_want_version=auto])
+    [sov_qt_want_version=auto])
 
   AC_ARG_WITH([qt-incdir],[AS_HELP_STRING([--with-qt-incdir=INC_DIR],[specify qt include path (overridden by pkgconfig)])], [qt_include_path=$withval], [])
   AC_ARG_WITH([qt-libdir],[AS_HELP_STRING([--with-qt-libdir=LIB_DIR],[specify qt lib path (overridden by pkgconfig)])], [qt_lib_path=$withval], [])
@@ -4017,7 +4017,7 @@ m4trace:build-aux/m4/joto_qt.m4:49: -1- AC_DEFUN([JOTO_QT_INIT], [
 
   AC_SUBST(QT_TRANSLATION_DIR,$qt_translation_path)
 ])
-m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
+m4trace:build-aux/m4/sov_qt.m4:85: -1- AC_DEFUN([SOV_QT_CONFIGURE], [
   use_pkgconfig=$1
 
   if test x$use_pkgconfig = x; then
@@ -4025,9 +4025,9 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
   fi
 
   if test x$use_pkgconfig = xyes; then
-    JOTO_QT_CHECK([_JOTO_QT_FIND_LIBS_WITH_PKGCONFIG([$2])])
+    SOV_QT_CHECK([_SOV_QT_FIND_LIBS_WITH_PKGCONFIG([$2])])
   else
-    JOTO_QT_CHECK([_JOTO_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
+    SOV_QT_CHECK([_SOV_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
   fi
 
   dnl This is ugly and complicated. Yuck. Works as follows:
@@ -4037,46 +4037,46 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
   dnl Qt4 and Qt5. With Qt5, languages moved into core and the WindowsIntegration
   dnl plugin was added. Since we can't tell if Qt4 is static or not, it is
   dnl assumed for windows builds.
-  dnl _JOTO_QT_CHECK_STATIC_PLUGINS does a quick link-check and appends the
+  dnl _SOV_QT_CHECK_STATIC_PLUGINS does a quick link-check and appends the
   dnl results to QT_LIBS.
-  JOTO_QT_CHECK([
+  SOV_QT_CHECK([
   TEMP_CPPFLAGS=$CPPFLAGS
   TEMP_CXXFLAGS=$CXXFLAGS
   CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
-  if test x$joto_qt_got_major_vers = x5; then
-    _JOTO_QT_IS_STATIC
-    if test x$joto_cv_static_qt = xyes; then
-      _JOTO_QT_FIND_STATIC_PLUGINS
+  if test x$sov_qt_got_major_vers = x5; then
+    _SOV_QT_IS_STATIC
+    if test x$sov_cv_static_qt = xyes; then
+      _SOV_QT_FIND_STATIC_PLUGINS
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      AC_CACHE_CHECK(for Qt < 5.4, joto_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
+      AC_CACHE_CHECK(for Qt < 5.4, sov_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
           [[#include <QtCore>]],[[
           #if QT_VERSION >= 0x050400
           choke;
           #endif
           ]])],
-        [joto_cv_need_acc_widget=yes],
-        [joto_cv_need_acc_widget=no])
+        [sov_cv_need_acc_widget=yes],
+        [sov_cv_need_acc_widget=no])
       ])
-      if test "x$joto_cv_need_acc_widget" = "xyes"; then
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
+      if test "x$sov_cv_need_acc_widget" = "xyes"; then
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
       fi
       if test x$TARGET_OS = xwindows; then
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)],[-lqwindows])
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)],[-lqwindows])
         AC_DEFINE(QT_QPA_PLATFORM_WINDOWS, 1, [Define this symbol if the qt platform is windows])
       elif test x$TARGET_OS = xlinux; then
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
         AC_DEFINE(QT_QPA_PLATFORM_XCB, 1, [Define this symbol if the qt platform is xcb])
       elif test x$TARGET_OS = xdarwin; then
         AX_CHECK_LINK_FLAG([[-framework IOKit]],[QT_LIBS="$QT_LIBS -framework IOKit"],[AC_MSG_ERROR(could not iokit framework)])
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
         AC_DEFINE(QT_QPA_PLATFORM_COCOA, 1, [Define this symbol if the qt platform is cocoa])
       fi
     fi
   else
     if test x$TARGET_OS = xwindows; then
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      _JOTO_QT_CHECK_STATIC_PLUGINS([
+      _SOV_QT_CHECK_STATIC_PLUGINS([
          Q_IMPORT_PLUGIN(qcncodecs)
          Q_IMPORT_PLUGIN(qjpcodecs)
          Q_IMPORT_PLUGIN(qtwcodecs)
@@ -4090,13 +4090,13 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
   ])
 
   if test x$use_pkgconfig$qt_bin_path = xyes; then
-    if test x$joto_qt_got_major_vers = x5; then
+    if test x$sov_qt_got_major_vers = x5; then
       qt_bin_path="`$PKG_CONFIG --variable=host_bins Qt5Core 2>/dev/null`"
     fi
   fi
 
   if test x$use_hardening != xno; then
-    JOTO_QT_CHECK([
+    SOV_QT_CHECK([
     AC_MSG_CHECKING(whether -fPIE can be used with this Qt config)
     TEMP_CPPFLAGS=$CPPFLAGS
     TEMP_CXXFLAGS=$CXXFLAGS
@@ -4115,7 +4115,7 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
     CXXFLAGS=$TEMP_CXXFLAGS
     ])
   else
-    JOTO_QT_CHECK([
+    SOV_QT_CHECK([
     AC_MSG_CHECKING(whether -fPIC is needed with this Qt config)
     TEMP_CPPFLAGS=$CPPFLAGS
     CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
@@ -4132,13 +4132,13 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
     ])
   fi
 
-  JOTO_QT_PATH_PROGS([MOC], [moc-qt${joto_qt_got_major_vers} moc${joto_qt_got_major_vers} moc], $qt_bin_path)
-  JOTO_QT_PATH_PROGS([UIC], [uic-qt${joto_qt_got_major_vers} uic${joto_qt_got_major_vers} uic], $qt_bin_path)
-  JOTO_QT_PATH_PROGS([RCC], [rcc-qt${joto_qt_got_major_vers} rcc${joto_qt_got_major_vers} rcc], $qt_bin_path)
-  JOTO_QT_PATH_PROGS([LRELEASE], [lrelease-qt${joto_qt_got_major_vers} lrelease${joto_qt_got_major_vers} lrelease], $qt_bin_path)
-  JOTO_QT_PATH_PROGS([LUPDATE], [lupdate-qt${joto_qt_got_major_vers} lupdate${joto_qt_got_major_vers} lupdate],$qt_bin_path, yes)
+  SOV_QT_PATH_PROGS([MOC], [moc-qt${sov_qt_got_major_vers} moc${sov_qt_got_major_vers} moc], $qt_bin_path)
+  SOV_QT_PATH_PROGS([UIC], [uic-qt${sov_qt_got_major_vers} uic${sov_qt_got_major_vers} uic], $qt_bin_path)
+  SOV_QT_PATH_PROGS([RCC], [rcc-qt${sov_qt_got_major_vers} rcc${sov_qt_got_major_vers} rcc], $qt_bin_path)
+  SOV_QT_PATH_PROGS([LRELEASE], [lrelease-qt${sov_qt_got_major_vers} lrelease${sov_qt_got_major_vers} lrelease], $qt_bin_path)
+  SOV_QT_PATH_PROGS([LUPDATE], [lupdate-qt${sov_qt_got_major_vers} lupdate${sov_qt_got_major_vers} lupdate],$qt_bin_path, yes)
 
-  JOTO_QT_CHECK([
+  SOV_QT_CHECK([
     AC_CACHE_CHECK([whether $RCC accepts --format-version option],
                    [ac_cv_prog_rcc_accepts_format_version],
                    [ac_cv_prog_rcc_accepts_format_version=no
@@ -4156,30 +4156,30 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
   MOC_DEFS='-DHAVE_CONFIG_H -I$(srcdir)'
   case $host in
     *darwin*)
-     JOTO_QT_CHECK([
+     SOV_QT_CHECK([
        MOC_DEFS="${MOC_DEFS} -DQ_OS_MAC"
        base_frameworks="-framework Foundation -framework ApplicationServices -framework AppKit"
        AX_CHECK_LINK_FLAG([[$base_frameworks]],[QT_LIBS="$QT_LIBS $base_frameworks"],[AC_MSG_ERROR(could not find base frameworks)])
      ])
     ;;
     *mingw*)
-       JOTO_QT_CHECK([
+       SOV_QT_CHECK([
          AX_CHECK_LINK_FLAG([[-mwindows]],[QT_LDFLAGS="$QT_LDFLAGS -mwindows"],[AC_MSG_WARN(-mwindows linker support not detected)])
        ])
   esac
 
 
   dnl enable qt support
-  AC_MSG_CHECKING(whether to build JOTO Core GUI)
-  JOTO_QT_CHECK([
-    joto_enable_qt=yes
-    joto_enable_qt_test=yes
+  AC_MSG_CHECKING(whether to build SOV Core GUI)
+  SOV_QT_CHECK([
+    sov_enable_qt=yes
+    sov_enable_qt_test=yes
     if test x$have_qt_test = xno; then
-      joto_enable_qt_test=no
+      sov_enable_qt_test=no
     fi
-    joto_enable_qt_dbus=no
+    sov_enable_qt_dbus=no
     if test x$use_dbus != xno && test x$have_qt_dbus = xyes; then
-      joto_enable_qt_dbus=yes
+      sov_enable_qt_dbus=yes
     fi
     if test x$use_dbus = xyes && test x$have_qt_dbus = xno; then
       AC_MSG_ERROR("libQtDBus not found. Install libQtDBus or remove --with-qtdbus.")
@@ -4188,9 +4188,9 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
       AC_MSG_WARN("lupdate is required to update qt translations")
     fi
   ],[
-    joto_enable_qt=no
+    sov_enable_qt=no
   ])
-  AC_MSG_RESULT([$joto_enable_qt (Qt${joto_qt_got_major_vers})])
+  AC_MSG_RESULT([$sov_enable_qt (Qt${sov_qt_got_major_vers})])
 
   AC_SUBST(QT_PIE_FLAGS)
   AC_SUBST(QT_INCLUDES)
@@ -4200,11 +4200,11 @@ m4trace:build-aux/m4/joto_qt.m4:85: -1- AC_DEFUN([JOTO_QT_CONFIGURE], [
   AC_SUBST(QT_DBUS_LIBS)
   AC_SUBST(QT_TEST_INCLUDES)
   AC_SUBST(QT_TEST_LIBS)
-  AC_SUBST(QT_SELECT, qt${joto_qt_got_major_vers})
+  AC_SUBST(QT_SELECT, qt${sov_qt_got_major_vers})
   AC_SUBST(MOC_DEFS)
 ])
-m4trace:build-aux/m4/joto_qt.m4:279: -1- AC_DEFUN([_JOTO_QT_CHECK_QT5], [
-  AC_CACHE_CHECK(for Qt 5, joto_cv_qt5,[
+m4trace:build-aux/m4/sov_qt.m4:279: -1- AC_DEFUN([_SOV_QT_CHECK_QT5], [
+  AC_CACHE_CHECK(for Qt 5, sov_cv_qt5,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
     [[#include <QtCore>]],
     [[
@@ -4214,11 +4214,11 @@ m4trace:build-aux/m4/joto_qt.m4:279: -1- AC_DEFUN([_JOTO_QT_CHECK_QT5], [
       return 0;
       #endif
     ]])],
-    [joto_cv_qt5=yes],
-    [joto_cv_qt5=no])
+    [sov_cv_qt5=yes],
+    [sov_cv_qt5=no])
 ])])
-m4trace:build-aux/m4/joto_qt.m4:299: -1- AC_DEFUN([_JOTO_QT_IS_STATIC], [
-  AC_CACHE_CHECK(for static Qt, joto_cv_static_qt,[
+m4trace:build-aux/m4/sov_qt.m4:299: -1- AC_DEFUN([_SOV_QT_IS_STATIC], [
+  AC_CACHE_CHECK(for static Qt, sov_cv_static_qt,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
     [[#include <QtCore>]],
     [[
@@ -4228,14 +4228,14 @@ m4trace:build-aux/m4/joto_qt.m4:299: -1- AC_DEFUN([_JOTO_QT_IS_STATIC], [
       choke me
       #endif
     ]])],
-    [joto_cv_static_qt=yes],
-    [joto_cv_static_qt=no])
+    [sov_cv_static_qt=yes],
+    [sov_cv_static_qt=no])
   ])
-  if test xjoto_cv_static_qt = xyes; then
+  if test xsov_cv_static_qt = xyes; then
     AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol for static Qt plugins])
   fi
 ])
-m4trace:build-aux/m4/joto_qt.m4:323: -1- AC_DEFUN([_JOTO_QT_CHECK_STATIC_PLUGINS], [
+m4trace:build-aux/m4/sov_qt.m4:323: -1- AC_DEFUN([_SOV_QT_CHECK_STATIC_PLUGINS], [
   AC_MSG_CHECKING(for static Qt plugins: $2)
   CHECK_STATIC_PLUGINS_TEMP_LIBS="$LIBS"
   LIBS="$2 $QT_LIBS $LIBS"
@@ -4245,11 +4245,11 @@ m4trace:build-aux/m4/joto_qt.m4:323: -1- AC_DEFUN([_JOTO_QT_CHECK_STATIC_PLUGINS
     $1]],
     [[return 0;]])],
     [AC_MSG_RESULT(yes); QT_LIBS="$2 $QT_LIBS"],
-    [AC_MSG_RESULT(no); JOTO_QT_FAIL(Could not resolve: $2)])
+    [AC_MSG_RESULT(no); SOV_QT_FAIL(Could not resolve: $2)])
   LIBS="$CHECK_STATIC_PLUGINS_TEMP_LIBS"
 ])
-m4trace:build-aux/m4/joto_qt.m4:341: -1- AC_DEFUN([_JOTO_QT_FIND_STATIC_PLUGINS], [
-  if test x$joto_qt_got_major_vers = x5; then
+m4trace:build-aux/m4/sov_qt.m4:341: -1- AC_DEFUN([_SOV_QT_FIND_STATIC_PLUGINS], [
+  if test x$sov_qt_got_major_vers = x5; then
       if test x$qt_plugin_path != x; then
         QT_LIBS="$QT_LIBS -L$qt_plugin_path/platforms"
         if test -d "$qt_plugin_path/accessible"; then
@@ -4276,42 +4276,42 @@ m4trace:build-aux/m4/joto_qt.m4:341: -1- AC_DEFUN([_JOTO_QT_FIND_STATIC_PLUGINS]
     fi
   fi
 ])
-m4trace:build-aux/m4/joto_qt.m4:378: -1- AC_DEFUN([_JOTO_QT_FIND_LIBS_WITH_PKGCONFIG], [
+m4trace:build-aux/m4/sov_qt.m4:378: -1- AC_DEFUN([_SOV_QT_FIND_LIBS_WITH_PKGCONFIG], [
   m4_ifdef([PKG_CHECK_MODULES],[
   auto_priority_version=$1
   if test x$auto_priority_version = x; then
     auto_priority_version=qt5
   fi
-    if test x$joto_qt_want_version = xqt5 ||  ( test x$joto_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+    if test x$sov_qt_want_version = xqt5 ||  ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
       QT_LIB_PREFIX=Qt5
-      joto_qt_got_major_vers=5
+      sov_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      joto_qt_got_major_vers=4
+      sov_qt_got_major_vers=4
     fi
     qt5_modules="Qt5Core Qt5Gui Qt5Network Qt5Widgets"
     qt4_modules="QtCore QtGui QtNetwork"
-    JOTO_QT_CHECK([
-      if test x$joto_qt_want_version = xqt5 || ( test x$joto_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+    SOV_QT_CHECK([
+      if test x$sov_qt_want_version = xqt5 || ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
         PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes],[have_qt=no])
-      elif test x$joto_qt_want_version = xqt4 || ( test x$joto_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
+      elif test x$sov_qt_want_version = xqt4 || ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
         PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes], [have_qt=no])
       fi
 
       dnl qt version is set to 'auto' and the preferred version wasn't found. Now try the other.
-      if test x$have_qt = xno && test x$joto_qt_want_version = xauto; then
+      if test x$have_qt = xno && test x$sov_qt_want_version = xauto; then
         if test x$auto_priority_version = xqt5; then
-          PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; joto_qt_got_major_vers=4], [have_qt=no])
+          PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; sov_qt_got_major_vers=4], [have_qt=no])
         else
-          PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; joto_qt_got_major_vers=5], [have_qt=no])
+          PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; sov_qt_got_major_vers=5], [have_qt=no])
         fi
       fi
       if test x$have_qt != xyes; then
         have_qt=no
-        JOTO_QT_FAIL([Qt dependencies not found])
+        SOV_QT_FAIL([Qt dependencies not found])
       fi
     ])
-    JOTO_QT_CHECK([
+    SOV_QT_CHECK([
       PKG_CHECK_MODULES([QT_TEST], [${QT_LIB_PREFIX}Test], [QT_TEST_INCLUDES="$QT_TEST_CFLAGS"; have_qt_test=yes], [have_qt_test=no])
       if test x$use_dbus != xno; then
         PKG_CHECK_MODULES([QT_DBUS], [${QT_LIB_PREFIX}DBus], [QT_DBUS_INCLUDES="$QT_DBUS_CFLAGS"; have_qt_dbus=yes], [have_qt_dbus=no])
@@ -4320,61 +4320,61 @@ m4trace:build-aux/m4/joto_qt.m4:378: -1- AC_DEFUN([_JOTO_QT_FIND_LIBS_WITH_PKGCO
   ])
   true; dnl
 ])
-m4trace:build-aux/m4/joto_qt.m4:430: -1- AC_DEFUN([_JOTO_QT_FIND_LIBS_WITHOUT_PKGCONFIG], [
+m4trace:build-aux/m4/sov_qt.m4:430: -1- AC_DEFUN([_SOV_QT_FIND_LIBS_WITHOUT_PKGCONFIG], [
   TEMP_CPPFLAGS="$CPPFLAGS"
   TEMP_CXXFLAGS="$CXXFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
   TEMP_LIBS="$LIBS"
-  JOTO_QT_CHECK([
+  SOV_QT_CHECK([
     if test x$qt_include_path != x; then
       QT_INCLUDES="-I$qt_include_path -I$qt_include_path/QtCore -I$qt_include_path/QtGui -I$qt_include_path/QtWidgets -I$qt_include_path/QtNetwork -I$qt_include_path/QtTest -I$qt_include_path/QtDBus"
       CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
     fi
   ])
 
-  JOTO_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,JOTO_QT_FAIL(QtCore headers missing))])
-  JOTO_QT_CHECK([AC_CHECK_HEADER([QApplication],, JOTO_QT_FAIL(QtGui headers missing))])
-  JOTO_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, JOTO_QT_FAIL(QtNetwork headers missing))])
+  SOV_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,SOV_QT_FAIL(QtCore headers missing))])
+  SOV_QT_CHECK([AC_CHECK_HEADER([QApplication],, SOV_QT_FAIL(QtGui headers missing))])
+  SOV_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, SOV_QT_FAIL(QtNetwork headers missing))])
 
-  JOTO_QT_CHECK([
-    if test x$joto_qt_want_version = xauto; then
-      _JOTO_QT_CHECK_QT5
+  SOV_QT_CHECK([
+    if test x$sov_qt_want_version = xauto; then
+      _SOV_QT_CHECK_QT5
     fi
-    if test x$joto_cv_qt5 = xyes || test x$joto_qt_want_version = xqt5; then
+    if test x$sov_cv_qt5 = xyes || test x$sov_qt_want_version = xqt5; then
       QT_LIB_PREFIX=Qt5
-      joto_qt_got_major_vers=5
+      sov_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      joto_qt_got_major_vers=4
+      sov_qt_got_major_vers=4
     fi
   ])
 
-  JOTO_QT_CHECK([
+  SOV_QT_CHECK([
     LIBS=
     if test x$qt_lib_path != x; then
       LIBS="$LIBS -L$qt_lib_path"
     fi
 
     if test x$TARGET_OS = xwindows; then
-      AC_CHECK_LIB([imm32],      [main],, JOTO_QT_FAIL(libimm32 not found))
+      AC_CHECK_LIB([imm32],      [main],, SOV_QT_FAIL(libimm32 not found))
     fi
   ])
 
-  JOTO_QT_CHECK(AC_CHECK_LIB([z] ,[main],,AC_MSG_WARN([zlib not found. Assuming qt has it built-in])))
-  JOTO_QT_CHECK(AC_CHECK_LIB([png] ,[main],,AC_MSG_WARN([libpng not found. Assuming qt has it built-in])))
-  JOTO_QT_CHECK(AC_CHECK_LIB([jpeg] ,[main],,AC_MSG_WARN([libjpeg not found. Assuming qt has it built-in])))
-  JOTO_QT_CHECK(AC_SEARCH_LIBS([pcre16_exec], [qtpcre pcre16],,AC_MSG_WARN([libpcre16 not found. Assuming qt has it built-in])))
-  JOTO_QT_CHECK(AC_SEARCH_LIBS([hb_ot_tags_from_script] ,[qtharfbuzzng harfbuzz],,AC_MSG_WARN([libharfbuzz not found. Assuming qt has it built-in or support is disabled])))
-  JOTO_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Core]   ,[main],,JOTO_QT_FAIL(lib$QT_LIB_PREFIXCore not found)))
-  JOTO_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Gui]    ,[main],,JOTO_QT_FAIL(lib$QT_LIB_PREFIXGui not found)))
-  JOTO_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Network],[main],,JOTO_QT_FAIL(lib$QT_LIB_PREFIXNetwork not found)))
-  if test x$joto_qt_got_major_vers = x5; then
-    JOTO_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Widgets],[main],,JOTO_QT_FAIL(lib$QT_LIB_PREFIXWidgets not found)))
+  SOV_QT_CHECK(AC_CHECK_LIB([z] ,[main],,AC_MSG_WARN([zlib not found. Assuming qt has it built-in])))
+  SOV_QT_CHECK(AC_CHECK_LIB([png] ,[main],,AC_MSG_WARN([libpng not found. Assuming qt has it built-in])))
+  SOV_QT_CHECK(AC_CHECK_LIB([jpeg] ,[main],,AC_MSG_WARN([libjpeg not found. Assuming qt has it built-in])))
+  SOV_QT_CHECK(AC_SEARCH_LIBS([pcre16_exec], [qtpcre pcre16],,AC_MSG_WARN([libpcre16 not found. Assuming qt has it built-in])))
+  SOV_QT_CHECK(AC_SEARCH_LIBS([hb_ot_tags_from_script] ,[qtharfbuzzng harfbuzz],,AC_MSG_WARN([libharfbuzz not found. Assuming qt has it built-in or support is disabled])))
+  SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Core]   ,[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXCore not found)))
+  SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Gui]    ,[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXGui not found)))
+  SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Network],[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXNetwork not found)))
+  if test x$sov_qt_got_major_vers = x5; then
+    SOV_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Widgets],[main],,SOV_QT_FAIL(lib$QT_LIB_PREFIXWidgets not found)))
   fi
   QT_LIBS="$LIBS"
   LIBS="$TEMP_LIBS"
 
-  JOTO_QT_CHECK([
+  SOV_QT_CHECK([
     LIBS=
     if test x$qt_lib_path != x; then
       LIBS="-L$qt_lib_path"
@@ -4396,7 +4396,7 @@ m4trace:build-aux/m4/joto_qt.m4:430: -1- AC_DEFUN([_JOTO_QT_FIND_LIBS_WITHOUT_PK
   CXXFLAGS="$TEMP_CXXFLAGS"
   LIBS="$TEMP_LIBS"
 ])
-m4trace:build-aux/m4/joto_subdir_to_include.m4:3: -1- AC_DEFUN([JOTO_SUBDIR_TO_INCLUDE], [
+m4trace:build-aux/m4/sov_subdir_to_include.m4:3: -1- AC_DEFUN([SOV_SUBDIR_TO_INCLUDE], [
   if test "x$2" = "x"; then
     AC_MSG_RESULT([default])
   else
@@ -4870,34 +4870,34 @@ m4trace:configure.ac:570: -1- _AM_SUBST_NOTMAKE([EMBEDDED_LEVELDB_FALSE])
 m4trace:configure.ac:571: -1- m4_pattern_allow([^LEVELDB_CPPFLAGS$])
 m4trace:configure.ac:572: -1- m4_pattern_allow([^LIBLEVELDB$])
 m4trace:configure.ac:573: -1- m4_pattern_allow([^LIBMEMENV$])
-m4trace:configure.ac:577: -1- JOTO_FIND_BDB48
-m4trace:configure.ac:577: -1- JOTO_SUBDIR_TO_INCLUDE([BDB_CPPFLAGS], [${bdbpath}], [db_cxx])
-m4trace:configure.ac:577: -1- JOTO_SUBDIR_TO_INCLUDE([BDB_CPPFLAGS], [${bdb48path}], [db_cxx])
+m4trace:configure.ac:577: -1- SOV_FIND_BDB48
+m4trace:configure.ac:577: -1- SOV_SUBDIR_TO_INCLUDE([BDB_CPPFLAGS], [${bdbpath}], [db_cxx])
+m4trace:configure.ac:577: -1- SOV_SUBDIR_TO_INCLUDE([BDB_CPPFLAGS], [${bdb48path}], [db_cxx])
 m4trace:configure.ac:577: -1- m4_pattern_allow([^BDB_CPPFLAGS$])
 m4trace:configure.ac:577: -1- m4_pattern_allow([^BDB_LIBS$])
-m4trace:configure.ac:589: -1- JOTO_QT_INIT
+m4trace:configure.ac:589: -1- SOV_QT_INIT
 m4trace:configure.ac:589: -1- m4_pattern_allow([^QT_TRANSLATION_DIR$])
-m4trace:configure.ac:592: -1- JOTO_QT_CONFIGURE([$use_pkgconfig], [qt5])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([_JOTO_QT_FIND_LIBS_WITH_PKGCONFIG([qt5])])
-m4trace:configure.ac:592: -1- _JOTO_QT_FIND_LIBS_WITH_PKGCONFIG([qt5])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
-      if test x$joto_qt_want_version = xqt5 || ( test x$joto_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
+m4trace:configure.ac:592: -1- SOV_QT_CONFIGURE([$use_pkgconfig], [qt5])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([_SOV_QT_FIND_LIBS_WITH_PKGCONFIG([qt5])])
+m4trace:configure.ac:592: -1- _SOV_QT_FIND_LIBS_WITH_PKGCONFIG([qt5])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
+      if test x$sov_qt_want_version = xqt5 || ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt5 ); then
         PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes],[have_qt=no])
-      elif test x$joto_qt_want_version = xqt4 || ( test x$joto_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
+      elif test x$sov_qt_want_version = xqt4 || ( test x$sov_qt_want_version = xauto && test x$auto_priority_version = xqt4 ); then
         PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes], [have_qt=no])
       fi
 
       dnl qt version is set to 'auto' and the preferred version wasn't found. Now try the other.
-      if test x$have_qt = xno && test x$joto_qt_want_version = xauto; then
+      if test x$have_qt = xno && test x$sov_qt_want_version = xauto; then
         if test x$auto_priority_version = xqt5; then
-          PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; joto_qt_got_major_vers=4], [have_qt=no])
+          PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; sov_qt_got_major_vers=4], [have_qt=no])
         else
-          PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; joto_qt_got_major_vers=5], [have_qt=no])
+          PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; sov_qt_got_major_vers=5], [have_qt=no])
         fi
       fi
       if test x$have_qt != xyes; then
         have_qt=no
-        JOTO_QT_FAIL([Qt dependencies not found])
+        SOV_QT_FAIL([Qt dependencies not found])
       fi
     ])
 m4trace:configure.ac:592: -1- PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes], [have_qt=no])
@@ -4916,7 +4916,7 @@ m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt4_modules], [pkg_cv_[]QT_CFLA
 m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt4_modules], [pkg_cv_[]QT_LIBS=`$PKG_CONFIG --[]libs "$qt4_modules" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:592: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:592: -1- PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; joto_qt_got_major_vers=4], [have_qt=no])
+m4trace:configure.ac:592: -1- PKG_CHECK_MODULES([QT], [$qt4_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt; sov_qt_got_major_vers=4], [have_qt=no])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_CFLAGS$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_LIBS$])
 m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt4_modules], [pkg_cv_[]QT_CFLAGS=`$PKG_CONFIG --[]cflags "$qt4_modules" 2>/dev/null`
@@ -4924,7 +4924,7 @@ m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt4_modules], [pkg_cv_[]QT_CFLA
 m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt4_modules], [pkg_cv_[]QT_LIBS=`$PKG_CONFIG --[]libs "$qt4_modules" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:592: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:592: -1- PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; joto_qt_got_major_vers=5], [have_qt=no])
+m4trace:configure.ac:592: -1- PKG_CHECK_MODULES([QT], [$qt5_modules], [QT_INCLUDES="$QT_CFLAGS"; have_qt=yes; QT_LIB_PREFIX=Qt5; sov_qt_got_major_vers=5], [have_qt=no])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_CFLAGS$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_LIBS$])
 m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt5_modules], [pkg_cv_[]QT_CFLAGS=`$PKG_CONFIG --[]cflags "$qt5_modules" 2>/dev/null`
@@ -4932,8 +4932,8 @@ m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt5_modules], [pkg_cv_[]QT_CFLA
 m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([$qt5_modules], [pkg_cv_[]QT_LIBS=`$PKG_CONFIG --[]libs "$qt5_modules" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:592: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([Qt dependencies not found])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([Qt dependencies not found])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
       PKG_CHECK_MODULES([QT_TEST], [${QT_LIB_PREFIX}Test], [QT_TEST_INCLUDES="$QT_TEST_CFLAGS"; have_qt_test=yes], [have_qt_test=no])
       if test x$use_dbus != xno; then
         PKG_CHECK_MODULES([QT_DBUS], [${QT_LIB_PREFIX}DBus], [QT_DBUS_INCLUDES="$QT_DBUS_CFLAGS"; have_qt_dbus=yes], [have_qt_dbus=no])
@@ -4955,47 +4955,47 @@ m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([${QT_LIB_PREFIX}DBus], [pkg_cv_[
 m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([${QT_LIB_PREFIX}DBus], [pkg_cv_[]QT_DBUS_LIBS=`$PKG_CONFIG --[]libs "${QT_LIB_PREFIX}DBus" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:592: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([_JOTO_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
-m4trace:configure.ac:592: -1- _JOTO_QT_FIND_LIBS_WITHOUT_PKGCONFIG
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([_SOV_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
+m4trace:configure.ac:592: -1- _SOV_QT_FIND_LIBS_WITHOUT_PKGCONFIG
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     if test x$qt_include_path != x; then
       QT_INCLUDES="-I$qt_include_path -I$qt_include_path/QtCore -I$qt_include_path/QtGui -I$qt_include_path/QtWidgets -I$qt_include_path/QtNetwork -I$qt_include_path/QtTest -I$qt_include_path/QtDBus"
       CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
     fi
   ])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,JOTO_QT_FAIL(QtCore headers missing))])
-m4trace:configure.ac:592: -2- JOTO_QT_FAIL([QtCore headers missing])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([AC_CHECK_HEADER([QApplication],, JOTO_QT_FAIL(QtGui headers missing))])
-m4trace:configure.ac:592: -2- JOTO_QT_FAIL([QtGui headers missing])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, JOTO_QT_FAIL(QtNetwork headers missing))])
-m4trace:configure.ac:592: -2- JOTO_QT_FAIL([QtNetwork headers missing])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
-    if test x$joto_qt_want_version = xauto; then
-      _JOTO_QT_CHECK_QT5
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,SOV_QT_FAIL(QtCore headers missing))])
+m4trace:configure.ac:592: -2- SOV_QT_FAIL([QtCore headers missing])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([AC_CHECK_HEADER([QApplication],, SOV_QT_FAIL(QtGui headers missing))])
+m4trace:configure.ac:592: -2- SOV_QT_FAIL([QtGui headers missing])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, SOV_QT_FAIL(QtNetwork headers missing))])
+m4trace:configure.ac:592: -2- SOV_QT_FAIL([QtNetwork headers missing])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
+    if test x$sov_qt_want_version = xauto; then
+      _SOV_QT_CHECK_QT5
     fi
-    if test x$joto_cv_qt5 = xyes || test x$joto_qt_want_version = xqt5; then
+    if test x$sov_cv_qt5 = xyes || test x$sov_qt_want_version = xqt5; then
       QT_LIB_PREFIX=Qt5
-      joto_qt_got_major_vers=5
+      sov_qt_got_major_vers=5
     else
       QT_LIB_PREFIX=Qt
-      joto_qt_got_major_vers=4
+      sov_qt_got_major_vers=4
     fi
   ])
-m4trace:configure.ac:592: -1- _JOTO_QT_CHECK_QT5
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- _SOV_QT_CHECK_QT5
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     LIBS=
     if test x$qt_lib_path != x; then
       LIBS="$LIBS -L$qt_lib_path"
     fi
 
     if test x$TARGET_OS = xwindows; then
-      AC_CHECK_LIB([imm32],      [main],, JOTO_QT_FAIL(libimm32 not found))
+      AC_CHECK_LIB([imm32],      [main],, SOV_QT_FAIL(libimm32 not found))
     fi
   ])
-m4trace:configure.ac:592: -2- JOTO_QT_FAIL([libimm32 not found])
+m4trace:configure.ac:592: -2- SOV_QT_FAIL([libimm32 not found])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^HAVE_LIBIMM32$])
 m4trace:configure.ac:592: -2- m4_pattern_allow([^HAVE_LIBZ_$])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_z ''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_z ''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lz " >&5
 $as_echo_n "checking for main in -lz ... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5040,7 +5040,7 @@ $as_echo "$as_me: WARNING: zlib not found. Assuming qt has it built-in" >&2;}
 fi
 ])
 m4trace:configure.ac:592: -2- m4_pattern_allow([^HAVE_LIBPNG_$])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_png ''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_png ''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lpng " >&5
 $as_echo_n "checking for main in -lpng ... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5085,7 +5085,7 @@ $as_echo "$as_me: WARNING: libpng not found. Assuming qt has it built-in" >&2;}
 fi
 ])
 m4trace:configure.ac:592: -2- m4_pattern_allow([^HAVE_LIBJPEG_$])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_jpeg ''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_jpeg ''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -ljpeg " >&5
 $as_echo_n "checking for main in -ljpeg ... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5129,7 +5129,7 @@ else
 $as_echo "$as_me: WARNING: libjpeg not found. Assuming qt has it built-in" >&2;}
 fi
 ])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing pcre16_exec" >&5
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing pcre16_exec" >&5
 $as_echo_n "checking for library containing pcre16_exec... " >&6; }
 if ${ac_cv_search_pcre16_exec+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -5188,7 +5188,7 @@ else
 $as_echo "$as_me: WARNING: libpcre16 not found. Assuming qt has it built-in" >&2;}
 fi
 ])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing hb_ot_tags_from_script " >&5
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing hb_ot_tags_from_script " >&5
 $as_echo_n "checking for library containing hb_ot_tags_from_script ... " >&6; }
 if ${ac_cv_search_hb_ot_tags_from_script_+:} false; then :
   $as_echo_n "(cached) " >&6
@@ -5247,8 +5247,8 @@ else
 $as_echo "$as_me: WARNING: libharfbuzz not found. Assuming qt has it built-in or support is disabled" >&2;}
 fi
 ])
-m4trace:configure.ac:592: -3- JOTO_QT_FAIL([lib$QT_LIB_PREFIXCore not found])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Core   ''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -3- SOV_QT_FAIL([lib$QT_LIB_PREFIXCore not found])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Core   ''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -l${QT_LIB_PREFIX}Core   " >&5
 $as_echo_n "checking for main in -l${QT_LIB_PREFIX}Core   ... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5289,21 +5289,21 @@ _ACEOF
 
 else
   
-  if test "x$joto_qt_want_version" = "xauto" && test x$joto_qt_force != xyes; then
-    if test x$joto_enable_qt != xno; then
-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXCore not found; joto-qt frontend will not be built" >&5
-$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXCore not found; joto-qt frontend will not be built" >&2;}
+  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
+    if test x$sov_enable_qt != xno; then
+      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXCore not found; sov-qt frontend will not be built" >&5
+$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXCore not found; sov-qt frontend will not be built" >&2;}
     fi
-    joto_enable_qt=no
-    joto_enable_qt_test=no
+    sov_enable_qt=no
+    sov_enable_qt_test=no
   else
     as_fn_error $? "lib$QT_LIB_PREFIXCore not found" "$LINENO" 5
   fi
 
 fi
 ])
-m4trace:configure.ac:592: -3- JOTO_QT_FAIL([lib$QT_LIB_PREFIXGui not found])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Gui    ''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -3- SOV_QT_FAIL([lib$QT_LIB_PREFIXGui not found])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Gui    ''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -l${QT_LIB_PREFIX}Gui    " >&5
 $as_echo_n "checking for main in -l${QT_LIB_PREFIX}Gui    ... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5344,21 +5344,21 @@ _ACEOF
 
 else
   
-  if test "x$joto_qt_want_version" = "xauto" && test x$joto_qt_force != xyes; then
-    if test x$joto_enable_qt != xno; then
-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXGui not found; joto-qt frontend will not be built" >&5
-$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXGui not found; joto-qt frontend will not be built" >&2;}
+  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
+    if test x$sov_enable_qt != xno; then
+      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXGui not found; sov-qt frontend will not be built" >&5
+$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXGui not found; sov-qt frontend will not be built" >&2;}
     fi
-    joto_enable_qt=no
-    joto_enable_qt_test=no
+    sov_enable_qt=no
+    sov_enable_qt_test=no
   else
     as_fn_error $? "lib$QT_LIB_PREFIXGui not found" "$LINENO" 5
   fi
 
 fi
 ])
-m4trace:configure.ac:592: -3- JOTO_QT_FAIL([lib$QT_LIB_PREFIXNetwork not found])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Network''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -3- SOV_QT_FAIL([lib$QT_LIB_PREFIXNetwork not found])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Network''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -l${QT_LIB_PREFIX}Network" >&5
 $as_echo_n "checking for main in -l${QT_LIB_PREFIX}Network... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5399,21 +5399,21 @@ _ACEOF
 
 else
   
-  if test "x$joto_qt_want_version" = "xauto" && test x$joto_qt_force != xyes; then
-    if test x$joto_enable_qt != xno; then
-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXNetwork not found; joto-qt frontend will not be built" >&5
-$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXNetwork not found; joto-qt frontend will not be built" >&2;}
+  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
+    if test x$sov_enable_qt != xno; then
+      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXNetwork not found; sov-qt frontend will not be built" >&5
+$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXNetwork not found; sov-qt frontend will not be built" >&2;}
     fi
-    joto_enable_qt=no
-    joto_enable_qt_test=no
+    sov_enable_qt=no
+    sov_enable_qt_test=no
   else
     as_fn_error $? "lib$QT_LIB_PREFIXNetwork not found" "$LINENO" 5
   fi
 
 fi
 ])
-m4trace:configure.ac:592: -3- JOTO_QT_FAIL([lib$QT_LIB_PREFIXWidgets not found])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Widgets''_main" | $as_tr_sh`
+m4trace:configure.ac:592: -3- SOV_QT_FAIL([lib$QT_LIB_PREFIXWidgets not found])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_${QT_LIB_PREFIX}Widgets''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -l${QT_LIB_PREFIX}Widgets" >&5
 $as_echo_n "checking for main in -l${QT_LIB_PREFIX}Widgets... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5454,20 +5454,20 @@ _ACEOF
 
 else
   
-  if test "x$joto_qt_want_version" = "xauto" && test x$joto_qt_force != xyes; then
-    if test x$joto_enable_qt != xno; then
-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXWidgets not found; joto-qt frontend will not be built" >&5
-$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXWidgets not found; joto-qt frontend will not be built" >&2;}
+  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
+    if test x$sov_enable_qt != xno; then
+      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: lib$QT_LIB_PREFIXWidgets not found; sov-qt frontend will not be built" >&5
+$as_echo "$as_me: WARNING: lib$QT_LIB_PREFIXWidgets not found; sov-qt frontend will not be built" >&2;}
     fi
-    joto_enable_qt=no
-    joto_enable_qt_test=no
+    sov_enable_qt=no
+    sov_enable_qt_test=no
   else
     as_fn_error $? "lib$QT_LIB_PREFIXWidgets not found" "$LINENO" 5
   fi
 
 fi
 ])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     LIBS=
     if test x$qt_lib_path != x; then
       LIBS="-L$qt_lib_path"
@@ -5485,44 +5485,44 @@ m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
       QT_DBUS_LIBS="$LIBS"
     fi
   ])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
   TEMP_CPPFLAGS=$CPPFLAGS
   TEMP_CXXFLAGS=$CXXFLAGS
   CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
-  if test x$joto_qt_got_major_vers = x5; then
-    _JOTO_QT_IS_STATIC
-    if test x$joto_cv_static_qt = xyes; then
-      _JOTO_QT_FIND_STATIC_PLUGINS
+  if test x$sov_qt_got_major_vers = x5; then
+    _SOV_QT_IS_STATIC
+    if test x$sov_cv_static_qt = xyes; then
+      _SOV_QT_FIND_STATIC_PLUGINS
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      AC_CACHE_CHECK(for Qt < 5.4, joto_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
+      AC_CACHE_CHECK(for Qt < 5.4, sov_cv_need_acc_widget,[AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
           [[#include <QtCore>]],[[
           #if QT_VERSION >= 0x050400
           choke;
           #endif
           ]])],
-        [joto_cv_need_acc_widget=yes],
-        [joto_cv_need_acc_widget=no])
+        [sov_cv_need_acc_widget=yes],
+        [sov_cv_need_acc_widget=no])
       ])
-      if test "x$joto_cv_need_acc_widget" = "xyes"; then
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
+      if test "x$sov_cv_need_acc_widget" = "xyes"; then
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
       fi
       if test x$TARGET_OS = xwindows; then
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)],[-lqwindows])
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)],[-lqwindows])
         AC_DEFINE(QT_QPA_PLATFORM_WINDOWS, 1, [Define this symbol if the qt platform is windows])
       elif test x$TARGET_OS = xlinux; then
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)],[-lqxcb -lxcb-static])
         AC_DEFINE(QT_QPA_PLATFORM_XCB, 1, [Define this symbol if the qt platform is xcb])
       elif test x$TARGET_OS = xdarwin; then
         AX_CHECK_LINK_FLAG([[-framework IOKit]],[QT_LIBS="$QT_LIBS -framework IOKit"],[AC_MSG_ERROR(could not iokit framework)])
-        _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
+        _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)],[-lqcocoa])
         AC_DEFINE(QT_QPA_PLATFORM_COCOA, 1, [Define this symbol if the qt platform is cocoa])
       fi
     fi
   else
     if test x$TARGET_OS = xwindows; then
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
-      _JOTO_QT_CHECK_STATIC_PLUGINS([
+      _SOV_QT_CHECK_STATIC_PLUGINS([
          Q_IMPORT_PLUGIN(qcncodecs)
          Q_IMPORT_PLUGIN(qjpcodecs)
          Q_IMPORT_PLUGIN(qtwcodecs)
@@ -5534,9 +5534,9 @@ m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
   CPPFLAGS=$TEMP_CPPFLAGS
   CXXFLAGS=$TEMP_CXXFLAGS
   ])
-m4trace:configure.ac:592: -1- _JOTO_QT_IS_STATIC
+m4trace:configure.ac:592: -1- _SOV_QT_IS_STATIC
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_STATICPLUGIN$])
-m4trace:configure.ac:592: -1- _JOTO_QT_FIND_STATIC_PLUGINS
+m4trace:configure.ac:592: -1- _SOV_QT_FIND_STATIC_PLUGINS
 m4trace:configure.ac:592: -1- PKG_CHECK_MODULES([QTPLATFORM], [Qt5PlatformSupport], [QT_LIBS="$QTPLATFORM_LIBS $QT_LIBS"])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QTPLATFORM_CFLAGS$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QTPLATFORM_LIBS$])
@@ -5570,27 +5570,27 @@ m4trace:configure.ac:592: -1- PKG_CHECK_EXISTS([Qt5PrintSupport], [pkg_cv_[]QTPR
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:592: -1- _PKG_SHORT_ERRORS_SUPPORTED
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_STATICPLUGIN$])
-m4trace:configure.ac:592: -1- _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([Could not resolve: -lqtaccessiblewidgets])
-m4trace:configure.ac:592: -1- _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)], [-lqwindows])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([Could not resolve: -lqwindows])
+m4trace:configure.ac:592: -1- _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqtaccessiblewidgets])
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([Could not resolve: -lqtaccessiblewidgets])
+m4trace:configure.ac:592: -1- _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)], [-lqwindows])
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([Could not resolve: -lqwindows])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_QPA_PLATFORM_WINDOWS$])
-m4trace:configure.ac:592: -1- _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)], [-lqxcb -lxcb-static])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([Could not resolve: -lqxcb -lxcb-static])
+m4trace:configure.ac:592: -1- _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)], [-lqxcb -lxcb-static])
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([Could not resolve: -lqxcb -lxcb-static])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_QPA_PLATFORM_XCB$])
 m4trace:configure.ac:592: -1- AX_CHECK_LINK_FLAG([[-framework IOKit]], [QT_LIBS="$QT_LIBS -framework IOKit"], [AC_MSG_ERROR(could not iokit framework)])
-m4trace:configure.ac:592: -1- _JOTO_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)], [-lqcocoa])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([Could not resolve: -lqcocoa])
+m4trace:configure.ac:592: -1- _SOV_QT_CHECK_STATIC_PLUGINS([Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)], [-lqcocoa])
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([Could not resolve: -lqcocoa])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_QPA_PLATFORM_COCOA$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_STATICPLUGIN$])
-m4trace:configure.ac:592: -1- _JOTO_QT_CHECK_STATIC_PLUGINS([
+m4trace:configure.ac:592: -1- _SOV_QT_CHECK_STATIC_PLUGINS([
          Q_IMPORT_PLUGIN(qcncodecs)
          Q_IMPORT_PLUGIN(qjpcodecs)
          Q_IMPORT_PLUGIN(qtwcodecs)
          Q_IMPORT_PLUGIN(qkrcodecs)
          Q_IMPORT_PLUGIN(AccessibleFactory)], [-lqcncodecs -lqjpcodecs -lqtwcodecs -lqkrcodecs -lqtaccessiblewidgets])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([Could not resolve: -lqcncodecs -lqjpcodecs -lqtwcodecs -lqkrcodecs -lqtaccessiblewidgets])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([Could not resolve: -lqcncodecs -lqjpcodecs -lqtwcodecs -lqkrcodecs -lqtaccessiblewidgets])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     AC_MSG_CHECKING(whether -fPIE can be used with this Qt config)
     TEMP_CPPFLAGS=$CPPFLAGS
     TEMP_CXXFLAGS=$CXXFLAGS
@@ -5608,7 +5608,7 @@ m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
     CPPFLAGS=$TEMP_CPPFLAGS
     CXXFLAGS=$TEMP_CXXFLAGS
     ])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     AC_MSG_CHECKING(whether -fPIC is needed with this Qt config)
     TEMP_CPPFLAGS=$CPPFLAGS
     CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
@@ -5623,77 +5623,77 @@ m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
     )
     CPPFLAGS=$TEMP_CPPFLAGS
     ])
-m4trace:configure.ac:592: -1- JOTO_QT_PATH_PROGS([MOC], [moc-qt${joto_qt_got_major_vers} moc${joto_qt_got_major_vers} moc], [$qt_bin_path])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_PATH_PROGS([MOC], [moc-qt${sov_qt_got_major_vers} moc${sov_qt_got_major_vers} moc], [$qt_bin_path])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     if test "x$qt_bin_path" != "x"; then
-      AC_PATH_PROGS(MOC,moc-qt${joto_qt_got_major_vers} moc${joto_qt_got_major_vers} moc,,$qt_bin_path)
+      AC_PATH_PROGS(MOC,moc-qt${sov_qt_got_major_vers} moc${sov_qt_got_major_vers} moc,,$qt_bin_path)
     else
-      AC_PATH_PROGS(MOC,moc-qt${joto_qt_got_major_vers} moc${joto_qt_got_major_vers} moc)
+      AC_PATH_PROGS(MOC,moc-qt${sov_qt_got_major_vers} moc${sov_qt_got_major_vers} moc)
     fi
     if test "x$MOC" = "x" && test "x" != "xyes"; then
-      JOTO_QT_FAIL([MOC not found])
+      SOV_QT_FAIL([MOC not found])
     fi
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^MOC$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^MOC$])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([MOC not found])
-m4trace:configure.ac:592: -1- JOTO_QT_PATH_PROGS([UIC], [uic-qt${joto_qt_got_major_vers} uic${joto_qt_got_major_vers} uic], [$qt_bin_path])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([MOC not found])
+m4trace:configure.ac:592: -1- SOV_QT_PATH_PROGS([UIC], [uic-qt${sov_qt_got_major_vers} uic${sov_qt_got_major_vers} uic], [$qt_bin_path])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     if test "x$qt_bin_path" != "x"; then
-      AC_PATH_PROGS(UIC,uic-qt${joto_qt_got_major_vers} uic${joto_qt_got_major_vers} uic,,$qt_bin_path)
+      AC_PATH_PROGS(UIC,uic-qt${sov_qt_got_major_vers} uic${sov_qt_got_major_vers} uic,,$qt_bin_path)
     else
-      AC_PATH_PROGS(UIC,uic-qt${joto_qt_got_major_vers} uic${joto_qt_got_major_vers} uic)
+      AC_PATH_PROGS(UIC,uic-qt${sov_qt_got_major_vers} uic${sov_qt_got_major_vers} uic)
     fi
     if test "x$UIC" = "x" && test "x" != "xyes"; then
-      JOTO_QT_FAIL([UIC not found])
+      SOV_QT_FAIL([UIC not found])
     fi
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^UIC$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^UIC$])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([UIC not found])
-m4trace:configure.ac:592: -1- JOTO_QT_PATH_PROGS([RCC], [rcc-qt${joto_qt_got_major_vers} rcc${joto_qt_got_major_vers} rcc], [$qt_bin_path])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([UIC not found])
+m4trace:configure.ac:592: -1- SOV_QT_PATH_PROGS([RCC], [rcc-qt${sov_qt_got_major_vers} rcc${sov_qt_got_major_vers} rcc], [$qt_bin_path])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     if test "x$qt_bin_path" != "x"; then
-      AC_PATH_PROGS(RCC,rcc-qt${joto_qt_got_major_vers} rcc${joto_qt_got_major_vers} rcc,,$qt_bin_path)
+      AC_PATH_PROGS(RCC,rcc-qt${sov_qt_got_major_vers} rcc${sov_qt_got_major_vers} rcc,,$qt_bin_path)
     else
-      AC_PATH_PROGS(RCC,rcc-qt${joto_qt_got_major_vers} rcc${joto_qt_got_major_vers} rcc)
+      AC_PATH_PROGS(RCC,rcc-qt${sov_qt_got_major_vers} rcc${sov_qt_got_major_vers} rcc)
     fi
     if test "x$RCC" = "x" && test "x" != "xyes"; then
-      JOTO_QT_FAIL([RCC not found])
+      SOV_QT_FAIL([RCC not found])
     fi
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^RCC$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^RCC$])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([RCC not found])
-m4trace:configure.ac:592: -1- JOTO_QT_PATH_PROGS([LRELEASE], [lrelease-qt${joto_qt_got_major_vers} lrelease${joto_qt_got_major_vers} lrelease], [$qt_bin_path])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([RCC not found])
+m4trace:configure.ac:592: -1- SOV_QT_PATH_PROGS([LRELEASE], [lrelease-qt${sov_qt_got_major_vers} lrelease${sov_qt_got_major_vers} lrelease], [$qt_bin_path])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     if test "x$qt_bin_path" != "x"; then
-      AC_PATH_PROGS(LRELEASE,lrelease-qt${joto_qt_got_major_vers} lrelease${joto_qt_got_major_vers} lrelease,,$qt_bin_path)
+      AC_PATH_PROGS(LRELEASE,lrelease-qt${sov_qt_got_major_vers} lrelease${sov_qt_got_major_vers} lrelease,,$qt_bin_path)
     else
-      AC_PATH_PROGS(LRELEASE,lrelease-qt${joto_qt_got_major_vers} lrelease${joto_qt_got_major_vers} lrelease)
+      AC_PATH_PROGS(LRELEASE,lrelease-qt${sov_qt_got_major_vers} lrelease${sov_qt_got_major_vers} lrelease)
     fi
     if test "x$LRELEASE" = "x" && test "x" != "xyes"; then
-      JOTO_QT_FAIL([LRELEASE not found])
+      SOV_QT_FAIL([LRELEASE not found])
     fi
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^LRELEASE$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^LRELEASE$])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([LRELEASE not found])
-m4trace:configure.ac:592: -1- JOTO_QT_PATH_PROGS([LUPDATE], [lupdate-qt${joto_qt_got_major_vers} lupdate${joto_qt_got_major_vers} lupdate], [$qt_bin_path], [yes])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([LRELEASE not found])
+m4trace:configure.ac:592: -1- SOV_QT_PATH_PROGS([LUPDATE], [lupdate-qt${sov_qt_got_major_vers} lupdate${sov_qt_got_major_vers} lupdate], [$qt_bin_path], [yes])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     if test "x$qt_bin_path" != "x"; then
-      AC_PATH_PROGS(LUPDATE,lupdate-qt${joto_qt_got_major_vers} lupdate${joto_qt_got_major_vers} lupdate,,$qt_bin_path)
+      AC_PATH_PROGS(LUPDATE,lupdate-qt${sov_qt_got_major_vers} lupdate${sov_qt_got_major_vers} lupdate,,$qt_bin_path)
     else
-      AC_PATH_PROGS(LUPDATE,lupdate-qt${joto_qt_got_major_vers} lupdate${joto_qt_got_major_vers} lupdate)
+      AC_PATH_PROGS(LUPDATE,lupdate-qt${sov_qt_got_major_vers} lupdate${sov_qt_got_major_vers} lupdate)
     fi
     if test "x$LUPDATE" = "x" && test "xyes" != "xyes"; then
-      JOTO_QT_FAIL([LUPDATE not found])
+      SOV_QT_FAIL([LUPDATE not found])
     fi
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^LUPDATE$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^LUPDATE$])
-m4trace:configure.ac:592: -1- JOTO_QT_FAIL([LUPDATE not found])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_FAIL([LUPDATE not found])
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
     AC_CACHE_CHECK([whether $RCC accepts --format-version option],
                    [ac_cv_prog_rcc_accepts_format_version],
                    [ac_cv_prog_rcc_accepts_format_version=no
@@ -5708,25 +5708,25 @@ m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
     AC_SUBST(RCCFLAGS)
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^RCCFLAGS$])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
        MOC_DEFS="${MOC_DEFS} -DQ_OS_MAC"
        base_frameworks="-framework Foundation -framework ApplicationServices -framework AppKit"
        AX_CHECK_LINK_FLAG([[$base_frameworks]],[QT_LIBS="$QT_LIBS $base_frameworks"],[AC_MSG_ERROR(could not find base frameworks)])
      ])
 m4trace:configure.ac:592: -1- AX_CHECK_LINK_FLAG([[$base_frameworks]], [QT_LIBS="$QT_LIBS $base_frameworks"], [AC_MSG_ERROR(could not find base frameworks)])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
          AX_CHECK_LINK_FLAG([[-mwindows]],[QT_LDFLAGS="$QT_LDFLAGS -mwindows"],[AC_MSG_WARN(-mwindows linker support not detected)])
        ])
 m4trace:configure.ac:592: -1- AX_CHECK_LINK_FLAG([[-mwindows]], [QT_LDFLAGS="$QT_LDFLAGS -mwindows"], [AC_MSG_WARN(-mwindows linker support not detected)])
-m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
-    joto_enable_qt=yes
-    joto_enable_qt_test=yes
+m4trace:configure.ac:592: -1- SOV_QT_CHECK([
+    sov_enable_qt=yes
+    sov_enable_qt_test=yes
     if test x$have_qt_test = xno; then
-      joto_enable_qt_test=no
+      sov_enable_qt_test=no
     fi
-    joto_enable_qt_dbus=no
+    sov_enable_qt_dbus=no
     if test x$use_dbus != xno && test x$have_qt_dbus = xyes; then
-      joto_enable_qt_dbus=yes
+      sov_enable_qt_dbus=yes
     fi
     if test x$use_dbus = xyes && test x$have_qt_dbus = xno; then
       AC_MSG_ERROR("libQtDBus not found. Install libQtDBus or remove --with-qtdbus.")
@@ -5735,7 +5735,7 @@ m4trace:configure.ac:592: -1- JOTO_QT_CHECK([
       AC_MSG_WARN("lupdate is required to update qt translations")
     fi
   ], [
-    joto_enable_qt=no
+    sov_enable_qt=no
   ])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_PIE_FLAGS$])
 m4trace:configure.ac:592: -1- m4_pattern_allow([^QT_INCLUDES$])
@@ -5803,8 +5803,8 @@ m4trace:configure.ac:769: -1- PKG_CHECK_EXISTS([libcrypto], [pkg_cv_[]CRYPTO_CFL
 m4trace:configure.ac:769: -1- PKG_CHECK_EXISTS([libcrypto], [pkg_cv_[]CRYPTO_LIBS=`$PKG_CONFIG --[]libs "libcrypto" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:769: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:769: -1- JOTO_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [JOTO_QT_FAIL(libprotobuf not found)])])
-m4trace:configure.ac:769: -1- PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [JOTO_QT_FAIL(libprotobuf not found)])
+m4trace:configure.ac:769: -1- SOV_QT_CHECK([PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [SOV_QT_FAIL(libprotobuf not found)])])
+m4trace:configure.ac:769: -1- PKG_CHECK_MODULES([PROTOBUF], [protobuf], [have_protobuf=yes], [SOV_QT_FAIL(libprotobuf not found)])
 m4trace:configure.ac:769: -1- m4_pattern_allow([^PROTOBUF_CFLAGS$])
 m4trace:configure.ac:769: -1- m4_pattern_allow([^PROTOBUF_LIBS$])
 m4trace:configure.ac:769: -1- PKG_CHECK_EXISTS([protobuf], [pkg_cv_[]PROTOBUF_CFLAGS=`$PKG_CONFIG --[]cflags "protobuf" 2>/dev/null`
@@ -5812,9 +5812,9 @@ m4trace:configure.ac:769: -1- PKG_CHECK_EXISTS([protobuf], [pkg_cv_[]PROTOBUF_CF
 m4trace:configure.ac:769: -1- PKG_CHECK_EXISTS([protobuf], [pkg_cv_[]PROTOBUF_LIBS=`$PKG_CONFIG --[]libs "protobuf" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:769: -1- _PKG_SHORT_ERRORS_SUPPORTED
-m4trace:configure.ac:769: -1- JOTO_QT_FAIL([libprotobuf not found])
-m4trace:configure.ac:769: -1- JOTO_QT_FAIL([libprotobuf not found])
-m4trace:configure.ac:769: -1- JOTO_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
+m4trace:configure.ac:769: -1- SOV_QT_FAIL([libprotobuf not found])
+m4trace:configure.ac:769: -1- SOV_QT_FAIL([libprotobuf not found])
+m4trace:configure.ac:769: -1- SOV_QT_CHECK([PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])])
 m4trace:configure.ac:769: -1- PKG_CHECK_MODULES([QR], [libqrencode], [have_qrencode=yes], [have_qrencode=no])
 m4trace:configure.ac:769: -1- m4_pattern_allow([^QR_CFLAGS$])
 m4trace:configure.ac:769: -1- m4_pattern_allow([^QR_LIBS$])
@@ -5857,8 +5857,8 @@ m4trace:configure.ac:812: -1- m4_pattern_allow([^ENABLE_ZMQ$])
 m4trace:configure.ac:812: -1- m4_pattern_allow([^ENABLE_ZMQ$])
 m4trace:configure.ac:817: -1- m4_pattern_allow([^ENABLE_ZMQ$])
 m4trace:configure.ac:822: -1- m4_pattern_allow([^ENABLE_ZMQ$])
-m4trace:configure.ac:825: -3- JOTO_QT_FAIL([libprotobuf not found])
-m4trace:configure.ac:825: -1- JOTO_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_protobuf ''_main" | $as_tr_sh`
+m4trace:configure.ac:825: -3- SOV_QT_FAIL([libprotobuf not found])
+m4trace:configure.ac:825: -1- SOV_QT_CHECK([as_ac_Lib=`$as_echo "ac_cv_lib_protobuf ''_main" | $as_tr_sh`
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -lprotobuf " >&5
 $as_echo_n "checking for main in -lprotobuf ... " >&6; }
 if eval \${$as_ac_Lib+:} false; then :
@@ -5894,21 +5894,21 @@ if eval test \"x\$"$as_ac_Lib"\" = x"yes"; then :
   PROTOBUF_LIBS=-lprotobuf
 else
   
-  if test "x$joto_qt_want_version" = "xauto" && test x$joto_qt_force != xyes; then
-    if test x$joto_enable_qt != xno; then
-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: libprotobuf not found; joto-qt frontend will not be built" >&5
-$as_echo "$as_me: WARNING: libprotobuf not found; joto-qt frontend will not be built" >&2;}
+  if test "x$sov_qt_want_version" = "xauto" && test x$sov_qt_force != xyes; then
+    if test x$sov_enable_qt != xno; then
+      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: libprotobuf not found; sov-qt frontend will not be built" >&5
+$as_echo "$as_me: WARNING: libprotobuf not found; sov-qt frontend will not be built" >&2;}
     fi
-    joto_enable_qt=no
-    joto_enable_qt_test=no
+    sov_enable_qt=no
+    sov_enable_qt_test=no
   else
     as_fn_error $? "libprotobuf not found" "$LINENO" 5
   fi
 
 fi
 ])
-m4trace:configure.ac:827: -1- JOTO_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
-m4trace:configure.ac:828: -1- JOTO_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
+m4trace:configure.ac:827: -1- SOV_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
+m4trace:configure.ac:828: -1- SOV_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
 m4trace:configure.ac:838: -1- PKG_CHECK_MODULES([UNIVALUE], [libunivalue], [found_univalue=yes], [true])
 m4trace:configure.ac:838: -1- m4_pattern_allow([^UNIVALUE_CFLAGS$])
 m4trace:configure.ac:838: -1- m4_pattern_allow([^UNIVALUE_LIBS$])
@@ -5924,35 +5924,35 @@ m4trace:configure.ac:866: -1- _AM_SUBST_NOTMAKE([EMBEDDED_UNIVALUE_TRUE])
 m4trace:configure.ac:866: -1- _AM_SUBST_NOTMAKE([EMBEDDED_UNIVALUE_FALSE])
 m4trace:configure.ac:867: -1- m4_pattern_allow([^UNIVALUE_CFLAGS$])
 m4trace:configure.ac:868: -1- m4_pattern_allow([^UNIVALUE_LIBS$])
-m4trace:configure.ac:878: -1- JOTO_QT_PATH_PROGS([PROTOC], [protoc], [$protoc_bin_path])
-m4trace:configure.ac:878: -1- JOTO_QT_CHECK([
+m4trace:configure.ac:878: -1- SOV_QT_PATH_PROGS([PROTOC], [protoc], [$protoc_bin_path])
+m4trace:configure.ac:878: -1- SOV_QT_CHECK([
     if test "x$protoc_bin_path" != "x"; then
       AC_PATH_PROGS(PROTOC,protoc,,$protoc_bin_path)
     else
       AC_PATH_PROGS(PROTOC,protoc)
     fi
     if test "x$PROTOC" = "x" && test "x" != "xyes"; then
-      JOTO_QT_FAIL([PROTOC not found])
+      SOV_QT_FAIL([PROTOC not found])
     fi
   ])
 m4trace:configure.ac:878: -1- m4_pattern_allow([^PROTOC$])
 m4trace:configure.ac:878: -1- m4_pattern_allow([^PROTOC$])
-m4trace:configure.ac:878: -1- JOTO_QT_FAIL([PROTOC not found])
-m4trace:configure.ac:881: -1- AM_CONDITIONAL([BUILD_JOTOD], [test x$build_jotod = xyes])
-m4trace:configure.ac:881: -1- m4_pattern_allow([^BUILD_JOTOD_TRUE$])
-m4trace:configure.ac:881: -1- m4_pattern_allow([^BUILD_JOTOD_FALSE$])
-m4trace:configure.ac:881: -1- _AM_SUBST_NOTMAKE([BUILD_JOTOD_TRUE])
-m4trace:configure.ac:881: -1- _AM_SUBST_NOTMAKE([BUILD_JOTOD_FALSE])
-m4trace:configure.ac:885: -1- AM_CONDITIONAL([BUILD_JOTO_UTILS], [test x$build_joto_utils = xyes])
-m4trace:configure.ac:885: -1- m4_pattern_allow([^BUILD_JOTO_UTILS_TRUE$])
-m4trace:configure.ac:885: -1- m4_pattern_allow([^BUILD_JOTO_UTILS_FALSE$])
-m4trace:configure.ac:885: -1- _AM_SUBST_NOTMAKE([BUILD_JOTO_UTILS_TRUE])
-m4trace:configure.ac:885: -1- _AM_SUBST_NOTMAKE([BUILD_JOTO_UTILS_FALSE])
-m4trace:configure.ac:889: -1- AM_CONDITIONAL([BUILD_JOTO_LIBS], [test x$build_joto_libs = xyes])
-m4trace:configure.ac:889: -1- m4_pattern_allow([^BUILD_JOTO_LIBS_TRUE$])
-m4trace:configure.ac:889: -1- m4_pattern_allow([^BUILD_JOTO_LIBS_FALSE$])
-m4trace:configure.ac:889: -1- _AM_SUBST_NOTMAKE([BUILD_JOTO_LIBS_TRUE])
-m4trace:configure.ac:889: -1- _AM_SUBST_NOTMAKE([BUILD_JOTO_LIBS_FALSE])
+m4trace:configure.ac:878: -1- SOV_QT_FAIL([PROTOC not found])
+m4trace:configure.ac:881: -1- AM_CONDITIONAL([BUILD_SOVD], [test x$build_sovd = xyes])
+m4trace:configure.ac:881: -1- m4_pattern_allow([^BUILD_SOVD_TRUE$])
+m4trace:configure.ac:881: -1- m4_pattern_allow([^BUILD_SOVD_FALSE$])
+m4trace:configure.ac:881: -1- _AM_SUBST_NOTMAKE([BUILD_SOVD_TRUE])
+m4trace:configure.ac:881: -1- _AM_SUBST_NOTMAKE([BUILD_SOVD_FALSE])
+m4trace:configure.ac:885: -1- AM_CONDITIONAL([BUILD_SOV_UTILS], [test x$build_sov_utils = xyes])
+m4trace:configure.ac:885: -1- m4_pattern_allow([^BUILD_SOV_UTILS_TRUE$])
+m4trace:configure.ac:885: -1- m4_pattern_allow([^BUILD_SOV_UTILS_FALSE$])
+m4trace:configure.ac:885: -1- _AM_SUBST_NOTMAKE([BUILD_SOV_UTILS_TRUE])
+m4trace:configure.ac:885: -1- _AM_SUBST_NOTMAKE([BUILD_SOV_UTILS_FALSE])
+m4trace:configure.ac:889: -1- AM_CONDITIONAL([BUILD_SOV_LIBS], [test x$build_sov_libs = xyes])
+m4trace:configure.ac:889: -1- m4_pattern_allow([^BUILD_SOV_LIBS_TRUE$])
+m4trace:configure.ac:889: -1- m4_pattern_allow([^BUILD_SOV_LIBS_FALSE$])
+m4trace:configure.ac:889: -1- _AM_SUBST_NOTMAKE([BUILD_SOV_LIBS_TRUE])
+m4trace:configure.ac:889: -1- _AM_SUBST_NOTMAKE([BUILD_SOV_LIBS_FALSE])
 m4trace:configure.ac:891: -1- m4_pattern_allow([^HAVE_CONSENSUS_LIB$])
 m4trace:configure.ac:914: -1- AX_CHECK_PREPROC_FLAG([-Qunused-arguments], [CPPFLAGS="-Qunused-arguments $CPPFLAGS"])
 m4trace:configure.ac:921: -1- m4_pattern_allow([^ENABLE_WALLET$])
@@ -5989,7 +5989,7 @@ m4trace:configure.ac:1020: -1- m4_pattern_allow([^ENABLE_TESTS_TRUE$])
 m4trace:configure.ac:1020: -1- m4_pattern_allow([^ENABLE_TESTS_FALSE$])
 m4trace:configure.ac:1020: -1- _AM_SUBST_NOTMAKE([ENABLE_TESTS_TRUE])
 m4trace:configure.ac:1020: -1- _AM_SUBST_NOTMAKE([ENABLE_TESTS_FALSE])
-m4trace:configure.ac:1021: -1- AM_CONDITIONAL([ENABLE_QT], [test x$joto_enable_qt = xyes])
+m4trace:configure.ac:1021: -1- AM_CONDITIONAL([ENABLE_QT], [test x$sov_enable_qt = xyes])
 m4trace:configure.ac:1021: -1- m4_pattern_allow([^ENABLE_QT_TRUE$])
 m4trace:configure.ac:1021: -1- m4_pattern_allow([^ENABLE_QT_FALSE$])
 m4trace:configure.ac:1021: -1- _AM_SUBST_NOTMAKE([ENABLE_QT_TRUE])

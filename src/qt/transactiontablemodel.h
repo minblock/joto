@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_TRANSACTIONTABLEMODEL_H
-#define JOTO_QT_TRANSACTIONTABLEMODEL_H
+#ifndef SOV_QT_TRANSACTIONTABLEMODEL_H
+#define SOV_QT_TRANSACTIONTABLEMODEL_H
 
-#include "jotounits.h"
+#include "sovunits.h"
 
 #include <QAbstractTableModel>
 #include <QStringList>
@@ -98,7 +98,7 @@ private:
     QString formatTxDate(const TransactionRecord *wtx) const;
     QString formatTxType(const TransactionRecord *wtx) const;
     QString formatTxToAddress(const TransactionRecord *wtx, bool tooltip) const;
-    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, JOTOUnits::SeparatorStyle separators=JOTOUnits::separatorStandard) const;
+    QString formatTxAmount(const TransactionRecord *wtx, bool showUnconfirmed=true, SOVUnits::SeparatorStyle separators=SOVUnits::separatorStandard) const;
     QString formatTooltip(const TransactionRecord *rec) const;
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;
@@ -117,4 +117,4 @@ public Q_SLOTS:
     friend class TransactionTablePriv;
 };
 
-#endif // JOTO_QT_TRANSACTIONTABLEMODEL_H
+#endif // SOV_QT_TRANSACTIONTABLEMODEL_H

@@ -2,7 +2,7 @@
 set -e
 
 ROOTDIR=dist
-BUNDLE="${ROOTDIR}/JOTO-Qt.app"
+BUNDLE="${ROOTDIR}/SOV-Qt.app"
 CODESIGN=codesign
 TEMPDIR=sign.temp
 TEMPLIST=${TEMPDIR}/signatures.txt

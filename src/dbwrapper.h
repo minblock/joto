@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_DBWRAPPER_H
-#define JOTO_DBWRAPPER_H
+#ifndef SOV_DBWRAPPER_H
+#define SOV_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -342,4 +342,4 @@ public:
 
 };
 
-#endif // JOTO_DBWRAPPER_H
+#endif // SOV_DBWRAPPER_H

@@ -1,13 +1,13 @@
 #include "settingspage.h"
 #include "util.h" // for GetBoolArg
 #if defined(HAVE_CONFIG_H)
-#include "config/joto-config.h"
+#include "config/sov-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "jotounits.h"
+#include "sovunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -126,7 +126,7 @@ SettingsPage::SettingsPage(const PlatformStyle *platformStyle, QWidget *parent) 
         }
     }
 
-    ui->unit->setModel(new JOTOUnits(this));
+    ui->unit->setModel(new SOVUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -176,7 +176,7 @@ SettingsPage::SettingsPage(const PlatformStyle *platformStyle, QWidget *parent) 
 void SettingsPage::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->jotoAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->sovAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 

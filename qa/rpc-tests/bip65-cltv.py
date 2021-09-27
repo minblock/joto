@@ -7,10 +7,10 @@
 # Test the CHECKLOCKTIMEVERIFY (BIP65) soft-fork logic
 #
 
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 
-class BIP65Test(JOTOTestFramework):
+class BIP65Test(SOVTestFramework):
 
     def setup_network(self):
         self.nodes = []

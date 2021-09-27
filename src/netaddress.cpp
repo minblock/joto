@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/joto-config.h"
+#include "config/sov-config.h"
 #endif
 
 #include "netaddress.h"

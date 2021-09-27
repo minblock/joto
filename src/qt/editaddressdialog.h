@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_EDITADDRESSDIALOG_H
-#define JOTO_QT_EDITADDRESSDIALOG_H
+#ifndef SOV_QT_EDITADDRESSDIALOG_H
+#define SOV_QT_EDITADDRESSDIALOG_H
 
 #include <QDialog>
 
@@ -54,4 +54,4 @@ private:
     QString address;
 };
 
-#endif // JOTO_QT_EDITADDRESSDIALOG_H
+#endif // SOV_QT_EDITADDRESSDIALOG_H

@@ -1,7 +1,7 @@
 Description
 ------------
 
-This directory contains data-driven tests for various aspects of JOTO.
+This directory contains data-driven tests for various aspects of SOV.
 
 License
 --------

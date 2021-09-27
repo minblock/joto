@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_SCRIPT_SCRIPT_H
-#define JOTO_SCRIPT_SCRIPT_H
+#ifndef SOV_SCRIPT_SCRIPT_H
+#define SOV_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -606,7 +606,7 @@ public:
     }
 
     /**
-     * Pre-version-0.6, JOTO always counted CHECKMULTISIGs
+     * Pre-version-0.6, SOV always counted CHECKMULTISIGs
      * as 20 sigops. With pay-to-script-hash, that changed:
      * CHECKMULTISIGs serialized in scriptSigs are
      * counted more accurately, assuming they are of the form
@@ -654,4 +654,4 @@ public:
     virtual ~CReserveScript() {}
 };
 
-#endif // JOTO_SCRIPT_SCRIPT_H
+#endif // SOV_SCRIPT_SCRIPT_H

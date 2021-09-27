@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../joto.qrc"/>
+  <include location="../sov.qrc"/>
  </resources>
  <connections/>
 </ui>

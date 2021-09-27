@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_OPTIONSMODEL_H
-#define JOTO_QT_OPTIONSMODEL_H
+#ifndef SOV_QT_OPTIONSMODEL_H
+#define SOV_QT_OPTIONSMODEL_H
 
 #include "amount.h"
 
@@ -13,7 +13,7 @@ QT_BEGIN_NAMESPACE
 class QNetworkProxy;
 QT_END_NAMESPACE
 
-/** Interface from Qt to configuration data structure for JOTO client.
+/** Interface from Qt to configuration data structure for SOV client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
    This can be changed to a tree once the settings become sufficiently
@@ -38,7 +38,7 @@ public:
         ProxyUseTor,            // bool
         ProxyIPTor,             // QString
         ProxyPortTor,           // int
-        DisplayUnit,            // JOTOUnits::Unit
+        DisplayUnit,            // SOVUnits::Unit
         ThirdPartyTxUrls,       // QString
         Digits,                 // QString
         Theme,                  // QString
@@ -107,4 +107,4 @@ Q_SIGNALS:
     void hideTrayIconChanged(bool);
 };
 
-#endif // JOTO_QT_OPTIONSMODEL_H
+#endif // SOV_QT_OPTIONSMODEL_H

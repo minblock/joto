@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_HTTPRPC_H
-#define JOTO_HTTPRPC_H
+#ifndef SOV_HTTPRPC_H
+#define SOV_HTTPRPC_H
 
 #include <string>
 #include <map>

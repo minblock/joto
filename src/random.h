@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_RANDOM_H
-#define JOTO_RANDOM_H
+#ifndef SOV_RANDOM_H
+#define SOV_RANDOM_H
 
 #include "uint256.h"
 
@@ -74,4 +74,4 @@ public:
     }
 };
 
-#endif // JOTO_RANDOM_H
+#endif // SOV_RANDOM_H

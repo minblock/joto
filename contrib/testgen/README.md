@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven JOTO tests.
+Utilities to generate test vectors for the data-driven SOV tests.
 
 Usage: 
 

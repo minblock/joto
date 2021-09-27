@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_SUPPORT_CLEANSE_H
-#define JOTO_SUPPORT_CLEANSE_H
+#ifndef SOV_SUPPORT_CLEANSE_H
+#define SOV_SUPPORT_CLEANSE_H
 
 #include <stdlib.h>
 
 void memory_cleanse(void *ptr, size_t len);
 
-#endif // JOTO_SUPPORT_CLEANSE_H
+#endif // SOV_SUPPORT_CLEANSE_H

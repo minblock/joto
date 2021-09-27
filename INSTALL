@@ -1,7 +1,7 @@
-Building JOTO Core
+Building SOV Core
 
 After you install the usual build tools and C++ development tools,
-JOTO Core also needs some build dependencies which are not always provided
+SOV Core also needs some build dependencies which are not always provided
 by default by the OS package manager
 (in particular BerkeleyDB 4.8 for building with wallet support).
 
@@ -21,10 +21,10 @@ use the autogen script to prepare the build environment.
     make
 
 Precompiled binaries are available at github, see
-https://github.com/jotocrypto/joto-binaries
+https://github.com/sovcrypto/sov-binaries
 
 Always verify the signatures and checksums.
 
-See doc/build-*.md for instructions on building jotod,
+See doc/build-*.md for instructions on building sovd,
 the intended-for-services, no-graphical-interface,
-reference implementation of JOTO.
+reference implementation of SOV.

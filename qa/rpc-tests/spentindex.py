@@ -8,13 +8,13 @@
 #
 
 import time
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 from test_framework.script import *
 from test_framework.mininode import *
 import binascii
 
-class SpentIndexTest(JOTOTestFramework):
+class SpentIndexTest(SOVTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)

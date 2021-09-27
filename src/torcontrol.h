@@ -5,8 +5,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef JOTO_TORCONTROL_H
-#define JOTO_TORCONTROL_H
+#ifndef SOV_TORCONTROL_H
+#define SOV_TORCONTROL_H
 
 #include "scheduler.h"
 
@@ -17,4 +17,4 @@ void StartTorControl(boost::thread_group& threadGroup, CScheduler& scheduler);
 void InterruptTorControl();
 void StopTorControl();
 
-#endif /* JOTO_TORCONTROL_H */
+#endif /* SOV_TORCONTROL_H */

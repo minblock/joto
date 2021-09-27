@@ -4,11 +4,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_VALIDATION_H
-#define JOTO_VALIDATION_H
+#ifndef SOV_VALIDATION_H
+#define SOV_VALIDATION_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/joto-config.h"
+#include "config/sov-config.h"
 #endif
 
 #include "amount.h"
@@ -503,4 +503,4 @@ static const unsigned int REJECT_ALREADY_KNOWN = 0x101;
 /** Transaction conflicts with a transaction already known */
 static const unsigned int REJECT_CONFLICT = 0x102;
 
-#endif // JOTO_VALIDATION_H
+#endif // SOV_VALIDATION_H

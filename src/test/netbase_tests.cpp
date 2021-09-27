@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "netbase.h"
-#include "test/test_joto.h"
+#include "test/test_sov.h"
 
 #include <string>
 
@@ -75,10 +75,10 @@ bool static TestSplitHost(string test, string host, int port)
 
 BOOST_AUTO_TEST_CASE(netbase_splithost)
 {
-    BOOST_CHECK(TestSplitHost("www.joto.org", "www.joto.org", -1));
-    BOOST_CHECK(TestSplitHost("[www.joto.org]", "www.joto.org", -1));
-    BOOST_CHECK(TestSplitHost("www.joto.org:80", "www.joto.org", 80));
-    BOOST_CHECK(TestSplitHost("[www.joto.org]:80", "www.joto.org", 80));
+    BOOST_CHECK(TestSplitHost("www.sov.org", "www.sov.org", -1));
+    BOOST_CHECK(TestSplitHost("[www.sov.org]", "www.sov.org", -1));
+    BOOST_CHECK(TestSplitHost("www.sov.org:80", "www.sov.org", 80));
+    BOOST_CHECK(TestSplitHost("[www.sov.org]:80", "www.sov.org", 80));
     BOOST_CHECK(TestSplitHost("127.0.0.1", "127.0.0.1", -1));
     BOOST_CHECK(TestSplitHost("127.0.0.1:9999", "127.0.0.1", 9999));
     BOOST_CHECK(TestSplitHost("[127.0.0.1]", "127.0.0.1", -1));

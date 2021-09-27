@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_GUICONSTANTS_H
-#define JOTO_QT_GUICONSTANTS_H
+#ifndef SOV_QT_GUICONSTANTS_H
+#define SOV_QT_GUICONSTANTS_H
 
 /* Milliseconds between model updates */
 static const int MODEL_UPDATE_DELAY = 250;
@@ -12,7 +12,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* JOTOGUI -- Size of icons in status bar */
+/* SOVGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -49,9 +49,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "JOTO"
-#define QAPP_ORG_DOMAIN "joto.org"
-#define QAPP_APP_NAME_DEFAULT "JOTO-Qt"
-#define QAPP_APP_NAME_TESTNET "JOTO-Qt-testnet"
+#define QAPP_ORG_NAME "SOV"
+#define QAPP_ORG_DOMAIN "sov.org"
+#define QAPP_APP_NAME_DEFAULT "SOV-Qt"
+#define QAPP_APP_NAME_TESTNET "SOV-Qt-testnet"
 
-#endif // JOTO_QT_GUICONSTANTS_H
+#endif // SOV_QT_GUICONSTANTS_H

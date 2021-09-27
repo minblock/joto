@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_SENDCOINSENTRY_H
-#define JOTO_QT_SENDCOINSENTRY_H
+#ifndef SOV_QT_SENDCOINSENTRY_H
+#define SOV_QT_SENDCOINSENTRY_H
 
 #include "walletmodel.h"
 
@@ -17,7 +17,7 @@ namespace Ui {
 }
 
 /**
- * A single entry in the dialog for sending jotos.
+ * A single entry in the dialog for sending sovs.
  * Stacked widget, with different UIs for payment requests
  * with a strong payee identity.
  */
@@ -70,4 +70,4 @@ private:
     bool updateLabel(const QString &address);
 };
 
-#endif // JOTO_QT_SENDCOINSENTRY_H
+#endif // SOV_QT_SENDCOINSENTRY_H

@@ -2,12 +2,12 @@
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2017-2018 The Bitcoin Gold developers
 // Copyright (c) 2017-2018 The zawy12
-// Copyright (c) 2017-2018 The JOTO Core developers
+// Copyright (c) 2017-2018 The SOV Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_CONSENSUS_PARAMS_H
-#define JOTO_CONSENSUS_PARAMS_H
+#ifndef SOV_CONSENSUS_PARAMS_H
+#define SOV_CONSENSUS_PARAMS_H
 
 #include "uint256.h"
 #include <map>
@@ -93,4 +93,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // JOTO_CONSENSUS_PARAMS_H
+#endif // SOV_CONSENSUS_PARAMS_H

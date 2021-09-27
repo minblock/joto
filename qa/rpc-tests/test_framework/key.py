@@ -2,7 +2,7 @@
 #
 # key.py - OpenSSL wrapper
 #
-# This file is modified from python-jotolib.
+# This file is modified from python-sovlib.
 #
 
 """ECC secp256k1 crypto routines

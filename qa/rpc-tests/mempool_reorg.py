@@ -8,11 +8,11 @@
 # that spend (directly or indirectly) coinbase transactions.
 #
 
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 
 # Create one-input, one-output, no-fee transaction:
-class MempoolCoinbaseTest(JOTOTestFramework):
+class MempoolCoinbaseTest(SOVTestFramework):
 
     alert_filename = None  # Set by setup_network
 

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_UI_INTERFACE_H
-#define JOTO_UI_INTERFACE_H
+#ifndef SOV_UI_INTERFACE_H
+#define SOV_UI_INTERFACE_H
 
 #include <stdint.h>
 #include <string>
@@ -121,4 +121,4 @@ public:
 
 extern CClientUIInterface uiInterface;
 
-#endif // JOTO_UI_INTERFACE_H
+#endif // SOV_UI_INTERFACE_H

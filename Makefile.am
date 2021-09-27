@@ -4,23 +4,23 @@ SUBDIRS = src
 
 GZIP_ENV="-9n"
 
-if BUILD_JOTO_LIBS
+if BUILD_SOV_LIBS
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libjotoconsensus.pc
+pkgconfig_DATA = libsovconsensus.pc
 endif
 
-JOTOD_BIN=$(top_builddir)/src/jotod$(EXEEXT)
-JOTO_QT_BIN=$(top_builddir)/src/qt/joto-qt$(EXEEXT)
-JOTO_CLI_BIN=$(top_builddir)/src/joto-cli$(EXEEXT)
-JOTO_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
+SOVD_BIN=$(top_builddir)/src/sovd$(EXEEXT)
+SOV_QT_BIN=$(top_builddir)/src/qt/sov-qt$(EXEEXT)
+SOV_CLI_BIN=$(top_builddir)/src/sov-cli$(EXEEXT)
+SOV_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
 
-OSX_APP=JOTO-Qt.app
-OSX_DMG=JOTO-Core.dmg
+OSX_APP=SOV-Qt.app
+OSX_DMG=SOV-Core.dmg
 OSX_BACKGROUND_IMAGE=background.tiff
 OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
 OSX_FANCY_PLIST=$(top_srcdir)/contrib/macdeploy/fancy.plist
 OSX_BASE_LPROJ_DIR=$(top_srcdir)/contrib/macdeploy/Base.lproj/InfoPlist.strings
-OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/joto.icns
+OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/sov.icns
 OSX_PLIST=$(top_srcdir)/share/qt/Info.plist #not installed
 OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 
@@ -29,7 +29,7 @@ DIST_DOCS = $(wildcard doc/*.md) $(wildcard doc/release-notes/*.md)
 BIN_CHECKS=$(top_srcdir)/contrib/devtools/symbol-check.py \
            $(top_srcdir)/contrib/devtools/security-check.py
 
-WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/joto.ico \
+WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/sov.ico \
   $(top_srcdir)/share/pixmaps/nsis-header.bmp \
   $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
   $(top_srcdir)/doc/README_windows.txt
@@ -41,9 +41,9 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) $
   $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
 COVERAGE_INFO = baseline_filtered_combined.info baseline.info block_test.info \
-  leveldb_baseline.info test_joto_filtered.info total_coverage.info \
+  leveldb_baseline.info test_sov_filtered.info total_coverage.info \
   baseline_filtered.info block_test_filtered.info rpc_test.info rpc_test_filtered.info \
-  leveldb_baseline_filtered.info test_joto_coverage.info test_joto.info
+  leveldb_baseline_filtered.info test_sov_coverage.info test_sov.info
 
 dist-hook:
 	-$(MAKE) -C $(top_distdir)/src/leveldb clean
@@ -58,11 +58,11 @@ distcheck-hook:
 distcleancheck:
 	@:
 
-$(JOTO_WIN_INSTALLER): all-recursive
+$(SOV_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(JOTOD_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(JOTO_QT_BIN) $(top_builddir)/release
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(JOTO_CLI_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(SOVD_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(SOV_QT_BIN) $(top_builddir)/release
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM) $(SOV_CLI_BIN) $(top_builddir)/release
 	@test -f $(MAKENSIS) && $(MAKENSIS) -V2 $(top_builddir)/share/setup.nsi || \
 	  echo error: could not build $@
 	@echo built $@
@@ -82,11 +82,11 @@ $(OSX_APP)/Contents/Info.plist: $(OSX_PLIST)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/Resources/joto.icns: $(OSX_INSTALLER_ICONS)
+$(OSX_APP)/Contents/Resources/sov.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/JOTO-Qt: $(JOTO_QT_BIN)
+$(OSX_APP)/Contents/MacOS/SOV-Qt: $(SOV_QT_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
@@ -95,8 +95,8 @@ $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings: $(OSX_BASE_LPROJ_DIR
 	$(INSTALL_DATA) $< $@
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
-  $(OSX_APP)/Contents/Resources/joto.icns $(OSX_APP)/Contents/Info.plist \
-  $(OSX_APP)/Contents/MacOS/JOTO-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+  $(OSX_APP)/Contents/Resources/sov.icns $(OSX_APP)/Contents/Info.plist \
+  $(OSX_APP)/Contents/MacOS/SOV-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
 if BUILD_DARWIN
 $(OSX_DMG): $(OSX_APP_BUILT) $(OSX_PACKAGING)
@@ -111,10 +111,10 @@ $(APP_DIST_DIR)/Applications:
 	@rm -f $@
 	@cd $(@D); $(LN_S) /Applications $(@F)
 
-$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/JOTO-Qt
+$(APP_DIST_EXTRAS): $(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/SOV-Qt
 
 $(OSX_DMG): $(APP_DIST_EXTRAS)
-	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "JOTO-Core" -no-pad -r -dir-mode 0755 -apple -o $@ dist
+	$(GENISOIMAGE) -no-cache-inodes -D -l -probe -V "SOV-Core" -no-pad -r -dir-mode 0755 -apple -o $@ dist
 
 $(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE): contrib/macdeploy/$(OSX_BACKGROUND_IMAGE)
 	$(MKDIR_P) $(@D)
@@ -122,7 +122,7 @@ $(APP_DIST_DIR)/.background/$(OSX_BACKGROUND_IMAGE): contrib/macdeploy/$(OSX_BAC
 $(APP_DIST_DIR)/.DS_Store: contrib/macdeploy/DS_Store
 	$(INSTALL) $< $@
 
-$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/JOTO-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
+$(APP_DIST_DIR)/$(OSX_APP)/Contents/MacOS/SOV-Qt: $(OSX_APP_BUILT) $(OSX_PACKAGING)
 	INSTALLNAMETOOL=$(INSTALLNAMETOOL)  OTOOL=$(OTOOL) STRIP=$(STRIP) $(OSX_DEPLOY_SCRIPT) $(OSX_APP) -translations-dir=$(QT_TRANSLATION_DIR) -add-qt-tr $(OSX_QT_TRANSLATIONS) -verbose 2
 
 deploydir: $(APP_DIST_EXTRAS)
@@ -133,16 +133,16 @@ appbundle: $(OSX_APP_BUILT)
 deploy: $(OSX_DMG)
 endif
 if TARGET_WINDOWS
-deploy: $(JOTO_WIN_INSTALLER)
+deploy: $(SOV_WIN_INSTALLER)
 endif
 
-$(JOTO_QT_BIN): FORCE
+$(SOV_QT_BIN): FORCE
 	$(MAKE) -C src qt/$(@F)
 
-$(JOTOD_BIN): FORCE
+$(SOVD_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
-$(JOTO_CLI_BIN): FORCE
+$(SOV_CLI_BIN): FORCE
 	$(MAKE) -C src $(@F)
 
 if USE_LCOV
@@ -162,26 +162,26 @@ leveldb_baseline_filtered.info: leveldb_baseline.info
 baseline_filtered_combined.info: leveldb_baseline_filtered.info baseline_filtered.info
 	$(LCOV) -a leveldb_baseline_filtered.info -a baseline_filtered.info -o $@
 
-test_joto.info: baseline_filtered_combined.info
+test_sov.info: baseline_filtered_combined.info
 	$(MAKE) -C src/ check
-	$(LCOV) -c -d $(abs_builddir)/src -t test_joto -o $@
+	$(LCOV) -c -d $(abs_builddir)/src -t test_sov -o $@
 	$(LCOV) -z -d $(abs_builddir)/src
 	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
-test_joto_filtered.info: test_joto.info
+test_sov_filtered.info: test_sov.info
 	$(LCOV) -r $< "/usr/include/*" -o $@
 
-block_test.info: test_joto_filtered.info
+block_test.info: test_sov_filtered.info
 	$(MKDIR_P) qa/tmp
-	-@TIMEOUT=15 qa/pull-tester/run-jotod-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS)
-	$(LCOV) -c -d $(abs_builddir)/src --t JOTOJBlockTest -o $@
+	-@TIMEOUT=15 qa/pull-tester/run-sovd-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS)
+	$(LCOV) -c -d $(abs_builddir)/src --t SOVJBlockTest -o $@
 	$(LCOV) -z -d $(abs_builddir)/src
 	$(LCOV) -z -d $(abs_builddir)/src/leveldb
 
 block_test_filtered.info: block_test.info
 	$(LCOV) -r $< "/usr/include/*" -o $@
 
-rpc_test.info: test_joto_filtered.info
+rpc_test.info: test_sov_filtered.info
 	-@TIMEOUT=15 python qa/pull-tester/rpc-tests.py $(EXTENDED_RPC_TESTS)
 	$(LCOV) -c -d $(abs_builddir)/src --t rpc-tests -o $@
 	$(LCOV) -z -d $(abs_builddir)/src
@@ -190,13 +190,13 @@ rpc_test.info: test_joto_filtered.info
 rpc_test_filtered.info: rpc_test.info
 	$(LCOV) -r $< "/usr/include/*" -o $@
 
-test_joto_coverage.info: baseline_filtered_combined.info test_joto_filtered.info
-	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_joto_filtered.info -o $@
+test_sov_coverage.info: baseline_filtered_combined.info test_sov_filtered.info
+	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_sov_filtered.info -o $@
 
-total_coverage.info: baseline_filtered_combined.info test_joto_filtered.info block_test_filtered.info rpc_test_filtered.info
-	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_joto_filtered.info -a block_test_filtered.info -a rpc_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+total_coverage.info: baseline_filtered_combined.info test_sov_filtered.info block_test_filtered.info rpc_test_filtered.info
+	$(LCOV) -a baseline_filtered.info -a leveldb_baseline_filtered.info -a test_sov_filtered.info -a block_test_filtered.info -a rpc_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-test_joto.coverage/.dirstamp:  test_joto_coverage.info
+test_sov.coverage/.dirstamp:  test_sov_coverage.info
 	$(GENHTML) -s $< -o $(@D)
 	@touch $@
 
@@ -204,25 +204,25 @@ total.coverage/.dirstamp: total_coverage.info
 	$(GENHTML) -s $< -o $(@D)
 	@touch $@
 
-cov: test_joto.coverage/.dirstamp total.coverage/.dirstamp
+cov: test_sov.coverage/.dirstamp total.coverage/.dirstamp
 
 endif
 
-# JOTO: disable the test until upstream switches from convoluted comparison tool
-# Ref https://github.com/joto/joto/issues/4545
+# SOV: disable the test until upstream switches from convoluted comparison tool
+# Ref https://github.com/sov/sov/issues/4545
 if USE_COMPARISON_TOOL
 check-local:
 	## $(MKDIR_P) qa/tmp
-	## @qa/pull-tester/run-jotod-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS) 2>&1
+	## @qa/pull-tester/run-sovd-for-test.sh $(JAVA) -jar $(JAVA_COMPARISON_TOOL) qa/tmp/compTool $(COMPARISON_TOOL_REORG_TESTS) 2>&1
 endif
 
 dist_noinst_SCRIPTS = autogen.sh
 
 EXTRA_DIST = $(top_srcdir)/share/genbuild.sh qa/pull-tester/rpc-tests.py qa/rpc-tests $(DIST_DOCS) $(WINDOWS_PACKAGING) $(OSX_PACKAGING) $(BIN_CHECKS)
 
-CLEANFILES = $(OSX_DMG) $(JOTO_WIN_INSTALLER)
+CLEANFILES = $(OSX_DMG) $(SOV_WIN_INSTALLER)
 
 .INTERMEDIATE: $(COVERAGE_INFO)
 
 clean-local:
-	rm -rf coverage_percent.txt test_joto.coverage/ total.coverage/ qa/tmp/ cache/ $(OSX_APP)
+	rm -rf coverage_percent.txt test_sov.coverage/ total.coverage/ qa/tmp/ cache/ $(OSX_APP)

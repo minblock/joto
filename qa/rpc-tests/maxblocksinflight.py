@@ -5,7 +5,7 @@
 #
 
 from test_framework.mininode import *
-from test_framework.test_framework import JOTOTestFramework
+from test_framework.test_framework import SOVTestFramework
 from test_framework.util import *
 import logging
 
@@ -71,10 +71,10 @@ class TestManager(NodeConnCB):
         self.connection.disconnect_node()
 
 
-class MaxBlocksInFlightTest(JOTOTestFramework):
+class MaxBlocksInFlightTest(SOVTestFramework):
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("JOTOD", "jotod"),
+                          default=os.getenv("SOVD", "sovd"),
                           help="Binary to test max block requests behavior")
 
     def setup_chain(self):

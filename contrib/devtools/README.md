@@ -30,9 +30,9 @@ the commit it claims to have been updated to.
 
 To use, make sure that you have fetched the upstream repository branch in which the subtree is
 maintained:
-* for `src/secp256k1`: https://github.com/joto/secp256k1.git (branch master)
-* for `src/leveldb`: https://github.com/joto/leveldb.git (branch joto-fork)
-* for `src/univalue`: https://github.com/joto/univalue.git (branch master)
+* for `src/secp256k1`: https://github.com/sov/secp256k1.git (branch master)
+* for `src/leveldb`: https://github.com/sov/leveldb.git (branch sov-fork)
+* for `src/univalue`: https://github.com/sov/univalue.git (branch master)
 
 Usage: `git-subtree-check.sh DIR COMMIT`
 
@@ -45,10 +45,10 @@ A small script to automate merging pull-requests securely and sign them with GPG
 
 For example:
 
-  ./github-merge.sh joto/joto 3077
+  ./github-merge.sh sov/sov 3077
 
 (in any git repository) will help you merge pull request #3077 for the
-joto/joto repository.
+sov/sov repository.
 
 What it does:
 * Fetch master and the pull request.
@@ -66,16 +66,16 @@ couldn't mess with the sources.
 
 Setup
 ---------
-Configuring the github-merge tool for the joto repository is done in the following way:
+Configuring the github-merge tool for the sov repository is done in the following way:
 
-    git config githubmerge.repository joto/joto
+    git config githubmerge.repository sov/sov
     git config githubmerge.testcmd "make -j4 check" (adapt to whatever you want to use for testing)
     git config --global user.signingkey mykeyid (if you want to GPG sign)
 
 optimize-pngs.py
 ================
 
-A script to optimize png files in the joto
+A script to optimize png files in the sov
 repository (requires pngcrush).
 
 security-check.py and test-security-check.py
@@ -98,10 +98,10 @@ If only supported symbols are used the return value will be 0 and the output wil
 
 If there are 'unsupported' symbols, the return value will be 1 a list like this will be printed:
 
-    .../64/test_joto: symbol memcpy from unsupported version GLIBC_2.14
-    .../64/test_joto: symbol __fdelt_chk from unsupported version GLIBC_2.15
-    .../64/test_joto: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
-    .../64/test_joto: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
+    .../64/test_sov: symbol memcpy from unsupported version GLIBC_2.14
+    .../64/test_sov: symbol __fdelt_chk from unsupported version GLIBC_2.15
+    .../64/test_sov: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
+    .../64/test_sov: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
 
 update-translations.py
 ======================

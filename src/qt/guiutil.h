@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_QT_GUIUTIL_H
-#define JOTO_QT_GUIUTIL_H
+#ifndef SOV_QT_GUIUTIL_H
+#define SOV_QT_GUIUTIL_H
 
 #include "amount.h"
 
@@ -30,7 +30,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the JOTO Qt UI.
+/** Utility functions used by the SOV Qt UI.
  */
 namespace GUIUtil
 {
@@ -45,10 +45,10 @@ namespace GUIUtil
     void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "joto:" URI into recipient object, return true on successful parsing
-    bool parseJOTOURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseJOTOURI(QString uri, SendCoinsRecipient *out);
-    QString formatJOTOURI(const SendCoinsRecipient &info);
+    // Parse "sov:" URI into recipient object, return true on successful parsing
+    bool parseSOVURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseSOVURI(QString uri, SendCoinsRecipient *out);
+    QString formatSOVURI(const SendCoinsRecipient &info);
 
     // Returns true if given address+amount meets "dust" definition
     bool isDust(const QString& address, const CAmount& amount);
@@ -114,7 +114,7 @@ namespace GUIUtil
     // Open debug.log
     void openDebugLogfile();
 	
-    // Open joto.conf
+    // Open sov.conf
     void openConfigfile();	
 
     // Open masternode.conf
@@ -262,4 +262,4 @@ namespace GUIUtil
 
 } // namespace GUIUtil
 
-#endif // JOTO_QT_GUIUTIL_H
+#endif // SOV_QT_GUIUTIL_H

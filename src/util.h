@@ -8,11 +8,11 @@
  * Server/client environment: argument handling, config file parsing,
  * logging, thread wrappers
  */
-#ifndef JOTO_UTIL_H
-#define JOTO_UTIL_H
+#ifndef SOV_UTIL_H
+#define SOV_UTIL_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/joto-config.h"
+#include "config/sov-config.h"
 #endif
 
 #include "compat.h"
@@ -34,14 +34,14 @@
 
 // Uncomment the following line to enable debugging messages
 // or enable on a per file basis prior to inclusion of util.h
-//#define ENABLE_JOTO_DEBUG
-#ifdef ENABLE_JOTO_DEBUG
+//#define ENABLE_SOV_DEBUG
+#ifdef ENABLE_SOV_DEBUG
 #define DBG( x ) x
 #else
 #define DBG( x ) 
 #endif
 
-//JOTO only features
+//SOV only features
 
 extern bool fMasterNode;
 extern bool fLiteMode;
@@ -74,8 +74,8 @@ extern bool fLogIPs;
 extern volatile bool fReopenDebugLog;
 extern CTranslationInterface translationInterface;
 
-extern const char * const JOTO_CONF_FILENAME;
-extern const char * const JOTO_PID_FILENAME;
+extern const char * const SOV_CONF_FILENAME;
+extern const char * const SOV_PID_FILENAME;
 
 /**
  * Translation function: Call Translate signal on UI interface, which returns a boost::optional result.
@@ -248,7 +248,7 @@ std::string GetThreadName();
  */
 template <typename Callable> void TraceThread(const char* name,  Callable func)
 {
-    std::string s = strprintf("joto-%s", name);
+    std::string s = strprintf("sov-%s", name);
     RenameThread(s.c_str());
     try
     {
@@ -300,4 +300,4 @@ std::string IntVersionToString(uint32_t nVersion);
 std::string SafeIntVersionToString(uint32_t nVersion);
 
 
-#endif // JOTO_UTIL_H
+#endif // SOV_UTIL_H

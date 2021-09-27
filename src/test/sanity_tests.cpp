@@ -4,7 +4,7 @@
 
 #include "compat/sanity.h"
 #include "key.h"
-#include "test/test_joto.h"
+#include "test/test_sov.h"
 
 #include <boost/test/unit_test.hpp>
 

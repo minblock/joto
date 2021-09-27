@@ -2,7 +2,7 @@
 
 #include "cachemultimap.h"
 
-#include "test/test_joto.h"
+#include "test/test_sov.h"
 
 #include <algorithm>
 #include <iostream>

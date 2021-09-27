@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_CORE_MEMUSAGE_H
-#define JOTO_CORE_MEMUSAGE_H
+#ifndef SOV_CORE_MEMUSAGE_H
+#define SOV_CORE_MEMUSAGE_H
 
 #include "primitives/transaction.h"
 #include "primitives/block.h"
@@ -59,4 +59,4 @@ static inline size_t RecursiveDynamicUsage(const CBlockLocator& locator) {
     return memusage::DynamicUsage(locator.vHave);
 }
 
-#endif // JOTO_CORE_MEMUSAGE_H
+#endif // SOV_CORE_MEMUSAGE_H

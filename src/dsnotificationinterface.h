@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_DSNOTIFICATIONINTERFACE_H
-#define JOTO_DSNOTIFICATIONINTERFACE_H
+#ifndef SOV_DSNOTIFICATIONINTERFACE_H
+#define SOV_DSNOTIFICATIONINTERFACE_H
 
 #include "validationinterface.h"
 
@@ -27,4 +27,4 @@ private:
     CConnman& connman;
 };
 
-#endif // JOTO_DSNOTIFICATIONINTERFACE_H
+#endif // SOV_DSNOTIFICATIONINTERFACE_H

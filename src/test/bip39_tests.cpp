@@ -7,7 +7,7 @@
 #include "key.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "test/test_joto.h"
+#include "test/test_sov.h"
 #include "bip39.h"
 
 #include <boost/test/unit_test.hpp>
@@ -57,9 +57,9 @@ BOOST_AUTO_TEST_CASE(bip39_vectors)
         key.SetMaster(&seed[0], 64);
         pubkey = key.Neuter();
 
-        CJOTOExtKey b58key;
+        CSOVExtKey b58key;
         b58key.SetKey(key);
-        // printf("CJOTOExtKey: %s\n", b58key.ToString().c_str());
+        // printf("CSOVExtKey: %s\n", b58key.ToString().c_str());
         BOOST_CHECK(b58key.ToString() == test[3].get_str());
     }
 }

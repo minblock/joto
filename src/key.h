@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef JOTO_KEY_H
-#define JOTO_KEY_H
+#ifndef SOV_KEY_H
+#define SOV_KEY_H
 
 #include "pubkey.h"
 #include "serialize.h"
@@ -197,4 +197,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-#endif // JOTO_KEY_H
+#endif // SOV_KEY_H
