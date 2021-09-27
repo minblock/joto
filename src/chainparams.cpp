@@ -96,7 +96,7 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 1;
-        consensus.BIP34Hash = uint256S("0x000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343");
+        consensus.BIP34Hash = uint256S("0x0000019b29dfcfc31fbe08c017744ae41bb82599383058962572b4b9ad95d0d8");
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
         consensus.nZawyLwmaAveragingWindow = 65;
@@ -152,9 +152,10 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1632770780, 106583, 0x1e0ffff0, 1, 50 * COIN); //chainstart 2021-09-27 3:25PM EST
+        genesis = CreateGenesisBlock(1632770780, 867751, 0x1e0ffff0, 1, 50 * COIN); //chainstart 2021-09-27 3:25PM EST
         consensus.hashGenesisBlock = genesis.GetHash();
-	 //////////////
+/*
+	    //////////////
         //////////////
                 // calculate Genesis Block
                 // Reset genesis
@@ -193,9 +194,9 @@ public:
                     // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
                 }
                 std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
-
-        assert(consensus.hashGenesisBlock == uint256S("0x0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x0"));
+*/
+        assert(consensus.hashGenesisBlock == uint256S("0000019b29dfcfc31fbe08c017744ae41bb82599383058962572b4b9ad95d0d8"));
+        assert(genesis.hashMerkleRoot == uint256S("de09c8c82dca1e795b2f3885a737ed6e8674ef111801c02dff901a272805d1e0"));
 
         vSeeds.push_back(CDNSSeedData("192.3.3.28", "192.3.3.28"));
         //vSeeds.push_back(CDNSSeedData("45.76.189.173", "45.76.189.173"));
@@ -234,7 +235,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0000093e6f9d658353d8def21d98a5a5126a388a7c5987bce7cac4ccf5299dd0")),
+            (  0, uint256S("0000019b29dfcfc31fbe08c017744ae41bb82599383058962572b4b9ad95d0d8")),
             1632770780, // * UNIX timestamp of last checkpoint block strawightup now like ten mins ago steels!
             0,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
