@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "JOTOCOIN Coin";
+    const char* pszTimestamp = "Now accepting RollbacktimemyforskinsStoinestititisit's1992O'clockBitcoins!";
     const CScript genesisOutputScript = CScript() << ParseHex("04174c0933f7ed53fc996de0c252cd6bbf9e9b8161dcda7615c2503dbd5d48f02bdb72bd216af26b6815e0b2f50381100916a7eb7b1a88aeb8debb0803250d8401") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -152,9 +152,8 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(, , , 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1632770780, , , 1, 50 * COIN); //chainstart 2021-09-27 3:25PM EST
         consensus.hashGenesisBlock = genesis.GetHash();
-   /*
 	 //////////////
         //////////////
                 // calculate Genesis Block
@@ -194,11 +193,11 @@ public:
                     // Mainnet --- nonce: 296277 time: 1390095618 hash: 000000bdd771b14e5a031806292305e563956ce2584278de414d9965f6ab54b0
                 }
                 std::cout << std::string("Finished calculating Mainnet Genesis Block:\n");
-     */
-        assert(consensus.hashGenesisBlock == uint256S(""));
-        assert(genesis.hashMerkleRoot == uint256S(""));
 
-        //vSeeds.push_back(CDNSSeedData("217.69.13.119", "217.69.13.119"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0"));
+        assert(genesis.hashMerkleRoot == uint256S("0x0"));
+
+        vSeeds.push_back(CDNSSeedData("192.3.3.28", "192.3.3.28"));
         //vSeeds.push_back(CDNSSeedData("45.76.189.173", "45.76.189.173"));
         //vSeeds.push_back(CDNSSeedData("207.148.80.120", "207.148.80.120"));
         //vSeeds.push_back(CDNSSeedData("202.182.114.244", "202.182.114.244"));
