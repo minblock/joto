@@ -199,11 +199,6 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("de09c8c82dca1e795b2f3885a737ed6e8674ef111801c02dff901a272805d1e0"));
 
         vSeeds.push_back(CDNSSeedData("192.3.3.28", "192.3.3.28"));
-        //vSeeds.push_back(CDNSSeedData("45.76.189.173", "45.76.189.173"));
-        //vSeeds.push_back(CDNSSeedData("207.148.80.120", "207.148.80.120"));
-        //vSeeds.push_back(CDNSSeedData("202.182.114.244", "202.182.114.244"));
-        //vSeeds.push_back(CDNSSeedData("80.240.31.33", "80.240.31.33"));
-        //vSeeds.push_back(CDNSSeedData("45.32.26.177", "45.32.26.177"));
         // vFixedSeeds.clear();
         // vSeeds.clear();
 
@@ -235,9 +230,10 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0000019b29dfcfc31fbe08c017744ae41bb82599383058962572b4b9ad95d0d8")),
-            1632770780, // * UNIX timestamp of last checkpoint block strawightup now like ten mins ago steels!
-            0,    // * total number of transactions between genesis and last checkpoint
+            (  35200, uint256S("00000007c09d74ac4a9f81fa4fc42a8f3ccaf5f18448e21c2517668dc5235d2e")),
+            (  140803, uint256S("0000019b29dfcfc31fbe08c017744ae41bb82599383058962572b4b9ad95d0d8")),
+            1657739916, // * UNIX timestamp of last checkpoint block strawightup now like ten mins ago steels!
+            140808,    // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
             500        // * estimated number of transactions per day after checkpoint
         };
